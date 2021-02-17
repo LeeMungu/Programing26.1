@@ -9,7 +9,14 @@
 /*
 Scene : 스테이지 단위를 씬이라고 함
 */
+//이 아래 전부 거짓말중입니다.
+// 이것은 이지훈의 확인용 주석입니다 ㅋㅋㄹㅃㅃ
 
+// 이지훈의 작업물
+// 이지훈의 작업물2
+
+
+// 이문구의 작업
 /*
 Initialize : 초기화
 앞으로 게임을 시작하기 전에 초기화 및 생성은 여기서 진행
@@ -19,7 +26,7 @@ void MainGame::Init()
 {
 	mBackBuffer = new Image();
 	mBackBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
-
+	
 	//이미지 로드
 	IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LemmingsLoading.bmp"), 1280, 853, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar1", Resources(L"LoadingBar1.bmp"), 1100, 50, true);
