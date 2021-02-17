@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Scene1.h"
-
+//爽たいし虞び
 void Scene1::Init()
 {
 }
