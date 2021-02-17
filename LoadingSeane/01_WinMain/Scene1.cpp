@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "Scene1.h"
-//주ㅏㄴㅇ라ㅣ
+//주ㅏㄴㅇ라ㅣ1
 void Scene1::Init()
 {
 }
