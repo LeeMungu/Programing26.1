@@ -173,6 +173,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="UIBossHP.h" />
+    <ClInclude Include="UIskill.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
@@ -202,6 +203,7 @@
     <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="UIBossHP.cpp" />
+    <ClCompile Include="UIskill.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="01_WinMain.rc" />

@@ -144,6 +144,9 @@
     <ClInclude Include="LoadingScene.h">
       <Filter>FrameWork\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="UIskill.h">
+      <Filter>MainGame\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -211,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="LoadingScene.cpp">
       <Filter>FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="UIskill.cpp">
+      <Filter>MainGame\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
