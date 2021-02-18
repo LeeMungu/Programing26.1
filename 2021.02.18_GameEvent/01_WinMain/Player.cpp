@@ -23,13 +23,19 @@ void Player::Init()
 	mIdleAnimation->SetFrameUpdateTime(0.3f);
 	mIdleAnimation->Play();
 
+	mLeftIdleAnimation = new Animation();
+	mLeftIdleAnimation->InitFrameByStartEnd(1, 1, 0, 1, false);
+	mLeftIdleAnimation->SetIsLoop(true);
+	mLeftIdleAnimation->SetFrameUpdateTime(0.3f);
+	mLeftIdleAnimation->Play();
+
 	mRunAnimation = new Animation();
 	mRunAnimation->InitFrameByStartEnd(2, 0, 11, 0, false);
 	mRunAnimation->SetIsLoop(true);
 	mRunAnimation->SetFrameUpdateTime(0.1f);
 
 	mLeftRunAnimation = new Animation();
-	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, false);
+	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, true);
 	mLeftRunAnimation->SetIsLoop(true);
 	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
 
@@ -37,6 +43,11 @@ void Player::Init()
 	mAttackAnimation->InitFrameByStartEnd(0, 2, 13, 2, false);
 	mAttackAnimation->SetIsLoop(true);
 	mAttackAnimation->SetFrameUpdateTime(0.05f);
+
+	mLeftAttackAnimation = new Animation();
+	mLeftAttackAnimation->InitFrameByStartEnd(2, 3, 13, 3, true);
+	mLeftAttackAnimation->SetIsLoop(true);
+	mLeftAttackAnimation->SetFrameUpdateTime(0.05f);
 
 	mCurrentAnimation = mIdleAnimation;
 	mSizeX = mImage->GetFrameWidth();
@@ -74,7 +85,7 @@ void Player::Update()
 	if (Input::GetInstance()->GetKeyUp('A'))
 	{
 		mCurrentAnimation->Stop();
-		mCurrentAnimation = mLeftRunAnimation;
+		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
 	}
 	//플레이어 공격
@@ -87,9 +98,22 @@ void Player::Update()
 	if (Input::GetInstance()->GetKeyUp('E'))
 	{
 		mCurrentAnimation->Stop();
-		mCurrentAnimation = mAttackAnimation;
+		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
 	}
+	if (Input::GetInstance()->GetKeyDown('Q'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftAttackAnimation;
+		mCurrentAnimation->Play();
+	}
+	if (Input::GetInstance()->GetKeyUp('Q'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mIdleAnimation;
+		mCurrentAnimation->Play();
+	}
+
 
 	mCurrentAnimation->Update();
 }
