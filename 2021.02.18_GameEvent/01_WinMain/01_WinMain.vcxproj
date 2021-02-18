@@ -154,7 +154,6 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="DefineHeader.h" />
-    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameEvent.h" />
@@ -186,7 +185,6 @@
     <ClCompile Include="Bottom.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraManager.cpp" />
-    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="GameEvent.cpp" />
     <ClCompile Include="GameEventManager.cpp" />
     <ClCompile Include="GameObject.cpp" />

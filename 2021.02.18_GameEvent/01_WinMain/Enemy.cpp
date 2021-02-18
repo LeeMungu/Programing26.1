@@ -3,7 +3,7 @@
 #include "Image.h"
 #include "Animation.h"
 #include "Camera.h"
-#include "Player.h"
+
 Enemy::Enemy(const string& name, float x, float y)
 	:GameObject(name)
 {
@@ -47,27 +47,8 @@ void Enemy::Release()
 
 void Enemy::Update()
 {
+
 	mCurrentAnimation->Update();
-
-	mDistance = Math::GetDistance(mX, mY, mPlayer->GetX(), mPlayer->GetY());
-	float angel = Math::GetAngle(mX, mY, mPlayer->GetX(), mPlayer->GetY());
-
-	if (mDistance > 3)
-	{
-		mX += cosf(angel) * mSpeed;
-
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mRunAnimation;
-		mCurrentAnimation->Play();
-	}
-	else
-	{
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mAttackAnimation;
-		mCurrentAnimation->Play();
-	}
-
-	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
 
 void Enemy::Render(HDC hdc)
