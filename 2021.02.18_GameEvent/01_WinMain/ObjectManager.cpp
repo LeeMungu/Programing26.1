@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Bottom.h"
 #include "Image.h"
+#include "Enemy.h"
 
 ObjectManager::ObjectManager()
 {
@@ -45,8 +46,22 @@ void ObjectManager::Update()
 	Bottom* bottom = (Bottom*)FindObject(ObjectLayer::Bottom, "Bottom");
 	//player
 	Player* player = (Player*)FindObject(ObjectLayer::Player, "1");
+	//enemy-여러게 불러와야한다.
+	vector<GameObject*> enemeyList = GetObjectList(ObjectLayer::Enemey);
 
-	//bottom 판정
+	//player-enemey 충돌시 데미지 깍고 까인다
+	//for (int i = 0; i < enemeyList.size(); i++)
+	//{
+	//	RECT temp;
+	//	RECT enemyRc = enemeyList[i]->GetRect();
+	//	RECT playerRc = player->GetRect();
+	//	if (IntersectRect(&temp, &enemyRc, &playerRc))
+	//	{
+	//		player->SetHp(enemeyList[i]->GetDamage());
+	//	}
+	//}
+
+	//player-bottom 판정
 	int x = player->GetX();
 	for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
 	{
@@ -60,6 +75,13 @@ void ObjectManager::Update()
 			break;
 		}
 	}
+	
+	////player distroy
+	//if (player->GetHp()<=0)
+	//{
+	//	player->SetIsDestroy(true);
+	//}
+	//내일 할일 player mHp 만들기 enemy mHp,mDamage만들기 Get, Set포함
 
 	ObjectIter iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); ++iter)
