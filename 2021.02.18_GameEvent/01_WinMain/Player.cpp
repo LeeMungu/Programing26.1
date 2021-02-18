@@ -24,7 +24,7 @@ void Player::Init()
 	mIdleAnimation->Play();
 
 	mLeftIdleAnimation = new Animation();
-	mLeftIdleAnimation->InitFrameByStartEnd(1, 1, 0, 1, false);
+	mLeftIdleAnimation->InitFrameByStartEnd(0, 1, 1, 1, false);
 	mLeftIdleAnimation->SetIsLoop(true);
 	mLeftIdleAnimation->SetFrameUpdateTime(0.3f);
 	mLeftIdleAnimation->Play();
@@ -35,7 +35,7 @@ void Player::Init()
 	mRunAnimation->SetFrameUpdateTime(0.1f);
 
 	mLeftRunAnimation = new Animation();
-	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, true);
+	mLeftRunAnimation->InitFrameByStartEnd(11, 1, 2, 1, true);
 	mLeftRunAnimation->SetIsLoop(true);
 	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
 
@@ -85,7 +85,7 @@ void Player::Update()
 	if (Input::GetInstance()->GetKeyUp('A'))
 	{
 		mCurrentAnimation->Stop();
-		mCurrentAnimation = mIdleAnimation;
+		mCurrentAnimation = mLeftIdleAnimation;
 		mCurrentAnimation->Play();
 	}
 	//플레이어 공격
