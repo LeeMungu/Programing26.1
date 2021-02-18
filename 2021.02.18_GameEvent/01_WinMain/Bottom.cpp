@@ -24,6 +24,8 @@ void Bottom::Release()
 
 void Bottom::Update()
 {
+
+
 }
 
 void Bottom::Render(HDC hdc)

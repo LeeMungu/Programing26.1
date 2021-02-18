@@ -1,7 +1,10 @@
 #include "pch.h"
 #include "ObjectManager.h"
-
 #include "GameObject.h"
+#include "Player.h"
+#include "Bottom.h"
+#include "Image.h"
+
 ObjectManager::ObjectManager()
 {
 	//ObjectLayer 별로 벡터 하나씩 맵에 집어 넣는다.
@@ -38,9 +41,25 @@ void ObjectManager::Release()
 
 void ObjectManager::Update()
 {
-	//FindObject(ObjectLayer::Bottom)
+	//bottom
+	Bottom* bottom = (Bottom*)FindObject(ObjectLayer::Bottom, "Bottom");
+	//player
+	Player* player = (Player*)FindObject(ObjectLayer::Player, "1");
 
-
+	//bottom 판정
+	int x = player->GetX();
+	for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
+	{
+		//int y = mY + mSizeY / 2;
+		COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
+			x, y);
+		if (pixelColor != RGB(255, 0, 255))
+		{
+			player->SetY(y);
+			//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+			break;
+		}
+	}
 
 	ObjectIter iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); ++iter)
