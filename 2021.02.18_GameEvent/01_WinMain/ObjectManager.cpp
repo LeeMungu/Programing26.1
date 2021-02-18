@@ -1,4 +1,4 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "ObjectManager.h"
 #include "GameObject.h"
 #include "Player.h"
@@ -8,7 +8,7 @@
 
 ObjectManager::ObjectManager()
 {
-	//ObjectLayer º°·Î º¤ÅÍ ÇÏ³ª¾¿ ¸Ê¿¡ Áı¾î ³Ö´Â´Ù.
+	//ObjectLayer ë³„ë¡œ ë²¡í„° í•˜ë‚˜ì”© ë§µì— ì§‘ì–´ ë„£ëŠ”ë‹¤.
 	for (int i = 0; i < (int)ObjectLayer::End; ++i)
 	{
 		vector<GameObject*> emptyVector;
@@ -21,7 +21,7 @@ void ObjectManager::Init()
 	for (; iter != mObjectList.end(); ++iter)
 	{
 		for (int i = 0; i < iter->second.size(); ++i)
-		{	
+		{
 			iter->second[i]->Init();
 		}
 	}
@@ -46,10 +46,10 @@ void ObjectManager::Update()
 	Bottom* bottom = (Bottom*)FindObject(ObjectLayer::Bottom, "Bottom");
 	//player
 	Player* player = (Player*)FindObject(ObjectLayer::Player, "1");
-	//enemy-¿©·¯°Ô ºÒ·¯¿Í¾ßÇÑ´Ù.
+	//enemy-ì—¬ëŸ¬ê²Œ ë¶ˆëŸ¬ì™€ì•¼í•œë‹¤.
 	vector<GameObject*> enemeyList = GetObjectList(ObjectLayer::Enemey);
 
-	//player-enemey Ãæµ¹½Ã µ¥¹ÌÁö ±ï°í ±îÀÎ´Ù
+	//player-enemey ì¶©ëŒì‹œ ë°ë¯¸ì§€ ê¹ê³  ê¹Œì¸ë‹¤
 	//for (int i = 0; i < enemeyList.size(); i++)
 	//{
 	//	RECT temp;
@@ -61,7 +61,7 @@ void ObjectManager::Update()
 	//	}
 	//}
 
-	//player-bottom ÆÇÁ¤
+	//player-bottom íŒì •
 	int x = player->GetX();
 	for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
 	{
@@ -75,13 +75,13 @@ void ObjectManager::Update()
 			break;
 		}
 	}
-	
+
 	////player distroy
 	//if (player->GetHp()<=0)
 	//{
 	//	player->SetIsDestroy(true);
 	//}
-	//³»ÀÏ ÇÒÀÏ player mHp ¸¸µé±â enemy mHp,mDamage¸¸µé±â Get, SetÆ÷ÇÔ
+	//ë‚´ì¼ í• ì¼ player mHp ë§Œë“¤ê¸° enemy mHp,mDamageë§Œë“¤ê¸° Get, Setí¬í•¨
 
 	ObjectIter iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); ++iter)
@@ -121,17 +121,17 @@ void ObjectManager::Render(HDC hdc)
 	}
 }
 
-void ObjectManager::AddObject(ObjectLayer layer, GameObject * object)
+void ObjectManager::AddObject(ObjectLayer layer, GameObject* object)
 {
-	//mapµµ ¹è¿­¿¬»êÀÚ°¡ Á¤ÀÇµÇ¾î ÀÖ´Ù. 
-	//´Ü, ½ÇÁ¦ ¹è¿­Ã³·³ µ¿ÀÛÇÏ´Â°Ô ¾Æ´Ï¶ó.[]¿¬»êÀÚ ³»ºÎ¿¡ findÇÔ¼ö¸¦ ½á¼­ µ¿ÀÛÇÔ
-	//±×·¡¼­ °á±¹ find¾²´Â°Å¶û ºñ½ÁÇÑµ¥, ´Ù¸¥Á¡ÀÌ¶ó°í ÇÑ´Ù¸é ÇØ´ç Å°°ªÀÇ µ¥ÀÌÅÍ°¡ 
-	//¾øÀ¸¸é »õ·Î »ı¼ºÇØ¹ö¸². ÁÖÀÇÇØ¾ßÇÔ
+	//mapë„ ë°°ì—´ì—°ì‚°ìê°€ ì •ì˜ë˜ì–´ ìˆë‹¤. 
+	//ë‹¨, ì‹¤ì œ ë°°ì—´ì²˜ëŸ¼ ë™ì‘í•˜ëŠ”ê²Œ ì•„ë‹ˆë¼.[]ì—°ì‚°ì ë‚´ë¶€ì— findí•¨ìˆ˜ë¥¼ ì¨ì„œ ë™ì‘í•¨
+	//ê·¸ë˜ì„œ ê²°êµ­ findì“°ëŠ”ê±°ë‘ ë¹„ìŠ·í•œë°, ë‹¤ë¥¸ì ì´ë¼ê³  í•œë‹¤ë©´ í•´ë‹¹ í‚¤ê°’ì˜ ë°ì´í„°ê°€ 
+	//ì—†ìœ¼ë©´ ìƒˆë¡œ ìƒì„±í•´ë²„ë¦¼. ì£¼ì˜í•´ì•¼í•¨
 	mObjectList[layer].push_back(object);
 }
 
-//ÇØ´ç ÀÌ¸§ÀÇ ¿ÀºêÁ§Æ® Ã£¾Æ¿À±â
-GameObject * ObjectManager::FindObject(const string & name)
+//í•´ë‹¹ ì´ë¦„ì˜ ì˜¤ë¸Œì íŠ¸ ì°¾ì•„ì˜¤ê¸°
+GameObject* ObjectManager::FindObject(const string& name)
 {
 	ObjectIter iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); ++iter)
@@ -147,8 +147,8 @@ GameObject * ObjectManager::FindObject(const string & name)
 	return nullptr;
 }
 
-//ÇØ´ç ÀÌ¸§ÀÇ ¿ÀºêÁ§Æ® Ã£±â
-GameObject * ObjectManager::FindObject(ObjectLayer layer, const string & name)
+//í•´ë‹¹ ì´ë¦„ì˜ ì˜¤ë¸Œì íŠ¸ ì°¾ê¸°
+GameObject* ObjectManager::FindObject(ObjectLayer layer, const string& name)
 {
 	ObjectIter iter = mObjectList.find(layer);
 	for (int i = 0; i < iter->second.size(); ++i)
@@ -161,7 +161,7 @@ GameObject * ObjectManager::FindObject(ObjectLayer layer, const string & name)
 	return nullptr;
 }
 
-vector<class GameObject*> ObjectManager::FindObjects(const string & name)
+vector<class GameObject*> ObjectManager::FindObjects(const string& name)
 {
 	vector<GameObject*> result;
 
@@ -180,7 +180,7 @@ vector<class GameObject*> ObjectManager::FindObjects(const string & name)
 	return result;
 }
 
-vector<class GameObject*> ObjectManager::FindObjects(ObjectLayer layer, const string & name)
+vector<class GameObject*> ObjectManager::FindObjects(ObjectLayer layer, const string& name)
 {
 	vector<GameObject*> result;
 	ObjectIter iter = mObjectList.find(layer);
@@ -188,7 +188,7 @@ vector<class GameObject*> ObjectManager::FindObjects(ObjectLayer layer, const st
 	{
 		if (iter->second[i]->GetName() == name)
 		{
-			result.push_back(iter->second[i]); 
+			result.push_back(iter->second[i]);
 		}
 	}
 	return result;
