@@ -13,8 +13,9 @@ Player::Player(const string& name, float x, float y)
 
 void Player::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyAttack_Final.bmp"), 1148, 164, 14, 2,true);
+	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal.bmp"), 1148, 396, 14, 4,true);
 	mImage = IMAGEMANAGER->FindImage(L"Player");
+
 
 	mIdleAnimation = new Animation();
 	mIdleAnimation->InitFrameByStartEnd(0, 0, 1, 0,false);
@@ -23,9 +24,19 @@ void Player::Init()
 	mIdleAnimation->Play();
 
 	mRunAnimation = new Animation();
-	mRunAnimation->InitFrameByStartEnd(2, 0, 7, 0, false);
+	mRunAnimation->InitFrameByStartEnd(2, 0, 11, 0, false);
 	mRunAnimation->SetIsLoop(true);
 	mRunAnimation->SetFrameUpdateTime(0.1f);
+
+	mLeftRunAnimation = new Animation();
+	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, false);
+	mLeftRunAnimation->SetIsLoop(true);
+	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
+
+	mAttackAnimation = new Animation();
+	mAttackAnimation->InitFrameByStartEnd(0, 2, 13, 2, false);
+	mAttackAnimation->SetIsLoop(true);
+	mAttackAnimation->SetFrameUpdateTime(0.05f);
 
 	mCurrentAnimation = mIdleAnimation;
 	mSizeX = mImage->GetFrameWidth();
@@ -40,6 +51,7 @@ void Player::Release()
 
 void Player::Update()
 {
+	// 플레이어 우측이동
 	if (Input::GetInstance()->GetKeyDown('D'))
 	{
 		mCurrentAnimation->Stop();
@@ -50,6 +62,32 @@ void Player::Update()
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mIdleAnimation;
+		mCurrentAnimation->Play();
+	}
+	//플레이어 좌측이동
+	if (Input::GetInstance()->GetKeyDown('A'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftRunAnimation;
+		mCurrentAnimation->Play();
+	}
+	if (Input::GetInstance()->GetKeyUp('A'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftRunAnimation;
+		mCurrentAnimation->Play();
+	}
+	//플레이어 공격
+	if (Input::GetInstance()->GetKeyDown('E'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mAttackAnimation;
+		mCurrentAnimation->Play();
+	}
+	if (Input::GetInstance()->GetKeyUp('E'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mAttackAnimation;
 		mCurrentAnimation->Play();
 	}
 
