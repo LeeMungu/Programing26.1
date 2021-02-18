@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "LoadingScene.h"
+#include "Image.h"
 
 void LoadingScene::AddLoadFunc(const function<void(void)>& func)
 {
@@ -41,4 +42,17 @@ void LoadingScene::Update()
 
 void LoadingScene::Render(HDC hdc)
 {
+	mLoadingImage->Render(hdc, 0, 0);
+	mLoadingBarImage1->Render(hdc, WINSIZEX / 2 - mLoadingBarImage1->GetWidth() / 2, WINSIZEY / 10 * 9);
+	mLoadingBarImage2->Render(hdc, WINSIZEX / 2 - mLoadingBarImage2->GetWidth() / 2, WINSIZEY / 10 * 9,
+		0, 0, mLoadingBarImage2->GetWidth() * mLoadIndex / mLoadList.size(), mLoadingBarImage2->GetHeight());
+
+	wstring loadingFer = L"LOADING : " + to_wstring(mLoadIndex * 100 / mLoadList.size()) + L"%";
+	TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 10 * 8, loadingFer.c_str(), loadingFer.length());
+
+	if (mIsEndLoading == true)
+	{
+		wstring strNext = L"PUSH THE SPACE";
+		TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 10 * 8, strNext.c_str(), loadingFer.length());
+	}
 }
