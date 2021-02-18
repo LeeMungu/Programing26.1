@@ -6,6 +6,8 @@
 #include "BackGround.h"
 #include "Camera.h"
 #include "GameEvent.h"
+#include "Weapon.h"
+
 void Scene1::Init()
 {
 	//player
@@ -20,6 +22,9 @@ void Scene1::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX/2, WINSIZEY/2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
+
+	Weapon* weapon = new Weapon("w", 100, WINSIZEY / 2);
+	weapon->SetPlayerPtr(player1);
 	
 	//camera
 	Camera* camera = new Camera();
