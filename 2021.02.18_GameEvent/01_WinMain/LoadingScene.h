@@ -3,6 +3,10 @@
 #include <functional>
 class LoadingScene : public Scene
 {
+	Image* mLoadingImage;
+	Image* mLoadingBarImage1;
+	Image* mLoadingBarImage2;
+
 	vector<function<void(void)>> mLoadList;
 	int mLoadIndex;
 	bool mIsEndLoading;
