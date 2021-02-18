@@ -9,9 +9,11 @@ GameObject 관리하는 클래스
 enum class ObjectLayer : int
 {
 	Background = 0, 
-	Player = 1,
-	Enemey = 2,
-	UI = 3,
+	Bottom = 1,
+	Player = 2,
+	Enemey = 3,
+	UI = 4,
+	Weapon = 5,
 	End
 };
 
