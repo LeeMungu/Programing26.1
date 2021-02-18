@@ -41,8 +41,17 @@ void ObjectManager::Update()
 	ObjectIter iter = mObjectList.begin();
 	for (; iter != mObjectList.end(); ++iter)
 	{
+
+	}
+
+
+
+	ObjectIter iter = mObjectList.begin();
+	for (; iter != mObjectList.end(); ++iter)
+	{
 		for (int i = 0; i < iter->second.size(); ++i)
 		{
+			//DISTROY
 			if (iter->second[i]->GetIsDestroy() == true)
 			{
 				iter->second[i]->Release();
@@ -51,6 +60,7 @@ void ObjectManager::Update()
 				--i;
 				continue;
 			}
+			//ACTIVE
 			if (iter->second[i]->GetIsActive() == true)
 			{
 				iter->second[i]->Update();
