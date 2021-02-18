@@ -2,15 +2,26 @@
 #include "Scene1.h"
 
 #include "Player.h"
+#include "Bottom.h"
+#include "BackGround.h"
 #include "Camera.h"
 #include "GameEvent.h"
 void Scene1::Init()
 {
+	//player
 	Player* player1 = new Player("1", 100, WINSIZEY / 2);
 	Player* player2 = new Player("2", WINSIZEX - 100, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player2);
 	
+	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
+
+	Bottom* bottom = new Bottom("bottom", WINSIZEX/2, WINSIZEY/2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
+
+	
+	//camera
 	Camera* camera = new Camera();
 	camera->SetX(100);
 	camera->SetY(WINSIZEY / 2);

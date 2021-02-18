@@ -38,11 +38,7 @@ void ObjectManager::Release()
 
 void ObjectManager::Update()
 {
-	ObjectIter iter = mObjectList.begin();
-	for (; iter != mObjectList.end(); ++iter)
-	{
-
-	}
+	//FindObject(ObjectLayer::Bottom)
 
 
 

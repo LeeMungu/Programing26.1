@@ -149,6 +149,8 @@
   <ItemGroup>
     <ClInclude Include="01_WinMain.h" />
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="Bottom.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="DefineHeader.h" />
@@ -178,6 +180,8 @@
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="Bottom.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="GameEvent.cpp" />
