@@ -4,6 +4,7 @@
 #include "Image.h"
 
 #include "Scene1.h"
+#include "LoadingScene.h"
 /*
 Scene : 스테이지 단위를 씬이라고 함
 */
@@ -18,9 +19,17 @@ void MainGame::Init()
 	mBackBuffer = new Image();
 	mBackBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
 
-	SceneManager::GetInstance()->AddScene(L"Scene1", new Scene1);
+	//이미지 로드
+	IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"LoadingBar1", Resources(L"LoadingBar1.bmp"), 1100, 50, true);
+	IMAGEMANAGER->LoadFromFile(L"LoadingBar2", Resources(L"LoadingBar2.bmp"), 1100, 50, true);
 
-	SceneManager::GetInstance()->LoadScene(L"Scene1");
+	//씬로드
+	SceneManager::GetInstance()->AddScene(L"Scene1", new Scene1);
+	SceneManager::GetInstance()->AddScene(L"LoadingScene", new LoadingScene);
+	
+	//처음은 로딩씬
+	SceneManager::GetInstance()->LoadScene(L"LoadingScene");
 }
 
 /*
