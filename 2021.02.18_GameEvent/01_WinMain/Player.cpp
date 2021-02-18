@@ -35,7 +35,7 @@ void Player::Init()
 	mRunAnimation->SetFrameUpdateTime(0.1f);
 
 	mLeftRunAnimation = new Animation();
-	mLeftRunAnimation->InitFrameByStartEnd(11, 1, 2, 1, true);
+	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, true);
 	mLeftRunAnimation->SetIsLoop(true);
 	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
 

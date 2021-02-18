@@ -36,10 +36,10 @@ void Scene1::Init()
 
 	ObjectManager::GetInstance()->Init();
 
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.0f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(player2));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.0f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(player1));
+	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.0f));
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(player2));
+	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.0f));
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(player1));
 }
 
 void Scene1::Release()
