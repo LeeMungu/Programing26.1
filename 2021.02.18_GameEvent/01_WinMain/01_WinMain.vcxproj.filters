@@ -156,6 +156,9 @@
     <ClInclude Include="BackGround.h">
       <Filter>MainGame\Object</Filter>
     </ClInclude>
+    <ClInclude Include="Weapon.h">
+      <Filter>MainGame\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -231,6 +234,9 @@
       <Filter>MainGame\Object</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
+      <Filter>MainGame\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Weapon.cpp">
       <Filter>MainGame\Object</Filter>
     </ClCompile>
   </ItemGroup>
