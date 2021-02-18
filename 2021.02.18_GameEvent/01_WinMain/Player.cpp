@@ -13,7 +13,7 @@ Player::Player(const string& name, float x, float y)
 
 void Player::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"Siva.bmp"), 832, 208, 8, 2,true);
+	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyMoveFinal.bmp"), 680, 132, 10, 2,true);
 	mImage = IMAGEMANAGER->FindImage(L"Player");
 
 	mIdleAnimation = new Animation();
