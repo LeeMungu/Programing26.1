@@ -16,5 +16,8 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	float GetX() { return mX; }
+	float GetY() { return mY; }
 };
 
