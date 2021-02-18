@@ -13,10 +13,8 @@ Player::Player(const string& name, float x, float y)
 
 void Player::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyMoveFinal.bmp"), 1020, 198, 10, 2,true);
-	IMAGEMANAGER->LoadFromFile(L"PlayerAttack", Resources(L"kirbyAttack_Final.bmp"), 1020, 198, 14, 2, true);
+	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal.bmp"), 1148, 396, 14, 4,true);
 	mImage = IMAGEMANAGER->FindImage(L"Player");
-	mAttackImage = IMAGEMANAGER->FindImage(L"PlayerAttack");
 
 
 	mIdleAnimation = new Animation();
@@ -26,19 +24,19 @@ void Player::Init()
 	mIdleAnimation->Play();
 
 	mRunAnimation = new Animation();
-	mRunAnimation->InitFrameByStartEnd(0, 0, 9, 0, false);
+	mRunAnimation->InitFrameByStartEnd(2, 0, 11, 0, false);
 	mRunAnimation->SetIsLoop(true);
 	mRunAnimation->SetFrameUpdateTime(0.1f);
 
 	mLeftRunAnimation = new Animation();
-	mLeftRunAnimation->InitFrameByStartEnd(0, 1, 9, 1, true);
+	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, false);
 	mLeftRunAnimation->SetIsLoop(true);
 	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
 
 	mAttackAnimation = new Animation();
-	mAttackAnimation->InitFrameByStartEnd(0, 0, 13, 0, false);
+	mAttackAnimation->InitFrameByStartEnd(0, 2, 13, 2, false);
 	mAttackAnimation->SetIsLoop(true);
-	mAttackAnimation->SetFrameUpdateTime(0.1f);
+	mAttackAnimation->SetFrameUpdateTime(0.05f);
 
 	mCurrentAnimation = mIdleAnimation;
 	mSizeX = mImage->GetFrameWidth();
@@ -80,14 +78,18 @@ void Player::Update()
 		mCurrentAnimation->Play();
 	}
 	//플레이어 공격
-	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	if (Input::GetInstance()->GetKeyDown('E'))
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mAttackAnimation;
 		mCurrentAnimation->Play();
 	}
-
-
+	if (Input::GetInstance()->GetKeyUp('E'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mAttackAnimation;
+		mCurrentAnimation->Play();
+	}
 
 	mCurrentAnimation->Update();
 }
