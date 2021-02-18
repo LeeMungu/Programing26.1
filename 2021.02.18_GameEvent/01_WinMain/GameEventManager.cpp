@@ -15,8 +15,10 @@ GameEventManager::~GameEventManager()
 void GameEventManager::RemoveAllEvent()
 {
 	for (int i = 0; i < mEventQueue.size(); ++i)
-		SafeDelete(mEventQueue[i]);
-	mEventQueue.clear();
+	{
+		SafeDelete(mEventQueue.front());
+		mEventQueue.pop();
+	}
 }
 
 void GameEventManager::Update()
@@ -24,15 +26,15 @@ void GameEventManager::Update()
 	if (mEventQueue.size() == 0)
 		return;
 
-	bool isEnd = mEventQueue[0]->Update();
+	bool isEnd = mEventQueue.front()->Update();
 	if (isEnd == true)
 	{
-		SafeDelete(mEventQueue[0]);
-		mEventQueue.erase(mEventQueue.begin());
+		SafeDelete(mEventQueue.front());
+		mEventQueue.pop();
 
 		if (mEventQueue.size() != 0)
 		{
-			mEventQueue[0]->Start();
+			mEventQueue.front()->Start();
 		}
 	}
 }
@@ -43,5 +45,5 @@ void GameEventManager::PushEvent(IEvent * event)
 	{
 		event->Start();
 	}
-	mEventQueue.push_back(event);
+	mEventQueue.push(event);
 }
