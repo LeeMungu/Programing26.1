@@ -110,7 +110,7 @@ void Player::Update()
 	if (Input::GetInstance()->GetKeyUp('Q'))
 	{
 		mCurrentAnimation->Stop();
-		mCurrentAnimation = mIdleAnimation;
+		mCurrentAnimation = mLeftIdleAnimation;
 		mCurrentAnimation->Play();
 	}
 
