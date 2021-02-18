@@ -13,8 +13,11 @@ Player::Player(const string& name, float x, float y)
 
 void Player::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyAttack_Final.bmp"), 1148, 164, 14, 2,true);
+	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyMoveFinal.bmp"), 1020, 198, 10, 2,true);
+	IMAGEMANAGER->LoadFromFile(L"PlayerAttack", Resources(L"kirbyAttack_Final.bmp"), 1020, 198, 14, 2, true);
 	mImage = IMAGEMANAGER->FindImage(L"Player");
+	mAttackImage = IMAGEMANAGER->FindImage(L"PlayerAttack");
+
 
 	mIdleAnimation = new Animation();
 	mIdleAnimation->InitFrameByStartEnd(0, 0, 1, 0,false);
@@ -23,9 +26,19 @@ void Player::Init()
 	mIdleAnimation->Play();
 
 	mRunAnimation = new Animation();
-	mRunAnimation->InitFrameByStartEnd(2, 0, 7, 0, false);
+	mRunAnimation->InitFrameByStartEnd(0, 0, 9, 0, false);
 	mRunAnimation->SetIsLoop(true);
 	mRunAnimation->SetFrameUpdateTime(0.1f);
+
+	mLeftRunAnimation = new Animation();
+	mLeftRunAnimation->InitFrameByStartEnd(0, 1, 9, 1, true);
+	mLeftRunAnimation->SetIsLoop(true);
+	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
+
+	mAttackAnimation = new Animation();
+	mAttackAnimation->InitFrameByStartEnd(0, 0, 13, 0, false);
+	mAttackAnimation->SetIsLoop(true);
+	mAttackAnimation->SetFrameUpdateTime(0.1f);
 
 	mCurrentAnimation = mIdleAnimation;
 	mSizeX = mImage->GetFrameWidth();
@@ -40,6 +53,7 @@ void Player::Release()
 
 void Player::Update()
 {
+	// 플레이어 우측이동
 	if (Input::GetInstance()->GetKeyDown('D'))
 	{
 		mCurrentAnimation->Stop();
@@ -52,6 +66,28 @@ void Player::Update()
 		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
 	}
+	//플레이어 좌측이동
+	if (Input::GetInstance()->GetKeyDown('A'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftRunAnimation;
+		mCurrentAnimation->Play();
+	}
+	if (Input::GetInstance()->GetKeyUp('A'))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftRunAnimation;
+		mCurrentAnimation->Play();
+	}
+	//플레이어 공격
+	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mAttackAnimation;
+		mCurrentAnimation->Play();
+	}
+
+
 
 	mCurrentAnimation->Update();
 }
