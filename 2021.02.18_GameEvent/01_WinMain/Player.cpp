@@ -4,6 +4,8 @@
 #include "Image.h"
 #include "Animation.h"
 #include "Camera.h"
+#include "Weapon.h"
+
 Player::Player(const string& name, float x, float y)
 	:GameObject(name)
 {
@@ -138,6 +140,46 @@ void Player::Update()
 	}
 
 
+
+	if (mState == CharactorState::RightAttack)
+	{
+		if (mCurrentAnimation->GetNowFrameX() == 3)
+		{
+			if (mWeapon != nullptr)
+			{
+				SafeDelete(mWeapon)
+			}
+			mWeapon = new Weapon("w", mX, mY);
+			mWeapon->SetPlayerPtr(this);
+			ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, mWeapon);
+			mWeapon->Attack(this->GetRect().right, this->GetY(), 50, this->GetSizeY());
+		}
+		if (mCurrentAnimation->GetNowFrameX() == 10)
+		{
+			SafeDelete(mWeapon);
+		}
+	}
+	if (mState == CharactorState::LeftAttack)
+	{
+		if (mCurrentAnimation->GetNowFrameX() == 10)
+		{
+			if (mWeapon != nullptr)
+			{
+				SafeDelete(mWeapon)
+			}
+			mWeapon = new Weapon("w", mX, mY);
+			mWeapon->SetPlayerPtr(this);
+			ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, mWeapon);
+			mWeapon->Attack(this->GetRect().left, this->GetY(), 50, this->GetSizeY());
+		}
+		if (mCurrentAnimation->GetNowFrameX() == 3)
+		{
+			SafeDelete(mWeapon);
+		}
+	}
+
+
+
 	mCurrentAnimation->Update();
 
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
@@ -152,6 +194,11 @@ void Player::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mRect.left, mRect.top,
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
+	if (mWeapon != nullptr)
+	{
+		CameraManager::GetInstance()->GetMainCamera()->RenderRect(hdc, mWeapon->GetRect());
+	}
+
 
 	//mImage->FrameRender(hdc,mRect.left,mRect.top, mCurrentAnimation->GetNowFrameX(),
 	//	mCurrentAnimation->GetNowFrameY());

@@ -16,7 +16,7 @@ class Player : public GameObject
 
 	CharactorState mState;
 
-
+	class Weapon* mWeapon;
 	Player* mPlayer;
 	int mHpPoint;
 

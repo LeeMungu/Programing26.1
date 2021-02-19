@@ -96,13 +96,16 @@ void Camera::AlphaScaleFrameRender(HDC hdc, Image * image, int x, int y, int fra
 	image->AlphaScaleFrameRender(hdc, x - mRect.left, y - mRect.top, frameX, frameY, width, height, alpha);
 }
 
+/*
+::
+*/
 void Camera::RenderRect(HDC hdc, RECT rc)
 {
 	rc.left -= mRect.left;
 	rc.right -= mRect.left;
 	rc.top -= mRect.top;
 	rc.bottom -= mRect.top;
-	RenderRect(hdc, rc);
+	::RenderRect(hdc, rc);
 }
 
 void Camera::RenderEllipse(HDC hdc, float x, float y, float radius)
