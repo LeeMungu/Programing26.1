@@ -2,6 +2,20 @@
 #include "GameObject.h"
 class Player : public GameObject
 {
+
+	enum class CharactorState : int
+	{
+		Idle = 0,
+		LeftIdle = 1,
+		Run = 2,
+		LeftRun = 3,
+		Attack = 4,
+		LeftAttack = 5,
+		End
+	};
+
+	CharactorState mState;
+
 	class Image* mImage;
 	class Image* mAttackImage;
 	class Animation* mIdleAnimation;

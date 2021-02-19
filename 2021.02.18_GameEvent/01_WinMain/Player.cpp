@@ -32,12 +32,12 @@ void Player::Init()
 	mRunAnimation = new Animation();
 	mRunAnimation->InitFrameByStartEnd(2, 0, 11, 0, false);
 	mRunAnimation->SetIsLoop(true);
-	mRunAnimation->SetFrameUpdateTime(0.1f);
+	mRunAnimation->SetFrameUpdateTime(0.05f);
 
 	mLeftRunAnimation = new Animation();
 	mLeftRunAnimation->InitFrameByStartEnd(2, 1, 11, 1, true);
 	mLeftRunAnimation->SetIsLoop(true);
-	mLeftRunAnimation->SetFrameUpdateTime(0.1f);
+	mLeftRunAnimation->SetFrameUpdateTime(0.05f);
 
 	mAttackAnimation = new Animation();
 	mAttackAnimation->InitFrameByStartEnd(0, 2, 13, 2, false);
@@ -45,7 +45,7 @@ void Player::Init()
 	mAttackAnimation->SetFrameUpdateTime(0.05f);
 
 	mLeftAttackAnimation = new Animation();
-	mLeftAttackAnimation->InitFrameByStartEnd(2, 3, 13, 3, true);
+	mLeftAttackAnimation->InitFrameByStartEnd(0, 3, 13, 3, true);
 	mLeftAttackAnimation->SetIsLoop(true);
 	mLeftAttackAnimation->SetFrameUpdateTime(0.05f);
 
@@ -53,6 +53,10 @@ void Player::Init()
 	mSizeX = mImage->GetFrameWidth();
 	mSizeY = mImage->GetFrameHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
+
+	mState = CharactorState::Idle;
+
 }
 
 void Player::Release()
@@ -65,12 +69,14 @@ void Player::Update()
 	// 플레이어 우측이동
 	if (Input::GetInstance()->GetKeyDown('D'))
 	{
+		mState = CharactorState::Run;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mRunAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyUp('D'))
 	{
+		mState = CharactorState::Idle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
@@ -78,12 +84,14 @@ void Player::Update()
 	//플레이어 좌측이동
 	if (Input::GetInstance()->GetKeyDown('A'))
 	{
+		mState = CharactorState::LeftRun;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mLeftRunAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyUp('A'))
 	{
+		mState = CharactorState::LeftIdle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mLeftIdleAnimation;
 		mCurrentAnimation->Play();
@@ -91,24 +99,28 @@ void Player::Update()
 	//플레이어 공격
 	if (Input::GetInstance()->GetKeyDown('E'))
 	{
+		mState = CharactorState::Attack;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mAttackAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyUp('E'))
 	{
+		mState = CharactorState::Idle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyDown('Q'))
 	{
+		mState = CharactorState::LeftAttack;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mLeftAttackAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyUp('Q'))
 	{
+		mState = CharactorState::LeftIdle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mLeftIdleAnimation;
 		mCurrentAnimation->Play();
