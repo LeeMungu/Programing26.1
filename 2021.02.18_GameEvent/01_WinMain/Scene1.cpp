@@ -25,7 +25,8 @@ void Scene1::Init()
 
 	Weapon* weapon = new Weapon("w", 100, WINSIZEY / 2);
 	weapon->SetPlayerPtr(player1);
-	
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, weapon);
+
 	//camera
 	Camera* camera = new Camera();
 	camera->SetX(100);

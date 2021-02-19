@@ -21,7 +21,6 @@ Weapon::Weapon(const string& name, float x, float y)
 
 void Weapon::Init()
 {
-
 	mRect = RectMake(mPlayer->GetRect().right, mPlayer->GetRect().top, 30, 30);
 }
 
