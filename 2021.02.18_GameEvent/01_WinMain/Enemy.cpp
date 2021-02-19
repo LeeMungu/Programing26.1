@@ -56,8 +56,8 @@ void Enemy::Update()
 {
 	mCurrentAnimation->Update();
 
-	mDistance = Math::GetDistance(mX, mY, mPlayer->GetX(), mPlayer->GetY() + 75);
-	float angel = Math::GetAngle(mX, mY, mPlayer->GetX(), mPlayer->GetY() + 75);
+	mDistance = Math::GetDistance(mX, mY, mPlayer->GetX(), mPlayer->GetY());
+	float angel = Math::GetAngle(mX, mY, mPlayer->GetX(), mPlayer->GetY());
 
 	if (mIsFollow == true)
 	{
@@ -87,11 +87,11 @@ void Enemy::Update()
 		mPlayer->SetHpPoint(mDamage);
 		if (mX > mPlayer->GetX())
 		{
-			mPlayer->GetXPosition(-50);
+			mPlayer->GetXPosition(-20);
 		}
 		else
 		{
-			mPlayer->GetXPosition(50);
+			mPlayer->GetXPosition(20);
 		}
 	}
 
