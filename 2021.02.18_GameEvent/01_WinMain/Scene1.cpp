@@ -11,12 +11,24 @@
 void Scene1::Init()
 {
 	//player
-	Player* player1 = new Player("1", 100, 631);
+	Player* player1 = new Player("1", 1000, 631);
 	Npc* Npc1 = new Npc("Npc", 200, 580);
-	Enemy* enemy1 = new Enemy("enemy", 200, 580);
+	Enemy* enemy1 = new Enemy("enemy", 1000, 580);
 	enemy1->SetPlayerPtr(player1);
+	Enemy* enemy2 = new Enemy("enemy", 1000, 700);
+	enemy2->SetPlayerPtr(player1);
+	Enemy* enemy3 = new Enemy("enemy", 1000, 200);
+	enemy3->SetPlayerPtr(player1);
+	Enemy* enemy4 = new Enemy("enemy", 1000, 400);
+	enemy4->SetPlayerPtr(player1);
+	Enemy* enemy5 = new Enemy("enemy", 1000, 0);
+	enemy5->SetPlayerPtr(player1);
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy1);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy3);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy4);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
 	
 	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);

@@ -105,6 +105,6 @@ void Enemy::Render(HDC hdc)
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
 
-	RenderRect(hdc, mRect);
+	//RenderRect(hdc, mRect);
 
 }

@@ -40,6 +40,8 @@ void ObjectManager::Release()
 	}
 }
 
+
+
 void ObjectManager::Update()
 {
 	//bottom
@@ -75,6 +77,19 @@ void ObjectManager::Update()
 			break;
 		}
 	}
+	int xleft = player->GetX() - player->GetSizeX() / 2;
+	for (int y = player->GetY() - 50; y < player->GetY(); y++)
+	{
+		COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
+			xleft, y);
+		if (pixelColor != RGB(255, 0, 255))
+		{
+			player->SetX(xleft + player->GetSizeX() / 2);
+			//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+			break;
+		}
+	}
+
 
 	////player distroy
 	//if (player->GetHp()<=0)
