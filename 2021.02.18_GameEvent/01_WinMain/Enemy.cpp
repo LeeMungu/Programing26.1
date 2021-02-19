@@ -39,7 +39,7 @@ void Enemy::Init()
 	mSizeY = mImage->GetFrameHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
-	mSpeed = 0.5f;
+	mSpeed = 1.5f;
 	mHpPoint = 10;
 	mDamage = 10;
 	mIsFollow = false;
@@ -64,20 +64,35 @@ void Enemy::Update()
 		mX += cosf(angel) * mSpeed;
 		mY += -sinf(angel)*mSpeed;
 	}
-
+	
 	if (mDistance > 70 && mIsFollow == false)
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mRunAnimation;
 		mCurrentAnimation->Play();
+		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		mIsFollow = true;
 	}
-	else if (mDistance < 70 && mIsFollow == true)
+	else if (mDistance <= 70 &&mIsFollow == true)
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mAttackAnimation;
 		mCurrentAnimation->Play();
+
 		mIsFollow = false;
+	}
+
+	if (mCurrentAnimation == mAttackAnimation)
+	{
+		if (mCurrentAnimation->GetNowFrameX() >= 6)
+		{
+			mRect = RectMakeCenter(mX, mY, mSizeX+70, mSizeY);
+		}
+		else if (mCurrentAnimation->GetNowFrameX() < 6)
+		{
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		
 	}
 
 	RECT temp;
@@ -87,11 +102,11 @@ void Enemy::Update()
 		mPlayer->SetHpPoint(mDamage);
 		if (mX > mPlayer->GetX())
 		{
-			mPlayer->GetXPosition(-20);
+			mPlayer->GetXPosition(-40);
 		}
 		else
 		{
-			mPlayer->GetXPosition(20);
+			mPlayer->GetXPosition(40);
 		}
 	}
 
@@ -104,7 +119,7 @@ void Enemy::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mRect.left, mRect.top,
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
-
-	//RenderRect(hdc, mRect);
+	
+	RenderRect(hdc, mRect);
 
 }
