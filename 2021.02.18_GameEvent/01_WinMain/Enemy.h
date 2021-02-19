@@ -15,7 +15,9 @@ class Enemy : public GameObject
 	Player* mPlayer;
 	int mHpPoint;
 	int mDistance;
+	float mDamage;
 	float mSpeed;
+	bool mIsFollow;
 
 public:
 	Enemy(const string& name, float x, float y);
@@ -28,10 +30,12 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
-	virtual void HPCount(int x)//HP감소
+	void HPCount(int x)//HP감소
 	{
 		mHpPoint -= x;
 	}
+	float GetDamege() { return mDamage; }
+
 
 };
 

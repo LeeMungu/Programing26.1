@@ -4,6 +4,8 @@
 #include "Animation.h"
 #include "Camera.h"
 #include "Player.h"
+
+
 Enemy::Enemy(const string& name, float x, float y)
 	:GameObject(name)
 {
@@ -36,6 +38,11 @@ void Enemy::Init()
 	mSizeX = mImage->GetFrameWidth();
 	mSizeY = mImage->GetFrameHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
+	mSpeed = 0.5f;
+	mHpPoint = 10;
+	mDamage = 10;
+	mIsFollow = false;
 }
 
 void Enemy::Release()
@@ -49,22 +56,28 @@ void Enemy::Update()
 {
 	mCurrentAnimation->Update();
 
-	mDistance = Math::GetDistance(mX, mY, mPlayer->GetX(), mPlayer->GetY());
-	float angel = Math::GetAngle(mX, mY, mPlayer->GetX(), mPlayer->GetY());
+	mDistance = Math::GetDistance(mX, mY, mPlayer->GetX(), mPlayer->GetY() + 75);
+	float angel = Math::GetAngle(mX, mY, mPlayer->GetX(), mPlayer->GetY() + 75);
 
-	if (mDistance > 3)
+	if (mIsFollow == true)
 	{
 		mX += cosf(angel) * mSpeed;
+		mY += -sinf(angel)*mSpeed;
+	}
 
+	if (mDistance > 70 && mIsFollow == false)
+	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mRunAnimation;
 		mCurrentAnimation->Play();
+		mIsFollow = true;
 	}
-	else
+	else if (mDistance < 70 && mIsFollow == true)
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mAttackAnimation;
 		mCurrentAnimation->Play();
+		mIsFollow = false;
 	}
 
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
@@ -76,4 +89,7 @@ void Enemy::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mRect.left, mRect.top,
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
+
+	RenderRect(hdc, mRect);
+
 }
