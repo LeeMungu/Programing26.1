@@ -11,7 +11,7 @@ void LoadingScene::Init()
 {
 	mLoadIndex = 0;
 	mIsEndLoading = false;
-	for (int i = 0; i < 500; i++)
+	for (int i = 0; i <30; i++)
 	{
 		AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"bullet", Resources(L"bullet.bmp"), 21, 21, true); });
 	}
