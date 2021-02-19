@@ -62,19 +62,19 @@ void ObjectManager::Update()
 	//}
 
 	//player-bottom 판정
-	int x = player->GetX();
-	for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
-	{
-		//int y = mY + mSizeY / 2;
-		COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
-			x, y);
-		if (pixelColor != RGB(255, 0, 255))
-		{
-			player->SetY(y);
-			//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-			break;
-		}
-	}
+	//int x = player->GetX();
+	//for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
+	//{
+	//	//int y = mY + mSizeY / 2;
+	//	COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
+	//		x, y);
+	//	if (pixelColor != RGB(255, 0, 255))
+	//	{
+	//		player->SetY(y);
+	//		//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	//		break;
+	//	}
+	//}
 
 	////player distroy
 	//if (player->GetHp()<=0)
