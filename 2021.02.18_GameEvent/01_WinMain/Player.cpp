@@ -75,7 +75,11 @@ void Player::Release()
 
 void Player::Update()
 {
-	if(mState == CharactorState::LeftAttack || mState == CharactorState::RightAttack)
+	if (mState == CharactorState::RightIdle || mState == CharactorState::LeftIdle)
+	{ }
+	if (mState == CharactorState::RightRun || mState == CharactorState::LeftRun)
+	{ }
+	if (mState == CharactorState::LeftAttack || mState == CharactorState::RightAttack)
 	{ }
 	else
 	{
@@ -92,9 +96,12 @@ void Player::Update()
 		}
 		if (Input::GetInstance()->GetKey('D'))
 		{
-			mX += 3;
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
+			if (mState == CharactorState::RightRun)
+			{
+				mX += 3;
+				mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+			}
+		}		
 		if (Input::GetInstance()->GetKeyUp('D'))
 		{
 			mState = CharactorState::RightIdle;
@@ -115,8 +122,11 @@ void Player::Update()
 		}
 		if (Input::GetInstance()->GetKey('A'))
 		{
-			mX -= 3;
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+			if (mState == CharactorState::LeftRun)
+			{
+				mX -= 3;
+				mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+			}
 		}
 		if (Input::GetInstance()->GetKeyUp('A'))
 		{
