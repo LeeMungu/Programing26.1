@@ -152,7 +152,7 @@ void Player::Update()
 			mWeapon = new Weapon("w", mX, mY);
 			mWeapon->SetPlayerPtr(this);
 			ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, mWeapon);
-			mWeapon->Attack(this->GetRect().right, this->GetY, 100, this->GetSizeY());
+			mWeapon->Attack(this->GetRect().right, this->GetY(), 50, this->GetSizeY());
 		}
 		if (mCurrentAnimation->GetNowFrameX() == 10)
 		{
@@ -170,7 +170,7 @@ void Player::Update()
 			mWeapon = new Weapon("w", mX, mY);
 			mWeapon->SetPlayerPtr(this);
 			ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, mWeapon);
-			mWeapon->Attack(this->GetRect().left, this->GetY, 100, this->GetSizeY());
+			mWeapon->Attack(this->GetRect().left, this->GetY(), 50, this->GetSizeY());
 		}
 		if (mCurrentAnimation->GetNowFrameX() == 3)
 		{
@@ -194,6 +194,11 @@ void Player::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mRect.left, mRect.top,
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
+	if (mWeapon != nullptr)
+	{
+		CameraManager::GetInstance()->GetMainCamera()->RenderRect(hdc, mWeapon->GetRect());
+	}
+
 
 	//mImage->FrameRender(hdc,mRect.left,mRect.top, mCurrentAnimation->GetNowFrameX(),
 	//	mCurrentAnimation->GetNowFrameY());

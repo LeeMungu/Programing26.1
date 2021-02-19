@@ -3,6 +3,7 @@
 #include "Animation.h"
 #include "Player.h"
 #include "Scene1.h"
+#include "Camera.h"
 
 
 
@@ -34,6 +35,7 @@ void Weapon::Update()
 
 void Weapon::Render(HDC hdc)
 {
+
 }
 
 void Weapon::Attack(float mX, float mY, float sizeX, float sizeY)
