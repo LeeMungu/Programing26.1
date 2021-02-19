@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+
+class GameObject;
 class Player : public GameObject
 {
 
@@ -18,6 +20,8 @@ class Player : public GameObject
 
 	class Weapon* mWeapon;
 	Player* mPlayer;
+	vector<GameObject*> mEnemyList;
+
 	int mHpPoint;
 
 	class Image* mImage;
