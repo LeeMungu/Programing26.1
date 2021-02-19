@@ -5,11 +5,11 @@ class Player : public GameObject
 
 	enum class CharactorState : int
 	{
-		Idle = 0,
+		RightIdle = 0,
 		LeftIdle = 1,
-		Run = 2,
+		RightRun = 2,
 		LeftRun = 3,
-		Attack = 4,
+		RightAttack = 4,
 		LeftAttack = 5,
 		End
 	};
