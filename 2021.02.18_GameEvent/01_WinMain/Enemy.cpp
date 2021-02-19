@@ -85,6 +85,14 @@ void Enemy::Update()
 	if (IntersectRect(&temp, &mRect, &PlayerRect))
 	{
 		mPlayer->SetHpPoint(mDamage);
+		if (mX > mPlayer->GetX())
+		{
+			mPlayer->GetXPosition(-50);
+		}
+		else
+		{
+			mPlayer->GetXPosition(50);
+		}
 	}
 
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
