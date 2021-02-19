@@ -41,6 +41,8 @@ public:
 	float GetY() { return mY; }
 	
 	
+	void SetHpPoint(int X) { mHpPoint -= X; }
+
 	int GetHpPoint() { return mHpPoint; }
 
 };
