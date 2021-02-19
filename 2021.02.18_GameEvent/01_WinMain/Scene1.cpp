@@ -12,7 +12,7 @@ void Scene1::Init()
 {
 	//player
 	Player* player1 = new Player("1", 200, 631);
-	Npc* Npc1 = new Npc("Npc", 200, 580);
+	
 	Enemy* enemy1 = new Enemy("enemy", 1000, 580);
 	enemy1->SetPlayerPtr(player1);
 	Enemy* enemy2 = new Enemy("enemy", 1000, 700);
@@ -30,6 +30,7 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy4);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
+	
 	
 	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
@@ -56,6 +57,7 @@ void Scene1::Init()
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(player2));
 	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.0f));
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(player1));
+	mIsEvent = false;
 }
 
 void Scene1::Release()
@@ -65,6 +67,14 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
+	if (ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Enemey).size() == NULL
+		&& mIsEvent==false)
+	{
+		Npc* Npc1 = new Npc("Npc", 1000, 500);
+		Npc1->Init();
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, Npc1);
+		mIsEvent = true;
+	}
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 }
