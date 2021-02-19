@@ -75,46 +75,51 @@ void Player::Release()
 
 void Player::Update()
 {
-	// 플레이어 우측이동
-	if (Input::GetInstance()->GetKeyDown('D'))
+	if(mState == CharactorState::LeftAttack || mState == CharactorState::RightAttack)
+	{ }
+	else
 	{
-		mState = CharactorState::RightRun;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mRunAnimation;
-		mCurrentAnimation->Play();
-		
-	}
-	if (Input::GetInstance()->GetKey('D'))
-	{
-		mX += 3;
-		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-	}
-	if (Input::GetInstance()->GetKeyUp('D'))
-	{
-		mState = CharactorState::RightIdle;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mIdleAnimation;
-		mCurrentAnimation->Play();
-	}
-	//플레이어 좌측이동
-	if (Input::GetInstance()->GetKeyDown('A'))
-	{
-		mState = CharactorState::LeftRun;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mLeftRunAnimation;
-		mCurrentAnimation->Play();
-	}
-	if (Input::GetInstance()->GetKey('A'))
-	{
-		mX -= 3;
-		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-	}
-	if (Input::GetInstance()->GetKeyUp('A'))
-	{
-		mState = CharactorState::LeftIdle;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mLeftIdleAnimation;
-		mCurrentAnimation->Play();
+		// 플레이어 우측이동
+		if (Input::GetInstance()->GetKeyDown('D'))
+		{
+			mState = CharactorState::RightRun;
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mRunAnimation;
+			mCurrentAnimation->Play();
+
+		}
+		if (Input::GetInstance()->GetKey('D'))
+		{
+			mX += 3;
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (Input::GetInstance()->GetKeyUp('D'))
+		{
+			mState = CharactorState::RightIdle;
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mIdleAnimation;
+			mCurrentAnimation->Play();
+		}
+		//플레이어 좌측이동
+		if (Input::GetInstance()->GetKeyDown('A'))
+		{
+			mState = CharactorState::LeftRun;
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mLeftRunAnimation;
+			mCurrentAnimation->Play();
+		}
+		if (Input::GetInstance()->GetKey('A'))
+		{
+			mX -= 3;
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (Input::GetInstance()->GetKeyUp('A'))
+		{
+			mState = CharactorState::LeftIdle;
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mLeftIdleAnimation;
+			mCurrentAnimation->Play();
+		}
 	}
 	//플레이어 공격
 	if (mState != CharactorState::RightAttack)

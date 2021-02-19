@@ -68,13 +68,13 @@ void ObjectManager::Update()
 	for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
 	{
 		//int y = mY + mSizeY / 2;
-		COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
+		COLORREF pixelColor1 = GetPixel(bottom->GetImage()->GetHDC(),
 			x, y);
-		if (pixelColor != RGB(255, 0, 255))
+		if (pixelColor1 != RGB(255, 0, 255))
 		{
-			player->SetY(player->GetY() -player->GetSizeY()/2);
-			//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-			break;
+		player->SetY(player->GetY() - player->GetSizeY() / 2);
+		//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		break;
 		}
 	}
 	int xleft = player->GetX() - player->GetSizeX() / 2;
@@ -82,12 +82,14 @@ void ObjectManager::Update()
 	{
 		COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
 			xleft, y);
+		
 		if (pixelColor != RGB(255, 0, 255))
 		{
 			player->SetX(xleft + player->GetSizeX() / 2);
 			//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 			break;
 		}
+		
 	}
 
 

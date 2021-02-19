@@ -11,7 +11,7 @@
 void Scene1::Init()
 {
 	//player
-	Player* player1 = new Player("1", 1000, 631);
+	Player* player1 = new Player("1", 200, 631);
 	Npc* Npc1 = new Npc("Npc", 200, 580);
 	Enemy* enemy1 = new Enemy("enemy", 1000, 580);
 	enemy1->SetPlayerPtr(player1);
