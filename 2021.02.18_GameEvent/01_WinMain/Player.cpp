@@ -99,28 +99,37 @@ void Player::Update()
 		mCurrentAnimation->Play();
 	}
 	//플레이어 공격
-	if (Input::GetInstance()->GetKeyDown('E'))
+	if (mState != CharactorState::RightAttack)
 	{
-		mState = CharactorState::RightAttack;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mAttackAnimation;
-		mCurrentAnimation->Play();
+		if (Input::GetInstance()->GetKeyDown('E'))
+		{
+			mState = CharactorState::RightAttack;
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mAttackAnimation;
+			mCurrentAnimation->Play();
+		}
 	}
-	if (Input::GetInstance()->GetKeyUp('E'))
+	if (mState == CharactorState::RightAttack &&
+		mCurrentAnimation->GetNowFrameX() > 12)
 	{
 		mState = CharactorState::RightIdle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
 	}
-	if (Input::GetInstance()->GetKeyDown('Q'))
+
+	if (mState != CharactorState::LeftAttack)
 	{
-		mState = CharactorState::LeftAttack;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mLeftAttackAnimation;
-		mCurrentAnimation->Play();
+		if (Input::GetInstance()->GetKeyDown('Q'))
+		{
+			mState = CharactorState::LeftAttack;
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mLeftAttackAnimation;
+			mCurrentAnimation->Play();
+		}
 	}
-	if (Input::GetInstance()->GetKeyUp('Q'))
+	if (mState == CharactorState::LeftAttack &&
+		mCurrentAnimation->GetNowFrameX() < 1)
 	{
 		mState = CharactorState::LeftIdle;
 		mCurrentAnimation->Stop();
