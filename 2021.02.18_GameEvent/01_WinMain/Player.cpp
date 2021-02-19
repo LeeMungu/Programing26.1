@@ -130,6 +130,11 @@ void Player::Update()
 
 
 	mCurrentAnimation->Update();
+
+	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
+
+
 }
 
 void Player::Render(HDC hdc)
