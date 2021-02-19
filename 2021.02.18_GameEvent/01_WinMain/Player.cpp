@@ -54,7 +54,7 @@ void Player::Init()
 	mLeftAttackAnimation->SetFrameUpdateTime(0.05f);
 
 	mCurrentAnimation = mIdleAnimation;
-	mSizeX = mImage->GetFrameWidth();
+	mSizeX = mImage->GetFrameWidth()/2;
 	mSizeY = mImage->GetFrameHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
@@ -62,6 +62,7 @@ void Player::Init()
 	mState = CharactorState::RightIdle;
 
 	mHpPoint = 100;
+	mSpeed = 10.f;
 
 	mEnemyList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Enemey);
 
@@ -81,6 +82,12 @@ void Player::Update()
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mRunAnimation;
 		mCurrentAnimation->Play();
+		
+	}
+	if (Input::GetInstance()->GetKey('D'))
+	{
+		mX += 3;
+		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	}
 	if (Input::GetInstance()->GetKeyUp('D'))
 	{
@@ -96,6 +103,11 @@ void Player::Update()
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mLeftRunAnimation;
 		mCurrentAnimation->Play();
+	}
+	if (Input::GetInstance()->GetKey('A'))
+	{
+		mX -= 3;
+		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	}
 	if (Input::GetInstance()->GetKeyUp('A'))
 	{
@@ -209,7 +221,7 @@ void Player::Update()
 void Player::Render(HDC hdc)
 {
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mRect.left, mRect.top,
+		->FrameRender(hdc, mImage, mX-mImage->GetFrameWidth()/2, mRect.top,
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
 	if (mWeapon != nullptr)
