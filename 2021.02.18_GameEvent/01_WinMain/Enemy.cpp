@@ -81,7 +81,8 @@ void Enemy::Update()
 	}
 
 	RECT temp;
-	if (IntersectRect(&temp, &mRect, &mPlayer->GetRect()))
+	RECT PlayerRect = mPlayer->GetRect();
+	if (IntersectRect(&temp, &mRect, &PlayerRect))
 	{
 		mPlayer->SetHpPoint(mDamage);
 	}
