@@ -80,6 +80,12 @@ void Enemy::Update()
 		mIsFollow = false;
 	}
 
+	RECT temp;
+	if (IntersectRect(&temp, &mRect, &mPlayer->GetRect()))
+	{
+		mPlayer->SetHpPoint(mDamage);
+	}
+
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
 
