@@ -4,6 +4,8 @@
 #include "Image.h"
 #include "Animation.h"
 #include "Camera.h"
+#include "Weapon.h"
+
 Player::Player(const string& name, float x, float y)
 	:GameObject(name)
 {
@@ -136,6 +138,46 @@ void Player::Update()
 		mCurrentAnimation = mLeftIdleAnimation;
 		mCurrentAnimation->Play();
 	}
+
+
+
+	if (mState == CharactorState::RightAttack)
+	{
+		if (mCurrentAnimation->GetNowFrameX() == 3)
+		{
+			if (mWeapon != nullptr)
+			{
+				SafeDelete(mWeapon)
+			}
+			mWeapon = new Weapon("w", mX, mY);
+			mWeapon->SetPlayerPtr(this);
+			ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, mWeapon);
+			mWeapon->Attack(this->GetRect().right, this->GetY, 100, this->GetSizeY());
+		}
+		if (mCurrentAnimation->GetNowFrameX() == 10)
+		{
+			SafeDelete(mWeapon);
+		}
+	}
+	if (mState == CharactorState::LeftAttack)
+	{
+		if (mCurrentAnimation->GetNowFrameX() == 10)
+		{
+			if (mWeapon != nullptr)
+			{
+				SafeDelete(mWeapon)
+			}
+			mWeapon = new Weapon("w", mX, mY);
+			mWeapon->SetPlayerPtr(this);
+			ObjectManager::GetInstance()->AddObject(ObjectLayer::Weapon, mWeapon);
+			mWeapon->Attack(this->GetRect().left, this->GetY, 100, this->GetSizeY());
+		}
+		if (mCurrentAnimation->GetNowFrameX() == 3)
+		{
+			SafeDelete(mWeapon);
+		}
+	}
+
 
 
 	mCurrentAnimation->Update();

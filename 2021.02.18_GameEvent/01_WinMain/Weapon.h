@@ -22,4 +22,6 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
+	void Attack(float mX, float mY, float sizeX, float sizeY);
+
 };

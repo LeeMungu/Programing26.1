@@ -35,3 +35,9 @@ void Weapon::Update()
 void Weapon::Render(HDC hdc)
 {
 }
+
+void Weapon::Attack(float mX, float mY, float sizeX, float sizeY)
+{
+	mRect = RectMakeCenter(mX, mY, sizeX, sizeY);
+}
+
