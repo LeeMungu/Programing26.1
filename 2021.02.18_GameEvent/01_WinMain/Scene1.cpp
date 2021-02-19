@@ -11,9 +11,10 @@
 void Scene1::Init()
 {
 	//player
-	Player* player1 = new Player("1", 100, 580);
+
 	Npc* Npc1 = new Npc("Npc", 200, 580);
 	Enemy* enemy1 = new Enemy("enemy", 200, 580);
+	Player* player1 = new Player("1", 100, 580);
 	enemy1->SetPlayerPtr(player1);
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy1);

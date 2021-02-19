@@ -5,6 +5,8 @@
 #include "Animation.h"
 #include "Camera.h"
 #include "Weapon.h"
+#include "Enemy.h"
+#include "GameObject.h"
 
 Player::Player(const string& name, float x, float y)
 	:GameObject(name)
@@ -60,6 +62,8 @@ void Player::Init()
 	mState = CharactorState::RightIdle;
 
 	mHpPoint = 100;
+
+	mEnemyList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Enemey);
 
 }
 
@@ -178,6 +182,20 @@ void Player::Update()
 		}
 	}
 
+
+	if (mWeapon != nullptr)
+	{
+		for (int i = 0; i < mEnemyList.size(); ++i)
+		{
+			RECT temp;
+			RECT enemyRC = mEnemyList[i]->GetRect();
+			RECT weaponRC = mWeapon->GetRect();
+			if (IntersectRect(&temp, &enemyRC, &weaponRC))
+			{
+				mEnemyList[i]->SetIsDestroy(true);
+			}
+		}
+	}
 
 
 	mCurrentAnimation->Update();
