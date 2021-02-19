@@ -14,7 +14,7 @@ enum class ObjectLayer : int
 	Enemey = 3,
 	UI = 4,
 	Weapon = 5,
-	NPC = 6,
+	Npc = 6,
 	End
 };
 

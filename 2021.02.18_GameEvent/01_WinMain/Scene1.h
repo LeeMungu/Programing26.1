@@ -3,6 +3,7 @@
 class Scene1 : public Scene
 {
 	bool mIsEvent;
+	Image* mTextBox;
 public:
 	void Init()override;
 	void Release()override;

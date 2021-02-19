@@ -17,7 +17,8 @@ void LoadingScene::Init()
 	}
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"bottom.bmp"), 1280, 614, true); });
-	
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2,1, true); });
+
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingImage");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");
@@ -63,4 +64,6 @@ void LoadingScene::Render(HDC hdc)
 		wstring strNext = L"PUSH THE SPACE";
 		TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 10 * 8, strNext.c_str(), loadingFer.length());
 	}
+
+	
 }
