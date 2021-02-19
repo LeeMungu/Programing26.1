@@ -13,7 +13,7 @@ Player::Player(const string& name, float x, float y)
 
 void Player::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal2.bmp"), 1148, 396, 14, 4,true);
+	IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal3.bmp"), 1520, 318, 14, 4,true);
 	mImage = IMAGEMANAGER->FindImage(L"Player");
 
 
