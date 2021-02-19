@@ -80,13 +80,15 @@ void Player::Update()
 	else
 	{
 		// 플레이어 우측이동
-		if (Input::GetInstance()->GetKeyDown('D'))
+		if (mState != CharactorState::RightRun)
 		{
-			mState = CharactorState::RightRun;
-			mCurrentAnimation->Stop();
-			mCurrentAnimation = mRunAnimation;
-			mCurrentAnimation->Play();
-
+			if (Input::GetInstance()->GetKeyDown('D'))
+			{
+				mState = CharactorState::RightRun;
+				mCurrentAnimation->Stop();
+				mCurrentAnimation = mRunAnimation;
+				mCurrentAnimation->Play();
+			}
 		}
 		if (Input::GetInstance()->GetKey('D'))
 		{
@@ -101,12 +103,15 @@ void Player::Update()
 			mCurrentAnimation->Play();
 		}
 		//플레이어 좌측이동
-		if (Input::GetInstance()->GetKeyDown('A'))
+		if (mState != CharactorState::LeftRun)
 		{
-			mState = CharactorState::LeftRun;
-			mCurrentAnimation->Stop();
-			mCurrentAnimation = mLeftRunAnimation;
-			mCurrentAnimation->Play();
+			if (Input::GetInstance()->GetKeyDown('A'))
+			{
+				mState = CharactorState::LeftRun;
+				mCurrentAnimation->Stop();
+				mCurrentAnimation = mLeftRunAnimation;
+				mCurrentAnimation->Play();
+			}
 		}
 		if (Input::GetInstance()->GetKey('A'))
 		{
