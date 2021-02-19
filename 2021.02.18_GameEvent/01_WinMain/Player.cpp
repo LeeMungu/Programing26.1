@@ -55,7 +55,7 @@ void Player::Init()
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
 
-	mState = CharactorState::Idle;
+	mState = CharactorState::RightIdle;
 
 	mHpPoint = 100;
 
@@ -71,14 +71,14 @@ void Player::Update()
 	// 플레이어 우측이동
 	if (Input::GetInstance()->GetKeyDown('D'))
 	{
-		mState = CharactorState::Run;
+		mState = CharactorState::RightRun;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mRunAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyUp('D'))
 	{
-		mState = CharactorState::Idle;
+		mState = CharactorState::RightIdle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
@@ -101,14 +101,14 @@ void Player::Update()
 	//플레이어 공격
 	if (Input::GetInstance()->GetKeyDown('E'))
 	{
-		mState = CharactorState::Attack;
+		mState = CharactorState::RightAttack;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mAttackAnimation;
 		mCurrentAnimation->Play();
 	}
 	if (Input::GetInstance()->GetKeyUp('E'))
 	{
-		mState = CharactorState::Idle;
+		mState = CharactorState::RightIdle;
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mIdleAnimation;
 		mCurrentAnimation->Play();
