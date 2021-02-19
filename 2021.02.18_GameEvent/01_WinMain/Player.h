@@ -40,7 +40,7 @@ public:
 	float GetX() { return mX; }
 	float GetY() { return mY; }
 	
-	
+	void GetXPosition(int X) { mX += X; }
 	void SetHpPoint(int X) { mHpPoint -= X; }
 
 	int GetHpPoint() { return mHpPoint; }
