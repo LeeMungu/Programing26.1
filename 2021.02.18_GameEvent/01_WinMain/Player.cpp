@@ -71,6 +71,12 @@ void Player::Init()
 void Player::Release()
 {
 	SafeDelete(mIdleAnimation);
+	SafeDelete(mLeftIdleAnimation);
+	SafeDelete(mAttackAnimation);
+	SafeDelete(mLeftAttackAnimation);
+	SafeDelete(mRunAnimation);
+	SafeDelete(mLeftRunAnimation);
+	SafeDelete(mCurrentAnimation);
 }
 
 void Player::Update()
@@ -179,7 +185,7 @@ void Player::Update()
 		{
 			if (mWeapon != nullptr)
 			{
-				SafeDelete(mWeapon)
+				mWeapon->SetIsDestroy(true);
 			}
 			mWeapon = new Weapon("w", mX, mY);
 			mWeapon->SetPlayerPtr(this);
@@ -188,7 +194,7 @@ void Player::Update()
 		}
 		if (mCurrentAnimation->GetNowFrameX() == 10)
 		{
-			SafeDelete(mWeapon);
+			mWeapon->SetIsDestroy(true);
 		}
 	}
 	if (mState == CharactorState::LeftAttack)
@@ -197,7 +203,8 @@ void Player::Update()
 		{
 			if (mWeapon != nullptr)
 			{
-				SafeDelete(mWeapon)
+				mWeapon->SetIsDestroy(true);
+
 			}
 			mWeapon = new Weapon("w", mX, mY);
 			mWeapon->SetPlayerPtr(this);
@@ -206,7 +213,7 @@ void Player::Update()
 		}
 		if (mCurrentAnimation->GetNowFrameX() == 3)
 		{
-			SafeDelete(mWeapon);
+			mWeapon->SetIsDestroy(true);
 		}
 	}
 
@@ -225,13 +232,8 @@ void Player::Update()
 		}
 	}
 
-
 	mCurrentAnimation->Update();
-
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-
-
-
 }
 
 void Player::Render(HDC hdc)

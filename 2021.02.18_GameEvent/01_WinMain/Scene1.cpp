@@ -79,7 +79,7 @@ void Scene1::Update()
 		&& mIsEvent==false )
 	{
 		Npc* Npc1 = new Npc("2", 1000, 500);
-		ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, Npc1);
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::Npc, Npc1);
 		ObjectManager::GetInstance()->FindObject("2")->Init();
 		mIsEvent = true;
 
