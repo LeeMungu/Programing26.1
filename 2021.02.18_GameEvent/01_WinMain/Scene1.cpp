@@ -16,20 +16,20 @@ void Scene1::Init()
 	
 	Enemy* enemy1 = new Enemy("enemy", 1000, 580);
 	enemy1->SetPlayerPtr(player1);
-	//Enemy* enemy2 = new Enemy("enemy", 1000, 700);
-	//enemy2->SetPlayerPtr(player1);
-	//Enemy* enemy3 = new Enemy("enemy", 1000, 200);
-	//enemy3->SetPlayerPtr(player1);
-	//Enemy* enemy4 = new Enemy("enemy", 1000, 400);
-	//enemy4->SetPlayerPtr(player1);
-	//Enemy* enemy5 = new Enemy("enemy", 1000, 0);
-	//enemy5->SetPlayerPtr(player1);
+	Enemy* enemy2 = new Enemy("enemy", 1000, 700);
+	enemy2->SetPlayerPtr(player1);
+	Enemy* enemy3 = new Enemy("enemy", 1000, 200);
+	enemy3->SetPlayerPtr(player1);
+	Enemy* enemy4 = new Enemy("enemy", 1000, 400);
+	enemy4->SetPlayerPtr(player1);
+	Enemy* enemy5 = new Enemy("enemy", 1000, 0);
+	enemy5->SetPlayerPtr(player1);
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy1);
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy2);
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy3);
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy4);
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy5);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy3);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy4);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Enemey, enemy5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
 
 
@@ -74,8 +74,9 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
+	Player* player = (Player*)ObjectManager::GetInstance()->FindObject("1");
 	if (ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Enemey).size() == NULL
-		&& mIsEvent==false)
+		&& mIsEvent==false )
 	{
 		Npc* Npc1 = new Npc("2", 1000, 500);
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, Npc1);
@@ -89,6 +90,9 @@ void Scene1::Update()
 			GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(Npc1));
 			GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.0f));
 			GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject("1")));
+
+			
+			player->SetStop(true);
 		}
 	}
 	ObjectManager::GetInstance()->Update();

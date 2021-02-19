@@ -65,7 +65,7 @@ void Player::Init()
 	mSpeed = 10.f;
 
 	mEnemyList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Enemey);
-
+	mIsStop = false;
 }
 
 void Player::Release()
@@ -75,106 +75,102 @@ void Player::Release()
 
 void Player::Update()
 {
-	if (mState == CharactorState::RightIdle || mState == CharactorState::LeftIdle)
-	{ }
-	if (mState == CharactorState::RightRun || mState == CharactorState::LeftRun)
-	{ }
-	if (mState == CharactorState::LeftAttack || mState == CharactorState::RightAttack)
-	{ }
-	else
+	if (!mIsStop)
 	{
-		// 플레이어 우측이동
-		if (mState != CharactorState::RightRun)
+		if (!(mState == CharactorState::LeftAttack || mState == CharactorState::RightAttack))
 		{
-			if (Input::GetInstance()->GetKeyDown('D'))
+			// 플레이어 우측이동
+			if (mState != CharactorState::RightRun)
 			{
-				mState = CharactorState::RightRun;
+				if (Input::GetInstance()->GetKeyDown('D'))
+				{
+					mState = CharactorState::RightRun;
+					mCurrentAnimation->Stop();
+					mCurrentAnimation = mRunAnimation;
+					mCurrentAnimation->Play();
+				}
+			}
+			if (Input::GetInstance()->GetKey('D'))
+			{
+				if (mState == CharactorState::RightRun)
+				{
+					mX += 3;
+					mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+				}
+			}
+			if (Input::GetInstance()->GetKeyUp('D'))
+			{
+				mState = CharactorState::RightIdle;
 				mCurrentAnimation->Stop();
-				mCurrentAnimation = mRunAnimation;
+				mCurrentAnimation = mIdleAnimation;
+				mCurrentAnimation->Play();
+			}
+			//플레이어 좌측이동
+			if (mState != CharactorState::LeftRun)
+			{
+				if (Input::GetInstance()->GetKeyDown('A'))
+				{
+					mState = CharactorState::LeftRun;
+					mCurrentAnimation->Stop();
+					mCurrentAnimation = mLeftRunAnimation;
+					mCurrentAnimation->Play();
+				}
+			}
+			if (Input::GetInstance()->GetKey('A'))
+			{
+				if (mState == CharactorState::LeftRun)
+				{
+					mX -= 3;
+					mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+				}
+			}
+			if (Input::GetInstance()->GetKeyUp('A'))
+			{
+				mState = CharactorState::LeftIdle;
+				mCurrentAnimation->Stop();
+				mCurrentAnimation = mLeftIdleAnimation;
 				mCurrentAnimation->Play();
 			}
 		}
-		if (Input::GetInstance()->GetKey('D'))
+	}
+		//플레이어 공격
+		if (mState != CharactorState::RightAttack)
 		{
-			if (mState == CharactorState::RightRun)
+			if (Input::GetInstance()->GetKeyDown('E'))
 			{
-				mX += 3;
-				mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+				mState = CharactorState::RightAttack;
+				mCurrentAnimation->Stop();
+				mCurrentAnimation = mAttackAnimation;
+				mCurrentAnimation->Play();
 			}
-		}		
-		if (Input::GetInstance()->GetKeyUp('D'))
+		}
+		if (mState == CharactorState::RightAttack &&
+			mCurrentAnimation->GetNowFrameX() > 12)
 		{
 			mState = CharactorState::RightIdle;
 			mCurrentAnimation->Stop();
 			mCurrentAnimation = mIdleAnimation;
 			mCurrentAnimation->Play();
 		}
-		//플레이어 좌측이동
-		if (mState != CharactorState::LeftRun)
+
+		if (mState != CharactorState::LeftAttack)
 		{
-			if (Input::GetInstance()->GetKeyDown('A'))
+			if (Input::GetInstance()->GetKeyDown('Q'))
 			{
-				mState = CharactorState::LeftRun;
+				mState = CharactorState::LeftAttack;
 				mCurrentAnimation->Stop();
-				mCurrentAnimation = mLeftRunAnimation;
+				mCurrentAnimation = mLeftAttackAnimation;
 				mCurrentAnimation->Play();
 			}
 		}
-		if (Input::GetInstance()->GetKey('A'))
-		{
-			if (mState == CharactorState::LeftRun)
-			{
-				mX -= 3;
-				mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-			}
-		}
-		if (Input::GetInstance()->GetKeyUp('A'))
+		if (mState == CharactorState::LeftAttack &&
+			mCurrentAnimation->GetNowFrameX() < 1)
 		{
 			mState = CharactorState::LeftIdle;
 			mCurrentAnimation->Stop();
 			mCurrentAnimation = mLeftIdleAnimation;
 			mCurrentAnimation->Play();
 		}
-	}
-	//플레이어 공격
-	if (mState != CharactorState::RightAttack)
-	{
-		if (Input::GetInstance()->GetKeyDown('E'))
-		{
-			mState = CharactorState::RightAttack;
-			mCurrentAnimation->Stop();
-			mCurrentAnimation = mAttackAnimation;
-			mCurrentAnimation->Play();
-		}
-	}
-	if (mState == CharactorState::RightAttack &&
-		mCurrentAnimation->GetNowFrameX() > 12)
-	{
-		mState = CharactorState::RightIdle;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mIdleAnimation;
-		mCurrentAnimation->Play();
-	}
-
-	if (mState != CharactorState::LeftAttack)
-	{
-		if (Input::GetInstance()->GetKeyDown('Q'))
-		{
-			mState = CharactorState::LeftAttack;
-			mCurrentAnimation->Stop();
-			mCurrentAnimation = mLeftAttackAnimation;
-			mCurrentAnimation->Play();
-		}
-	}
-	if (mState == CharactorState::LeftAttack &&
-		mCurrentAnimation->GetNowFrameX() < 1)
-	{
-		mState = CharactorState::LeftIdle;
-		mCurrentAnimation->Stop();
-		mCurrentAnimation = mLeftIdleAnimation;
-		mCurrentAnimation->Play();
-	}
-
 
 
 	if (mState == CharactorState::RightAttack)
@@ -246,7 +242,7 @@ void Player::Render(HDC hdc)
 			mCurrentAnimation->GetNowFrameY());
 	if (mWeapon != nullptr)
 	{
-		CameraManager::GetInstance()->GetMainCamera()->RenderRect(hdc, mWeapon->GetRect());
+		//CameraManager::GetInstance()->GetMainCamera()->RenderRect(hdc, mWeapon->GetRect());
 	}
 
 

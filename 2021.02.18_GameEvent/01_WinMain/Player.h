@@ -33,6 +33,8 @@ class Player : public GameObject
 	class Animation* mAttackAnimation;
 	class Animation* mLeftAttackAnimation;
 	class Animation* mCurrentAnimation;	//현재 애니메이션
+
+	bool mIsStop;
 public:
 	Player(const string& name,float x, float y);
 
@@ -48,6 +50,9 @@ public:
 	void SetHpPoint(int X) { mHpPoint -= X; }
 
 	int GetHpPoint() { return mHpPoint; }
+
+	bool GetStop() const { return mIsStop; }
+	void SetStop(bool isStop) { mIsStop = isStop; }
 
 };
 
