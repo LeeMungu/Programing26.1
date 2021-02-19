@@ -31,5 +31,5 @@ void Bottom::Update()
 void Bottom::Render(HDC hdc)
 {
 	CameraManager::GetInstance()->GetMainCamera()
-		->ScaleRender(hdc, mImage, 0, 0, WINSIZEX, WINSIZEY);
+		->Render(hdc, mImage, 0, 0);
 }

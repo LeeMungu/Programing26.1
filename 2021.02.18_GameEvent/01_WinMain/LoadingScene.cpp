@@ -16,7 +16,7 @@ void LoadingScene::Init()
 		AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"bullet", Resources(L"bullet.bmp"), 21, 21, true); });
 	}
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"bottom.bmp"), 768, 368, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"bottom.bmp"), 1280, 614, true); });
 	
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingImage");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
