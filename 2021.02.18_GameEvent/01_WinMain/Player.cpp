@@ -57,6 +57,8 @@ void Player::Init()
 
 	mState = CharactorState::Idle;
 
+	mHpPoint = 100;
+
 }
 
 void Player::Release()

@@ -16,6 +16,10 @@ class Player : public GameObject
 
 	CharactorState mState;
 
+
+	Player* mPlayer;
+	int mHpPoint;
+
 	class Image* mImage;
 	class Image* mAttackImage;
 	class Animation* mIdleAnimation;
@@ -35,5 +39,9 @@ public:
 
 	float GetX() { return mX; }
 	float GetY() { return mY; }
+	
+	
+	int GetHpPoint() { return mHpPoint; }
+
 };
 
