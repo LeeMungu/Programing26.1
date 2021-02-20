@@ -19,6 +19,11 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"bottom.bmp"), 1280, 614, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2,1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal4.bmp"), 1520, 318, 14, 4, true); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BoomEffectSound", Resources(L"BoomEffectSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"OpenDoorSound", Resources(L"OpenDoorSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"CloseDoorSound", Resources(L"CloseDoorSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BunEffectSound", Resources(L"BunEffectSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"DigEffectSound", Resources(L"DigEffectSound.mp3"), false); });
 
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingImage");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");

@@ -4,7 +4,6 @@
 #include "Player.h"
 #include "Bottom.h"
 #include "Image.h"
-#include "Enemy.h"
 
 ObjectManager::ObjectManager()
 {
@@ -49,19 +48,6 @@ void ObjectManager::Update()
 	//player
 	Player* player = (Player*)FindObject(ObjectLayer::Player, "1");
 	//enemy-여러게 불러와야한다.
-	vector<GameObject*> enemeyList = GetObjectList(ObjectLayer::Enemey);
-
-	//player-enemey 충돌시 데미지 깍고 까인다
-	//for (int i = 0; i < enemeyList.size(); i++)
-	//{
-	//	RECT temp;
-	//	RECT enemyRc = enemeyList[i]->GetRect();
-	//	RECT playerRc = player->GetRect();
-	//	if (IntersectRect(&temp, &enemyRc, &playerRc))
-	//	{
-	//		player->SetHp(enemeyList[i]->GetDamage());
-	//	}
-	//}
 
 	//player-bottom 판정
 	int x = player->GetX();

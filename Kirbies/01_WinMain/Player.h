@@ -4,6 +4,7 @@
 class GameObject;
 class Image;
 class State;
+class Animation;
 class Player : public GameObject
 {
 	Image* mImage;
