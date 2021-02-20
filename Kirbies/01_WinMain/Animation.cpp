@@ -44,11 +44,13 @@ void Animation::Update()
 	}
 }
 
+//플레이
 void Animation::Play()
 {	
 	mIsPlay = true;
 }
 
+//리셋
 void Animation::Stop()
 {
 	mIsPlay = false;
@@ -56,6 +58,7 @@ void Animation::Stop()
 	mCurrentFrameTime = 0.f;
 }
 
+//일시 정지
 void Animation::Pause()
 {
 	mIsPlay = false;
@@ -79,12 +82,38 @@ void Animation::InitFrameByStartEnd(int startX, int startY, int endX, int endY, 
 			}
 		}
 	}
-
+	//리버스 트루면 재생끝나고 역순으로
 	if (isReverse)
 	{
 		for (int y = endY; y >= startY; --y)
 		{
 			for (int x = endX; x >= startX; --x)
+			{
+				mFrameList.push_back(make_pair(x, y));
+			}
+		}
+	}
+}
+
+//뒤에서부터 시작
+void Animation::InitFrameByEndStart(int startX, int startY, int endX, int endY, bool isReverse)
+{
+	if (isReverse == false)
+	{
+		for (int y = startY; y >= endY; --y)
+		{
+			for (int x = startX; x >= endX; --x)
+			{
+				mFrameList.push_back(make_pair(x, y));
+			}
+		}
+	}
+	//리버스 트루면 재생끝나고 역순으로
+	if (isReverse)
+	{
+		for (int y = endY; y <= startY; ++y)
+		{
+			for (int x = endX; x <= startX; ++x)
 			{
 				mFrameList.push_back(make_pair(x, y));
 			}

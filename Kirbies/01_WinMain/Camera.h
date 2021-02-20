@@ -14,6 +14,7 @@ protected:
 
 	float mMoveSpeed;
 public:
+	Camera() :GameObject("Camera"){}
 	void Init()override; 
 	void Release()override; 
 	void Update()override; 
@@ -34,6 +35,7 @@ public:
 
 	void RenderRect(HDC hdc, RECT rc);
 	void RenderEllipse(HDC hdc, float x, float y, float radius);
+	void RenderLine(HDC hdc, float startX, float startY, float endX, float endY);
 
 	bool IsInCameraArea(float x, float y, float width, float height);
 	bool IsInCameraArea(RECT rc);

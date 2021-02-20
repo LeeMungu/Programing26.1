@@ -113,6 +113,11 @@ void Camera::RenderEllipse(HDC hdc, float x, float y, float radius)
 	RenderEllipse(hdc, x - mRect.left, y - mRect.top, radius);
 }
 
+void Camera::RenderLine(HDC hdc, float startX, float startY, float endX, float endY)
+{
+	RenderLine(hdc, startX- mRect.left, startY - mRect.top, endX - mRect.left, endY - mRect.top);
+}
+
 bool Camera::IsInCameraArea(float x, float y, float width, float height)
 {
 	RECT rc = RectMakeCenter(x, y, width, height);

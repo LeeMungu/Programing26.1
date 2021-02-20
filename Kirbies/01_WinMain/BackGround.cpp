@@ -7,11 +7,19 @@ BackGround::BackGround(const string& name, float x, float y)
 {
 	mX = x;
 	mY = y;
+	mImage = IMAGEMANAGER->FindImage(L"Background");
+}
+
+BackGround::BackGround(const string& name, float x, float y, wstring key)
+	: GameObject(name)
+{
+	mX = x;
+	mY = y;
+	mImage = IMAGEMANAGER->FindImage(key);
 }
 
 void BackGround::Init()
 {
-	mImage = IMAGEMANAGER->FindImage(L"Background");
 	mSizeX = mImage->GetWidth();
 	mSizeY = mImage->GetHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
@@ -27,6 +35,5 @@ void BackGround::Update()
 
 void BackGround::Render(HDC hdc)
 {
-	CameraManager::GetInstance()->GetMainCamera()
-		->ScaleRender(hdc, mImage, 0, 0,WINSIZEX,WINSIZEY);
+	mImage->ScaleRender(hdc, 0, 0,WINSIZEX,WINSIZEY);
 }

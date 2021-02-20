@@ -94,6 +94,15 @@
     <Filter Include="MainGame\Object\Player\State\StateKind">
       <UniqueIdentifier>{6790f921-5211-4b2a-bfa4-f7a8975b8300}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Special">
+      <UniqueIdentifier>{78164e2e-5a31-43cd-8579-b21bb58ce9b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Effect">
+      <UniqueIdentifier>{83f7f39c-31fd-4ab1-84b7-2a0dd3b9923c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Title">
+      <UniqueIdentifier>{94f6126b-8790-4533-881b-0d24b9eb835e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -225,6 +234,21 @@
     <ClInclude Include="Scene2.h">
       <Filter>MainGame\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Special.h">
+      <Filter>MainGame\Object\Special</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>MainGame\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialAttackEffect.h">
+      <Filter>MainGame\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="SpecialApearEffect.h">
+      <Filter>MainGame\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="Title.h">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -343,6 +367,21 @@
     </ClCompile>
     <ClCompile Include="Scene2.cpp">
       <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Special.cpp">
+      <Filter>MainGame\Object\Special</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>MainGame\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialAttackEffect.cpp">
+      <Filter>MainGame\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="SpecialApearEffect.cpp">
+      <Filter>MainGame\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>MainGame\Object\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 
 #include "Scene1.h"
 #include "LoadingScene.h"
+#include "MainScene.h"
 /*
 Scene : 스테이지 단위를 씬이라고 함
 */
@@ -23,13 +24,20 @@ void MainGame::Init()
 	IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar1", Resources(L"LoadingBar1.bmp"), 1100, 50, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar2", Resources(L"LoadingBar2.bmp"), 1100, 50, true);
+	IMAGEMANAGER->LoadFromFile(L"MainBackGround", Resources(L"MainBackGround.bmp"), 1280, 720,true);
+	IMAGEMANAGER->LoadFromFile(L"MainImage", Resources(L"MainImage.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle1", Resources(L"MainBackGround1.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle2", Resources(L"MainBackGround2.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle3", Resources(L"MainBackGround3.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle4", Resources(L"MainBackGround4.bmp"), 1280, 720, true);
 
 	//씬로드
+	SceneManager::GetInstance()->AddScene(L"MainScene", new MainScene);
 	SceneManager::GetInstance()->AddScene(L"Scene1", new Scene1);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene", new LoadingScene);
 	
-	//처음은 로딩씬
-	SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+	//처음은 메인화면
+	SceneManager::GetInstance()->LoadScene(L"MainScene");
 }
 
 /*
