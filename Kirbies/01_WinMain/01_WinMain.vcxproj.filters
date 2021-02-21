@@ -106,14 +106,14 @@
     <Filter Include="MainGame\Object\Player\State\StateKind\LJH">
       <UniqueIdentifier>{c00f9a4b-1847-4f86-bb6c-f6ede77f1dc3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MainGame\Object\Player\State\StateKind\KJH">
-      <UniqueIdentifier>{76cb19ac-81b8-4536-a928-aaea845f74a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="MainGame\Object\Player\State\StateKind\KMC">
       <UniqueIdentifier>{a6e9a07d-f7f4-477c-a6bf-6a5d775b4c4f}</UniqueIdentifier>
     </Filter>
     <Filter Include="MainGame\Object\Player\State\StateKind\CJW">
       <UniqueIdentifier>{c4493f0f-66d8-4187-95fe-d68ba53c0f58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Player\State\StateKind\KJH">
+      <UniqueIdentifier>{76cb19ac-81b8-4536-a928-aaea845f74a2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
