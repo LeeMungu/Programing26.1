@@ -29,7 +29,7 @@ void MainScene::Init()
 
 	ObjectManager::GetInstance()->Init();
 
-	mIsLoadEnd = false;
+	mIsLoadEnd = true;
 }
 
 void MainScene::Release()

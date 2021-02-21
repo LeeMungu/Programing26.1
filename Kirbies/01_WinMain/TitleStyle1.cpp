@@ -15,7 +15,7 @@ void TitleStyle1::Init()
 	mX = WINSIZEX / 2;
 	mY = -WINSIZEY / 2 + 100;
 	mState = State::Down;
-	mUpLimit = -WINSIZEY;
+	mUpLimit = -WINSIZEY/2 +300;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
 
@@ -25,23 +25,23 @@ void TitleStyle1::Release()
 
 void TitleStyle1::Update()
 {
-
-	if (mUpLimit > 0)
+	if (mUpLimit > WINSIZEY/2 && mY >= WINSIZEY/2)
+		//mY > WINSIZEY/2-50 && mY < WINSIZEY/2+50)
 	{
-		mState == TitleStyle1::State::Stop;
+		mState = TitleStyle1::State::Stop;
 	}
 	if (mState == TitleStyle1::State::Up)
 	{
-		mY -= 300 * Time::GetInstance()->DeltaTime();
+		mY -= 400 * Time::GetInstance()->DeltaTime();
 		if (mY < mUpLimit)
 		{
 			mState = TitleStyle1::State::Down;
-			mUpLimit += 400;
+			mUpLimit += 300;
 		}
 	}
 	else if (mState == TitleStyle1::State::Down)
 	{
-		mY += 300 * Time::GetInstance()->DeltaTime();
+		mY += 500 * Time::GetInstance()->DeltaTime();
 		if (mY > WINSIZEY / 2)
 		{
 			mState = TitleStyle1::State::Up;
