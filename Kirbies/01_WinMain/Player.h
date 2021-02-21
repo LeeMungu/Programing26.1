@@ -25,8 +25,8 @@ public:
 	
 	void GetXPosition(int X) { mX += X; }
 	
-	int GetIntMotionRL()const { return mIntMotionRL; }
-	void SetState(int intMotionRL) { mIntMotionRL = intMotionRL; }
+	int GetIntMotionRL()const { return mIsMotionRL; }
+	void SetState(int intMotionRL) { mIsMotionRL = intMotionRL; }
 
 	State* GetState()const { return mState; }
 	void SetState(State* state) { mState = state; }
