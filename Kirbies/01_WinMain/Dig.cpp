@@ -16,11 +16,11 @@ void Dig::Update()
 
 		//애니메이션 설정
 		mAnimation = new Animation();
-		if (mPlayer->GetIntMotionRL == 0)
+		if (mPlayer->GetIntMotionRL() == 0)
 		{
 			mAnimation->InitFrameByStartEnd(0, 0, 13, 0, false);
 		}
-		else if (mPlayer->GetIntMotionRL == 1)
+		else if (mPlayer->GetIntMotionRL() == 1)
 		{
 			mAnimation->InitFrameByStartEnd(0, 1, 13, 1, true);
 		}
@@ -82,7 +82,7 @@ void Dig::Update()
 void Dig::Render(HDC hdc)
 {
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mPlayer->GetX() - mImage->GetFrameWidth() / 2, mPlayer->GetRect.top,
+		->FrameRender(hdc, mImage, mPlayer->GetX() - mImage->GetFrameWidth() / 2, mPlayer->GetRect().top,
 			mAnimation->GetNowFrameX(),
 			mAnimation->GetNowFrameY());
 }
