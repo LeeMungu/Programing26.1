@@ -4,7 +4,15 @@
 #include "Animation.h"
 #include "Camera.h"
 #include "GameObject.h"
+
 #include "State.h"
+#include "Boom.h"
+#include "Climb.h"
+#include "Fall.h"
+#include "Run.h"
+#include "Stoper.h"
+#include "Umbrella.h"
+#include "Dig.h"
 
 Player::Player(const string& name, float x, float y)
 	:GameObject(name)

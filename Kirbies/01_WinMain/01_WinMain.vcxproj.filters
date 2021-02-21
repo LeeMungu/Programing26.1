@@ -204,9 +204,6 @@
     <ClInclude Include="Player.h">
       <Filter>MainGame\Object\Player</Filter>
     </ClInclude>
-    <ClInclude Include="State.h">
-      <Filter>MainGame\Object\Player\State</Filter>
-    </ClInclude>
     <ClInclude Include="BackGround.h">
       <Filter>MainGame\Object\BackGround</Filter>
     </ClInclude>
@@ -260,6 +257,9 @@
     </ClInclude>
     <ClInclude Include="Climb.h">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>MainGame\Object\Player\State</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -338,9 +338,6 @@
     <ClCompile Include="Player.cpp">
       <Filter>MainGame\Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="State.cpp">
-      <Filter>MainGame\Object\Player\State</Filter>
-    </ClCompile>
     <ClCompile Include="BackGround.cpp">
       <Filter>MainGame\Object\BackGround</Filter>
     </ClCompile>
@@ -394,6 +391,9 @@
     </ClCompile>
     <ClCompile Include="Climb.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>MainGame\Object\Player\State</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

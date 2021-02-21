@@ -1,11 +1,4 @@
 #pragma once
-#include "Boom.h"
-#include "Climb.h"
-#include "Fall.h"
-#include "Run.h"
-#include "Stoper.h"
-#include "Umbrella.h"
-#include "Dig.h"
 
 class Image;
 class Animation;
