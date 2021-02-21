@@ -7,9 +7,14 @@
 #include "Umbrella.h"
 #include "Dig.h"
 
+class Image;
+class Animation;
 class Player;
 class State
 {
+protected:
+	Image* mImage;
+	Animation* mAnimation;
 	Player* mPlayer;
 public:
 	virtual void Init() {}
