@@ -11,12 +11,12 @@ void Fall::Init()
 	IMAGEMANAGER -> LoadFromFile(L"Fall", Resources(L"Fall.bmp"), 400, 40, 16, 2, true);
 	mFallKirby = IMAGEMANAGER->FindImage(L"Fall");
 	mLeftAnimation = new Animation();
-	mLeftAnimation->InitFrameByEndStart(0, 0, 15, 0, false);
+	mLeftAnimation->InitFrameByStartEnd(0, 0, 15, 0, false);
 	mLeftAnimation->SetIsLoop(true);
 	mLeftAnimation->SetFrameUpdateTime(0.3f);
 
 	mRightAnimation = new Animation();
-	mRightAnimation->InitFrameByEndStart(0, 1, 15, 1, true);
+	mRightAnimation->InitFrameByEndStart(15, 1, 0, 1, false);
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.3f);
 
@@ -40,19 +40,29 @@ void Fall::Init()
 void Fall::Release()
 {
 	SafeDelete(mFallKirby);
+	SafeDelete(mLeftAnimation);
+	SafeDelete(mRightAnimation);
+	SafeDelete(mCurrentAnimation);
 }
 
 void Fall::Update()
 {
-	if (mCurrentAnimation == mLeftAnimation)
+	mPlayer->SetY(mPlayer->GetY() - mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
+	if (mCurrentAnimation == mLeftAnimation && mPlayer->GetIntMotionRL() == 0)
 	{
-		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mRightAnimation;
+		mCurrentAnimation->Play();
 	}
-	if (mCurrentAnimation == mRightAnimation)
+	else if (mCurrentAnimation == mRightAnimation && mPlayer->GetIntMotionRL() == 1)
 	{
-		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftAnimation;
+		mCurrentAnimation->Play();
 	}
 
+
+	//애니메이션만 넣자
 }
 
 void Fall::Render(HDC hdc)
