@@ -103,6 +103,18 @@
     <Filter Include="MainGame\Object\Title">
       <UniqueIdentifier>{94f6126b-8790-4533-881b-0d24b9eb835e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Player\State\StateKind\LJH">
+      <UniqueIdentifier>{c00f9a4b-1847-4f86-bb6c-f6ede77f1dc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Player\State\StateKind\KJH">
+      <UniqueIdentifier>{76cb19ac-81b8-4536-a928-aaea845f74a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Player\State\StateKind\KMC">
+      <UniqueIdentifier>{a6e9a07d-f7f4-477c-a6bf-6a5d775b4c4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MainGame\Object\Player\State\StateKind\CJW">
+      <UniqueIdentifier>{c4493f0f-66d8-4187-95fe-d68ba53c0f58}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -210,27 +222,6 @@
     <ClInclude Include="Ui.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="Run.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
-    <ClInclude Include="Boom.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
-    <ClInclude Include="Climb.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
-    <ClInclude Include="Dig.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
-    <ClInclude Include="Fall.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
-    <ClInclude Include="Stoper.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
-    <ClInclude Include="Umbrella.h">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClInclude>
     <ClInclude Include="Scene2.h">
       <Filter>MainGame\Scene</Filter>
     </ClInclude>
@@ -248,6 +239,27 @@
     </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Fall.h">
+      <Filter>MainGame\Object\Player\State\StateKind\LJH</Filter>
+    </ClInclude>
+    <ClInclude Include="Run.h">
+      <Filter>MainGame\Object\Player\State\StateKind\LJH</Filter>
+    </ClInclude>
+    <ClInclude Include="Umbrella.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClInclude>
+    <ClInclude Include="Stoper.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClInclude>
+    <ClInclude Include="Dig.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
+    </ClInclude>
+    <ClInclude Include="Boom.h">
+      <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClInclude>
+    <ClInclude Include="Climb.h">
+      <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -344,27 +356,6 @@
     <ClCompile Include="Ui.cpp">
       <Filter>MainGame\Ui</Filter>
     </ClCompile>
-    <ClCompile Include="Boom.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
-    <ClCompile Include="Climb.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
-    <ClCompile Include="Dig.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
-    <ClCompile Include="Fall.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
-    <ClCompile Include="Run.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
-    <ClCompile Include="Stoper.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
-    <ClCompile Include="Umbrella.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind</Filter>
-    </ClCompile>
     <ClCompile Include="Scene2.cpp">
       <Filter>MainGame\Scene</Filter>
     </ClCompile>
@@ -382,6 +373,27 @@
     </ClCompile>
     <ClCompile Include="Title.cpp">
       <Filter>MainGame\Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Fall.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\LJH</Filter>
+    </ClCompile>
+    <ClCompile Include="Run.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\LJH</Filter>
+    </ClCompile>
+    <ClCompile Include="Umbrella.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClCompile>
+    <ClCompile Include="Stoper.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClCompile>
+    <ClCompile Include="Dig.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
+    </ClCompile>
+    <ClCompile Include="Boom.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClCompile>
+    <ClCompile Include="Climb.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

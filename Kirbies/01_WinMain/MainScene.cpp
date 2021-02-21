@@ -2,6 +2,7 @@
 #include "MainScene.h"
 #include "BackGround.h"
 #include "Title.h"
+#include "Scene.h"
 
 void MainScene::Init()
 {
@@ -23,6 +24,10 @@ void MainScene::Release()
 
 void MainScene::Update()
 {
+	if (Input::GetInstance()->GetKey(VK_SPACE))
+	{
+		SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+	}
 }
 
 void MainScene::Render(HDC hdc)

@@ -26,7 +26,7 @@ void Player::Release()
 
 void Player::Update()
 {
-
+	mState->Update();
 }
 
 void Player::Render(HDC hdc)
