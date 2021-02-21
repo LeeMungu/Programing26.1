@@ -11,7 +11,7 @@ void Run::Init()
 {
 	IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"Walk.bmp"), 420, 76, 10, 2, true);
 	mRunKirby = IMAGEMANAGER->FindImage(L"Run");
-
+	mPlayer->GetRect = RectMakeCenter(&mPlayer->GetRect.GetX, &mPlayer->GetRect.GetY, &mPlayer->GetSizeX, &mPlayer->GetSizeY);
 	//좌측 애니메이션
 	mLeftAnimation = new Animation();
 	mLeftAnimation->InitFrameByEndStart(0, 0, 0, 0, false);
@@ -34,6 +34,8 @@ void Run::Init()
 	mPlayer->SetSpeed(mPlayer->GetSpeed());
 	mBottom->SetX(mBottom->GetX());
 	mBottom->SetY(mBottom->GetY());
+	mPlayer->GetRect();
+	mPlayer->GetSpeed();
 
 }
 
@@ -44,7 +46,10 @@ void Run::Release()
 
 void Run::Update()
 {
-
+	if (&mPlayer->GetRect <= mBottom)
+	{
+		&mPlayer->GetRect = 10.f;
+	}
 
 }
 

@@ -26,6 +26,7 @@ class Run : public State
 	Animation* mRightAnimation;
 	LeftRunState mLeftRunState;
 	RightRunState mRightRunState;
+	
 
 public:
 	void Init();
