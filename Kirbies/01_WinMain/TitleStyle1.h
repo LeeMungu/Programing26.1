@@ -13,8 +13,8 @@ class TitleStyle1 : public Title
 	float mUpLimit;
 public:
 	TitleStyle1(wstring key);
-	virtual void Init()override;
-	virtual void Release()override;
-	virtual void Update()override;
+	void Init()override;
+	void Release()override;
+	void Update()override;
 };
 

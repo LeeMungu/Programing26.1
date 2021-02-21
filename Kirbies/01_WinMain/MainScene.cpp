@@ -29,22 +29,22 @@ void MainScene::Init()
 
 	ObjectManager::GetInstance()->Init();
 
-	mIsLoadEnd = false;
+	mIsLoadEnd = true;
 }
 
 void MainScene::Release()
 {
 	ObjectManager::GetInstance()->Release();
-
 }
 
 void MainScene::Update()
 {
-	if (Input::GetInstance()->GetKey(VK_SPACE) && mIsLoadEnd ==true)
+	ObjectManager::GetInstance()->Update();
+	if (Input::GetInstance()->GetKeyDown(VK_SPACE) && mIsLoadEnd ==true)
 	{
 		SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+		mIsLoadEnd = false;
 	}
-	ObjectManager::GetInstance()->Update();
 }
 
 void MainScene::Render(HDC hdc)

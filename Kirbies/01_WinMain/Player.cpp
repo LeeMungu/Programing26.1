@@ -34,7 +34,8 @@ void Player::Release()
 
 void Player::Update()
 {
-	mState->Update();
+	//mState->Update();
+	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
 
 void Player::Render(HDC hdc)

@@ -6,7 +6,6 @@ class Image;
 class Animation;
 class Stopper : public State
 {
-
 	Image* mImage;
 	Animation* mStopperAnimation;
 	bool mIsPlay;	//플레이중이냐
@@ -30,6 +29,5 @@ public:
 	void Stop();
 	void Render(HDC hdc);
 
-	
 };
 

@@ -5,22 +5,22 @@
 #include "Animation.h"
 #include "State.h"
 #include "Boom.h"
+#include "Camera.h"
 
 
 void Run::Init()
 {
 	IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"Walk.bmp"), 420, 76, 10, 2, true);
 	mRunKirby = IMAGEMANAGER->FindImage(L"Run");
-	mPlayer->GetRect = RectMakeCenter(mPlayer->GetRect.GetX, mPlayer->GetRect.GetY, mPlayer->GetSizeX, mPlayer->GetSizeY);
 	//좌측 애니메이션
 	mLeftAnimation = new Animation();
-	mLeftAnimation->InitFrameByEndStart(0, 0, 0, 0, false);
+	mLeftAnimation->InitFrameByEndStart(0, 0, 9, 0, false);
 	mLeftAnimation->SetIsLoop(true);
 	mLeftAnimation->SetFrameUpdateTime(0.3f);
 
 	//우측 애니메이션
 	mRightAnimation = new Animation();
-	mRightAnimation->InitFrameByEndStart(0, 1, 0, 1, false);
+	mRightAnimation->InitFrameByEndStart(0, 1, 9, 1, true);
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.3f);
 
@@ -33,27 +33,44 @@ void Run::Init()
 	else if (mPlayer->GetIntMotionRL() == 1)
 	{
 		mCurrentAnimation = mLeftAnimation;
+
 	}
 	mCurrentAnimation->Play();
+
+
+	
+
 }
 
 void Run::Release()
 {
 	SafeDelete(mRunKirby);
+	SafeDelete(mLeftAnimation);
+	SafeDelete(mRightAnimation);
+	SafeDelete(mCurrentAnimation);
 }
 
 void Run::Update()
 {
 	if (mCurrentAnimation == mLeftAnimation)
 	{
-		mPlayer->GetSizeX -= 3;
-		mPlayer->GetRect = RectMakeCenter(mPlayer->GetX, mPlayer->GetY, mPlayer->GetSizeX, mPlayer->GetSizeY);
+		mPlayer->SetX(mPlayer->GetX()-mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mCurrentAnimation->Stop();
+		mCurrentAnimation->Play();
 	}
-
+	if (mCurrentAnimation == mRightAnimation)
+	{
+		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mCurrentAnimation->Stop();
+		mCurrentAnimation->Play();
+	}
 
 
 }
 
 void Run::Render(HDC hdc)
 {
+	mCurrentAnimation->GetNowFrameX();
+	mCurrentAnimation->GetNowFrameY();
+
 }
