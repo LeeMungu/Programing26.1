@@ -48,6 +48,8 @@ void Scene1::Update()
 	if (mIsSpecial == false &&
 		Input::GetInstance()->GetKeyDown(VK_TAB))
 	{
+		Camera::Mode::Free;
+		//ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
 		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect",0, -100,L"SpecialAppearEffect",9,3);
 		effect->Init();
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect,effect);
