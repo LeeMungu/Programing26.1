@@ -7,8 +7,18 @@ class State;
 class Animation;
 class Player : public GameObject
 {
+	enum class PlayerState
+	{
+
+	};
 	Image* mImage;
-	State* mState;
+	State* mCurrentState;
+	State* mBoomState;
+	State* mClimbState;
+	State* mStopperState;
+	State* mCurrentState;
+	State* mCurrentState;
+
 	Animation* mCurrentAnimation;
 	//오른쪽 왼쪽 구분하는 변수 0이면 오른쪽 1이면 왼쪽
 	int mIsMotionRL;

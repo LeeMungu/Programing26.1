@@ -25,6 +25,8 @@ void Player::Init()
 {
 	mImage = IMAGEMANAGER->FindImage(L"Player");
 	mIsMotionRL = 0;
+
+
 }
 
 void Player::Release()

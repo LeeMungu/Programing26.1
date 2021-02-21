@@ -10,7 +10,6 @@
 
 void Run::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"Walk.bmp"), 420, 76, 10, 2, true);
 	mRunKirby = IMAGEMANAGER->FindImage(L"Run");
 	//좌측 애니메이션
 	mLeftAnimation = new Animation();
