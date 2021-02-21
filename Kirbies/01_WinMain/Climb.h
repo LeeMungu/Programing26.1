@@ -3,6 +3,7 @@
 
 class Climb : public State
 {
+	class Player* mPlayer;
 	class Bottom* mBottom;
 
 	float mX, mY;

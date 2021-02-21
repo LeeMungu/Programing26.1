@@ -8,7 +8,7 @@ class Boom : public State
 
 	//bool mIsFirstUpdate = false;
 	class Bottom* mBottom;
-	
+	class Player* mPlayer;
 	class Effect* mEffect;
 	RECT mPlayerRect;
 	float mX, mY;
