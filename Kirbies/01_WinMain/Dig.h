@@ -3,6 +3,8 @@
 
 class Bottom;
 class Image;
+class DigPoint;
+
 class Dig :public State
 {
 	bool mIsStateStart = false;
