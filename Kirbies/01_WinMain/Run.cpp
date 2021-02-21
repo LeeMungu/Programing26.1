@@ -35,6 +35,10 @@ void Run::Init()
 		mCurrentAnimation = mLeftAnimation;
 	}
 	mCurrentAnimation->Play();
+
+
+	
+
 }
 
 void Run::Release()
@@ -58,8 +62,7 @@ void Run::Update()
 
 void Run::Render(HDC hdc)
 {
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mRunKirby, mPlayer->SetX(mPlayer->GetX()-m)
-
+	mCurrentAnimation->GetNowFrameX();
+	mCurrentAnimation->GetNowFrameY();
 
 }
