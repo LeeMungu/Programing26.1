@@ -42,10 +42,10 @@ void Camera::Update()
 		//if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
 		//if (Input::GetInstance()->GetKey('S'))mY += mMoveSpeed;
 
-		if (_mousePosition.x >= WINSIZEX)mX += mMoveSpeed;
-		if (_mousePosition.x <= 0)mX -= mMoveSpeed;
-		if (_mousePosition.y >= WINSIZEY)mY += mMoveSpeed;
-		if (_mousePosition.y <= 0)mY -= mMoveSpeed;
+		if (_mousePosition.x >= WINSIZEX-30)mX += mMoveSpeed;
+		if (_mousePosition.x <= 0+30)mX -= mMoveSpeed;
+		if (_mousePosition.y >= WINSIZEY-30)mY += mMoveSpeed;
+		if (_mousePosition.y <= 0+30)mY -= mMoveSpeed;
 
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		break;

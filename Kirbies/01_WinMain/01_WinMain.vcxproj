@@ -158,6 +158,7 @@
     <ClInclude Include="ColorLender.h" />
     <ClInclude Include="DefineHeader.h" />
     <ClInclude Include="Dig.h" />
+    <ClInclude Include="DigPoint.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Fall.h" />
@@ -212,6 +213,7 @@
     <ClCompile Include="Climb.cpp" />
     <ClCompile Include="ColorLender.cpp" />
     <ClCompile Include="Dig.cpp" />
+    <ClCompile Include="DigPoint.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Fall.cpp" />
