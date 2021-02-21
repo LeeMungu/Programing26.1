@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "Player.h"
 #include "Image.h"
+#include "DigPoint.h"
 
 void Dig::Update()
 {
@@ -55,8 +56,9 @@ void Dig::Update()
 				HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
 				HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
-				RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 10);
-
+				//RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 10);
+				DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+				ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 
 				SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 				SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
