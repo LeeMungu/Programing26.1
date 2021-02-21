@@ -6,7 +6,7 @@ class Image;
 class Animation;
 class Stopper : public State
 {
-	Image* mImage;
+	
 	Animation* mStopperAnimation;
 	bool mIsPlay;	//플레이중이냐
 	bool mIsLoop;	//루프냐
