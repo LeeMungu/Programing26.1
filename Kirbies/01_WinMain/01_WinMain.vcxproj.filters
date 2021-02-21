@@ -276,6 +276,9 @@
     <ClInclude Include="StopperObject.h">
       <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClInclude>
+    <ClInclude Include="DigPoint.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -424,6 +427,9 @@
     </ClCompile>
     <ClCompile Include="StopperObject.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClCompile>
+    <ClCompile Include="DigPoint.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

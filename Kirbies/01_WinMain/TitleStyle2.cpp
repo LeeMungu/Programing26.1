@@ -9,14 +9,14 @@ TitleStyle2::TitleStyle2(wstring key)
 
 void TitleStyle2::Init()
 {
-	mSizeX = mImage->GetWidth();
-	mSizeY = mImage->GetHeight();
-	mUpLimit = -WINSIZEY;
-	mX = WINSIZEX / 2;
-	mY = -WINSIZEY / 2 + 100;
-	mState = State::Down;
-	mUpLimit = -WINSIZEY / 2 + 300;
-	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	//mSizeX = mImage->GetWidth();
+	//mSizeY = mImage->GetHeight();
+	//mUpLimit = -WINSIZEY;
+	//mX = WINSIZEX / 2;
+	//mY = -WINSIZEY / 2 + 100;
+	//mState = State::Down;
+	//mUpLimit = -WINSIZEY / 2 + 300;
+	//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
 
 void TitleStyle2::Release()
@@ -52,5 +52,5 @@ void TitleStyle2::Update()
 
 void TitleStyle2::Render(HDC hdc)
 {
-	mImage->ScaleRender(hdc, mRect.left, mRect.top, mSizeX, mSizeY*);
+	mImage->ScaleRender(hdc, mRect.left, mRect.top, mSizeX, mSizeY);
 }

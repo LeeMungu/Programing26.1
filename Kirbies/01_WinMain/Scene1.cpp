@@ -26,7 +26,8 @@ void Scene1::Init()
 	Camera* camera = new Camera();
 	camera->SetX(100);
 	camera->SetY(WINSIZEY / 2);
-	camera->SetTarget(player1);
+	//camera->SetTarget(player1);
+	camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera,camera);
 
@@ -48,11 +49,14 @@ void Scene1::Update()
 	if (mIsSpecial == false &&
 		Input::GetInstance()->GetKeyDown(VK_TAB))
 	{
+		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
+		prevCamera->ChangeMode(Camera::Mode::Follow);
+
 		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect",0, -100,L"SpecialAppearEffect",9,3);
 		effect->Init();
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect,effect);
 		
-		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
+
 		prevCamera->SetTarget(effect);
 
 		mIsSpecial = true;
@@ -62,6 +66,8 @@ void Scene1::Update()
 		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Effect).size() == NULL)
 	{
 		mIsSpecial = false;
+		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
+		prevCamera->ChangeMode(Camera::Mode::Free);
 	}
 }
 
