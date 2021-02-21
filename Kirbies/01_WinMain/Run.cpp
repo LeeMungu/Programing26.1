@@ -6,11 +6,14 @@
 #include "State.h"
 #include "Boom.h"
 #include "Camera.h"
+#include "StopperObject.h"
 
 
 void Run::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"Walk.bmp"), 420, 76, 10, 2, true);
+
+	IsCrash = false;
+
 	mRunKirby = IMAGEMANAGER->FindImage(L"Run");
 	//좌측 애니메이션
 	mLeftAnimation = new Animation();
@@ -38,7 +41,10 @@ void Run::Init()
 	mCurrentAnimation->Play();
 
 
+	// 벽, 스토퍼 충돌 구현해야함
+
 	
+
 
 }
 
@@ -52,19 +58,25 @@ void Run::Release()
 
 void Run::Update()
 {
-	if (mCurrentAnimation == mLeftAnimation)
+	if (IsCrash == false)
 	{
-		mPlayer->SetX(mPlayer->GetX()-mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
-		mCurrentAnimation->Stop();
-		mCurrentAnimation->Play();
+		if (mCurrentAnimation == mLeftAnimation)
+		{
+			mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+			mCurrentAnimation->Stop();
+			mCurrentAnimation->Play();
+		}
+		if (mCurrentAnimation == mRightAnimation)
+		{
+			mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+			mCurrentAnimation->Stop();
+			mCurrentAnimation->Play();
+		}
 	}
-	if (mCurrentAnimation == mRightAnimation)
+	else
 	{
-		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
-		mCurrentAnimation->Stop();
-		mCurrentAnimation->Play();
-	}
 
+	}
 
 }
 

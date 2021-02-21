@@ -25,6 +25,16 @@ void Player::Init()
 {
 	mImage = IMAGEMANAGER->FindImage(L"Player");
 	mIsMotionRL = 0;
+	mBoomState = new Boom;
+	mClimbState = new Climb;
+	mStopperState = new Stopper;
+	mUmbrellaState = new Umbrella;
+	mDigState = new Dig;
+	mFallState = new Fall;
+	mRunState = new Run;
+	
+	mCurrentState = mFallState;
+	//mCurrentState->
 }
 
 void Player::Release()
