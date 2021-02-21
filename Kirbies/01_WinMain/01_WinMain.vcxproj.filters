@@ -115,6 +115,9 @@
     <Filter Include="MainGame\Object\Player\State\StateKind\KJH">
       <UniqueIdentifier>{76cb19ac-81b8-4536-a928-aaea845f74a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Goal">
+      <UniqueIdentifier>{0b89790a-24d4-4084-bb97-421a8e37dc66}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -279,6 +282,9 @@
     <ClInclude Include="DigPoint.h">
       <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
     </ClInclude>
+    <ClInclude Include="Goal.h">
+      <Filter>MainGame\Object\Goal</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -430,6 +436,9 @@
     </ClCompile>
     <ClCompile Include="DigPoint.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
+    </ClCompile>
+    <ClCompile Include="Goal.cpp">
+      <Filter>MainGame\Object\Goal</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

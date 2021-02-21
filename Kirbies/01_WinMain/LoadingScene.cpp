@@ -12,6 +12,7 @@ void LoadingScene::Init()
 	mLoadIndex = 0;
 	mIsEndLoading = false;
 	
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64, 48, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene1.bmp"), 1280, 720, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2,1, true); });

@@ -18,9 +18,12 @@ void Scene1::Init()
 	
 	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
+	
 
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX/2, WINSIZEY/2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
+
+
 
 	//camera
 	Camera* camera = new Camera();
