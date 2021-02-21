@@ -10,7 +10,7 @@
 #include "Climb.h"
 #include "Fall.h"
 #include "Run.h"
-#include "Stoper.h"
+#include "Stopper.h"
 #include "Umbrella.h"
 #include "Dig.h"
 

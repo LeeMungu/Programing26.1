@@ -246,9 +246,6 @@
     <ClInclude Include="Umbrella.h">
       <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClInclude>
-    <ClInclude Include="Stoper.h">
-      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
-    </ClInclude>
     <ClInclude Include="Dig.h">
       <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
     </ClInclude>
@@ -272,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="TitleStyle4.h">
       <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Stopper.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -392,9 +392,6 @@
     <ClCompile Include="Umbrella.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClCompile>
-    <ClCompile Include="Stoper.cpp">
-      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
-    </ClCompile>
     <ClCompile Include="Dig.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
     </ClCompile>
@@ -418,6 +415,9 @@
     </ClCompile>
     <ClCompile Include="TitleStyle4.cpp">
       <Filter>MainGame\Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Stopper.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

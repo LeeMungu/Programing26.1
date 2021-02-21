@@ -189,7 +189,7 @@
     <ClInclude Include="SpecialApearEffect.h" />
     <ClInclude Include="SpecialAttackEffect.h" />
     <ClInclude Include="State.h" />
-    <ClInclude Include="Stoper.h" />
+    <ClInclude Include="Stopper.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Title.h" />
@@ -245,7 +245,7 @@
     <ClCompile Include="SpecialApearEffect.cpp" />
     <ClCompile Include="SpecialAttackEffect.cpp" />
     <ClCompile Include="State.cpp" />
-    <ClCompile Include="Stoper.cpp" />
+    <ClCompile Include="Stopper.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleStyle1.cpp" />
