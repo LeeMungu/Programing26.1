@@ -3,6 +3,9 @@
 
 #include "Image.h"
 #include "Animation.h"
+#include "Player.h"
+#include "GameObject.h"
+#include "StopperObject.h"
 
 Stopper::Stopper()
 	:mIsPlay(false), mIsLoop(false), mCurrentFrameIndex(0),
@@ -23,6 +26,17 @@ void Stopper::Init()
 
 void Stopper::Update()
 {
+
+	if (mPlayer->GetSpeed() != 0)
+	{
+		mPlayer->SetSpeed(0);
+		mRect = mPlayer->GetRect();
+		StopperObject* stopperObject = new StopperObject(mPlayer->GetX(),mPlayer->GetY(), mPlayer->GetSizeX(), mPlayer->GetSizeY());
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::StopperObject, stopperObject);
+		mCurrentAnimation = mStopperAnimation;
+
+	}
+
 }
 
 void Stopper::Play()
