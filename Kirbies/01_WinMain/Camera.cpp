@@ -9,8 +9,8 @@ void Camera::Init()
 	mTarget = nullptr;
 	mX = WINSIZEX / 2;
 	mY = WINSIZEY / 2;
-	mSizeX = WINSIZEX/2;
-	mSizeY = WINSIZEY/2;
+	mSizeX = WINSIZEX / 2;
+	mSizeY = WINSIZEY / 2;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mMoveSpeed = 5.f;
 }
@@ -22,6 +22,7 @@ void Camera::Release()
 
 void Camera::Update()
 {
+
 	switch (mMode)
 	{
 	case Camera::Mode::Follow:
@@ -42,14 +43,29 @@ void Camera::Update()
 		//if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
 		//if (Input::GetInstance()->GetKey('S'))mY += mMoveSpeed;
 
-		if (_mousePosition.x >= WINSIZEX)mX += mMoveSpeed;
-		if (_mousePosition.x <= 0)mX -= mMoveSpeed;
-		if (_mousePosition.y >= WINSIZEY)mY += mMoveSpeed;
-		if (_mousePosition.y <= 0)mY -= mMoveSpeed;
+		if (_mousePosition.x >= WINSIZEX-30)mX += mMoveSpeed;
+		if (_mousePosition.x <= 0+30)mX -= mMoveSpeed;
+		if (_mousePosition.y >= WINSIZEY-30)mY += mMoveSpeed;
+		if (_mousePosition.y <= 0+30)mY -= mMoveSpeed;
 
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		break;
+
+
 	}
+	if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
+	{
+		mouseX = _mousePosition.x;
+		mouseY = _mousePosition.y;
+
+	}
+
+	if (Input::GetInstance()->GetKey(VK_LBUTTON))
+	{
+		mX += (mouseX - _mousePosition.x);
+		mY -= (mouseY - _mousePosition.y);
+	}
+	
 }
 
 void Camera::Render(HDC hdc)

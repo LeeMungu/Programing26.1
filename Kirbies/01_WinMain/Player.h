@@ -2,7 +2,14 @@
 #include "GameObject.h"
 enum class PlayerState
 {
-
+	CurrentState,
+	BoomState,
+	ClimbState,
+	StopperState,
+	UmbrellaState,
+	DigState,
+	FallState,
+	RunState
 };
 
 class GameObject;
@@ -14,17 +21,19 @@ class Player : public GameObject
 	Image* mImage;
 
 	State* mCurrentState;
-	State* mBoomState;
-	State* mClimbState;
-	State* mStopperState;
-	State* mUmbrellaState;
-	State* mDigState;
-	State* mFallState;
-	State* mRunState;
+	//State* mBoomState;
+	//State* mClimbState;
+	//State* mStopperState;
+	//State* mUmbrellaState;
+	//State* mDigState;
+	//State* mFallState;
+	//State* mRunState;
 	
 	PlayerState mPlayerState;
 
 	Animation* mCurrentAnimation;
+
+	bool mIsChange;
 	//오른쪽 왼쪽 구분하는 변수 0이면 오른쪽 1이면 왼쪽
 	int mIsMotionRL;
 	float mSpeed;
@@ -54,5 +63,8 @@ public:
 	
 	float GetGravity()const { return mGravity; }
 	void SetGravity(float gravity) { mGravity = gravity; }
+
+	PlayerState GetPlayerState() const { return mPlayerState; }
+	void SetPlayerState(PlayerState playerState) { mPlayerState = playerState; }
 };
 

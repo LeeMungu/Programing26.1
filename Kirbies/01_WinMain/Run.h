@@ -16,6 +16,13 @@ class Run : public State
 	Animation* mRightAnimation;
 	Animation* mCurrentAnimation;
 
+	RECT mRunKirbyRect;
+	RECT mWall;
+
+	float mX, mY;
+
+	bool IsCrash;
+
 
 public:
 	void Init();
