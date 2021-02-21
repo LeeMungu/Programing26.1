@@ -3,6 +3,8 @@
 
 class Camera : public GameObject
 {
+	float mouseX;
+	float mouseY;
 public:
 	enum class Mode : int
 	{
