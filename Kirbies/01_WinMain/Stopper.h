@@ -4,6 +4,8 @@
 class State;
 class Image;
 class Animation;
+
+
 class Stopper : public State
 {
 
@@ -11,7 +13,7 @@ class Stopper : public State
 	Animation* mStopperAnimation;
 	bool mIsPlay;	//플레이중이냐
 	bool mIsLoop;	//루프냐
-
+	
 
 	int mCurrentFrameIndex;	//현재 프레임 인덱스 
 	float mCurrentFrameTime;	//현재 프레임 감는 시간

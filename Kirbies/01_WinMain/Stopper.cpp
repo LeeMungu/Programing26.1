@@ -1,6 +1,6 @@
 ﻿#include "pch.h"
 #include "Stopper.h"
-
+#include "Player.h"
 #include "Image.h"
 #include "Animation.h"
 
@@ -18,13 +18,17 @@ void Stopper::Init()
 	mStopperAnimation->SetIsLoop(true);
 	mStopperAnimation->SetFrameUpdateTime(0.2f);
 	mStopperAnimation->Play();
-
-	mSpeed
-
+	   
 }
 
 void Stopper::Update()
 {
+
+	if (mPlayer->GetSpeed() == 0)
+	{
+		mPlayer->SetSpeed(0);
+
+	}
 }
 
 void Stopper::Play()
