@@ -35,8 +35,13 @@ void ObjectManager::Release()
 		{
 			iter->second[i]->Release();
 			SafeDelete(iter->second[i]);
+
 		}
+
+		iter->second.clear();
+		iter->second.shrink_to_fit();
 	}
+
 }
 
 
@@ -87,25 +92,27 @@ void ObjectManager::Update()
 	//	player->SetIsDestroy(true);
 	//}
 	//내일 할일 player mHp 만들기 enemy mHp,mDamage만들기 Get, Set포함
-
-	ObjectIter iter = mObjectList.begin();
-	for (; iter != mObjectList.end(); ++iter)
+	if (mObjectList.size() != NULL)
 	{
-		for (int i = 0; i < iter->second.size(); ++i)
+		ObjectIter iter = mObjectList.begin();
+		for (; iter != mObjectList.end(); ++iter)
 		{
-			//DISTROY
-			if (iter->second[i]->GetIsDestroy() == true)
+			for (int i = 0; i < iter->second.size(); ++i)
 			{
-				iter->second[i]->Release();
-				SafeDelete(iter->second[i]);
-				iter->second.erase(iter->second.begin() + i);
-				--i;
-				continue;
-			}
-			//ACTIVE
-			if (iter->second[i]->GetIsActive() == true)
-			{
-				iter->second[i]->Update();
+				//DISTROY
+				if (iter->second[i]->GetIsDestroy() == true)
+				{
+					iter->second[i]->Release();
+					SafeDelete(iter->second[i]);
+					iter->second.erase(iter->second.begin() + i);
+					--i;
+					continue;
+				}
+				//ACTIVE
+				if (iter->second[i]->GetIsActive() == true)
+				{
+					iter->second[i]->Update();
+				}
 			}
 		}
 	}
