@@ -5,12 +5,12 @@
 
 void Camera::Init()
 {
-	mMode = Mode::Follow;
-	//mTarget = nullptr;
-	//mX = WINSIZEX / 2;
-	//mY = WINSIZEY / 2;
-	mSizeX = WINSIZEX;
-	mSizeY = WINSIZEY;
+	mMode = Mode::Free;
+	mTarget = nullptr;
+	mX = WINSIZEX / 2;
+	mY = WINSIZEY / 2;
+	mSizeX = WINSIZEX/2;
+	mSizeY = WINSIZEY/2;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mMoveSpeed = 5.f;
 }
@@ -37,10 +37,16 @@ void Camera::Update()
 		}
 		break;
 	case Camera::Mode::Free:
-		if (Input::GetInstance()->GetKey('A'))mX -= mMoveSpeed;
-		if (Input::GetInstance()->GetKey('D'))mX += mMoveSpeed;
-		if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
-		if (Input::GetInstance()->GetKey('S'))mY += mMoveSpeed;
+		//if (Input::GetInstance()->GetKey('A'))mX -= mMoveSpeed;
+		//if (Input::GetInstance()->GetKey('D'))mX += mMoveSpeed;
+		//if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
+		//if (Input::GetInstance()->GetKey('S'))mY += mMoveSpeed;
+
+		if (_mousePosition.x >= WINSIZEX)mX += mMoveSpeed;
+		if (_mousePosition.x <= 0)mX -= mMoveSpeed;
+		if (_mousePosition.y >= WINSIZEY)mY += mMoveSpeed;
+		if (_mousePosition.y <= 0)mY -= mMoveSpeed;
+
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		break;
 	}
