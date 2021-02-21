@@ -23,7 +23,7 @@ void Dig::Update()
 		}
 		else if (mPlayer->GetIntMotionRL() == 1)
 		{
-			mAnimation->InitFrameByEndStart(0, 1, 13, 1, true);
+			mAnimation->InitFrameByEndStart(13, 1, 0, 1, true);
 		}
 		mAnimation->SetIsLoop(true);
 		mAnimation->SetFrameUpdateTime(0.3f);
