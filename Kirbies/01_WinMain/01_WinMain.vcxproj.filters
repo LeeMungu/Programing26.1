@@ -261,6 +261,18 @@
     <ClInclude Include="State.h">
       <Filter>MainGame\Object\Player\State</Filter>
     </ClInclude>
+    <ClInclude Include="TitleStyle1.h">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleStyle2.h">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleStyle3.h">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleStyle4.h">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -394,6 +406,18 @@
     </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>MainGame\Object\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleStyle1.cpp">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleStyle2.cpp">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleStyle3.cpp">
+      <Filter>MainGame\Object\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleStyle4.cpp">
+      <Filter>MainGame\Object\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

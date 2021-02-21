@@ -4,15 +4,8 @@
 class State;
 class Run : public State
 {
-	enum class RunState : int
-	{
-		RightMove = 0,
-		LeftMove = 1,
-		End
-	};
+public:
 	
-	RunState mRunState;
-
 
 
 };

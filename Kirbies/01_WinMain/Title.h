@@ -1,41 +1,19 @@
 #pragma once
 #include "GameObject.h"
 
-//»óÅÂ ´Ù Å¬·¹½º·Î ÂÉ°Ö°Í
-enum class type : int
-	{
-		UpAndDown = 0,
-		Size = 1,
-		S = 2,
-		RightToLeft = 3,
-		LeftToRight = 4,
-		End
-	};
 
 class Image;
 class Title : public GameObject
 {
+protected:
 	
-	//UpAndDown
-	enum class State
-	{
-		Up,
-		Down,
-		Stop
-	};
-	Title::State mState;
-	float mUpLimit;
-
 	bool mIsSize;
-	
-	type mType;
 	Image* mImage;
 public:
-	Title(Title::type type , wstring key);
-	void Init()override;
-	void Release()override;
-	void Update()override;
-	void Render(HDC hdc)override;
-
+	Title(wstring key);
+	virtual void Init()override;
+	virtual void Release()override;
+	virtual void Update()override;
+	virtual void Render(HDC hdc)override;
 };
 
