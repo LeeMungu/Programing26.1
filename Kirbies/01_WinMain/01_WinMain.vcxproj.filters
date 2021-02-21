@@ -273,6 +273,9 @@
     <ClInclude Include="Stopper.h">
       <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClInclude>
+    <ClInclude Include="StopperObject.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -417,6 +420,9 @@
       <Filter>MainGame\Object\Title</Filter>
     </ClCompile>
     <ClCompile Include="Stopper.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
+    </ClCompile>
+    <ClCompile Include="StopperObject.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\KJH</Filter>
     </ClCompile>
   </ItemGroup>

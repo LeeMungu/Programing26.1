@@ -190,6 +190,7 @@
     <ClInclude Include="SpecialAttackEffect.h" />
     <ClInclude Include="State.h" />
     <ClInclude Include="Stopper.h" />
+    <ClInclude Include="StopperObject.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Title.h" />
@@ -246,6 +247,7 @@
     <ClCompile Include="SpecialAttackEffect.cpp" />
     <ClCompile Include="State.cpp" />
     <ClCompile Include="Stopper.cpp" />
+    <ClCompile Include="StopperObject.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleStyle1.cpp" />
