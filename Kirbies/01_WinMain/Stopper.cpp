@@ -19,8 +19,6 @@ void Stopper::Init()
 	mStopperAnimation->SetFrameUpdateTime(0.2f);
 	mStopperAnimation->Play();
 
-	mSpeed
-
 }
 
 void Stopper::Update()
