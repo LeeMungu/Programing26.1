@@ -15,7 +15,6 @@ class Fall : public State
 	Animation* mRightAnimation;
 	Animation* mCurrentAnimation;
 
-	
 
 
 public:

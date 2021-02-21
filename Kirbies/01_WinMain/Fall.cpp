@@ -32,6 +32,9 @@ void Fall::Init()
 	}
 	mCurrentAnimation->Play();
 
+	mPlayer->SetGravity(0.5f);
+
+
 }
 
 void Fall::Release()
@@ -43,11 +46,11 @@ void Fall::Update()
 {
 	if (mCurrentAnimation == mLeftAnimation)
 	{
-		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
 	}
 	if (mCurrentAnimation == mRightAnimation)
 	{
-		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
 	}
 
 }

@@ -13,6 +13,8 @@ class Player : public GameObject
 	//오른쪽 왼쪽 구분하는 변수 0이면 오른쪽 1이면 왼쪽
 	int mIsMotionRL;
 	float mSpeed;
+	float mGravity;
+
 public:
 	Player(const string& name,float x, float y);
 
@@ -34,5 +36,8 @@ public:
 
 	float GetSpeed()const { return mSpeed; }
 	void SetSpeed(float speed){ mSpeed = speed; }
+	
+	float GetGravity()const { return mGravity; }
+	void SetGravity(float gravity) { mGravity = gravity; }
 };
 
