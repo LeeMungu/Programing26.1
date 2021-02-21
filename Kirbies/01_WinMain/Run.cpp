@@ -29,6 +29,7 @@ void Run::Init()
 	mRightRunState = RightRunState::RightMove;
 
 	mPlayer->SetX(mPlayer->GetX());
+	mPlayer->SetY(mPlayer->GetY());
 
 }
 

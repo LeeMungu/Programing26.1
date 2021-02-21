@@ -4,7 +4,6 @@
 
 void State::Init()
 {
-	mPlayer->Set
 }
 
 void State::Release()

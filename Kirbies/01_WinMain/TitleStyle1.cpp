@@ -36,7 +36,7 @@ void TitleStyle1::Update()
 		if (mY < mUpLimit)
 		{
 			mState = TitleStyle1::State::Down;
-			mUpLimit += 150;
+			mUpLimit += 400;
 		}
 	}
 	else if (mState == TitleStyle1::State::Down)
