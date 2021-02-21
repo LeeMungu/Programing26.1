@@ -16,6 +16,8 @@ enum class ObjectLayer : int
 	Effect = 5,
 	Special =6,
 	Camera=7,
+	StopperObject = 8,
+	DigObject = 9,
 	End
 };
 
