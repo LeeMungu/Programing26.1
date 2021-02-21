@@ -28,7 +28,8 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttackEffect2", Resources(L"/sp/attackeffect2.bmp"), 1600, 1600, 5, 5, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttackEffect3", Resources(L"/sp/attackeffect3.bmp"), 2560, 249, 10, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialEnd", Resources(L"/sp/end.bmp"), 1660, 900, 10, 5, true); });
-
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Fall", Resources(L"Fall.bmp"), 400, 40, 16, 2, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"Walk.bmp"), 420, 76, 10, 2, true); });
 	//mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingImage");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");

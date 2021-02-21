@@ -8,7 +8,7 @@
 
 void Fall::Init()
 {
-	IMAGEMANAGER -> LoadFromFile(L"Fall", Resources(L"Fall.bmp"), 400, 40, 16, 2, true);
+	
 	mFallKirby = IMAGEMANAGER->FindImage(L"Fall");
 	mLeftAnimation = new Animation();
 	mLeftAnimation->InitFrameByStartEnd(0, 0, 15, 0, false);
