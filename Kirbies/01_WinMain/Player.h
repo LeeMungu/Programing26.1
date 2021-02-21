@@ -1,5 +1,9 @@
 #pragma once
 #include "GameObject.h"
+enum class PlayerState
+{
+
+};
 
 class GameObject;
 class Image;
@@ -7,17 +11,18 @@ class State;
 class Animation;
 class Player : public GameObject
 {
-	enum class PlayerState
-	{
-
-	};
 	Image* mImage;
+
 	State* mCurrentState;
 	State* mBoomState;
 	State* mClimbState;
 	State* mStopperState;
-	State* mCurrentState;
-	State* mCurrentState;
+	State* mUmbrellaState;
+	State* mDigState;
+	State* mFallState;
+	State* mRunState;
+	
+	PlayerState mPlayerState;
 
 	Animation* mCurrentAnimation;
 	//오른쪽 왼쪽 구분하는 변수 0이면 오른쪽 1이면 왼쪽
@@ -41,8 +46,8 @@ public:
 	int GetIntMotionRL()const { return mIsMotionRL; }
 	void SetState(int intMotionRL) { mIsMotionRL = intMotionRL; }
 
-	State* GetState()const { return mState; }
-	void SetState(State* state) { mState = state; }
+	State* GetState()const { return mCurrentState; }
+	void SetState(State* state) { mCurrentState = state; }
 
 	float GetSpeed()const { return mSpeed; }
 	void SetSpeed(float speed){ mSpeed = speed; }
