@@ -15,7 +15,7 @@ class Fall : public State
 	Animation* mRightAnimation;
 	Animation* mCurrentAnimation;
 
-	
+	float gravity;
 
 
 public:
