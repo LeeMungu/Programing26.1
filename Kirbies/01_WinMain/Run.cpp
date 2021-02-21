@@ -33,6 +33,7 @@ void Run::Init()
 	else if (mPlayer->GetIntMotionRL() == 1)
 	{
 		mCurrentAnimation = mLeftAnimation;
+
 	}
 	mCurrentAnimation->Play();
 
@@ -44,6 +45,9 @@ void Run::Init()
 void Run::Release()
 {
 	SafeDelete(mRunKirby);
+	SafeDelete(mLeftAnimation);
+	SafeDelete(mRightAnimation);
+	SafeDelete(mCurrentAnimation);
 }
 
 void Run::Update()
@@ -51,10 +55,14 @@ void Run::Update()
 	if (mCurrentAnimation == mLeftAnimation)
 	{
 		mPlayer->SetX(mPlayer->GetX()-mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mCurrentAnimation->Stop();
+		mCurrentAnimation->Play();
 	}
 	if (mCurrentAnimation == mRightAnimation)
 	{
 		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mCurrentAnimation->Stop();
+		mCurrentAnimation->Play();
 	}
 
 
