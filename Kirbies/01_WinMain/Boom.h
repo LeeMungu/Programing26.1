@@ -6,9 +6,14 @@ class Boom : public State
 	//int mCountNum = 5;
 	//bool mIsDead = false;
 
-	bool mIsFirstUpdate = false;
-
+	//bool mIsFirstUpdate = false;
+	class Bottom* mBottom;
+	class Player* mPlayer;
+	class Effect* mEffect;
+	RECT mPlayerRect;
+	float mX, mY;
 public:
+	void Init()override;
 	void Update()override;
 	void Render(HDC hdc)override;
 };
