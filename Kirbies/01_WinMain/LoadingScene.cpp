@@ -13,7 +13,7 @@ void LoadingScene::Init()
 	mIsEndLoading = false;
 	
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"bottom.bmp"), 1280, 614, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene1.bmp"), 900, 600, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2,1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal4.bmp"), 1520, 318, 14, 4, true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BoomEffectSound", Resources(L"BoomEffectSound.mp3"), false); });
