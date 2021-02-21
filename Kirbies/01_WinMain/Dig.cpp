@@ -23,7 +23,7 @@ void Dig::Update()
 		}
 		else if (mPlayer->GetIntMotionRL() == 1)
 		{
-			mAnimation->InitFrameByStartEnd(0, 1, 13, 1, true);
+			mAnimation->InitFrameByEndStart(0, 1, 13, 1, true);
 		}
 		mAnimation->SetIsLoop(true);
 		mAnimation->SetFrameUpdateTime(0.3f);
@@ -45,29 +45,50 @@ void Dig::Update()
 
 		if (pixelColor != RGB(255, 0, 255))
 		{
-			mTime++;
-			//프레임마다 동작 (추후 수정)
-			if (mTime == 50)
+			if (mPlayer->GetIntMotionRL() == 0)
 			{
-				mTime = 0;
 
-				HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
-				HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 255));
-				HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
-				HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
+				if (mAnimation->GetNowFrameX() == 5)
+				{
+					HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
+					HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 255));
+					HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
+					HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
-				//RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 10);
-				DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
-				ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
+					DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 
-				SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
-				SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
-				DeleteObject(pen);
-				DeleteObject(brush);
+					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
+					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
+					DeleteObject(pen);
+					DeleteObject(brush);
 
-				y = i;
-				break;
+					y = i;
+					break;
+				}
 			}
+			else if(mPlayer->GetIntMotionRL() == 1)
+			{
+				if (mAnimation->GetNowFrameX() == 8)
+				{
+					HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
+					HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 255));
+					HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
+					HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
+
+					DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
+
+					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
+					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
+					DeleteObject(pen);
+					DeleteObject(brush);
+
+					y = i;
+					break;
+				}
+			}
+			
 
 		}
 		else
