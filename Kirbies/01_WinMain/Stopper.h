@@ -28,6 +28,7 @@ public:
 	void Update();
 	void Play();
 	void Stop();
+	void Render(HDC hdc);
 
 	
 };
