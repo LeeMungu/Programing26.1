@@ -4,7 +4,7 @@
 class Image;
 class MainScene : public Scene
 {
-
+	bool mIsLoadEnd;
 private:
 	void Init()override;
 	void Release()override;

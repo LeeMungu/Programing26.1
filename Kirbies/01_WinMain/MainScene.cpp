@@ -14,6 +14,8 @@ void MainScene::Init()
 
 
 	ObjectManager::GetInstance()->Init();
+
+	mIsLoadEnd = false;
 }
 
 void MainScene::Release()
@@ -24,7 +26,7 @@ void MainScene::Release()
 
 void MainScene::Update()
 {
-	if (Input::GetInstance()->GetKey(VK_SPACE))
+	if (Input::GetInstance()->GetKey(VK_SPACE) && mIsLoadEnd ==true)
 	{
 		SceneManager::GetInstance()->LoadScene(L"LoadingScene");
 	}

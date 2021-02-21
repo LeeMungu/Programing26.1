@@ -16,7 +16,7 @@ Player::Player(const string& name, float x, float y)
 void Player::Init()
 {
 	mImage = IMAGEMANAGER->FindImage(L"Player");
-	mIntMotionRL = 0;
+	mIsMotionRL = 0;
 }
 
 void Player::Release()
