@@ -2,10 +2,12 @@
 
 class Image;
 class Player;
+class Animation;
 class State
 {
 protected:
 	Image* mImage;
+	Animation* mAnimation;
 	Player* mPlayer;
 public:
 	virtual void Init();
