@@ -56,6 +56,7 @@ void Dig::Update()
 					HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
 					DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+					digpoint->Render(mBottom->GetImage()->GetHDC());
 					ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
@@ -77,6 +78,7 @@ void Dig::Update()
 					HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
 					DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+					digpoint->Render(mBottom->GetImage()->GetHDC());
 					ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
