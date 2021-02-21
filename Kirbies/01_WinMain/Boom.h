@@ -9,6 +9,6 @@ class Boom : public State
 	bool mIsFirstUpdate = false;
 
 public:
-	virtual void Update() {}
-	virtual void Render(HDC hdc) {}
+	void Update()override;
+	void Render(HDC hdc)override;
 };

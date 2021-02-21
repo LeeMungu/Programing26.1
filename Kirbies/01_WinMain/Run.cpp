@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include "Animation.h"
 #include "State.h"
+#include "Boom.h"
 
 
 void Run::Init()
@@ -30,15 +31,21 @@ void Run::Init()
 
 	mPlayer->SetX(mPlayer->GetX());
 	mPlayer->SetY(mPlayer->GetY());
+	mPlayer->SetSpeed(mPlayer->GetSpeed());
+	mBottom->SetX(mBottom->GetX());
+	mBottom->SetY(mBottom->GetY());
 
 }
 
 void Run::Release()
 {
+	SafeDelete(mRunKirby);
 }
 
 void Run::Update()
 {
+
+
 }
 
 void Run::Render(HDC hdc)
