@@ -4,7 +4,7 @@
 class State;
 class Run : public State
 {
-public
+public:
 	
 
 

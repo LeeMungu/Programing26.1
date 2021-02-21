@@ -193,6 +193,10 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Title.h" />
+    <ClInclude Include="TitleStyle1.h" />
+    <ClInclude Include="TitleStyle2.h" />
+    <ClInclude Include="TitleStyle3.h" />
+    <ClInclude Include="TitleStyle4.h" />
     <ClInclude Include="Ui.h" />
     <ClInclude Include="Umbrella.h" />
   </ItemGroup>
@@ -244,6 +248,10 @@
     <ClCompile Include="Stoper.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Title.cpp" />
+    <ClCompile Include="TitleStyle1.cpp" />
+    <ClCompile Include="TitleStyle2.cpp" />
+    <ClCompile Include="TitleStyle3.cpp" />
+    <ClCompile Include="TitleStyle4.cpp" />
     <ClCompile Include="Ui.cpp" />
     <ClCompile Include="Umbrella.cpp" />
   </ItemGroup>

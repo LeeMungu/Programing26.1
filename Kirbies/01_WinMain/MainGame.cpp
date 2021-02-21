@@ -26,10 +26,10 @@ void MainGame::Init()
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar2", Resources(L"LoadingBar2.bmp"), 1100, 50, true);
 	IMAGEMANAGER->LoadFromFile(L"MainBackGround", Resources(L"MainBackGround.bmp"), 1280, 720,true);
 	IMAGEMANAGER->LoadFromFile(L"MainImage", Resources(L"MainImage.bmp"), 1280, 720, true);
-	IMAGEMANAGER->LoadFromFile(L"MainTitle1", Resources(L"MainBackGround1.bmp"), 1280, 720, true);
-	IMAGEMANAGER->LoadFromFile(L"MainTitle2", Resources(L"MainBackGround2.bmp"), 1280, 720, true);
-	IMAGEMANAGER->LoadFromFile(L"MainTitle3", Resources(L"MainBackGround3.bmp"), 1280, 720, true);
-	IMAGEMANAGER->LoadFromFile(L"MainTitle4", Resources(L"MainBackGround4.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle1", Resources(L"MainTitle1.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle2", Resources(L"MainTitle2.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle3", Resources(L"MainTitle3.bmp"), 1280, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"MainTitle4", Resources(L"MainTitle4.bmp"), 1280, 720, true);
 
 	//¾À·Îµå
 	SceneManager::GetInstance()->AddScene(L"MainScene", new MainScene);

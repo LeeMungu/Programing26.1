@@ -50,34 +50,36 @@ void ObjectManager::Update()
 	//enemy-여러게 불러와야한다.
 
 	//player-bottom 판정
-	int x = player->GetX();
-	for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
+	if (player != nullptr)
 	{
-		//int y = mY + mSizeY / 2;
-		COLORREF pixelColor1 = GetPixel(bottom->GetImage()->GetHDC(),
-			x, y);
-		if (pixelColor1 != RGB(255, 0, 255))
+		int x = player->GetX();
+		for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
 		{
-		player->SetY(player->GetY() - player->GetSizeY() / 2);
-		//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		break;
+			//int y = mY + mSizeY / 2;
+			COLORREF pixelColor1 = GetPixel(bottom->GetImage()->GetHDC(),
+				x, y);
+			if (pixelColor1 != RGB(255, 0, 255))
+			{
+				player->SetY(player->GetY() - player->GetSizeY() / 2);
+				//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+				break;
+			}
 		}
-	}
-	int xleft = player->GetX() - player->GetSizeX() / 2;
-	for (int y = player->GetY() - 50; y < player->GetY(); y++)
-	{
-		COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
-			xleft, y);
-		
-		if (pixelColor != RGB(255, 0, 255))
+		int xleft = player->GetX() - player->GetSizeX() / 2;
+		for (int y = player->GetY() - 50; y < player->GetY(); y++)
 		{
-			player->SetX(xleft + player->GetSizeX() / 2);
-			//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-			break;
-		}
-		
-	}
+			COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
+				xleft, y);
 
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				player->SetX(xleft + player->GetSizeX() / 2);
+				//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+				break;
+			}
+
+		}
+	}
 
 	////player distroy
 	//if (player->GetHp()<=0)

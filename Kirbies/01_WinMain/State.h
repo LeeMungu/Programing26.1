@@ -10,10 +10,10 @@ protected:
 	Animation* mAnimation;
 	Player* mPlayer;
 public:
-	virtual void Init() {}
-	virtual void Release(){}
-	virtual void Update(){}
-	virtual void Render(HDC hdc){}
+	virtual void Init();
+	virtual void Release();
+	virtual void Update();
+	virtual void Render(HDC hdc);
 
 	void SetPlayerPtr(Player* player) { mPlayer = player; }
 };
