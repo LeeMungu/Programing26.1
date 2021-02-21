@@ -44,7 +44,11 @@ void Run::Release()
 
 void Run::Update()
 {
-
+	if (mCurrentAnimation == mLeftAnimation)
+	{
+		mPlayer->GetSizeX -= 3;
+		mPlayer->GetRect = RectMakeCenter(mPlayer->GetX, mPlayer->GetY, mPlayer->GetSizeX, mPlayer->GetSizeY);
+	}
 
 
 

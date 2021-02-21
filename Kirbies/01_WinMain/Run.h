@@ -16,6 +16,9 @@ class Run : public State
 	Animation* mRightAnimation;
 	Animation* mCurrentAnimation;
 
+	
+
+
 public:
 	void Init();
 	void Release();
