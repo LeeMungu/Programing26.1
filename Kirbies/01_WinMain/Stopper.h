@@ -24,6 +24,7 @@ class Stopper : public State
 public:
 	Stopper();
 	void Init();
+	void Release();
 	void Update();
 	void Play();
 	void Stop();
