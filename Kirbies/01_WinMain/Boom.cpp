@@ -52,11 +52,12 @@ void Boom::Update() {
 		DeleteObject(pen);
 		DeleteObject(brush);
 
-
+		
 		//애니메이션 플레이 후 플레이어 제거
-		SafeDelete(mPlayer);
+		//SafeDelete(mPlayer);
 
 	}
+	mAnimation->Update();
 }
 
 void Boom::Render(HDC hdc) {

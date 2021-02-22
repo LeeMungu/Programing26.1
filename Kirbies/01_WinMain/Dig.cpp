@@ -24,7 +24,7 @@ void Dig::Init()
 		mAnimation->InitFrameByEndStart(13, 1, 0, 1, false);
 	}
 	mAnimation->SetIsLoop(true);
-	mAnimation->SetFrameUpdateTime(0.3f);
+	mAnimation->SetFrameUpdateTime(0.1f);
 	mAnimation->Play();
 
 	//맵
@@ -112,6 +112,7 @@ void Dig::Update()
 			//마젠타면 떨어지는 상태로 변경...인데 플레이어가 체크할것인가?
 		}
 	}
+	mAnimation->Update();
 }
 
 void Dig::Render(HDC hdc)

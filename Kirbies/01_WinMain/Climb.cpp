@@ -72,6 +72,7 @@ void Climb::Update()
 			//런으로 변경
 		}
 	}
+	mAnimation->Update();
 
 }
 
