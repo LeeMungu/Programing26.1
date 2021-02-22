@@ -7,7 +7,8 @@ class Player;
 class Goal : public GameObject
 {
 	Player* mPlayer;
-	Image* mGoalKirby;
+	Image* mImage;
+
 	int mFrameX;
 	int mFrameY;
 private:
