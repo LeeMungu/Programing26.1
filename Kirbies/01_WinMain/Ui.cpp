@@ -61,22 +61,14 @@ void Ui::Update()
 	else {
 		mFrameY = 1;
 	}
-
-
 }
 
 void Ui::Render(HDC hdc)
 {
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mX, mY, mFrameX, mFrameY);
+	mImage->FrameRender(hdc, mX, mY, mFrameX, mFrameY);
 
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mCountUI, mRect.left, mRect.top, mFrameX, mFrameY);
+	mCountUI->FrameRender(hdc, mRect.left, mRect.top, mFrameX, mFrameY);
 
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mCountTens, mRect.left, mRect.top, mFrameX, mFrameY);
-
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mCountUnits, mRect.left, mRect.top, mFrameX, mFrameY);
-
+	mCountTens->FrameRender(hdc, mRect.left, mRect.top, mTensNum, 0);
+	mCountUnits->FrameRender(hdc, mRect.left + mCountTens->GetFrameWidth(), mRect.top, mUnitsNum, 0);
 }
