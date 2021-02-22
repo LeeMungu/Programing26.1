@@ -7,7 +7,7 @@ class Door : public GameObject
 	Image* mImage;
 	int mFrameX;
 	int mFrameY;
-	int mTimer;
+	float mTimer;
 	int mCount;
 	int mStage1Count;
 public:
