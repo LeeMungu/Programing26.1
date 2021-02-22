@@ -52,16 +52,7 @@ void Run::Init()
 
 	//작성해야함
 
-	//스토퍼커비와 충돌한 런커비
-	RECT Temp;
-	mRunKirbyRect = mPlayer->GetRect();
-	RECT mStopKirby = mStopperObject->GetRect();
-	if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
-	{
-		IsCrash = true;
-	}
-	mCurrentAnimation->Play();
-
+	
 	mPlayer->SetSizeX(mRunKirby->GetFrameWidth());
 	mPlayer->SetSizeY(mRunKirby->GetFrameHeight());
 
@@ -99,13 +90,13 @@ void Run::Update()
 		mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
 	}
 	//스토퍼커비와 충돌한 런커비
-	RECT Temp;
-	mRunKirbyRect = mPlayer->GetRect();
-	RECT mStopKirby = mStopperObject->GetRect();
-	if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
-	{
-		IsCrash = true;
-	}
+	//RECT Temp;
+	//mRunKirbyRect = mPlayer->GetRect();
+	//RECT mStopKirby = mStopperObject->GetRect();
+	//if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
+	//{
+	//	IsCrash = true;
+	//}
 
 	if (IsCrash == true)
 	{
