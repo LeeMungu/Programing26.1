@@ -4,6 +4,7 @@
 #include "State.h"
 #include "Camera.h"
 #include "Player.h"
+#include "Mouse.h"
 //평소에는 흑백이미지 -> 마우스 올리면 색깔이미지
 //정해진 개수가 있음 -> 0이 아닐 때만 이용 가능 -> 선택하면 state 바꿔준다(마우스에서 하는거?)
 Ui::Ui(PlayerState state, float x, float y, int count) {
@@ -19,7 +20,7 @@ Ui::Ui(PlayerState state, float x, float y, int count) {
 	mCountUnits = IMAGEMANAGER->FindImage(L"Numbers");
 
 	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
-	 
+
 	//state에 따라 그려줄 이미지 위치 다름 	mFrameX = ;
 	if (mState == PlayerState::BoomState)		mFrameX = 2;
 	else if (mState == PlayerState::ClimbState)	mFrameX = 4;
@@ -29,6 +30,7 @@ Ui::Ui(PlayerState state, float x, float y, int count) {
 	mFrameY = 1;
 
 	mIsClicked = false;
+	//mMouse = ObjectManager::GetInstance()->FindOject(ObjectLayer::)
 }
 void Ui::Init()
 {
@@ -46,10 +48,10 @@ void Ui::Update()
 
 	if (PtInRect(&mRect, _mousePosition)) {
 		mFrameY = 0;
-		if (Input::GetInstance()->GetKeyDown(VK_LEFT)) {
+		if (Input::GetInstance()->GetKeyDown(MK_LBUTTON)) {
 			if (mCountNum != 0) {
 				mCountNum--;
-				mPlayer->SetPlayerState(mState);
+				//mMouse->SetPlayerState(mState);
 
 				mIsClicked = true;
 			}
