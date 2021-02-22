@@ -43,6 +43,7 @@ void Mouse::Update()
 			{
 				Player* tempPlayer = (Player*)player[i];
 				tempPlayer->SetPlayerState(mPlayerState);
+				tempPlayer->SetIsChange(true);
 			}
 		}
 		//
