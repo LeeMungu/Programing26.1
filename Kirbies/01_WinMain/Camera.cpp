@@ -9,8 +9,8 @@ void Camera::Init()
 	mTarget = nullptr;
 	mX = WINSIZEX / 2;
 	mY = WINSIZEY / 2;
-	mSizeX = WINSIZEX / 2;
-	mSizeY = WINSIZEY / 2;
+	mSizeX = 640;
+	mSizeY = 320;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mMoveSpeed = 5.f;
 }
@@ -63,7 +63,9 @@ void Camera::Update()
 	if (Input::GetInstance()->GetKey(VK_LBUTTON))
 	{
 		mX += (mouseX - _mousePosition.x);
-		mY -= (mouseY - _mousePosition.y);
+		mY += (mouseY - _mousePosition.y);
+		mouseX = _mousePosition.x;
+		mouseY = _mousePosition.y;
 	}
 	
 }
