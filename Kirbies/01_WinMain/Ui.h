@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-
+#include "Player.h"
 class Ui : public GameObject
 {
 	class Player* mPlayer;

@@ -12,7 +12,8 @@ Ui::Ui(PlayerState state, float x, float y, int count) {
 	mY = y;
 	mCountNum = count;
 
-	mImage = IMAGEMANAGER->FindImage(L"ButtonUI");
+	mImage = IMAGEMANAGER->FindImage(L"Button");
+	mCountImage = IMAGEMANAGER->FindImage(L"UICount");
 
 	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	 
@@ -61,4 +62,10 @@ void Ui::Render(HDC hdc)
 {
 	CameraManager::GetInstance()->GetMainCamera()
 		->FrameRender(hdc, mImage, mX, mY, mFrameX, mFrameY);
+
+	CameraManager::GetInstance()->GetMainCamera()
+		->FrameRender(hdc, mCountImage, mRect.left, mRect.top, mFrameX, mFrameY);
+
+	//wstring strCount = to_wstring (mCountNum);
+	//TextOut(hdc, , , strCount.c_str(), strCount.length());
 }

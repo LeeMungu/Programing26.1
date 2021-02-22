@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Mouse.h"
 #include "Image.h"
-
+#include "Camera.h"
 
 void Mouse::Init()
 {
@@ -12,6 +12,10 @@ void Mouse::Init()
 	mSizeY = mImage->GetFrameHeight();
 
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
+	mIndexX = 0;
+
+	mPlayerState = PlayerState::RunState;
 }
 
 void Mouse::Release()
@@ -21,6 +25,14 @@ void Mouse::Release()
 
 void Mouse::Update()
 {
+	//플레이어 충돌시  mIndexX=1로 해주기
+	//카메라에서 플레이어 판정렉트 만들어주기<-실제 렉트가 카메라를 안따라온다.
+	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
+	
+	//if(int i; i<player->GetRect)
+
+	
+
 	//이동
 	mX = _mousePosition.x;
 	mY = _mousePosition.y;
@@ -36,5 +48,6 @@ void Mouse::Render(HDC hdc)
 		ColorLender::GetInstance()->ColorRectRender(hdc, mRect, 0, 0, 255);
 	}
 
-
+	CameraManager::GetInstance()->GetMainCamera()
+		->FrameRender(hdc, mImage, mX, mY, mIndexX, 0);
 }

@@ -12,6 +12,10 @@ Door::Door(const string& name, float x, float y)
 
 void Door::Init()
 {
+	mImage = IMAGEMANAGER->FindImage(L"Door");
+	mSizeX = mImage->GetWidth();
+	mSizeY = mImage->GetHeight();
+	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
 
 void Door::Release()
@@ -20,6 +24,7 @@ void Door::Release()
 
 void Door::Update()
 {
+
 }
 
 void Door::Render(HDC hdc)

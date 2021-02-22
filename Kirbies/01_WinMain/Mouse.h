@@ -15,6 +15,7 @@ class Mouse : public GameObject
 	Tageting mIsTageting;//bool값도 가능 고민 해보기
 	Image* mImage;
 	PlayerState mPlayerState;
+	int mIndexX;
 public:
 	void Init() override;
 	void Release() override;
