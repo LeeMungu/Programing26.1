@@ -19,6 +19,7 @@ enum class ObjectLayer : int
 	StopperObject = 8,
 	DigObject = 9,
 	Goal =10,
+	Mouse =11,
 	End
 };
 

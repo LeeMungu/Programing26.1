@@ -40,8 +40,6 @@ void Goal::Update()
 				tempPlayer->SetIsGoal(true);
 				tempPlayer->SetIsDoor(true);
 			}
-			
-			
 		}
 	}
 

@@ -40,7 +40,7 @@ void Dig::Init()
 	mSizeX = mPlayer->GetSizeX();
 	mSizeY = mPlayer->GetSizeY();
 
-	mDigRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	//mDigRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
 	//mPlayer->SetRect(mDigRect);
 	//셋함수 만들어서 넣어두면되나? 상의필요

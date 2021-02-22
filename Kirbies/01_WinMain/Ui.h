@@ -9,6 +9,8 @@ class Ui : public GameObject
 	class Image* mCountTens; //10의자리
 	class Image* mCountUnits; //1의자리
 
+	class Mouse* mMouse;
+
 	PlayerState mState;
 
 	int mCountNum;
@@ -26,7 +28,11 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
-	void SetPlayerPtr(Player* player) { mPlayer = player; }
+	int GetStateBtnCount() { return mCountNum; }
+	void SetStateBtnCount() { mCountNum -= 1; }
+
+
+	//void SetPlayerPtr(Player* player) { mPlayer = player; }
 
 };
 
