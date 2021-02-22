@@ -12,12 +12,12 @@ void Climb::Init() {
 	mAnimation = new Animation();
 	//맨처음에는 run 상태 ?
 	if (mPlayer->GetIntMotionRL() == 0) { //오른쪽
-		mAnimation->InitFrameByStartEnd(0, 0, 9, 0, false);
+		mAnimation->InitFrameByStartEnd(0, 0, 7, 0, false);
 		mAnimation->SetIsLoop(true);
 		mAnimation->SetFrameUpdateTime(0.3f);
 	}
 	else { //왼쪽
-		mAnimation->InitFrameByStartEnd(0, 1, 9, 1, false);
+		mAnimation->InitFrameByStartEnd(0, 1, 7, 1, false);
 		mAnimation->SetIsLoop(true);
 		mAnimation->SetFrameUpdateTime(0.3f);
 	}
