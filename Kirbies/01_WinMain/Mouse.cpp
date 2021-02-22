@@ -2,6 +2,7 @@
 #include "Mouse.h"
 #include "Image.h"
 #include "Camera.h"
+#include "Player.h"
 
 void Mouse::Init()
 {
@@ -29,7 +30,22 @@ void Mouse::Update()
 	//카메라에서 플레이어 판정렉트 만들어주기<-실제 렉트가 카메라를 안따라온다.
 	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
 	
-	//if(int i; i<player->GetRect)
+	mIndexX = 0;
+	for (int i=0; i < player.size(); i++)
+	{
+		//플레이어 판정랙트 따로 만들어주기
+		RECT temp;
+		RECT playerRect = player[i]->GetRect();
+		if (PtInRect(&playerRect, _mousePosition))
+		{
+			mIndexX = 1;
+			if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
+			{
+				Player* tempPlayer = (Player*)player[i];
+				tempPlayer->SetPlayerState(mPlayerState);
+			}
+		}
+	}
 
 	
 
