@@ -94,6 +94,7 @@ void Player::Update()
 		mCurrentState->Init();
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	}
+
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
