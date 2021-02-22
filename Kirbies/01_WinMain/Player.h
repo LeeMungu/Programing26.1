@@ -75,7 +75,7 @@ public:
 	bool GetIsDoor()const { return mIsDoor; }
 	void SetIsDoor(bool isDoor) { mIsDoor = isDoor; }
 
-	bool GetIsChange()const { return mIsGoal; }
-	void SetIsChange(bool isChange) { mIsGoal = isChange; }
+	bool GetIsChange()const { return mIsChange; }
+	void SetIsChange(bool isChange) { mIsChange = isChange; }
 };
 
