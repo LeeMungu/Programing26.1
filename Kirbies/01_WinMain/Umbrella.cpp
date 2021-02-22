@@ -12,12 +12,12 @@ void Umbrella::Init()
 {
 	mImage = IMAGEMANAGER->FindImage(L"Umbrella");
 	mLeftAnimation = new Animation();
-	mLeftAnimation->InitFrameByStartEnd(0, 0, 23, 0, false);
+	mLeftAnimation->InitFrameByStartEnd(3, 0, 23, 0, false);
 	mLeftAnimation->SetIsLoop(true);
 	mLeftAnimation->SetFrameUpdateTime(0.3f);
 
 	mRightAnimation = new Animation();
-	mRightAnimation->InitFrameByEndStart(15, 1, 0, 1, false);
+	mRightAnimation->InitFrameByEndStart(24, 1, 3, 1, false);
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.3f);
 
@@ -33,7 +33,7 @@ void Umbrella::Init()
 	}
 	mCurrentAnimation->Play();
 
-	mPlayer->SetGravity(0.5f);
+	mPlayer->SetGravity(0.3f);
 
 }
 
