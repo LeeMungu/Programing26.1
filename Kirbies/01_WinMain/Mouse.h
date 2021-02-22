@@ -17,6 +17,7 @@ class Mouse : public GameObject
 	PlayerState mPlayerState;
 	int mIndexX;
 public:
+	Mouse(const string& name);
 	void Init() override;
 	void Release() override;
 	void Update() override;
