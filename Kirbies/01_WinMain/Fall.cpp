@@ -32,7 +32,7 @@ void Fall::Init()
 	}
 	mCurrentAnimation->Play();
 
-	mPlayer->SetGravity(0.5f);
+	mPlayer->SetGravity(10.f);
 
 
 }

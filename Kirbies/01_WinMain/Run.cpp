@@ -81,7 +81,6 @@ void Run::Update()
 	if (pixelColor != RGB(255, 0, 255))
 	{
 		mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
-
 	}
 
 
