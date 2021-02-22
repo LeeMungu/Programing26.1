@@ -9,6 +9,8 @@ class Ui : public GameObject
 	class Image* mCountTens; //10의자리
 	class Image* mCountUnits; //1의자리
 
+	class Mouse* mMouse;
+
 	PlayerState mState;
 
 	int mCountNum;
