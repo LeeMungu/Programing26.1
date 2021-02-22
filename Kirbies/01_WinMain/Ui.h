@@ -5,11 +5,15 @@ class Ui : public GameObject
 {
 	class Player* mPlayer;
 	class Image* mImage;
-	class Image* mCountImage;
+	class Image* mCountUI; //숫자 넣는 곳 ui
+	class Image* mCountTens; //10의자리
+	class Image* mCountUnits; //1의자리
 
 	PlayerState mState;
 
 	int mCountNum;
+	int mTensNum; //10의 자리 저장
+	int mUnitsNum; //1의 자리 저장
 	int mFrameX, mFrameY;
 
 	bool mIsClicked;
