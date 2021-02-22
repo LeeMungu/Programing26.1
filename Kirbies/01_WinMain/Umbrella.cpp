@@ -32,7 +32,8 @@ void Umbrella::Init()
 		mCurrentAnimation = mLeftAnimation;
 	}
 	mCurrentAnimation->Play();
-
+	mPlayer->SetSizeX(mImage->GetFrameWidth());
+	mPlayer->SetSizeY(mImage->GetFrameHeight());
 	mPlayer->SetGravity(0.3f);
 
 }

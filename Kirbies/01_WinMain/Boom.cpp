@@ -25,6 +25,10 @@ void Boom::Init() {
 	mPlayerRect = mPlayer->GetRect();
 
 	mEffect = new Effect("BoomEffect", mX, mY, L"BoomEffect");
+
+
+	mPlayer->SetSizeX(mImage->GetFrameWidth());
+	mPlayer->SetSizeY(mImage->GetFrameHeight());
 }
 // 커비 핵폭발 -> 카운트다운(5초) -> (여기서는 카운트다운 다음 행동 프로그래밍)
 // 커비 죽으면서 사라진다 -> 이펙트와 함께 커비 있던 자리에 땅도 파인다

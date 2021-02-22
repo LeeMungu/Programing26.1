@@ -16,6 +16,9 @@ void Stopper::Init()
 	IMAGEMANAGER->LoadFromFile(L"Stopper", Resources(L"stopper.bmp"), 110, 24, 5, 1, true);
 	mImage = IMAGEMANAGER->FindImage(L"Stopper");
 
+	mPlayer->SetSizeX(mImage->GetFrameWidth());
+	mPlayer->SetSizeY(mImage->GetFrameHeight());
+
 	mStopperAnimation = new Animation();
 	mStopperAnimation->InitFrameByStartEnd(0, 0, 4, 0, true);
 	mStopperAnimation->SetIsLoop(true);

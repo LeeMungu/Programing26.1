@@ -30,6 +30,9 @@ void Climb::Init() {
 	mIsWallCheck = true;
 	mIsWalkCheck = true;
 
+
+	mPlayer->SetSizeX(mImage->GetFrameWidth());
+	mPlayer->SetSizeY(mImage->GetFrameHeight());
 }
 
 void Climb::Update()
