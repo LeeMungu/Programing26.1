@@ -8,7 +8,6 @@
 class State;
 class Fall : public State
 {
-	Player*  mPlayer;
 	Bottom* mBottom;
 	Image* mFallKirby;
 	Animation* mLeftAnimation;

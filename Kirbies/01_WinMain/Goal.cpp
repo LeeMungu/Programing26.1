@@ -10,6 +10,10 @@ Goal::Goal(const string& name, float x, float y)
 
 void Goal::Init()
 {
+
+	//플레이어에서 불값받아오기
+
+
 }
 
 void Goal::Release()
