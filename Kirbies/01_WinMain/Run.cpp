@@ -20,20 +20,20 @@ void Run::Init()
 	mGoalKirby = IMAGEMANAGER->FindImage(L"GoalKirby");
 	//좌측 애니메이션
 	mLeftAnimation = new Animation();
-	mLeftAnimation->InitFrameByEndStart(0, 0, 9, 0, false);
+	mLeftAnimation->InitFrameByStartEnd(0, 0, 9, 0, false);
 	mLeftAnimation->SetIsLoop(true);
 	mLeftAnimation->SetFrameUpdateTime(0.3f);
 
 	//우측 애니메이션
 	mRightAnimation = new Animation();
-	mRightAnimation->InitFrameByEndStart(0, 1, 9, 1, true);
+	mRightAnimation->InitFrameByEndStart(9, 1, 0, 1, false);
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.3f);
 
 	//골인 애니메이션
 	mGoalKirbyAnimation = new Animation();
-	mGoalKirbyAnimation->InitFrameByEndStart(0, 0, 5, 0, true);
-	mGoalKirbyAnimation->SetIsLoop(true);
+	mGoalKirbyAnimation->InitFrameByStartEnd(0, 0, 5, 0, false);
+	mGoalKirbyAnimation->SetIsLoop(false);
 	mGoalKirbyAnimation->SetFrameUpdateTime(0.3f);
 
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
@@ -67,7 +67,7 @@ void Run::Release()
 	SafeDelete(mLeftAnimation);
 	SafeDelete(mRightAnimation);
 	SafeDelete(mGoalKirbyAnimation);
-	SafeDelete(mCurrentAnimation);
+	//SafeDelete(mCurrentAnimation);
 }
 
 void Run::Update()

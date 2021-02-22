@@ -51,12 +51,12 @@ void Fall::Init()
 		mCurrentAnimation->Play();
 	}
 
-	COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
-		mX, mY);
-	if (pixelColor != RGB(255, 0, 255))
-	{
-		mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
-	}
+	//COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+	//	mX, mY);
+	//if (pixelColor != RGB(255, 0, 255))
+	//{
+	//	mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
+	//}
 
 
 
