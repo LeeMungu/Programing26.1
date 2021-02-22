@@ -3,9 +3,7 @@
 #include "Player.h"
 #include "Bottom.h"
 #include "BackGround.h"
-#include "Special.h"
 #include "Camera.h"
-#include "SpecialApearEffect.h"
 #include "GameEvent.h"
 #include "Image.h"
 #include "Mouse.h"
@@ -69,32 +67,11 @@ void Scene1::Update()
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
-	if (mIsSpecial == false &&
-		Input::GetInstance()->GetKeyDown(VK_TAB))
-	{
-		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
-		prevCamera->ChangeMode(Camera::Mode::Follow);
-
-		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect",0, -100,L"SpecialAppearEffect",9,3);
-		effect->Init();
-		ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect,effect);
-		
-
-		prevCamera->SetTarget(effect);
-
-		mIsSpecial = true;
-	}
-	if (mIsSpecial == true &&
-		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Special).size() == NULL &&
-		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Effect).size() == NULL)
-	{
-		mIsSpecial = false;
-		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
-		prevCamera->ChangeMode(Camera::Mode::Free);
-	}
+	SpecialFunc();
 }
 
 void Scene1::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
 }
+

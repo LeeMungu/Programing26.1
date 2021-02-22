@@ -4,8 +4,7 @@
 
 class Scene1 : public Scene
 {
-	bool mIsSpecial;
-
+	
 public:
 	void Init()override;
 	void Release()override;
@@ -13,5 +12,7 @@ public:
 	void Render(HDC hdc)override;
 
 	void SetIsSpecial(bool isSpecial) { mIsSpecial = isSpecial; }
+
+	
 };
 

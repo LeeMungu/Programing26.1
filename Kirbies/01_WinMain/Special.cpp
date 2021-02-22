@@ -29,12 +29,12 @@ void Special::Init()
 	mAttackAnimation = new Animation();
 	mAttackAnimation->InitFrameByStartEnd(1, 0, 8, 3, false);
 	mAttackAnimation->SetIsLoop(false);
-	mAttackAnimation->SetFrameUpdateTime(0.15f);
+	mAttackAnimation->SetFrameUpdateTime(0.155f);
 
 	mEndAnimation = new Animation();
 	mEndAnimation->InitFrameByStartEnd(0, 0, 9, 4, false);
 	mEndAnimation->SetIsLoop(false);
-	mEndAnimation->SetFrameUpdateTime(0.15f);
+	mEndAnimation->SetFrameUpdateTime(0.20f);
 
 	mCurrantAnimation = mApearAnimation;
 }
@@ -92,8 +92,8 @@ void Special::Update()
 		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect", 0, -100, L"SpecialAppearEffect", 9, 3);
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, effect);
 
-		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
-		prevCamera->SetTarget(effect);
+		//Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
+		//prevCamera->SetTarget(effect);
 	}
 	else if (mCurrantAnimation == mEndAnimation &&
 		mCurrantAnimation->GetNowFrameY() == 4 &&
