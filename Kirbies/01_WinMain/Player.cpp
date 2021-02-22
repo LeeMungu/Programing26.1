@@ -52,6 +52,7 @@ void Player::Init()
 	mIsChange = false;
 	mIsGoal = false;
 	mIsDoor = false;
+	mSpeed = 50;
 }
 
 void Player::Release()
