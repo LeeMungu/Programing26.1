@@ -30,7 +30,7 @@ Ui::Ui(PlayerState state, float x, float y, int count) {
 	mFrameY = 1;
 
 	mIsClicked = false;
-	//mMouse = ObjectManager::GetInstance()->FindOject(ObjectLayer::)
+	//mMouse = (Mouse*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse,"Mouse");
 }
 void Ui::Init()
 {
