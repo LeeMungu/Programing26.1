@@ -50,6 +50,7 @@ void Player::Init()
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
 	mIsChange = false;
+	mIsGool = false;
 }
 
 void Player::Release()
