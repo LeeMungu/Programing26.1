@@ -83,11 +83,11 @@ void Run::Update()
 
 	if (mCurrentAnimation == mLeftAnimation)
 	{
-		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed() * 5);//Time::GetInstance()->DeltaTime());
 	}
 	if (mCurrentAnimation == mRightAnimation)
 	{
-		mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+		mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * 5);//Time::GetInstance()->DeltaTime());
 	}
 	//스토퍼커비와 충돌한 런커비
 	//RECT Temp;
