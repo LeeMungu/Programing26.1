@@ -67,7 +67,7 @@ void Ui::Render(HDC hdc)
 {
 	mImage->FrameRender(hdc, mX, mY, mFrameX, mFrameY);
 
-	mCountUI->FrameRender(hdc, mRect.left, mRect.top, mFrameX, mFrameY);
+	mCountUI->Render(hdc, mRect.left, mRect.top);
 
 	mCountTens->FrameRender(hdc, mRect.left, mRect.top, mTensNum, 0);
 	mCountUnits->FrameRender(hdc, mRect.left + mCountTens->GetFrameWidth(), mRect.top, mUnitsNum, 0);

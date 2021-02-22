@@ -35,8 +35,8 @@ void Mouse::Update()
 	{
 		//플레이어 판정랙트 따로 만들어주기
 		RECT temp;
-		RECT playerRect = player[i]->GetRect();
-		if (PtInRect(&playerRect, _mousePosition))
+		POINT playerPoint = { player[i]->GetX(),player[i]->GetY() };
+		if (PtInRect(&mRect, playerPoint))
 		{
 			mIndexX = 1;
 			if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
