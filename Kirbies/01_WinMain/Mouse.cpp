@@ -6,7 +6,7 @@
 
 void Mouse::Init()
 {
-	mImage = IMAGEMANAGER->FindImage(L"Mouns");
+	mImage = IMAGEMANAGER->FindImage(L"Mouse");
 	mX = _mousePosition.x;
 	mY = _mousePosition.y;
 	mSizeX = mImage->GetFrameWidth();
@@ -45,9 +45,8 @@ void Mouse::Update()
 				tempPlayer->SetPlayerState(mPlayerState);
 			}
 		}
+		//
 	}
-
-	
 
 	//ÀÌµ¿
 	mX = _mousePosition.x;
@@ -64,6 +63,5 @@ void Mouse::Render(HDC hdc)
 		ColorLender::GetInstance()->ColorRectRender(hdc, mRect, 0, 0, 255);
 	}
 
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mX, mY, mIndexX, 0);
+	mImage->FrameRender(hdc, mRect.left, mRect.top, mIndexX, 0);
 }
