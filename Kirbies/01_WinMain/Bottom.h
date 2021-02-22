@@ -16,5 +16,3 @@ public:
 
 	Image* GetImage()const { return mImage; }
 };
-
-#define BOTTOM (ImageManager)

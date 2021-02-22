@@ -8,6 +8,8 @@
 #include "Camera.h"
 #include "Bottom.h"
 #include "StopperObject.h"
+#include "Image.h"
+#include "ObjectManager.h"
 
 
 void Run::Init()
@@ -74,8 +76,15 @@ void Run::Release()
 
 void Run::Update()
 {
+	COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+		mX, mY);
+	if (pixelColor != RGB(255, 0, 255))
+	{
+		mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
 
-	if (GetPixel(BOTTOM->Get, mX + 10, mY - 20) != RGB(255,0,255) {mPlayer->GetX -= mPlayer->})
+	}
+
+
 
 	if (mCurrentAnimation == mLeftAnimation)
 	{
@@ -87,7 +96,7 @@ void Run::Update()
 	}
 	//스토퍼커비와 충돌한 런커비
 	RECT Temp;
-	RECT mRunKirbyRect = mRunKirbyRect;
+	mRunKirbyRect = mPlayer->GetRect();
 	RECT mStopKirby = mStopperObject->GetRect();
 	if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
 	{
@@ -118,7 +127,17 @@ void Run::Update()
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mGoalKirbyAnimation;
 		mCurrentAnimation->Play();
+		mPlayer->SetIsGoal(false);
 	}
+
+	if (mCurrentAnimation == mGoalKirbyAnimation)
+	{
+		if (mCurrentAnimation->GetIsPlay() == false)
+		{
+			mPlayer->SetIsDestroy(true);
+		}
+	}
+	
 }
 
 void Run::Render(HDC hdc)

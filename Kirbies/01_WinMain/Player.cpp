@@ -51,6 +51,7 @@ void Player::Init()
 
 	mIsChange = false;
 	mIsGoal = false;
+	mIsDoor = false;
 }
 
 void Player::Release()

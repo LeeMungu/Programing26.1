@@ -34,6 +34,7 @@ class Player : public GameObject
 	Animation* mCurrentAnimation;
 
 	bool mIsGoal;
+	bool mIsDoor;
 	bool mIsChange;
 	//오른쪽 왼쪽 구분하는 변수 0이면 오른쪽 1이면 왼쪽
 	int mIsMotionRL;
@@ -70,6 +71,9 @@ public:
 
 	bool GetIsGoal()const { return mIsGoal; }
 	void SetIsGoal(bool isGoal) { mIsGoal = isGoal; }
+
+	bool GetIsDoor()const { return mIsDoor; }
+	void SetIsDoor(bool isDoor) { mIsDoor = isDoor; }
 
 	bool GetIsChange()const { return mIsGoal; }
 	void SetIsChange(bool isChange) { mIsGoal = isChange; }
