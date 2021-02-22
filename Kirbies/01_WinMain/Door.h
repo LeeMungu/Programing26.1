@@ -9,8 +9,9 @@ class Door : public GameObject
 	int mFrameY;
 	int mTimer;
 	int mCount;
+	int mStage1Count;
 public:
-	Door(const string& name, float x, float y);
+	Door(const string& name, float x, float y, int count);
 	void Init()override;
 	void Release()override;
 	void Update()override;

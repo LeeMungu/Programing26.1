@@ -4,11 +4,12 @@
 #include "Image.h"
 #include "Player.h"
 
-Door::Door(const string& name, float x, float y)
+Door::Door(const string& name, float x, float y, int count)
 	:GameObject(name)
 {
 	mX = x;
 	mY = y;
+	mStage1Count = count;
 }
 
 void Door::Init()
@@ -27,20 +28,18 @@ void Door::Release()
 
 void Door::Update()
 {
-	mTimer = Time::GetInstance()->DeltaTime();
+	mTimer += Time::GetInstance()->DeltaTime();
 
-	if (mTimer == 3)
+	if (mTimer == 3 && mCount< mStage1Count)
 	{
 		mTimer = 0;
 		//플레이어 생성
-
-		for (int i = 0 ; i < 10; i++)
+		for(int i = 0 ; i < 1; i++)
 		{
-			Player* player = new Player("player" + to_string(i), mX, mY);
+			Player* player = new Player("player" + to_string(mCount), mX, mY);
 			ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player);
 		}
-
-		
+		mCount++;
 	}
 }
 
