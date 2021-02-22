@@ -11,6 +11,7 @@
 #include "Mouse.h"
 #include "Door.h"
 #include "Goal.h"
+#include "Ui.h"
 void Scene1::Init()
 {
 	//player
@@ -27,13 +28,22 @@ void Scene1::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX/2, WINSIZEY/2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door",WINSIZEX/2,10,10);
+	Door* door = new Door("Door",WINSIZEX/2,0,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal",100,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
-	
+	Ui* ui = new Ui(PlayerState::BoomState, 100, 100, 20);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
+	Ui* ui2 = new Ui(PlayerState::ClimbState, 100, 200, 20);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
+	Ui* ui3 = new Ui(PlayerState::DigState, 100, 300, 20);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
+	Ui* ui4 = new Ui(PlayerState::StopperState, 100, 400, 20);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
+	Ui* ui5 = new Ui(PlayerState::UmbrellaState, 100, 500, 20);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//camera
 	Camera* camera = new Camera();

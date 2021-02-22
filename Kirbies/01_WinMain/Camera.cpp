@@ -49,18 +49,18 @@ void Camera::Update()
 		if (_mousePosition.y >= WINSIZEY - 30)mY += mMoveSpeed;
 
 
-		if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
-		{
-			mouseX = _mousePosition.x;
-			mouseY = _mousePosition.y;
-		}
-		if (Input::GetInstance()->GetKey(VK_LBUTTON))
-		{
-			mX += (mouseX - _mousePosition.x);
-			mY += (mouseY - _mousePosition.y);
-			mouseX = _mousePosition.x;
-			mouseY = _mousePosition.y;
-		}
+		//if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
+		//{
+		//	mouseX = _mousePosition.x;
+		//	mouseY = _mousePosition.y;
+		//}
+		//if (Input::GetInstance()->GetKey(VK_LBUTTON))
+		//{
+		//	mX += (mouseX - _mousePosition.x);
+		//	mY += (mouseY - _mousePosition.y);
+		//	mouseX = _mousePosition.x;
+		//	mouseY = _mousePosition.y;
+		//}
 
 		if (mX < bottomRC.left + WINSIZEX)	mX = bottomRC.left + WINSIZEX;
 		if (mX > bottomRC.right )

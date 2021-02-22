@@ -35,7 +35,7 @@ void Mouse::Update()
 	{
 		//플레이어 판정랙트 따로 만들어주기
 		RECT temp;
-		POINT playerPoint = { player[i]->GetX(),player[i]->GetY() };
+		POINT playerPoint = CameraManager::GetInstance()->GetMainCamera()->GetPoint(player[i]->GetX(), player[i]->GetY());
 		if (PtInRect(&mRect, playerPoint))
 		{
 			mIndexX = 1;
@@ -43,6 +43,7 @@ void Mouse::Update()
 			{
 				Player* tempPlayer = (Player*)player[i];
 				tempPlayer->SetPlayerState(mPlayerState);
+				tempPlayer->SetIsChange(true);
 			}
 		}
 		//
