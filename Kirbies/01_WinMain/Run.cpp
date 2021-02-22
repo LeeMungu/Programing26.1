@@ -74,6 +74,7 @@ void Run::Release()
 
 void Run::Update()
 {
+
 	//COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
 	//	mX, mY);
 	//if (pixelColor != RGB(255, 0, 255))

@@ -31,7 +31,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttackEffect3", Resources(L"/sp/attackeffect3.bmp"), 2560, 249, 10, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialEnd", Resources(L"/sp/end.bmp"), 1660, 900, 10, 5, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Fall", Resources(L"Fall.bmp"), 400, 40, 16, 2, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"walk.bmp"), 420, 76, 10, 2, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"walk.bmp"), 210, 38, 10, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Mouse", Resources(L"cursor_image.bmp"), 110, 55, 2, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 500, 200, 5, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"UICount", Resources(L"count_ui_image.bmp"), 40, 40, true); });
