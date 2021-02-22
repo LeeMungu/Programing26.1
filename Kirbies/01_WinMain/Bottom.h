@@ -4,6 +4,8 @@
 class Bottom : public GameObject
 {
 	class Image* mImage;
+
+
 public:
 	Bottom(const string& name, float x, float y);
 
@@ -15,3 +17,4 @@ public:
 	Image* GetImage()const { return mImage; }
 };
 
+#define BOTTOM (ImageManager)
