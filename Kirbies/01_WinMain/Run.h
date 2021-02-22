@@ -8,8 +8,6 @@
 class State;
 class Run : public State
 {
-
-	Player*  mPlayer;
 	Bottom* mBottom;
 	Image* mRunKirby;
 	Animation* mLeftAnimation;
