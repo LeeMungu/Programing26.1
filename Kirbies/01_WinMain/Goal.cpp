@@ -26,6 +26,7 @@ void Goal::Release()
 void Goal::Update()
 {
 	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
+	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	
 	for (int i = 0; i < player.size(); i++)
 	{
@@ -44,7 +45,7 @@ void Goal::Update()
 		}
 	}
 
-	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	
 
 }
 
