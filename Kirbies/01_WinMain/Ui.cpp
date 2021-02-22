@@ -13,7 +13,10 @@ Ui::Ui(PlayerState state, float x, float y, int count) {
 	mCountNum = count;
 
 	mImage = IMAGEMANAGER->FindImage(L"Button");
-	mCountImage = IMAGEMANAGER->FindImage(L"UICount");
+
+	mCountUI = IMAGEMANAGER->FindImage(L"UICount");
+	mCountTens = IMAGEMANAGER->FindImage(L"Numbers");
+	mCountUnits = IMAGEMANAGER->FindImage(L"Numbers");
 
 	mRect = RectMakeCenter(mX, mY, mImage->GetFrameWidth(), mImage->GetFrameHeight());
 	 
@@ -38,6 +41,8 @@ void Ui::Release()
 
 void Ui::Update()
 {
+	mTensNum = (mCountNum / 10) % 10;
+	mUnitsNum = mCountNum % 10;
 
 	if (PtInRect(&mRect, _mousePosition)) {
 		mFrameY = 0;
@@ -56,6 +61,8 @@ void Ui::Update()
 	else {
 		mFrameY = 1;
 	}
+
+
 }
 
 void Ui::Render(HDC hdc)
@@ -64,8 +71,12 @@ void Ui::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mX, mY, mFrameX, mFrameY);
 
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mCountImage, mRect.left, mRect.top, mFrameX, mFrameY);
+		->FrameRender(hdc, mCountUI, mRect.left, mRect.top, mFrameX, mFrameY);
 
-	//wstring strCount = to_wstring (mCountNum);
-	//TextOut(hdc, mRect.left, mRect.top, strCount.c_str(), strCount.length());
+	CameraManager::GetInstance()->GetMainCamera()
+		->FrameRender(hdc, mCountTens, mRect.left, mRect.top, mFrameX, mFrameY);
+
+	CameraManager::GetInstance()->GetMainCamera()
+		->FrameRender(hdc, mCountUnits, mRect.left, mRect.top, mFrameX, mFrameY);
+
 }
