@@ -25,6 +25,21 @@ void Goal::Release()
 
 void Goal::Update()
 {
+	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
+	
+	for (int i = 0; i < player.size(); i++)
+	{
+		RECT temp;
+		RECT playerRect = player[i]->GetRect();
+		if (IntersectRect(&temp, &playerRect, &mRect))
+		{
+			Player* tempPlayer = (Player*)player[i];
+			tempPlayer->SetIsGoal(true);
+		}
+	}
+
+	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
 }
 
 void Goal::Render(HDC hdc)
