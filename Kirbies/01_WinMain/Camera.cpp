@@ -9,8 +9,8 @@ void Camera::Init()
 	mTarget = nullptr;
 	mX = WINSIZEX / 2;
 	mY = WINSIZEY / 2;
-	mSizeX = 640;
-	mSizeY = 320;
+	mSizeX = WINSIZEX;
+	mSizeY = WINSIZEX;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mMoveSpeed = 5.f;
 }
@@ -22,7 +22,7 @@ void Camera::Release()
 
 void Camera::Update()
 {
-
+	RECT bottomRC = ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom")->GetRect();
 	switch (mMode)
 	{
 	case Camera::Mode::Follow:
@@ -43,30 +43,36 @@ void Camera::Update()
 		//if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
 		//if (Input::GetInstance()->GetKey('S'))mY += mMoveSpeed;
 
-		if (_mousePosition.x >= WINSIZEX-30)mX += mMoveSpeed;
-		if (_mousePosition.x <= 0+30)mX -= mMoveSpeed;
-		if (_mousePosition.y >= WINSIZEY-30)mY += mMoveSpeed;
-		if (_mousePosition.y <= 0+30)mY -= mMoveSpeed;
+		if (_mousePosition.x <= 0 + 30)mX -= mMoveSpeed;
+		if (_mousePosition.x >= WINSIZEX - 30)mX += mMoveSpeed;
+		if (_mousePosition.y <= 0 + 30)mY -= mMoveSpeed;
+		if (_mousePosition.y >= WINSIZEY - 30)mY += mMoveSpeed;
+
+
+		if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
+		{
+			mouseX = _mousePosition.x;
+			mouseY = _mousePosition.y;
+		}
+		if (Input::GetInstance()->GetKey(VK_LBUTTON))
+		{
+			mX += (mouseX - _mousePosition.x);
+			mY += (mouseY - _mousePosition.y);
+			mouseX = _mousePosition.x;
+			mouseY = _mousePosition.y;
+		}
+
+		if (mX < bottomRC.left + WINSIZEX)	mX = bottomRC.left + WINSIZEX;
+		if (mX > bottomRC.right )
+			mX  = bottomRC.right;
+		if (mY < bottomRC.top - WINSIZEY) mY = bottomRC.top - WINSIZEY;
+		if (mY > bottomRC.bottom + WINSIZEY) mY = bottomRC.bottom + WINSIZEY;
 
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		break;
-
-
-	}
-	if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
-	{
-		mouseX = _mousePosition.x;
-		mouseY = _mousePosition.y;
-
 	}
 
-	if (Input::GetInstance()->GetKey(VK_LBUTTON))
-	{
-		mX += (mouseX - _mousePosition.x);
-		mY += (mouseY - _mousePosition.y);
-		mouseX = _mousePosition.x;
-		mouseY = _mousePosition.y;
-	}
+
 	
 }
 
