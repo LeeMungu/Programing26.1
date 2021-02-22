@@ -65,10 +65,10 @@ void Ui::Update()
 
 void Ui::Render(HDC hdc)
 {
-	mImage->FrameRender(hdc, mX, mY, mFrameX, mFrameY);
+	mImage->FrameRender(hdc, mRect.left, mRect.top, mFrameX, mFrameY);
 
-	mCountUI->Render(hdc, mRect.left, mRect.top);
+	mCountUI->Render(hdc, mRect.left - 5, mRect.top - 5);
 
-	mCountTens->FrameRender(hdc, mRect.left, mRect.top, mTensNum, 0);
-	mCountUnits->FrameRender(hdc, mRect.left + mCountTens->GetFrameWidth(), mRect.top, mUnitsNum, 0);
+	mCountTens->FrameRender(hdc, mRect.left + 4, mRect.top + 7, mTensNum, 0);
+	mCountUnits->FrameRender(hdc, mRect.left + mCountTens->GetFrameWidth() + 5, mRect.top + 7, mUnitsNum, 0);
 }
