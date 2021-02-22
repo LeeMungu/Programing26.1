@@ -48,17 +48,10 @@ void Stopper::Update()
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::StopperObject, stopperObject);
 		mCurrentAnimation = mStopperAnimation;
 	}
-	mCurrentAnimation->Play();
+	mCurrentAnimation->Update();
 
 }
 
-void Stopper::Play()
-{
-}
-
-void Stopper::Stop()
-{
-}
 
 void Stopper::Render(HDC hdc)
 {	
