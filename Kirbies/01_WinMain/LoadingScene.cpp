@@ -34,7 +34,9 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Mouse", Resources(L"cursor_image.bmp"), 110, 55, 1, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 250, 100, 5, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"UICount", Resources(L"count_ui_image.bmp"), 16, 16, true); });
-	
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GoalKirby", Resources(L"Goalin.bmp"), 138, 23, true); });
+
+
 	//mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingImage");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");
