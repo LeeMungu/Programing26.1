@@ -18,6 +18,7 @@ enum class ObjectLayer : int
 	Camera=7,
 	StopperObject = 8,
 	DigObject = 9,
+	Goal =10,
 	End
 };
 

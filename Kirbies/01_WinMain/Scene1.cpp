@@ -8,14 +8,18 @@
 #include "SpecialApearEffect.h"
 #include "GameEvent.h"
 #include "Image.h"
-
+#include "Mouse.h"
+#include "Door.h"
+#include "Goal.h"
 void Scene1::Init()
 {
 	//player
 	Player* player1 = new Player("1", 200, 631);
-	
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
 	
+	Mouse* mouse = new Mouse();
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, mouse);
+
 	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
 	
@@ -24,6 +28,14 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
 
+
+	//Door* door = new Door("Door",10,10);
+	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
+
+	//Goal* goal = new Goal("goal",10,10);
+	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
+
+	
 
 	//camera
 	Camera* camera = new Camera();
