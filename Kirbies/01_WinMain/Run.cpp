@@ -26,7 +26,7 @@ void Run::Init()
 
 	//우측 애니메이션
 	mRightAnimation = new Animation();
-	mRightAnimation->InitFrameByEndStart(9, 1, 0, 1, false);
+	mRightAnimation->InitFrameByEndStart(9, 1, 0, 1, true);
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.3f);
 
