@@ -57,17 +57,7 @@ void Run::Init()
 	{
 		IsCrash = true;
 	}
-
-
-
 	mCurrentAnimation->Play();
-
-
-	// 벽, 스토퍼 충돌 구현해야함 스토퍼 오브젝트랑 렉트충돌
-
-	
-
-
 }
 
 void Run::Release()
