@@ -5,6 +5,8 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "State.h"
+#include "Image.h"
+#include "Camera.h"
 
 void Fall::Init()
 {
@@ -13,12 +15,12 @@ void Fall::Init()
 	mLeftAnimation = new Animation();
 	mLeftAnimation->InitFrameByStartEnd(0, 0, 15, 0, false);
 	mLeftAnimation->SetIsLoop(true);
-	mLeftAnimation->SetFrameUpdateTime(0.3f);
+	mLeftAnimation->SetFrameUpdateTime(0.1f);
 
 	mRightAnimation = new Animation();
 	mRightAnimation->InitFrameByEndStart(15, 1, 0, 1, false);
 	mRightAnimation->SetIsLoop(true);
-	mRightAnimation->SetFrameUpdateTime(0.3f);
+	mRightAnimation->SetFrameUpdateTime(0.1f);
 
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 
@@ -32,22 +34,10 @@ void Fall::Init()
 	}
 	mCurrentAnimation->Play();
 
-	mPlayer->SetGravity(0.5f);
+	mPlayer->SetGravity(100.f);
+	mPlayer->SetSizeX(mFallKirby->GetFrameWidth());
+	mPlayer->SetSizeY(mFallKirby->GetFrameHeight());
 
-
-}
-
-void Fall::Release()
-{
-	SafeDelete(mFallKirby);
-	SafeDelete(mLeftAnimation);
-	SafeDelete(mRightAnimation);
-	SafeDelete(mCurrentAnimation);
-}
-
-void Fall::Update()
-{
-	mPlayer->SetY(mPlayer->GetY() - mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
 	if (mCurrentAnimation == mLeftAnimation && mPlayer->GetIntMotionRL() == 0)
 	{
 		mCurrentAnimation->Stop();
@@ -62,9 +52,25 @@ void Fall::Update()
 	}
 }
 
+void Fall::Release()
+{
+	SafeDelete(mFallKirby);
+	SafeDelete(mLeftAnimation);
+	SafeDelete(mRightAnimation);
+	SafeDelete(mCurrentAnimation);
+}
+
+void Fall::Update()
+{
+	mPlayer->SetY(mPlayer->GetY() + mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
+	mCurrentAnimation->Update();
+}
+
 void Fall::Render(HDC hdc)
 {
-	mCurrentAnimation->GetNowFrameX();
-	mCurrentAnimation->GetNowFrameY();
+	CameraManager::GetInstance()->GetMainCamera()
+		->FrameRender(hdc, mFallKirby, mPlayer->GetX() - mFallKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+			mCurrentAnimation->GetNowFrameX(),
+			mCurrentAnimation->GetNowFrameY());
 
 }

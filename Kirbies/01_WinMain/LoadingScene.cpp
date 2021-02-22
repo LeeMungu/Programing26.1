@@ -33,8 +33,8 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Fall", Resources(L"Fall.bmp"), 400, 40, 16, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Run", Resources(L"Walk.bmp"), 420, 76, 10, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Mouse", Resources(L"cursor_image.bmp"), 110, 55, 2, 1, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 250, 100, 5, 2, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"UICount", Resources(L"count_ui_image.bmp"), 16, 16, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 500, 200, 5, 2, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"UICount", Resources(L"count_ui_image.bmp"), 32, 32, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GoalKirby", Resources(L"Goalin.bmp"), 138, 23, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Umbrella", Resources(L"umbrella.bmp"), 900, 86, 25, 2,true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Numbers", Resources(L"NumberDot.bmp"), 100, 14, 10, 1,true); });
