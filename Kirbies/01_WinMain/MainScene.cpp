@@ -11,17 +11,15 @@
 
 void MainScene::Init()
 {
-	BackGround* background = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2,L"MainBackGround");
+	BackGround* background = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2, L"MainBackGround");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
 
 	TitleStyle1* mainImage = new TitleStyle1(L"MainImage");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainImage);
 
-	//TitleStyle2* mainText1 = new TitleStyle2(L"MainTitle1");
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText1);
+	//
 	//																	
-	//TitleStyle3* mainText2 = new TitleStyle3(L"MainTitle2");				 
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText2);
+	//
 	//																	 
 	//TitleStyle4* mainText3 = new TitleStyle4(L"MainTitle3");				 
 	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText3);

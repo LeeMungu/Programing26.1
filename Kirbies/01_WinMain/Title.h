@@ -9,6 +9,8 @@ protected:
 	
 	bool mIsSize;
 	Image* mImage;
+
+	bool mIsEndAnimation;
 public:
 	Title(wstring key);
 	virtual void Init()override;

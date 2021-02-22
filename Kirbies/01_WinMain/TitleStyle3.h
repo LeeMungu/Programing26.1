@@ -3,9 +3,18 @@
 
 class TitleStyle3 : public Title
 {
+	enum class State
+	{
+		LeftToRight,
+		RightToLeft,
+		Stop
+	};
+	float mLeftLimit;
+	float mRightLimit;
+	State mState;
 public:
 	TitleStyle3(wstring key);
-	virtual void Init()override;
-	virtual void Release()override;
-	virtual void Update()override;
+	void Init()override;
+	void Release()override;
+	void Update()override;
 };
