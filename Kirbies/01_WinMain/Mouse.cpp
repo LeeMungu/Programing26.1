@@ -30,10 +30,11 @@ void Mouse::Update()
 
 void Mouse::Render(HDC hdc)
 {
-	
 	//마우스 랙트 표시 지우지 말것
 	if (Input::GetInstance()->GetKey(VK_LCONTROL))
 	{
 		ColorLender::GetInstance()->ColorRectRender(hdc, mRect, 0, 0, 255);
 	}
+
+
 }
