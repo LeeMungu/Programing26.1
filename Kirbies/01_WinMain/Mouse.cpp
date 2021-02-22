@@ -4,6 +4,11 @@
 #include "Camera.h"
 #include "Player.h"
 
+Mouse::Mouse(const string& name)
+	:GameObject(name)
+{
+}
+
 void Mouse::Init()
 {
 	mImage = IMAGEMANAGER->FindImage(L"Mouse");
