@@ -94,6 +94,48 @@ void Player::Update()
 		mCurrentState->Init();
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	}
+	//for (int y = this->GetY() ; y < this->GetY()+this->GetSizeY()+15; y++)
+	//{
+	//	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
+	//	COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), this->GetX(), y);
+	//	if (pixelColor != RGB(255, 0, 255))
+	//	{
+	//		this->SetY(y-this->GetSizeY());
+	//	}
+	//}
+
+		for (float y = mY; y < mY + mSizeY / 2 + 25 ; y++)
+		{
+			Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+			if (pixelColor != RGB(255, 0, 255) && mPlayerState != PlayerState::RunState && mPlayerState == PlayerState::FallState)
+			{
+				mY = y - mSizeY / 2;
+				mIsChange = true;
+				mPlayerState = PlayerState::RunState;
+				break;
+			}
+			else if (pixelColor == RGB(255, 0, 255) && mPlayerState != PlayerState::FallState)
+			{
+				mIsChange = true;
+				mPlayerState = PlayerState::FallState;
+			}
+		}
+
+	//if (mPlayerState == PlayerState::RunState)
+	//{
+	//	for (int y = mY; y < mY + mSizeY; y++)
+	//	{
+	//		Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
+	//		COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+	//		if (pixelColor != RGB(255, 0, 255))
+	//		{
+	//			mIsChange = true;
+	//			mPlayerState = PlayerState::FallState;
+	//		}
+	//	}
+	//}
+
 
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);

@@ -30,6 +30,7 @@ void Bottom::Update()
 
 void Bottom::Render(HDC hdc)
 {
+
 	CameraManager::GetInstance()->GetMainCamera()
 		->Render(hdc, mImage, 0, 0);
 }
