@@ -28,7 +28,7 @@ public:
 	void Update()override;
 	void Render(HDC hdc)override;
 
-	void SetPlayerPtr(Player* player) { mPlayer = player; }
+	//void SetPlayerPtr(Player* player) { mPlayer = player; }
 
 };
 
