@@ -7,6 +7,8 @@ class Door : public GameObject
 	Image* mImage;
 	int mFrameX;
 	int mFrameY;
+	int mTimer;
+	int mCount;
 public:
 	Door(const string& name, float x, float y);
 	void Init()override;
