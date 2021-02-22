@@ -50,6 +50,16 @@ void Fall::Init()
 		mCurrentAnimation = mLeftAnimation;
 		mCurrentAnimation->Play();
 	}
+
+	COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+		mX, mY);
+	if (pixelColor != RGB(255, 0, 255))
+	{
+		mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
+	}
+
+
+
 }
 
 void Fall::Release()
