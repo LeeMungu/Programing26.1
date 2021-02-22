@@ -75,7 +75,11 @@ void Run::Release()
 void Run::Update()
 {
 
-	if (GetPixel(BOTTOM->Get, mX + 10, mY - 20) != RGB(255,0,255) {mPlayer->GetX -= mPlayer->})
+	COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+		mX, mY);
+
+
+
 
 	if (mCurrentAnimation == mLeftAnimation)
 	{

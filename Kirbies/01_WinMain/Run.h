@@ -8,6 +8,7 @@
 
 class StopperObject;
 class State;
+class ObjectManager;
 class Run : public State
 {
 	StopperObject* mStopperObject;
