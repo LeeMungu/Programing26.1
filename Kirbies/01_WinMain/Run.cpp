@@ -62,6 +62,11 @@ void Run::Init()
 	}
 	mCurrentAnimation->Play();
 
+	mPlayer->SetSizeX(mRunKirby->GetFrameWidth());
+	mPlayer->SetSizeY(mRunKirby->GetFrameHeight());
+
+
+
 }
 
 void Run::Release()
@@ -141,7 +146,9 @@ void Run::Update()
 
 void Run::Render(HDC hdc)
 {
-	mCurrentAnimation->GetNowFrameX();
-	mCurrentAnimation->GetNowFrameY();
+	CameraManager::GetInstance()->GetMainCamera()
+		->FrameRender(hdc, mRunKirby, mPlayer->GetX() - mRunKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+			mCurrentAnimation->GetNowFrameX(),
+			mCurrentAnimation->GetNowFrameY());
 
 }
