@@ -67,5 +67,5 @@ void Ui::Render(HDC hdc)
 		->FrameRender(hdc, mCountImage, mRect.left, mRect.top, mFrameX, mFrameY);
 
 	//wstring strCount = to_wstring (mCountNum);
-	//TextOut(hdc, , , strCount.c_str(), strCount.length());
+	//TextOut(hdc, mRect.left, mRect.top, strCount.c_str(), strCount.length());
 }

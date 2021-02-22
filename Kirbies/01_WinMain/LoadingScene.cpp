@@ -39,7 +39,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Umbrella", Resources(L"umbrella.bmp"), 900, 86, 25, 2,true); });
 
 
-	//mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingImage");
+	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround1");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");
 }
@@ -71,7 +71,7 @@ void LoadingScene::Update()
 
 void LoadingScene::Render(HDC hdc)
 {
-	//mLoadingImage->Render(hdc, 0, 0);
+	mLoadingImage->Render(hdc, 0, 0);
 	mLoadingBarImage1->Render(hdc, WINSIZEX / 2 - mLoadingBarImage1->GetWidth() / 2, WINSIZEY / 10 * 9);
 	mLoadingBarImage2->Render(hdc, WINSIZEX / 2 - mLoadingBarImage2->GetWidth() / 2, WINSIZEY / 10 * 9,
 		0, 0, mLoadingBarImage2->GetWidth() * mLoadIndex / mLoadList.size(), mLoadingBarImage2->GetHeight());
