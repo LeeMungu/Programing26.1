@@ -34,7 +34,13 @@ void Goal::Update()
 		if (IntersectRect(&temp, &playerRect, &mRect))
 		{
 			Player* tempPlayer = (Player*)player[i];
-			tempPlayer->SetIsGoal(true);
+			if (tempPlayer->GetIsDoor() == false)
+			{
+				tempPlayer->SetIsGoal(true);
+				tempPlayer->SetIsDoor(true);
+			}
+			
+			
 		}
 	}
 

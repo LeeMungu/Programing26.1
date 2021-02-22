@@ -28,15 +28,18 @@ void Door::Release()
 
 void Door::Update()
 {
-	mTimer += Time::GetInstance()->DeltaTime();
+	mTimer+=Time::GetInstance()->DeltaTime();
 
-	if (mTimer == 3 && mCount< mStage1Count)
+	
+
+	if (mTimer >= 3 && mCount<mStage1Count)
 	{
 		mTimer = 0;
 		//플레이어 생성
-		for(int i = 0 ; i < 1; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			Player* player = new Player("player" + to_string(mCount), mX, mY);
+			player->Init();
 			ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player);
 		}
 		mCount++;
