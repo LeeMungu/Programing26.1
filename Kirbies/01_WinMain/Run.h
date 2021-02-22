@@ -4,14 +4,19 @@
 #include "GameObject.h"
 #include "Player.h"
 #include "Bottom.h"
+#include "StopperObject.h"
 
+class StopperObject;
 class State;
 class Run : public State
 {
+	StopperObject* mStopperObject;
 	Bottom* mBottom;
 	Image* mRunKirby;
+	Image* mGoalKirby;
 	Animation* mLeftAnimation;
 	Animation* mRightAnimation;
+	Animation* mGoalKirbyAnimation;
 	Animation* mCurrentAnimation;
 
 	RECT mRunKirbyRect;

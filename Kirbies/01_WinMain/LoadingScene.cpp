@@ -13,6 +13,7 @@ void LoadingScene::Init()
 	mIsEndLoading = false;
 	
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64, 48, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47, 40, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene01.bmp"), 2560, 1440, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2,1, true); });

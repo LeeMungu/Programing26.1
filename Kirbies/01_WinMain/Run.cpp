@@ -11,10 +11,10 @@
 
 void Run::Init()
 {
-
 	IsCrash = false;
 
 	mRunKirby = IMAGEMANAGER->FindImage(L"Run");
+	mGoalKirby = IMAGEMANAGER->FindImage(L"GoalKirby");
 	//좌측 애니메이션
 	mLeftAnimation = new Animation();
 	mLeftAnimation->InitFrameByEndStart(0, 0, 9, 0, false);
@@ -27,57 +27,93 @@ void Run::Init()
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.3f);
 
+	//골인 애니메이션
+	mGoalKirbyAnimation = new Animation();
+	mGoalKirbyAnimation->InitFrameByEndStart(0, 0, 5, 0, true);
+	mGoalKirbyAnimation->SetIsLoop(true);
+	mGoalKirbyAnimation->SetFrameUpdateTime(0.3f);
+
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 
+	//좌우 판정
 	if (mPlayer->GetIntMotionRL() == 0)
 	{
-		mCurrentAnimation=mRightAnimation;
+		mCurrentAnimation = mRightAnimation;
 	}
 	else if (mPlayer->GetIntMotionRL() == 1)
 	{
 		mCurrentAnimation = mLeftAnimation;
 
 	}
+	// Run 커비가 골과 충돌했다면
+
+	//작성해야함
+
+	//스토퍼커비와 충돌한 런커비
+	RECT Temp;
+	RECT mRunKirbyRect = mRunKirbyRect;
+	RECT mStopKirby = mStopperObject->GetRect();
+	if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
+	{
+		IsCrash = true;
+	}
 	mCurrentAnimation->Play();
-
-
-	// 벽, 스토퍼 충돌 구현해야함
-
-	
-
-
 }
 
 void Run::Release()
 {
 	SafeDelete(mRunKirby);
+	SafeDelete(mGoalKirby);
 	SafeDelete(mLeftAnimation);
 	SafeDelete(mRightAnimation);
+	SafeDelete(mGoalKirbyAnimation);
 	SafeDelete(mCurrentAnimation);
 }
 
 void Run::Update()
 {
-	if (IsCrash == false)
+	if (mCurrentAnimation == mLeftAnimation)
+	{
+		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+	}
+	if (mCurrentAnimation == mRightAnimation)
+	{
+		mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+	}
+	//스토퍼커비와 충돌한 런커비
+	RECT Temp;
+	RECT mRunKirbyRect = mRunKirbyRect;
+	RECT mStopKirby = mStopperObject->GetRect();
+	if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
+	{
+		IsCrash = true;
+	}
+
+	if (IsCrash == true)
 	{
 		if (mCurrentAnimation == mLeftAnimation)
 		{
 			mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
-			mCurrentAnimation->Stop();
-			mCurrentAnimation->Play();
+			mLeftAnimation->Stop();
+			mCurrentAnimation = mRightAnimation;
+			mRightAnimation->Play();
 		}
 		if (mCurrentAnimation == mRightAnimation)
 		{
-			mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
+			mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
 			mCurrentAnimation->Stop();
+			mCurrentAnimation = mLeftAnimation;
 			mCurrentAnimation->Play();
 		}
+		IsCrash = false;
 	}
-	else
+	// 골인 애니메이션이 트루일 경우
+	if (mPlayer->GetIsGoal() == true);
 	{
-
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mGoalKirbyAnimation;
+		mCurrentAnimation->Play();
 	}
-
 }
 
 void Run::Render(HDC hdc)

@@ -60,9 +60,6 @@ void Fall::Update()
 		mCurrentAnimation = mLeftAnimation;
 		mCurrentAnimation->Play();
 	}
-
-
-	//애니메이션만 넣자
 }
 
 void Fall::Render(HDC hdc)

@@ -10,6 +10,7 @@ Goal::Goal(const string& name, float x, float y)
 
 void Goal::Init()
 {
+
 }
 
 void Goal::Release()
