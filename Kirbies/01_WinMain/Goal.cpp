@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "Goal.h"
 
+#include "Player.h"
+#include "Run.h"
+
 Goal::Goal(const string& name, float x, float y)
 	:GameObject(name)
 {
@@ -10,9 +13,9 @@ Goal::Goal(const string& name, float x, float y)
 
 void Goal::Init()
 {
-
+	mPlayer->
 	//플레이어에서 불값받아오기
-
+	
 
 }
 
