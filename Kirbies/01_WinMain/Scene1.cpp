@@ -18,7 +18,7 @@ void Scene1::Init()
 	//Player* player1 = new Player("1", 200, 631);
 	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
 	
-	Mouse* mouse = new Mouse();
+	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
 
 	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
