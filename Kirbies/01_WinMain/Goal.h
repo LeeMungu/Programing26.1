@@ -11,7 +11,7 @@ class Goal : public GameObject
 
 	int mFrameX;
 	int mFrameY;
-private:
+public:
 	Goal(const string& name, float x, float y);
 	void Init()override;
 	void Release()override;

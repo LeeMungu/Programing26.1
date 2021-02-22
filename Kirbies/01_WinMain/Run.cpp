@@ -6,6 +6,7 @@
 #include "State.h"
 #include "Boom.h"
 #include "Camera.h"
+#include "Bottom.h"
 #include "StopperObject.h"
 
 
@@ -51,13 +52,14 @@ void Run::Init()
 
 	//스토퍼커비와 충돌한 런커비
 	RECT Temp;
-	RECT mRunKirbyRect = mRunKirbyRect;
+	mRunKirbyRect = mPlayer->GetRect();
 	RECT mStopKirby = mStopperObject->GetRect();
 	if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
 	{
 		IsCrash = true;
 	}
 	mCurrentAnimation->Play();
+
 }
 
 void Run::Release()
@@ -72,6 +74,9 @@ void Run::Release()
 
 void Run::Update()
 {
+
+	if (GetPixel(BOTTOM->Get, mX + 10, mY - 20) != RGB(255,0,255) {mPlayer->GetX -= mPlayer->})
+
 	if (mCurrentAnimation == mLeftAnimation)
 	{
 		mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed()*Time::GetInstance()->DeltaTime());
