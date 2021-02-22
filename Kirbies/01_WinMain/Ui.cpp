@@ -30,7 +30,7 @@ Ui::Ui(PlayerState state, float x, float y, int count) {
 	mFrameY = 1;
 
 	mIsClicked = false;
-	//mMouse = (Mouse*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse,"Mouse");
+	mMouse = (Mouse*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "Mouse");
 }
 void Ui::Init()
 {
@@ -50,9 +50,8 @@ void Ui::Update()
 		mFrameY = 0;
 		if (Input::GetInstance()->GetKeyDown(MK_LBUTTON)) {
 			if (mCountNum != 0) {
-				mCountNum--;
-				//mMouse->SetPlayerState(mState);
-
+				//mCountNum--;
+				mMouse->SetPlayerState(mState);
 				mIsClicked = true;
 			}
 		}
