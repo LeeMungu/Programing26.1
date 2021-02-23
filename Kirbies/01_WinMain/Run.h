@@ -23,11 +23,11 @@ class Run : public State
 	RECT mRunKirbyRect;
 	RECT mWall;
 
-	int mIndexX;
+	int mFrameCount;
 	float mX, mY;
 
 	bool IsCrash;
-
+	bool mIsDestroyed;
 
 public:
 	void Init();
@@ -35,6 +35,6 @@ public:
 	void Update();
 	void Render(HDC hdc);
 
-
+	bool GetIsDestroyed() { return mIsDestroyed; }
 };
 
