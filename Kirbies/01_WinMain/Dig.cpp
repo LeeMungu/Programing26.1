@@ -47,6 +47,7 @@ void Dig::Init()
 
 	mIsFallCheck = false;
 	mIsDigCheck = false;
+	mRadius = 20;
 }
 
 void Dig::Update()
@@ -78,7 +79,7 @@ void Dig::Update()
 					//DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
 					//digpoint->Render(mBottom->GetImage()->GetHDC());
 					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
-					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 20);
+					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, mRadius);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
@@ -101,7 +102,7 @@ void Dig::Update()
 					//DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
 					//digpoint->Render(mBottom->GetImage()->GetHDC());
 					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
-					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 20);
+					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, mRadius);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
