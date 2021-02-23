@@ -4,6 +4,7 @@
 #include "Image.h"
 
 #include "Scene1.h"
+#include "Scene2.h"
 #include "LoadingScene.h"
 #include "MainScene.h"
 /*
@@ -36,7 +37,7 @@ void MainGame::Init()
 
 	//씬로드
 	SceneManager::GetInstance()->AddScene(L"MainScene", new MainScene);
-	SceneManager::GetInstance()->AddScene(L"Scene1", new Scene1);
+	SceneManager::GetInstance()->AddScene(L"Scene2", new Scene2);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene", new LoadingScene);
 	
 	//처음은 메인화면
