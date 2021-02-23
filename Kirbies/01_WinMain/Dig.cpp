@@ -12,7 +12,7 @@ void Dig::Init()
 	//이미지 불러오기
 	
 	mImage = IMAGEMANAGER->FindImage(L"Dig");
-
+	Image* temp = IMAGEMANAGER->FindImage(L"Fall");
 	//애니메이션 설정
 	mAnimation = new Animation();
 	if (mPlayer->GetIntMotionRL() == 0)
@@ -34,8 +34,8 @@ void Dig::Init()
 	mX = mPlayer->GetX();
 	mY = mPlayer->GetY();
 
-	mPlayer->SetSizeX(mImage->GetFrameWidth());
-	mPlayer->SetSizeY(mImage->GetFrameHeight());
+	mPlayer->SetSizeX(temp->GetFrameWidth());
+	mPlayer->SetSizeY(temp->GetFrameHeight());
 
 	mSizeX = mPlayer->GetSizeX();
 	mSizeY = mPlayer->GetSizeY();
@@ -86,7 +86,7 @@ void Dig::Update()
 					DeleteObject(pen);
 					DeleteObject(brush);
 
-					mPlayer->SetY(i);
+					mPlayer->SetY(mPlayer->GetY()+mRadius/2);
 					break;
 				}
 			}
@@ -108,7 +108,8 @@ void Dig::Update()
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
 					DeleteObject(pen);
 					DeleteObject(brush);
-					mPlayer->SetY(i);
+
+					mPlayer->SetY(mPlayer->GetY() + mRadius/2);
 					break;
 				}
 			}
