@@ -66,7 +66,7 @@ void Mouse::Render(HDC hdc)
 	//마우스 랙트 표시 지우지 말것
 	if (Input::GetInstance()->GetKey(VK_LCONTROL))
 	{
-		HPEN newPen = CreatePen(PS_SOLID, 8, RGB(100, 0, 100));
+		HPEN newPen = CreatePen(PS_SOLID, 5, RGB(100, 0, 100));
 		HPEN prevPen = (HPEN)SelectObject(hdc, newPen);
 		RenderRect(hdc, mRect);
 		SelectObject(hdc, prevPen);

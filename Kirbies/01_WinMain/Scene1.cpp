@@ -29,7 +29,7 @@ void Scene1::Init()
 	Door* door = new Door("Door",WINSIZEX/2,0,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2,200);
+	Goal* goal = new Goal("goal", WINSIZEX / 2+300,200);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	Ui* ui = new Ui(PlayerState::BoomState, 100, 100, 20);
