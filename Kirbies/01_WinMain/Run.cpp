@@ -32,7 +32,7 @@ void Run::Init()
 
 	//골인 애니메이션
 	mGoalKirbyAnimation = new Animation();
-	mGoalKirbyAnimation->InitFrameByStartEnd(0, 0, 5, 0, false);
+	mGoalKirbyAnimation->InitFrameByReverseLoop(0, 0, 5, 0);
 	mGoalKirbyAnimation->SetIsLoop(false);
 	mGoalKirbyAnimation->SetFrameUpdateTime(0.1f);
 

@@ -32,7 +32,10 @@ void Goal::Update()
 	{
 		RECT temp;
 		RECT playerRect = player[i]->GetRect();
-		if (IntersectRect(&temp, &playerRect, &mRect))
+		//골인 판정을 위한 렉트 수정
+		RECT goalRect = mRect;
+		goalRect.left = goalRect.left + 50; 
+		if (IntersectRect(&temp, &playerRect, &goalRect))
 		{
 			Player* tempPlayer = (Player*)player[i];
 			if (tempPlayer->GetIsDoor() == false)
