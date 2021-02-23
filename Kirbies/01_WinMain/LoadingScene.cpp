@@ -12,14 +12,10 @@ void LoadingScene::Init()
 {
 	mLoadIndex = 0;
 	mIsEndLoading = false;
-<<<<<<< HEAD
 
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64 * PlayerSize, 48 * PlayerSize, true); });
-=======
-	
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Stopper", Resources(L"stopper.bmp"), 110* PlayerSize, 24* PlayerSize, 5, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64*PlayerSize, 48 * PlayerSize, true); });
->>>>>>> 509cb4f2268ca88ed018dc83e6007ce70ffec63b
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47 * PlayerSize, 40 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
 	//AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background1", Resources(L"backGround3.bmp"), 768, 336, true); });
