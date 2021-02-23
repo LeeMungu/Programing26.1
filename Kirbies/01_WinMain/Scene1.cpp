@@ -32,6 +32,7 @@ void Scene1::Init()
 	Goal* goal = new Goal("goal", WINSIZEX / 2+300,200);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
+
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 20);
@@ -42,6 +43,7 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
+
 
 	//camera
 	Camera* camera = new Camera();

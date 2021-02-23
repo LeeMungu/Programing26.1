@@ -29,6 +29,7 @@ void Scene2::Init()
 	Goal* goal = new Goal("goal", 100, 430);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 	//UI
+
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 20);
