@@ -34,7 +34,7 @@ void Run::Init()
 	mGoalKirbyAnimation = new Animation();
 	mGoalKirbyAnimation->InitFrameByStartEnd(0, 0, 5, 0, false);
 	mGoalKirbyAnimation->SetIsLoop(false);
-	mGoalKirbyAnimation->SetFrameUpdateTime(0.3f);
+	mGoalKirbyAnimation->SetFrameUpdateTime(0.1f);
 
 	//mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom");
 
@@ -119,14 +119,20 @@ void Run::Update()
 	//	}
 	//	IsCrash = false;
 	//}
-	//// 골인 애니메이션이 트루일 경우
-	//if (mPlayer->GetIsGoal() == true);
-	//{
-	//	mCurrentAnimation->Stop();
-	//	mCurrentAnimation = mGoalKirbyAnimation;
-	//	mCurrentAnimation->Play();
-	//	mPlayer->SetIsGoal(false);
-	//}
+	// 골인 애니메이션이 트루일 경우
+	if (mPlayer->GetIsGoal() == true)
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mGoalKirbyAnimation;
+		mCurrentAnimation->Play();
+		mPlayer->SetIsGoal(false);
+	}
+
+	if (mCurrentAnimation == mGoalKirbyAnimation &&
+		mCurrentAnimation->GetIsPlay() == false)
+	{
+		mPlayer->SetIsDestroy(true);
+	}
 
 	//if (mCurrentAnimation == mGoalKirbyAnimation)
 	//{
@@ -140,8 +146,19 @@ void Run::Update()
 
 void Run::Render(HDC hdc)
 {
+	Image* nowImage;
+	if (mCurrentAnimation == mLeftAnimation ||
+		mCurrentAnimation == mRightAnimation)
+	{
+		nowImage = mRunKirby;
+	}
+	else
+	{
+		nowImage = mGoalKirby;
+	}
+
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mRunKirby, mPlayer->GetX() - mRunKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+		->FrameRender(hdc, nowImage, mPlayer->GetX() - mRunKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
 
