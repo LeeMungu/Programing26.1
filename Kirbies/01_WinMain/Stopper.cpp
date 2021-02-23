@@ -20,7 +20,8 @@ void Stopper::Init()
 
 
 	mStopperAnimation = new Animation();
-	mStopperAnimation->InitFrameByStartEnd(0, 0, 4, 0, true);
+	mStopperAnimation->InitFrameByReverseLoop(0, 0, 4, 0);
+	//mStopperAnimation->InitFrameByStartEnd(0, 0, 4, 0, true);
 	mStopperAnimation->SetIsLoop(true);
 	mStopperAnimation->SetFrameUpdateTime(0.2f);
 	mCurrentAnimation = mStopperAnimation;

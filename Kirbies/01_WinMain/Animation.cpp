@@ -121,6 +121,24 @@ void Animation::InitFrameByEndStart(int startX, int startY, int endX, int endY, 
 	}
 }
 
+void Animation::InitFrameByReverseLoop(int startX, int startY, int endX, int endY)
+{
+	for (int y = startY; y <= endY; ++y)
+	{
+		for (int x = startX; x <= endX; ++x)
+		{
+			mFrameList.push_back(make_pair(x, y));
+		}
+	}
+	for (int y = endY; y >= startY; --y)
+	{
+		for (int x = endX; x >= startX; --x)
+		{
+			mFrameList.push_back(make_pair(x, y));
+		}
+	}
+}
+
 void Animation::SetCallbackFunc(const function<void(void)>& func)
 {
 	mCallbackFunc = func;
