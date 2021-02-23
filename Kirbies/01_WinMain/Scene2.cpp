@@ -17,10 +17,10 @@ void Scene2::Init()
 	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
 	//백그라운드 받아오기
-	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
+	BackGround* backGround = new BackGround("BackGround1", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
 	//바닥 받아오기
-	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
+	Bottom* bottom = new Bottom("Bottom1", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 	//시작문 받아오기
 	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
@@ -53,18 +53,22 @@ void Scene2::Init()
 
 	mIsSpecial = false;
 
-
-
 }
 
 void Scene2::Release()
 {
+	ObjectManager::GetInstance()->Release();
 }
 
 void Scene2::Update()
 {
+	ObjectManager::GetInstance()->Update();
+	GameEventManager::GetInstance()->Update();
+
+	SpecialFunc();
 }
 
 void Scene2::Render(HDC hdc)
 {
+	ObjectManager::GetInstance()->Render(hdc);
 }
