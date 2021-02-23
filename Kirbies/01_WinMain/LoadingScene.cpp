@@ -28,7 +28,6 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"UmbrellaEffectSound", Resources(L"UmbrellaEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"RunEffectSound", Resources(L"RunEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene1BGM", Resources(L"GourmetRaceKirbySuperStar.mp3"), true); });
-	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"TitleBGM", Resources(L"KirbysDreamland3SandCanyon1.mp3"), true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppear", Resources(L"/sp/appear.bmp"), 1328, 540, 8, 3, true);});
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppearEffect", Resources(L"/sp/appeareffect.bmp"), 2988, 1536, 9, 3, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttack", Resources(L"/sp/attack.bmp"), 1494, 720, 9, 4, true); });
@@ -58,8 +57,7 @@ void LoadingScene::Release()
 
 void LoadingScene::Update()
 {
-	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
-
+	
 	if (mIsEndLoading == true)
 	{
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
