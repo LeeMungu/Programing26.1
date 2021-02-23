@@ -41,6 +41,8 @@ class Player : public GameObject
 	float mSpeed;
 	float mGravity;
 
+	bool mIsCrash;
+
 public:
 	Player(const string& name,float x, float y);
 

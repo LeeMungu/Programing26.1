@@ -54,20 +54,8 @@ void Climb::Update()
 		}
 		else
 		{
-			
-			//런으로 변경	
-			if (mIsWallCheck == false)
-			{
-				mPlayer->SetPlayerState(PlayerState::RunState);
-				mPlayer->SetIsChange(true);
-			}
-			else
-			{
-				WalkAnim();
-				mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-			}
-			
-
+			mPlayer->SetPlayerState(PlayerState::FallState);
+			mPlayer->SetIsChange(true);
 		}
 	}
 	else  //왼쪽

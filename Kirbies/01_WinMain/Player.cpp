@@ -55,6 +55,8 @@ void Player::Init()
 	mIsGoal = false;
 	mIsDoor = false;
 	mSpeed = 50;
+
+	mIsCrash = false;
 }
 
 void Player::Release()
@@ -66,35 +68,80 @@ void Player::Update()
 {
 	if (mIsChange)
 	{
-		SafeDelete(mCurrentState);
-		switch (mPlayerState)
+		if (mPlayerState == PlayerState::BoomState)
 		{
-		case PlayerState::BoomState:
+			SafeDelete(mCurrentState);
 			mCurrentState = new Boom;
-			break;
-		case PlayerState::ClimbState:
-			mCurrentState = new Climb;
-			break;
-		case PlayerState::DigState:
-			mCurrentState = new Dig;
-			break;
-		case PlayerState::FallState:
-			mCurrentState = new Fall;
-			break;
-		case PlayerState::RunState:
-			mCurrentState = new Run;
-			break;
-		case PlayerState::StopperState:
-			mCurrentState = new Stopper;
-			break;
-		case PlayerState::UmbrellaState:
-			mCurrentState = new Umbrella;
-			break;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
 		}
-		mCurrentState->SetPlayerPtr(this);
-		mIsChange = false;
-		mCurrentState->Init();
-		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		if (mPlayerState == PlayerState::ClimbState&&mIsCrash==true)
+		{
+			mIsCrash = false;
+			SafeDelete(mCurrentState);
+			mCurrentState = new Climb;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (mPlayerState == PlayerState::DigState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Dig;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (mPlayerState == PlayerState::FallState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Fall;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (mPlayerState == PlayerState::RunState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Run;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (mPlayerState == PlayerState::StopperState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Stopper;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		if (mPlayerState == PlayerState::UmbrellaState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Umbrella;
+
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+			
+		
 	}
 
 	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
@@ -109,7 +156,27 @@ void Player::Update()
 			{
 				mY = y - mSizeY / 2;
 				mIsChange = true;
+
 				mPlayerState = PlayerState::RunState;
+			
+				break;
+			}
+		}
+	}
+	if (mPlayerState == PlayerState::ClimbState)
+	{
+		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
+		{
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mY = y - mSizeY / 2;
+				SafeDelete(mCurrentState);
+				mCurrentState = new Run;
+				mCurrentState->SetPlayerPtr(this);
+				mIsChange = false;
+				mCurrentState->Init();
+				mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 				break;
 			}
 		}
@@ -143,6 +210,7 @@ void Player::Update()
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mRect.top+mSizeY/4);
 			if (pixelColor != RGB(255, 0, 255))
 			{
+				mIsCrash = true;
 				mIsMotionRL = 1;
 			}
 		}
@@ -151,6 +219,7 @@ void Player::Update()
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.left, mRect.top+mSizeY/4);
 			if (pixelColor != RGB(255, 0, 255))
 			{
+				mIsCrash = true;
 				mIsMotionRL = 0;
 			}
 		}	
@@ -170,6 +239,10 @@ void Player::Update()
 			}
 		}
 	}
+	if (mPlayerState == PlayerState::ClimbState)
+	{
+
+	}
 
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
@@ -182,6 +255,37 @@ void Player::Render(HDC hdc)
 	{
 		ColorLender::GetInstance()->ColorRectRender(hdc, mRect, 255, 0, 0);
 	}
+	wstring str;
+	if (mPlayerState == PlayerState::BoomState)
+	{
+		str = L"Boom";
+	}
+	else if (mPlayerState == PlayerState::ClimbState)
+	{
+		str = L"climb";
+	}
+	else if(mPlayerState == PlayerState::DigState)
+	{
+		str = L"dig";
+	}
+	else if (mPlayerState == PlayerState::FallState)
+	{
+		str = L"fall";
+	}
+	else if (mPlayerState == PlayerState::RunState)
+	{
+		str = L"run";
+	}
+	else if (mPlayerState == PlayerState::StopperState)
+	{
+		str = L"stop";
+	}
+	else if (mPlayerState == PlayerState::UmbrellaState)
+	{
+		str = L"umb";
+	}
+	POINT playerPoint = CameraManager::GetInstance()->GetMainCamera()->GetPoint(mX,mY);
+	TextOut(hdc, playerPoint.x, playerPoint.y, str.c_str(), str.length());
 
 	mCurrentState->Render(hdc);
 }
