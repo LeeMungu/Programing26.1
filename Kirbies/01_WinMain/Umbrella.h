@@ -11,6 +11,8 @@ class Umbrella : public State
 	Bottom* mBottom;
 	Image* mImage;
 	Animation* mLeftAnimation;
+	Animation* mLeftStartAnimation;
+	Animation* mRightStartAnimation;
 	Animation* mRightAnimation;
 	Animation* mCurrentAnimation;
 
