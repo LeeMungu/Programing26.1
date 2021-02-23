@@ -18,8 +18,6 @@ class Ui : public GameObject
 	int mUnitsNum; //1의 자리 저장
 	int mFrameX, mFrameY;
 
-	bool mIsClicked;
-
 public:
 	Ui(PlayerState state, float x, float y, int count);
 
@@ -29,10 +27,8 @@ public:
 	void Render(HDC hdc)override;
 
 	int GetStateBtnCount() { return mCountNum; }
-	void SetStateBtnCount() { mCountNum -= 1; }
-
+	void SetStateBtnCount() { mCountNum -= 1;}
 
 	//void SetPlayerPtr(Player* player) { mPlayer = player; }
-
 };
 
