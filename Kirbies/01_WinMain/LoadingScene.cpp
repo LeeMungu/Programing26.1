@@ -15,9 +15,9 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64, 48, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47, 40, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background1", Resources(L"backGround3.bmp"), 768, 336, true); });
+	//AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background1", Resources(L"backGround3.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene01.bmp"), 2560, 1440, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom1", Resources(L"scene3.bmp"), 2560, 1440, true); });
+	//AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene2.bmp"), 2560, 1440, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2,1, true); });
 	//AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Player", Resources(L"kirbyFinal4.bmp"), 1520, 318, 14, 4, true); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BoomEffectSound", Resources(L"BoomEffectSound.mp3"), false); });
@@ -26,6 +26,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BunEffectSound", Resources(L"BunEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"DigEffectSound", Resources(L"DigEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"UmbrellaEffectSound", Resources(L"UmbrellaEffectSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"RunEffectSound", Resources(L"RunEffectSound.mp3"), false); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppear", Resources(L"/sp/appear.bmp"), 1328, 540, 8, 3, true);});
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppearEffect", Resources(L"/sp/appeareffect.bmp"), 2988, 1536, 9, 3, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttack", Resources(L"/sp/attack.bmp"), 1494, 720, 9, 4, true); });

@@ -4,6 +4,7 @@
 #include "Image.h"
 
 #include "Scene1.h"
+#include "Scene2.h"
 #include "LoadingScene.h"
 #include "MainScene.h"
 /*
