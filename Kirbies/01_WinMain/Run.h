@@ -27,7 +27,7 @@ class Run : public State
 	float mX, mY;
 
 	bool IsCrash;
-
+	bool mIsDestroyed;
 
 public:
 	void Init();
@@ -35,6 +35,6 @@ public:
 	void Update();
 	void Render(HDC hdc);
 
-
+	bool GetIsDestroyed() { return mIsDestroyed; }
 };
 

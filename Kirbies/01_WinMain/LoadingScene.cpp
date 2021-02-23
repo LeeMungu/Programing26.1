@@ -42,7 +42,8 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GoalKirby", Resources(L"Goalin.bmp"), 138, 23, 6, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Umbrella", Resources(L"umbrella.bmp"), 900, 86, 25, 2,true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Numbers", Resources(L"NumberDot.bmp"), 100, 14, 10, 1,true); });
-
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Dig", Resources(L"dig.bmp"), 574, 82, 14, 2, true); });
+	
 
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround1");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");

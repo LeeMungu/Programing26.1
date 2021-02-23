@@ -33,14 +33,15 @@ void CountingPlayerUI::Update()
 		mCountTimer = 0;
 		mCreatedPlayerCount++;
 	}
+
 }
 
 void CountingPlayerUI::Render(HDC hdc)
 {
 	wstring createdPlayer = L"OUT " + to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = L"IN " + to_wstring(mGoalPlayerCount / mPlayerCount) + L"%";
-	wstring timer = L"TIME " + to_wstring((int)(mTimer / (1000 * 60)) % 60) + L":"
-		+ to_wstring((int)(mTimer / 1000) % 60);
+	wstring GoalPlayer = L"IN " + to_wstring(mGoalPlayerCount / mPlayerCount * 100) + L"%";
+	wstring timer = L"TIME " + to_wstring((int)(mTimer / 60) % 60) + L":"
+		+ to_wstring((int)mTimer % 60);
 
 	TextOut(hdc, mX, mY, createdPlayer.c_str(), createdPlayer.length());
 	TextOut(hdc, mX + 100, mY, GoalPlayer.c_str(), GoalPlayer.length());

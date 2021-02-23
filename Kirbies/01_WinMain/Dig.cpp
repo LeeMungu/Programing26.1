@@ -10,7 +10,7 @@
 void Dig::Init()
 {
 	//이미지 불러오기
-	IMAGEMANAGER->LoadFromFile(L"Dig", Resources(L"dig.bmp"), 1148, 164, 14, 2, true);
+	
 	mImage = IMAGEMANAGER->FindImage(L"Dig");
 
 	//애니메이션 설정
