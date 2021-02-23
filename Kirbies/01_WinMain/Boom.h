@@ -2,7 +2,7 @@
 #include "State.h"
 class Boom : public State
 {
-	//float mTimeTemp = 0;
+	float mTimer;
 	//int mCountNum = 5;
 	//bool mIsDead = false;
 
