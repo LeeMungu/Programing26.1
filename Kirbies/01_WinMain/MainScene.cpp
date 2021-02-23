@@ -13,7 +13,6 @@ void MainScene::Init()
 {
 	BackGround* background = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2, L"MainBackGround");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, background);
-
 	TitleStyle1* mainImage = new TitleStyle1(L"MainImage");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainImage);
 

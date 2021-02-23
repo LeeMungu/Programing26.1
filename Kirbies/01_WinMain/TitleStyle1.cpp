@@ -26,6 +26,7 @@ void TitleStyle1::Release()
 
 void TitleStyle1::Update()
 {
+
 	if (mUpLimit > WINSIZEY/2 && mY >= WINSIZEY/2 && mState!=TitleStyle1::State::Stop)
 		//mY > WINSIZEY/2-50 && mY < WINSIZEY/2+50)
 	{
@@ -56,6 +57,7 @@ void TitleStyle1::Update()
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText1);
 		mIsEndAnimation = false;
 	}
+
 
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }

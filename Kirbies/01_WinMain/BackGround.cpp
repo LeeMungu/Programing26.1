@@ -2,6 +2,8 @@
 #include "BackGround.h"
 #include "Image.h"
 #include "Camera.h"
+
+
 BackGround::BackGround(const string& name, float x, float y)
 	: GameObject(name)
 {
