@@ -19,7 +19,7 @@ class Ui : public GameObject
 	int mFrameX, mFrameY;
 
 public:
-	Ui(PlayerState state, float x, float y, int count);
+	Ui(const string& name, PlayerState state, float x, float y, int count);
 
 	void Init()override;
 	void Release()override;

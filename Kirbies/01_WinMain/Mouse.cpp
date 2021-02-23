@@ -3,7 +3,7 @@
 #include "Image.h"
 #include "Camera.h"
 #include "Player.h"
-
+#include "Ui.h"
 Mouse::Mouse(const string& name)
 	:GameObject(name)
 {
@@ -49,6 +49,28 @@ void Mouse::Update()
 				Player* tempPlayer = (Player*)player[i];
 				tempPlayer->SetPlayerState(mPlayerState);
 				tempPlayer->SetIsChange(true);
+
+				//if (mPlayerState == PlayerState::BoomState) {
+				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "BoomBtn");
+				//	ui->SetStateBtnCount();
+				//}
+				//else if (mPlayerState == PlayerState::ClimbState) {
+				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "ClimbBtn");
+				//	ui->SetStateBtnCount();
+				//}
+				//else if (mPlayerState == PlayerState::DigState) {
+				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "DigBtn");
+				//	ui->SetStateBtnCount();
+				//}
+				//else if (mPlayerState == PlayerState::UmbrellaState) {
+				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "UmbrellaBtn");
+				//	ui->SetStateBtnCount();
+				//}
+				//else if (mPlayerState == PlayerState::StopperState) {
+				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "StopeerBtn");
+				//	ui->SetStateBtnCount();
+				//}
+
 			}
 		}
 		//

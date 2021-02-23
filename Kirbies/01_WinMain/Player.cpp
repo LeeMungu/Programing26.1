@@ -114,20 +114,24 @@ void Player::Update()
 	}
 	if (mPlayerState == PlayerState::RunState)
 	{
-		for (float y = mY; y < mY + mSizeY / 2+50; y++)
+		bool isGround = false;
+		for (float y = mY; y < mY + mSizeY / 2 + 50; y++)
 		{
-		
+
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
 			if (pixelColor != RGB(255, 0, 255))
 			{
+				isGround = true;
 				mY = y - mSizeY / 2;
 				break;
 			}
-			
+		}
+		if (isGround == false)
+		{
+			mPlayerState = PlayerState::FallState;
+			mIsChange = true;
 		}
 	}
-
-
 
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
