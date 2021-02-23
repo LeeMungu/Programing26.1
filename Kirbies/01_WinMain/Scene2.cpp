@@ -26,7 +26,7 @@ void Scene2::Init()
 	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 	//골문 받아오기
-	Goal* goal = new Goal("goal", WINSIZEX / 2, 200);
+	Goal* goal = new Goal("goal", 100, 430);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 	//UI
 	Ui* ui = new Ui(PlayerState::BoomState, 100, 100, 20);
