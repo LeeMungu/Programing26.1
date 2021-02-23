@@ -123,6 +123,7 @@ void Player::Update()
 				mY = y - mSizeY / 2;
 				break;
 			}
+			if(y==mY + mSizeY)
 		}
 	}
 

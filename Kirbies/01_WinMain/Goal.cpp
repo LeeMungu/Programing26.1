@@ -26,7 +26,7 @@ void Goal::Release()
 void Goal::Update()
 {
 	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
-	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	mRect = RectMakeCenter(mX, mY, mSizeX - 60, mSizeY);
 	
 	for (int i = 0; i < player.size(); i++)
 	{
@@ -55,5 +55,5 @@ void Goal::Render(HDC hdc)
 	}
 
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mRect.left, mRect.top, mFrameX, mFrameY);
+		->FrameRender(hdc, mImage, mRect.left-30, mRect.top, mFrameX, mFrameY);
 }
