@@ -60,7 +60,7 @@ void Run::Init()
 	mPlayer->SetSizeY(mRunKirby->GetFrameHeight());
 
 	mIsDestroyed = false;
-
+	mScaleValue =1.f;
 }
 
 void Run::Release()
@@ -75,6 +75,7 @@ void Run::Release()
 
 void Run::Update()
 {
+	mScaleValue -= 0.0005f;
 	if (mPlayer->GetIntMotionRL() == 0 && mCurrentAnimation == mLeftAnimation)
 	{
 		mCurrentAnimation->Stop();
@@ -191,9 +192,21 @@ void Run::Render(HDC hdc)
 		nowImage = mGoalKirby;
 	}
 
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, nowImage, mPlayer->GetX() - mRunKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
-			mCurrentAnimation->GetNowFrameX(),
-			mCurrentAnimation->GetNowFrameY());
-
+	if (nowImage == mRunKirby)
+	{
+		CameraManager::GetInstance()->GetMainCamera()
+			->FrameRender(hdc, nowImage, mPlayer->GetX() - mRunKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+				mCurrentAnimation->GetNowFrameX(),
+				mCurrentAnimation->GetNowFrameY());
+	}
+	else if (nowImage == mGoalKirby)
+	{
+		CameraManager::GetInstance()->GetMainCamera()
+			->ScaleFrameRender(hdc, nowImage, mPlayer->GetX() - mRunKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+				mCurrentAnimation->GetNowFrameX(),
+				mCurrentAnimation->GetNowFrameY(),
+				nowImage->GetFrameWidth() * mScaleValue,
+				nowImage->GetFrameHeight() * mScaleValue
+				);
+	}
 }
