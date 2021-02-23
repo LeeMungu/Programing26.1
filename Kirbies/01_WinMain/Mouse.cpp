@@ -50,26 +50,27 @@ void Mouse::Update()
 				tempPlayer->SetPlayerState(mPlayerState);
 				tempPlayer->SetIsChange(true);
 
-				//if (mPlayerState == PlayerState::BoomState) {
-				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "BoomBtn");
-				//	ui->SetStateBtnCount();
-				//}
-				//else if (mPlayerState == PlayerState::ClimbState) {
-				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "ClimbBtn");
-				//	ui->SetStateBtnCount();
-				//}
-				//else if (mPlayerState == PlayerState::DigState) {
-				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "DigBtn");
-				//	ui->SetStateBtnCount();
-				//}
-				//else if (mPlayerState == PlayerState::UmbrellaState) {
-				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "UmbrellaBtn");
-				//	ui->SetStateBtnCount();
-				//}
-				//else if (mPlayerState == PlayerState::StopperState) {
-				//	Ui* ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Mouse, "StopeerBtn");
-				//	ui->SetStateBtnCount();
-				//}
+				Ui* ui;
+				if (mPlayerState == PlayerState::BoomState) {
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "BoomBtn");
+					ui->SetStateBtnCount();
+				}
+				else if (mPlayerState == PlayerState::ClimbState) {
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "ClimbBtn");
+					ui->SetStateBtnCount();
+				}
+				else if (mPlayerState == PlayerState::DigState) {
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "DigBtn");
+					ui->SetStateBtnCount();
+				}
+				else if (mPlayerState == PlayerState::UmbrellaState) {
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "UmbrellaBtn");
+					ui->SetStateBtnCount();
+				}
+				else if (mPlayerState == PlayerState::StopperState) {
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "StopperBtn");
+					ui->SetStateBtnCount();
+				}
 
 			}
 		}
