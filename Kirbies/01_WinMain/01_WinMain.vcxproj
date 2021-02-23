@@ -156,6 +156,7 @@
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Climb.h" />
     <ClInclude Include="ColorLender.h" />
+    <ClInclude Include="CountingPlayerUI.h" />
     <ClInclude Include="DefineHeader.h" />
     <ClInclude Include="Dig.h" />
     <ClInclude Include="DigPoint.h" />
@@ -213,6 +214,7 @@
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Climb.cpp" />
     <ClCompile Include="ColorLender.cpp" />
+    <ClCompile Include="CountingPlayerUI.cpp" />
     <ClCompile Include="Dig.cpp" />
     <ClCompile Include="DigPoint.cpp" />
     <ClCompile Include="Door.cpp" />
