@@ -23,6 +23,7 @@ class Run : public State
 	RECT mRunKirbyRect;
 	RECT mWall;
 
+	int mIndexX;
 	float mX, mY;
 
 	bool IsCrash;

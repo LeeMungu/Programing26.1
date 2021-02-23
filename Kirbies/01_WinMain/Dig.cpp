@@ -10,7 +10,7 @@
 void Dig::Init()
 {
 	//이미지 불러오기
-	IMAGEMANAGER->LoadFromFile(L"Dig", Resources(L"dig.bmp"), 574, 82, 14, 2, true);
+	IMAGEMANAGER->LoadFromFile(L"Dig", Resources(L"dig.bmp"), 1148, 164, 14, 2, true);
 	mImage = IMAGEMANAGER->FindImage(L"Dig");
 
 	//애니메이션 설정
@@ -44,21 +44,27 @@ void Dig::Init()
 
 	//mPlayer->SetRect(mDigRect);
 	//셋함수 만들어서 넣어두면되나? 상의필요
+
+	mIsFallCheck = false;
+	mIsDigCheck = false;
 }
 
 void Dig::Update()
 {
 
 	float x = mPlayer->GetX();
-	float y = mPlayer->GetRect().bottom;
+	float y = mPlayer->GetY();
 
-	for (int i = y - 100; i < y + 100; i++)
+
+
+	for (int i = y; i < y + 100; i++)
 	{
 		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(), x, y);
 
 
 		if (pixelColor != RGB(255, 0, 255))
 		{
+			DigAnimation();
 			if (mPlayer->GetIntMotionRL() == 0)
 			{
 
@@ -69,20 +75,21 @@ void Dig::Update()
 					HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
 					HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
-					DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
-					digpoint->Render(mBottom->GetImage()->GetHDC());
-					ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
+					//DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+					//digpoint->Render(mBottom->GetImage()->GetHDC());
+					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
+					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 20);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
 					DeleteObject(pen);
 					DeleteObject(brush);
 
-					y = i;
+					mPlayer->SetY(i);
 					break;
 				}
 			}
-			else if(mPlayer->GetIntMotionRL() == 1)
+			else if (mPlayer->GetIntMotionRL() == 1)
 			{
 				if (mAnimation->GetNowFrameX() == 8)
 				{
@@ -91,27 +98,30 @@ void Dig::Update()
 					HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
 					HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
-					DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
-					digpoint->Render(mBottom->GetImage()->GetHDC());
-					ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
+					//DigPoint* digpoint = new DigPoint(mBottom->GetImage()->GetHDC(), x, y, 10);
+					//digpoint->Render(mBottom->GetImage()->GetHDC());
+					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
+					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, 20);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
 					DeleteObject(pen);
 					DeleteObject(brush);
-
-					y = i;
+					mPlayer->SetY(i);
 					break;
 				}
 			}
-			
+
 
 		}
 		else
 		{
+			mPlayer->SetY(mPlayer->GetY() + 0.5f * Time::GetInstance()->DeltaTime());
+			FallAnimation();
 			//마젠타면 떨어지는 상태로 변경...인데 플레이어가 체크할것인가?
 		}
 	}
+
 	mAnimation->Update();
 }
 
@@ -121,4 +131,51 @@ void Dig::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mPlayer->GetX() - mImage->GetFrameWidth() / 2, mPlayer->GetRect().top,
 			mAnimation->GetNowFrameX(),
 			mAnimation->GetNowFrameY());
+}
+
+void Dig::FallAnimation()
+{
+	if (mIsFallCheck == false)
+	{
+		mAnimation->Stop();
+		mImage = IMAGEMANAGER->FindImage(L"Fall");
+		if (mPlayer->GetIntMotionRL() == 0)
+		{
+			mAnimation->InitFrameByStartEnd(0, 0, 9, 0, false);
+		}
+		else
+		{
+			mAnimation->InitFrameByStartEnd(0, 1, 9, 1, false);
+		}
+		mAnimation->SetIsLoop(true);
+		mAnimation->SetFrameUpdateTime(0.1f);
+		mAnimation->Play();
+
+		mIsFallCheck = true;
+	}
+	mIsDigCheck = false;
+
+}
+
+void Dig::DigAnimation()
+{
+	if (mIsDigCheck == false)
+	{
+		mAnimation->Stop();
+		mImage = IMAGEMANAGER->FindImage(L"Dig");
+		if (mPlayer->GetIntMotionRL() == 0)
+		{
+			mAnimation->InitFrameByStartEnd(0, 0, 13, 0, false);
+		}
+		else
+		{
+			mAnimation->InitFrameByEndStart(13, 1, 0, 1, false);
+		}
+		mAnimation->SetIsLoop(true);
+		mAnimation->SetFrameUpdateTime(0.1f);
+		mAnimation->Play();
+		mIsDigCheck = true;
+	}
+	mIsFallCheck = false;
+
 }

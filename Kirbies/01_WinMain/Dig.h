@@ -15,9 +15,17 @@ class Dig :public State
 	float mSizeX;
 	float mSizeY;
 
+	bool mIsFallCheck;
+	bool mIsDigCheck;
+
 public:
 	void Init()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+
+	void FallAnimation();
+
+	void DigAnimation();
 };
 
