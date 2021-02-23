@@ -7,6 +7,7 @@
 #include "GameObject.h"
 #include "StopperObject.h"
 #include "Camera.h"
+#include "Bottom.h"
 
 Stopper::Stopper()
 	:mIsPlay(false), mIsLoop(false), mCurrentFrameIndex(0),
@@ -14,9 +15,8 @@ Stopper::Stopper()
 
 void Stopper::Init()
 {
-	IMAGEMANAGER->LoadFromFile(L"Stopper", Resources(L"stopper.bmp"), 110, 24, 5, 1, true);
-	mImage = IMAGEMANAGER->FindImage(L"Stopper");
 
+	mImage = IMAGEMANAGER->FindImage(L"Stopper");
 	mStopperAnimation = new Animation();
 	mStopperAnimation->InitFrameByReverseLoop(0, 0, 4, 0);
 	mStopperAnimation->SetIsLoop(true);
@@ -26,6 +26,9 @@ void Stopper::Init()
 
 	mPlayer->SetSizeX(mImage->GetFrameWidth());
 	mPlayer->SetSizeY(mImage->GetFrameHeight());
+	mX = mPlayer->GetX();
+	mY = mPlayer->GetY();
+	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 }
 
 void Stopper::Release()
@@ -37,6 +40,25 @@ void Stopper::Release()
 
 void Stopper::Update()
 {
+	//for (int y = mY; y < mY + mPlayer->GetSizeY(); y++)
+	//{
+	//	COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(), mX, mY);
+
+	//	if (pixelColor == RGB(255, 0, 255))
+	//	{
+	//		mPlayer->SetY(mPlayer->GetY() + mPlayer->GetGravity() * Time::GetInstance()->DeltaTime());
+	//		break;
+	//	}
+	//	if (pixelColor != RGB(255,0,255) && mPlayer->GetSpeed() != 0)
+	//	{
+	//		mPlayer->SetSpeed(0);
+	//		StopperObject* stopperObject = new StopperObject(mPlayer->GetX(), mPlayer->GetY(), mPlayer->GetSizeX(), mPlayer->GetSizeY());
+	//		stopperObject->Init();
+	//		ObjectManager::GetInstance()->AddObject(ObjectLayer::StopperObject, stopperObject);
+	//		mCurrentAnimation = mStopperAnimation;
+	//	}
+	//}
+	//mCurrentAnimation->Update();
 
 	if (mPlayer->GetSpeed() != 0)
 	{
