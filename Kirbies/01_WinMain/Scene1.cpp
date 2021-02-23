@@ -60,6 +60,9 @@ void Scene1::Init()
 
 	ObjectManager::GetInstance()->Init();
 
+	//사운드
+	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
+
 	mIsSpecial = false;
 }
 
@@ -70,6 +73,9 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
+	//클리어되면 씬 넘어가게
+	//사운드 멈춰주기
+
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
