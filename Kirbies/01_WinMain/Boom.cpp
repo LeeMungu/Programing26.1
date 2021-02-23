@@ -37,9 +37,6 @@ void Boom::Init() {
 void Boom::Update() {
 	mTimer += Time::GetInstance()->DeltaTime();
 
-	//if (mAnimation->GetIsPlay() == false) { //불타는 애니메이션 동작 끝났으면
-		//연기 이펙트 발생
-		
 	if (mTimer >= 3) {
 		//맵 파괴
 		HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
