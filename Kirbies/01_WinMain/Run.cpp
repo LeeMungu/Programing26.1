@@ -54,7 +54,8 @@ void Run::Init()
 
 	//작성해야함
 
-	
+	mIndexX = 0;
+
 	mPlayer->SetSizeX(mRunKirby->GetFrameWidth());
 	mPlayer->SetSizeY(mRunKirby->GetFrameHeight());
 
@@ -82,7 +83,12 @@ void Run::Update()
 	//	mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
 	//}
 
-
+	mIndexX++;
+	if (mIndexX >= 10)
+	{
+		SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.8);
+		mIndexX = 0;
+	}
 
 	if (mCurrentAnimation == mLeftAnimation)
 	{
