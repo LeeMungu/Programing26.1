@@ -18,6 +18,8 @@ class Dig :public State
 	bool mIsFallCheck;
 	bool mIsDigCheck;
 
+	float mRadius;
+
 public:
 	void Init()override;
 	void Update()override;
@@ -27,5 +29,10 @@ public:
 	void FallAnimation();
 
 	void DigAnimation();
+
+	float GetRadius() { return mRadius; }
+	void SetRadius(float x) { mRadius = x; }
+
+	bool GetDigCheck() { return mIsDigCheck; }
 };
 
