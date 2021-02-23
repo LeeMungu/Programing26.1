@@ -23,7 +23,7 @@ class Run : public State
 	RECT mRunKirbyRect;
 	RECT mWall;
 
-	int mIndexX;
+	int mFrameCount;
 	float mX, mY;
 
 	bool IsCrash;
