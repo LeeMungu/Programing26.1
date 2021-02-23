@@ -2,6 +2,8 @@
 #include "Title.h"
 #include "Image.h"
 
+
+
 Title::Title(wstring key)
 {
 	mImage = IMAGEMANAGER->FindImage(key);

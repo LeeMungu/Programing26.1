@@ -30,6 +30,7 @@ void TitleStyle3::Release()
 
 void TitleStyle3::Update()
 {
+
 	if (mState == State::RightToLeft)
 	{
 		mX -= 20;
