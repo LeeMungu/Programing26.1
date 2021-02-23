@@ -10,6 +10,7 @@
 #include "Door.h"
 #include "Goal.h"
 #include "Ui.h"
+#include "CountingPlayerUI.h"
 void Scene1::Init()
 {
 	//player
@@ -43,6 +44,9 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
+
+	CountingPlayerUI* countUI = new CountingPlayerUI(100, WINSIZEY - 100, 300);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
 
 
 	//camera

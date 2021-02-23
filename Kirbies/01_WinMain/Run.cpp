@@ -59,7 +59,7 @@ void Run::Init()
 	mPlayer->SetSizeX(mRunKirby->GetFrameWidth());
 	mPlayer->SetSizeY(mRunKirby->GetFrameHeight());
 
-
+	mIsDestroyed = false;
 
 }
 
@@ -75,6 +75,19 @@ void Run::Release()
 
 void Run::Update()
 {
+	if (mPlayer->GetIntMotionRL() == 0 && mCurrentAnimation == mLeftAnimation)
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mRightAnimation;
+		mCurrentAnimation->Play();
+	}
+	else if (mPlayer->GetIntMotionRL() == 1 && mCurrentAnimation == mRightAnimation)
+	{
+		mCurrentAnimation->Stop();
+		mCurrentAnimation = mLeftAnimation;
+		mCurrentAnimation->Play();
+
+	}
 
 	//COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
 	//	mX, mY);
@@ -151,6 +164,7 @@ void Run::Update()
 	if (mCurrentAnimation == mGoalKirbyAnimation &&
 		mCurrentAnimation->GetIsPlay() == false)
 	{
+		mIsDestroyed = true;
 		mPlayer->SetIsDestroy(true);
 	}
 

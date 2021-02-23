@@ -131,6 +131,24 @@ void Player::Update()
 			mPlayerState = PlayerState::FallState;
 			mIsChange = true;
 		}
+
+		if (mIsMotionRL == 0)
+		{
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mY);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mIsMotionRL = 1;
+			}
+		}
+		else if (mIsMotionRL == 1)
+		{
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.left, mY);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mIsMotionRL = 0;
+			}
+		}
+		
 	}
 
 	mCurrentState->Update();
