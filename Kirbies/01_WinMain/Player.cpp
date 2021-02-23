@@ -58,6 +58,7 @@ void Player::Init()
 
 	mIsCrash = false;
 	mIsClimb = false;
+	mIsStopper = false;
 }
 
 void Player::Release()
@@ -146,10 +147,17 @@ void Player::Update()
 			if (pixelColor != RGB(255, 0, 255))
 			{
 				mY = y - mSizeY / 2;
-				mIsChange = true;
 
-				mPlayerState = PlayerState::RunState;
-			
+				if (mIsStopper == false)
+				{
+					mIsChange = true;
+					mPlayerState = PlayerState::RunState;
+				}
+				else if (mIsStopper == true)
+				{
+					mIsChange = true;
+					mPlayerState = PlayerState::StopperState;
+				}
 				break;
 			}
 		}
