@@ -77,5 +77,6 @@ public:
 
 	bool GetIsChange()const { return mIsChange; }
 	void SetIsChange(bool isChange) { mIsChange = isChange; }
+
 };
 

@@ -49,7 +49,8 @@ void Player::Init()
 	mCurrentState->Init();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mPlayerState = PlayerState::FallState;
-
+	
+	mGravity = 100.f;
 	mIsChange = false;
 	mIsGoal = false;
 	mIsDoor = false;
@@ -98,6 +99,7 @@ void Player::Update()
 
 	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
 	
+	//바닥보정
 	if (mPlayerState == PlayerState::FallState || mPlayerState == PlayerState::UmbrellaState)
 	{
 		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
@@ -112,6 +114,8 @@ void Player::Update()
 			}
 		}
 	}
+
+	//바닥보정
 	if (mPlayerState == PlayerState::RunState)
 	{
 		bool isGround = false;
@@ -125,13 +129,15 @@ void Player::Update()
 				mY = y - mSizeY / 2;
 				break;
 			}
-		}
+		}		
 		if (isGround == false)
 		{
 			mPlayerState = PlayerState::FallState;
 			mIsChange = true;
 		}
 
+
+		//좌우-벽 충돌
 		if (mIsMotionRL == 0)
 		{
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mRect.top+mSizeY/4);
@@ -147,9 +153,19 @@ void Player::Update()
 			{
 				mIsMotionRL = 0;
 			}
-		}
-		
+		}	
 	}
+
+	//if (mPlayerState == PlayerState::DigState )
+	//{
+	//	float y = mY + mSizeY / 2 + 20;
+	//	COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+	//	if (pixelColor == RGB(255, 0, 255))
+	//	{
+	//		mIsChange = true;
+	//		mPlayerState = PlayerState::FallState;
+	//	}
+	//}
 
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
