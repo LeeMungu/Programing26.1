@@ -72,76 +72,66 @@ void Player::Update()
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new Boom;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-
 		}
-		if (mPlayerState == PlayerState::ClimbState&&mIsCrash==true)
+		else if (mPlayerState == PlayerState::ClimbState&&mIsCrash==true)
 		{
 			mIsCrash = false;
 			SafeDelete(mCurrentState);
 			mCurrentState = new Climb;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-		if (mPlayerState == PlayerState::DigState)
+		else if (mPlayerState == PlayerState::DigState)
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new Dig;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-		if (mPlayerState == PlayerState::FallState)
+		else if (mPlayerState == PlayerState::FallState)
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new Fall;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-		if (mPlayerState == PlayerState::RunState)
+		else if (mPlayerState == PlayerState::RunState)
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new Run;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-		if (mPlayerState == PlayerState::StopperState)
+		else if (mPlayerState == PlayerState::StopperState)
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new Stopper;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-		if (mPlayerState == PlayerState::UmbrellaState)
+		else if (mPlayerState == PlayerState::UmbrellaState)
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new Umbrella;
-
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-			
-		
 	}
 
 	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
@@ -163,6 +153,7 @@ void Player::Update()
 			}
 		}
 	}
+
 	if (mPlayerState == PlayerState::ClimbState)
 	{
 		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)

@@ -13,7 +13,7 @@ Goal::Goal(const string& name, float x, float y)
 void Goal::Init()
 {
 	mImage = IMAGEMANAGER->FindImage(L"Goal");
-	mSizeX = mImage->GetWidth();
+	mSizeX = mImage->GetWidth()/2;
 	mSizeY = mImage->GetHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }
@@ -26,16 +26,14 @@ void Goal::Release()
 void Goal::Update()
 {
 	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
-	mRect = RectMakeCenter(mX, mY, mSizeX - 60, mSizeY);
+	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	
 	for (int i = 0; i < player.size(); i++)
 	{
 		RECT temp;
 		RECT playerRect = player[i]->GetRect();
-		//골인 판정을 위한 렉트 수정
-		RECT goalRect = mRect;
-		goalRect.left = goalRect.left + 50; 
-		if (IntersectRect(&temp, &playerRect, &goalRect))
+		//골인 판정을 위한 렉트 수정 
+		if (IntersectRect(&temp, &playerRect, &mRect))
 		{
 			Player* tempPlayer = (Player*)player[i];
 			if (tempPlayer->GetIsDoor() == false)
@@ -58,5 +56,5 @@ void Goal::Render(HDC hdc)
 	}
 
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mRect.left-30, mRect.top, mFrameX, mFrameY);
+		->FrameRender(hdc, mImage, mRect.left-mSizeX, mRect.top, mFrameX, mFrameY);
 }

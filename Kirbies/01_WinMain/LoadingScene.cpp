@@ -2,7 +2,7 @@
 #include "LoadingScene.h"
 #include "Image.h"
 
-#define PlayerSize 1
+#define PlayerSize 2
 void LoadingScene::AddLoadFunc(const function<void(void)>& func)
 {
 	mLoadList.push_back(func);
