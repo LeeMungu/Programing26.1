@@ -30,7 +30,7 @@ void Scene1::Init()
 	Door* door = new Door("Door",WINSIZEX/2,0,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2+300,200);
+	Goal* goal = new Goal("goal", WINSIZEX / 2+300,0);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 

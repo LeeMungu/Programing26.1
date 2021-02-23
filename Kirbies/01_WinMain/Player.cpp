@@ -57,6 +57,7 @@ void Player::Init()
 	mSpeed = 50;
 
 	mIsCrash = false;
+	mIsClimb = false;
 }
 
 void Player::Release()
@@ -77,7 +78,7 @@ void Player::Update()
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
-		else if (mPlayerState == PlayerState::ClimbState&&mIsCrash==true)
+		else if (mPlayerState == PlayerState::ClimbState)
 		{
 			mIsCrash = false;
 			SafeDelete(mCurrentState);
@@ -136,7 +137,7 @@ void Player::Update()
 
 	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
 	
-	//바닥보정
+	//떨어졌을때 바닥보정
 	if (mPlayerState == PlayerState::FallState || mPlayerState == PlayerState::UmbrellaState)
 	{
 		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
@@ -154,26 +155,26 @@ void Player::Update()
 		}
 	}
 
-	if (mPlayerState == PlayerState::ClimbState)
-	{
-		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
-		{
-			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
-			if (pixelColor != RGB(255, 0, 255))
-			{
-				mY = y - mSizeY / 2;
-				SafeDelete(mCurrentState);
-				mCurrentState = new Run;
-				mCurrentState->SetPlayerPtr(this);
-				mIsChange = false;
-				mCurrentState->Init();
-				mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-				break;
-			}
-		}
-	}
+	//if (mPlayerState == PlayerState::ClimbState)
+	//{
+	//	for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
+	//	{
+	//		COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+	//		if (pixelColor != RGB(255, 0, 255))
+	//		{
+	//			mY = y - mSizeY / 2;
+	//			SafeDelete(mCurrentState);
+	//			mCurrentState = new Run;
+	//			mCurrentState->SetPlayerPtr(this);
+	//			mIsChange = false;
+	//			mCurrentState->Init();
+	//			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	//			break;
+	//		}
+	//	}
+	//}
 
-	//바닥보정
+	//런 바닥보정
 	if (mPlayerState == PlayerState::RunState)
 	{
 		bool isGround = false;
@@ -198,24 +199,41 @@ void Player::Update()
 		//좌우-벽 충돌
 		if (mIsMotionRL == 0)
 		{
-			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mRect.top+mSizeY/4);
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mY);
 			if (pixelColor != RGB(255, 0, 255))
 			{
-				mIsCrash = true;
-				mIsMotionRL = 1;
+				if (mIsClimb == false)
+				{
+					mIsCrash = true;
+					mIsMotionRL = 1;
+				}
+				else if (mIsClimb == true)
+				{
+					mPlayerState = PlayerState::ClimbState;
+					mIsChange = true;
+				}
 			}
 		}
 		else if (mIsMotionRL == 1)
 		{
-			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.left, mRect.top+mSizeY/4);
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.left, mY);
 			if (pixelColor != RGB(255, 0, 255))
 			{
-				mIsCrash = true;
-				mIsMotionRL = 0;
+				if (mIsClimb == false)
+				{
+					mIsCrash = true;
+					mIsMotionRL = 0;
+				}
+				else if (mIsClimb == true)
+				{
+					mPlayerState = PlayerState::ClimbState;
+					mIsChange = true;
+				}
 			}
 		}	
 	}
 
+	//땅팠을때 보정
 	if (mPlayerState == PlayerState::DigState)
 	{
 		Dig* tempDig = (Dig*)mCurrentState;
@@ -276,7 +294,7 @@ void Player::Render(HDC hdc)
 		str = L"umb";
 	}
 	POINT playerPoint = CameraManager::GetInstance()->GetMainCamera()->GetPoint(mX,mY);
-	TextOut(hdc, playerPoint.x, playerPoint.y, str.c_str(), str.length());
+	TextOut(hdc, playerPoint.x, playerPoint.y-mSizeY, str.c_str(), str.length());
 
 	mCurrentState->Render(hdc);
 }

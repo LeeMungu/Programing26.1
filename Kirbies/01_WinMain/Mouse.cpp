@@ -47,7 +47,15 @@ void Mouse::Update()
 			if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
 			{
 				Player* tempPlayer = (Player*)player[i];
-				tempPlayer->SetPlayerState(mPlayerState);
+				//등산 조건만 다르게 준다.
+				if (mPlayerState != PlayerState::ClimbState)
+				{
+					tempPlayer->SetPlayerState(mPlayerState);
+				}
+				else if (mPlayerState == PlayerState::ClimbState)
+				{
+					tempPlayer->SetIsClimb(true);
+				}
 				tempPlayer->SetIsChange(true);
 
 				Ui* ui;

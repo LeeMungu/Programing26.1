@@ -6,7 +6,7 @@
 #include "Image.h"
 #include "Camera.h"
 void Climb::Init() {
-	IMAGEMANAGER->LoadFromFile(L"Climb", Resources(L"climb.bmp"), 240, 52, 8, 2, true);
+	
 	mImage = IMAGEMANAGER->FindImage(L"Run");
 
 	mAnimation = new Animation();
@@ -35,6 +35,7 @@ void Climb::Init() {
 	mPlayer->SetSizeY(mImage->GetFrameHeight());
 
 	mClimbCount = 1;
+	mState = State::Climb;
 }
 
 void Climb::Update()
@@ -42,43 +43,109 @@ void Climb::Update()
 	mX = mPlayer->GetX();
 	mY = mPlayer->GetY();
 
-	if (mPlayer->GetIntMotionRL() == 0) //오른쪽
-	{ 
-		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
-			mX + 10, mY - 10);
-
-		if (pixelColor != RGB(255, 0, 255))
+	//벽탈 때
+	if (mState == State::Climb)
+	{
+		if (mPlayer->GetIntMotionRL() == 0) //오른쪽
 		{
-			mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-			ClimbAnim();
+			COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+				mPlayer->GetRect().right, mPlayer->GetRect().bottom);
+
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
+				ClimbAnim();
+			}
 		}
-		else
+		else if (mPlayer->GetIntMotionRL() == 1)//왼쪽
+		{
+			COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+				mPlayer->GetRect().left, mPlayer->GetRect().bottom);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed()* Time::GetInstance()->DeltaTime());
+				ClimbAnim();
+			}
+		}
+	}
+
+	//벽타는중 난간 발견
+	if (mIsWallCheck == false && mState == State::Climb)//벽타는 중이다
+	{
+		if (mPlayer->GetIntMotionRL() == 0) //오른쪽
+		{
+			COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+				mPlayer->GetRect().right, mPlayer->GetRect().bottom);
+			if (pixelColor == RGB(255, 0, 255))
+			{
+				mPlayer->SetX(mPlayer->GetX()+mPlayer->GetSizeX());
+				WalkAnim();
+				mState = State::Run;
+			}
+		}
+		else if (mPlayer->GetIntMotionRL() == 1)//왼쪽
+		{
+			COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+				mPlayer->GetRect().left, mPlayer->GetRect().bottom);
+			if (pixelColor == RGB(255, 0, 255))
+			{
+				mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSizeX());
+				WalkAnim();
+				mState = State::Run;
+			}
+		}
+	}
+
+	//벽타는중 천장에 부딧힘
+	if (mIsWallCheck == false && mState == State::Climb)//벽타는 중이다
+	{
+		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+			mPlayer->GetX(), mPlayer->GetRect().top);
+		if (pixelColor != RGB(255, 0, 255))
 		{
 			mPlayer->SetPlayerState(PlayerState::FallState);
 			mPlayer->SetIsChange(true);
 		}
 	}
-	else  //왼쪽
+
+	//난간 발견해서 걷는 중이다
+	if (mState == State::Run)
 	{
-		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
-			mX - 10, mY - 10);
-		if (pixelColor != RGB(255, 0, 255))
+		if (mPlayer->GetIntMotionRL() == 0) //오른쪽
 		{
-			mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-			ClimbAnim();
+			COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+				mX, mPlayer->GetRect().bottom);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mPlayer->SetPlayerState(PlayerState::RunState);
+				mPlayer->SetIsChange(true);
+			}
+			else
+			{
+				mPlayer->SetPlayerState(PlayerState::FallState);
+				mPlayer->SetIsChange(true);
+			}
 		}
-		else
+		else if (mPlayer->GetIntMotionRL() == 1)//왼쪽
 		{
-			WalkAnim();
-			mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-			//런으로 변경
+			COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
+				mX, mPlayer->GetRect().bottom);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mPlayer->SetPlayerState(PlayerState::RunState);
+				mPlayer->SetIsChange(true);
+			}
+			else
+			{
+				mPlayer->SetPlayerState(PlayerState::FallState);
+				mPlayer->SetIsChange(true);
+			}
 		}
+		//이거 안하면 한번떨어지고 다시 벽만나면 계속 벽타는 기획의도 가능
+		mPlayer->SetIsClimb(false);
 	}
 
-
-
 	mAnimation->Update();
-
 }
 
 void Climb::Render(HDC hdc)
@@ -106,11 +173,10 @@ void Climb::ClimbAnim()
 		}
 
 		mAnimation->SetIsLoop(true);
-		mAnimation->SetFrameUpdateTime(0.3f);
+		mAnimation->SetFrameUpdateTime(0.1f);
 		mAnimation->Play();
 		mIsWallCheck = false;
 	}
-
 	mIsWalkCheck = true;
 }
 

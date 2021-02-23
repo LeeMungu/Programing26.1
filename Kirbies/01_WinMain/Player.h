@@ -41,6 +41,7 @@ class Player : public GameObject
 	float mSpeed;
 	float mGravity;
 
+	bool mIsClimb;
 	bool mIsCrash;
 
 public:
@@ -80,5 +81,7 @@ public:
 	bool GetIsChange()const { return mIsChange; }
 	void SetIsChange(bool isChange) { mIsChange = isChange; }
 
+	bool GetIsClimb()const { return mIsClimb; }
+	void SetIsClimb(bool isClimb) { mIsClimb = isClimb; }
 };
 

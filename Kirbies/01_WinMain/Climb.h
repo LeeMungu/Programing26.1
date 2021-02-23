@@ -3,8 +3,16 @@
 
 class Climb : public State
 {
-	
+	enum class State
+	{
+		Climb,
+		Run,
+		Fall
+	};
+
 	class Bottom* mBottom;
+
+	State mState;
 
 	float mX, mY;
 

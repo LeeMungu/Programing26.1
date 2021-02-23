@@ -7,7 +7,7 @@
 #include "Effect.h"
 #include "Camera.h"
 void Boom::Init() {
-	IMAGEMANAGER->LoadFromFile(L"Boom", Resources(L"boom.bmp"), 280, 32, 8, 1, true);
+	
 	mImage = IMAGEMANAGER->FindImage(L"Boom");
 
 	IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 288, 48, 8, 1, true);
