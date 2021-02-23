@@ -24,6 +24,22 @@ void CountingPlayerUI::Release()
 
 void CountingPlayerUI::Update()
 {
+	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
+
+
+
+	for (int i = 0; i < player.size(); i++)
+	{
+		
+			Player* tempPlayer = (Player*)player[i];
+			if (tempPlayer->GetIsDestroy()==true)
+			{
+				mGoalPlayerCount++;
+			}
+		
+	}
+
+
 	if (mTimer > 0) 
 		mTimer -= Time::GetInstance()->DeltaTime();
 
@@ -39,7 +55,8 @@ void CountingPlayerUI::Update()
 void CountingPlayerUI::Render(HDC hdc)
 {
 	wstring createdPlayer = L"OUT " + to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = L"IN " + to_wstring(mGoalPlayerCount / mPlayerCount * 100) + L"%";
+	wstring GoalPlayer = L"IN " + to_wstring((int)mGoalPlayerCount * 100 / mPlayerCount ) + L"%";
+	//wstring GoalPlayer = L"IN " + to_wstring(mGoalPlayerCount );
 	wstring timer = L"TIME " + to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 

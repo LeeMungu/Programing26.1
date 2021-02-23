@@ -156,16 +156,20 @@ void Player::Update()
 		}	
 	}
 
-	//if (mPlayerState == PlayerState::DigState )
-	//{
-	//	float y = mY + mSizeY / 2 + 20;
-	//	COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
-	//	if (pixelColor == RGB(255, 0, 255))
-	//	{
-	//		mIsChange = true;
-	//		mPlayerState = PlayerState::FallState;
-	//	}
-	//}
+	if (mPlayerState == PlayerState::DigState)
+	{
+		Dig* tempDig = (Dig*)mCurrentState;
+		if (tempDig->GetDigCheck() == true)
+		{
+			float y = mY + mSizeY / 2;
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+			if (pixelColor == RGB(255, 0, 255))
+			{
+				mIsChange = true;
+				mPlayerState = PlayerState::FallState;
+			}
+		}
+	}
 
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
