@@ -98,7 +98,7 @@ void Player::Update()
 
 	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
 	
-	if (mPlayerState == PlayerState::FallState)
+	if (mPlayerState == PlayerState::FallState || mPlayerState == PlayerState::UmbrellaState)
 	{
 		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
 		{
@@ -134,7 +134,7 @@ void Player::Update()
 
 		if (mIsMotionRL == 0)
 		{
-			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mY);
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.right, mRect.top+mSizeY/4);
 			if (pixelColor != RGB(255, 0, 255))
 			{
 				mIsMotionRL = 1;
@@ -142,7 +142,7 @@ void Player::Update()
 		}
 		else if (mIsMotionRL == 1)
 		{
-			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.left, mY);
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mRect.left, mRect.top+mSizeY/4);
 			if (pixelColor != RGB(255, 0, 255))
 			{
 				mIsMotionRL = 0;
