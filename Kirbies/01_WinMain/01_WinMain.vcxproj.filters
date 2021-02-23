@@ -285,6 +285,9 @@
     <ClInclude Include="Goal.h">
       <Filter>MainGame\Object\Goal</Filter>
     </ClInclude>
+    <ClInclude Include="CountingPlayerUI.h">
+      <Filter>MainGame\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -439,6 +442,9 @@
     </ClCompile>
     <ClCompile Include="Goal.cpp">
       <Filter>MainGame\Object\Goal</Filter>
+    </ClCompile>
+    <ClCompile Include="CountingPlayerUI.cpp">
+      <Filter>MainGame\Ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

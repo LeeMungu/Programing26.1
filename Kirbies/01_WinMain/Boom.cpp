@@ -54,7 +54,7 @@ void Boom::Update() {
 
 		
 		//애니메이션 플레이 후 플레이어 제거
-		//SafeDelete(mPlayer);
+		//mPlayer->SetIsDestroy(true);
 
 	}
 	mAnimation->Update();
