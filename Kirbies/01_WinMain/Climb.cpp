@@ -46,13 +46,13 @@ void Climb::Update()
 			mX + 10, mY - 10);
 		if (pixelColor != RGB(255, 0, 255))
 		{
-			mPlayer->SetY(mY--);
+			mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
 			ClimbAnim();
 		}
 		else
 		{
 			WalkAnim();
-			mPlayer->SetX(mX++);
+			mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
 			//런으로 변경
 		}
 	}
@@ -62,13 +62,13 @@ void Climb::Update()
 			mX - 10, mY - 10);
 		if (pixelColor != RGB(255, 0, 255))
 		{
-			mPlayer->SetY(mY--);
+			mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
 			ClimbAnim();
 		}
 		else
 		{
 			WalkAnim();
-			mPlayer->SetX(mX--);
+			mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
 			//런으로 변경
 		}
 	}
