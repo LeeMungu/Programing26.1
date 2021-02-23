@@ -11,6 +11,7 @@ class Climb : public State
 	bool mIsWallCheck;
 	bool mIsWalkCheck;
 	
+	int mClimbCount;
 
 public:
 	void Init()override;

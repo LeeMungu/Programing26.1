@@ -33,6 +33,8 @@ void Climb::Init() {
 
 	mPlayer->SetSizeX(mImage->GetFrameWidth());
 	mPlayer->SetSizeY(mImage->GetFrameHeight());
+
+	mClimbCount = 1;
 }
 
 void Climb::Update()
@@ -44,6 +46,7 @@ void Climb::Update()
 	{ 
 		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
 			mX + 10, mY - 10);
+
 		if (pixelColor != RGB(255, 0, 255))
 		{
 			mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
@@ -51,9 +54,20 @@ void Climb::Update()
 		}
 		else
 		{
-			WalkAnim();
-			mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-			//런으로 변경
+			
+			//런으로 변경	
+			if (mIsWallCheck == false)
+			{
+				mPlayer->SetPlayerState(PlayerState::RunState);
+				mPlayer->SetIsChange(true);
+			}
+			else
+			{
+				WalkAnim();
+				mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
+			}
+			
+
 		}
 	}
 	else  //왼쪽
@@ -72,6 +86,9 @@ void Climb::Update()
 			//런으로 변경
 		}
 	}
+
+
+
 	mAnimation->Update();
 
 }
