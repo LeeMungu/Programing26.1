@@ -23,6 +23,8 @@ class Run : public State
 	RECT mRunKirbyRect;
 	RECT mWall;
 
+	float mScaleValue;
+
 	int mFrameCount;
 	float mX, mY;
 

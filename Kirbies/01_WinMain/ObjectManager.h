@@ -9,16 +9,16 @@ GameObject 관리하는 클래스
 enum class ObjectLayer : int
 {
 	Background = 0,
-	Bottom = 1,
-	Player = 2,
+	Goal = 1,
+	Bottom = 2,
 	Door = 3,
-	UI = 4,
-	Effect = 5,
-	Special =6,
-	Camera=7,
-	StopperObject = 8,
-	DigObject = 9,
-	Goal =10,
+	Player = 4,
+	UI = 5,
+	Effect = 6,
+	Special =7,
+	Camera=8,
+	StopperObject = 9,
+	DigObject = 10,
 	Mouse =11,
 	End
 };
