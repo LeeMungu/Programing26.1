@@ -12,25 +12,47 @@ void Umbrella::Init()
 {
 
 	mImage = IMAGEMANAGER->FindImage(L"Umbrella");
-	mLeftAnimation = new Animation();
-	mLeftAnimation->InitFrameByStartEnd(3, 0, 23, 0, false);
-	mLeftAnimation->SetIsLoop(true);
-	mLeftAnimation->SetFrameUpdateTime(0.3f);
+
+	mRightStartAnimation = new Animation();
+	mRightStartAnimation->InitFrameByStartEnd(0, 0, 1, 0, false);
+	mRightStartAnimation->SetCallbackFunc([]() {SoundPlayer::GetInstance()->Play(L"UmbrellaEffectSound", 0.8); });
+	mRightStartAnimation->SetIsLoop(false);
+	mRightStartAnimation->SetFrameUpdateTime(0.1f);	
+
+
 
 	mRightAnimation = new Animation();
-	mRightAnimation->InitFrameByEndStart(24, 1, 3, 1, false);
+	mRightAnimation->InitFrameByStartEnd(4, 0, 22, 0, false);
 	mRightAnimation->SetIsLoop(true);
-	mRightAnimation->SetFrameUpdateTime(0.3f);
+	mRightAnimation->SetFrameUpdateTime(0.1f);
+	
+
+	mLeftStartAnimation = new Animation();
+	mLeftStartAnimation->InitFrameByStartEnd(0, 1, 1, 1, true);
+	mLeftStartAnimation->SetCallbackFunc([]() {SoundPlayer::GetInstance()->Play(L"UmbrellaEffectSound", 0.8); });
+	mLeftStartAnimation->SetIsLoop(false);
+	mLeftStartAnimation->SetFrameUpdateTime(0.1f);
+
+	
+
+	mLeftAnimation = new Animation();
+	mLeftAnimation->InitFrameByEndStart(22, 1, 4, 1, true);
+	mLeftAnimation->SetIsLoop(true);
+	mLeftAnimation->SetFrameUpdateTime(0.1f);
+
+
 
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 
 	if (mPlayer->GetIntMotionRL() == 0)
 	{
-		mCurrentAnimation = mRightAnimation;
+		mCurrentAnimation = mRightStartAnimation;
 	}
+
+
 	else if (mPlayer->GetIntMotionRL() == 1)
 	{
-		mCurrentAnimation = mLeftAnimation;
+		mCurrentAnimation = mLeftStartAnimation;
 	}
 
 	mPlayer->SetGravity(5.f);
@@ -50,8 +72,29 @@ void Umbrella::Release()
 
 void Umbrella::Update()
 {
+	if (mCurrentAnimation == mRightStartAnimation)
+	{
+		if (mCurrentAnimation->GetIsPlay() == false)
+		{
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mRightAnimation;
+			mCurrentAnimation->Play();
+		}
+	}
+	else if (mCurrentAnimation == mLeftAnimation)
+	{
+		if (mCurrentAnimation->GetIsPlay() == false)
+		{
+			mCurrentAnimation->Stop();
+			mCurrentAnimation = mLeftAnimation;
+			mCurrentAnimation->Play();
+		}
+	}
 
+	mPlayer->SetY(mPlayer->GetY() + mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
 	mCurrentAnimation->Update();
+
+
 }
 
 void Umbrella::Render(HDC hdc)
