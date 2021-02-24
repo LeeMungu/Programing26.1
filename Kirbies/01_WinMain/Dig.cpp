@@ -37,8 +37,8 @@ void Dig::Init()
 	mPlayer->SetSizeX(temp->GetFrameWidth());
 	mPlayer->SetSizeY(temp->GetFrameHeight());
 
-	mSizeX = mPlayer->GetSizeX();
-	mSizeY = mPlayer->GetSizeY();
+	mSizeX = mPlayer->GetSizeX()/41*21;
+	mSizeY = mPlayer->GetSizeY()/41*19;
 
 	//mDigRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
@@ -54,11 +54,11 @@ void Dig::Update()
 {
 
 	float x = mPlayer->GetX();
-	float y = mPlayer->GetY();
+	float y = mPlayer->GetRect().bottom;
 
 
 
-	for (int i = y; i < y + 100; i++)
+	for (int i = y-100; i < y + 100; i++)
 	{
 		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(), x, y);
 
@@ -130,8 +130,8 @@ void Dig::Update()
 void Dig::Render(HDC hdc)
 {
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mPlayer->GetX() - mImage->GetFrameWidth() / 2, mPlayer->GetRect().top,
-			mAnimation->GetNowFrameX(),
+		->FrameRender(hdc, mImage, mPlayer->GetX() - mImage->GetFrameWidth() / 2,
+			mPlayer->GetY() - mImage->GetFrameWidth() + mSizeY / 2 +10, mAnimation->GetNowFrameX(),
 			mAnimation->GetNowFrameY());
 }
 
