@@ -47,7 +47,7 @@ void Dig::Init()
 
 	mIsFallCheck = false;
 	mIsDigCheck = false;
-	mRadius = 20;
+	mRadius = 30;
 }
 
 void Dig::Update()
