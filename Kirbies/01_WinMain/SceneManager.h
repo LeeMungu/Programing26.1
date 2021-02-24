@@ -19,6 +19,7 @@ public:
 
 	void Update();
 	void Render(HDC hdc);
+	void mapRender(HDC map);
 
 	void AddScene(const wstring& sceneName,Scene* scene);
 	//로딩없이 로드하는 함수

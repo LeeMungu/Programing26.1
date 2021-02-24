@@ -36,6 +36,7 @@ public:
 	void Release();
 	void Update();
 	void Render(HDC hdc);
+	void mapRender(HDC map);
 
 	void AddObject(ObjectLayer layer, class GameObject* object);
 	class GameObject* FindObject(const string& name);

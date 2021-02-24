@@ -30,6 +30,12 @@ void SceneManager::Render(HDC hdc)
 		mCurrentScene->Render(hdc);
 }
 
+void SceneManager::mapRender(HDC map)
+{
+	if (mCurrentScene != nullptr)
+		mCurrentScene->mapRender(map);
+}
+
 void SceneManager::AddScene(const wstring& sceneName,Scene * scene)
 {
 	SceneIter iter = mSceneList.find(sceneName);

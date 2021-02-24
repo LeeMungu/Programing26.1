@@ -20,6 +20,8 @@ void MainGame::Init()
 {
 	mBackBuffer = new Image();
 	mBackBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
+	mMapBuffer = new Image();
+	mMapBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
 
 	//이미지 로드
 	//IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
@@ -55,6 +57,7 @@ void MainGame::Release()
 	Random::ReleaseInstance();	//싱글톤 인스턴스 삭제
 
 	SafeDelete(mBackBuffer);
+	SafeDelete(mMapBuffer);
 
 }
 
@@ -76,16 +79,38 @@ void MainGame::Render(HDC hdc)
 {
 	//백버퍼의 HDC 가져온다
 	HDC backDC = mBackBuffer->GetHDC();
+
+
 	//HDC 영역을 특정 색으로 밀어버리는 녀석
 	PatBlt(backDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	// ==================================================
 	{
 		SceneManager::GetInstance()->Render(backDC);
+
 		RenderTime(backDC);
+
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
+
 	mBackBuffer->Render(hdc, 0, 0);
+
+}
+
+void MainGame::mapRender(HDC map)
+{
+	//백버퍼의 HDC 가져온다
+	HDC mapDC = mMapBuffer->GetHDC();
+
+	//HDC 영역을 특정 색으로 밀어버리는 녀석
+	PatBlt(mapDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
+	// ==================================================
+	{
+		SceneManager::GetInstance()->mapRender(mapDC);
+	}
+	//====================================================
+	//후면버퍼 내용을 윈도우 창에 고속 복사
+	mMapBuffer->ScaleRender(map, WINSIZEX - 100, WINSIZEY - 100, WINSIZEX / 4, WINSIZEY / 4);
 }
 
 void MainGame::RenderTime(HDC hdc)

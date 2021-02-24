@@ -123,6 +123,22 @@ void ObjectManager::Render(HDC hdc)
 	}
 }
 
+void ObjectManager::mapRender(HDC map)
+{
+	ObjectIter iter = mObjectList.begin();
+	for (; iter != mObjectList.end(); ++iter)
+	{
+		for (int i = 0; i < iter->second.size(); ++i)
+		{
+			if (iter->second[i]->GetIsActive() == true)
+			{
+				iter->second[i]->mapRender(map);
+			}
+		}
+	}
+
+}
+
 void ObjectManager::AddObject(ObjectLayer layer, GameObject* object)
 {
 	//map도 배열연산자가 정의되어 있다. 

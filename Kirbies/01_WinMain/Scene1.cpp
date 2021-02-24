@@ -87,3 +87,8 @@ void Scene1::Render(HDC hdc)
 	ObjectManager::GetInstance()->Render(hdc);
 }
 
+void Scene1::mapRender(HDC map)
+{
+	ObjectManager::GetInstance()->mapRender(map);
+}
+
