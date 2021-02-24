@@ -75,7 +75,7 @@ void Scene1::Update()
 {
 	//클리어되면 씬 넘어가게
 	//사운드 멈춰주기
-
+	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
