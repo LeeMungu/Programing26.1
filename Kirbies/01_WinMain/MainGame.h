@@ -10,11 +10,14 @@ class Image;
 class MainGame
 {
 	Image* mBackBuffer;	//후면버퍼(건들지마라)
+	Image* mMapBuffer;
 public:
 	void Init();
 	void Release();
 	void Update();
 	void Render(HDC hdc);
+	void mapRender(HDC map);
+
 	
 	void RenderTime(HDC hdc);
 

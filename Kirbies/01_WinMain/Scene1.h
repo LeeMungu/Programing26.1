@@ -10,6 +10,7 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+	void mapRender(HDC map)override;
 
 	void SetIsSpecial(bool isSpecial) { mIsSpecial = isSpecial; }
 

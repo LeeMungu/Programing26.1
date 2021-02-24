@@ -33,4 +33,10 @@ void Bottom::Render(HDC hdc)
 
 	CameraManager::GetInstance()->GetMainCamera()
 		->Render(hdc, mImage, 0, 0);
+
+}
+
+void Bottom::mapRender(HDC map)
+{
+	mImage->Render(map, 0, 0);
 }
