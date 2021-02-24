@@ -4,7 +4,7 @@
 class Bottom;
 class Image;
 class DigPoint;
-
+class Effect;
 class Dig :public State
 {
 
@@ -19,6 +19,7 @@ class Dig :public State
 	bool mIsDigCheck;
 
 	float mRadius;
+	Effect* mEffect;
 
 public:
 	void Init()override;
