@@ -54,14 +54,25 @@ void Mouse::Update()
 				}
 				else if (mPlayerState == PlayerState::StopperState)
 				{
+					if(tempPlayer->GetPlayerState()!=PlayerState::UmbrellaState
+						&& tempPlayer->GetPlayerState() != PlayerState::FallState)
 					tempPlayer->SetIsStopper(true);
 				}
+				else if (mPlayerState == PlayerState::UmbrellaState)
+				{
+					if (tempPlayer->GetPlayerState() == PlayerState::FallState)
+					{
+						tempPlayer->SetPlayerState(mPlayerState);
+						tempPlayer->SetIsChange(true);
+					}
+				}
 				else if (mPlayerState != PlayerState::ClimbState 
-					&& mPlayerState != PlayerState::StopperState)
+					&& mPlayerState != PlayerState::StopperState
+					&& mPlayerState != PlayerState::UmbrellaState)
 				{
 					tempPlayer->SetPlayerState(mPlayerState);
+					tempPlayer->SetIsChange(true);
 				}
-				tempPlayer->SetIsChange(true);
 
 				Ui* ui;
 				if (mPlayerState == PlayerState::BoomState) {
