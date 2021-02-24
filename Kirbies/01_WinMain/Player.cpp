@@ -68,19 +68,6 @@ void Player::Release()
 
 void Player::Update()
 {
-	if (Input::GetInstance()->GetKey('Z'))
-	{
-		mSpeed = 50*3;
-		mGravity = 100.f*3;
-	}
-	if (Input::GetInstance()->GetKeyUp('Z'))
-	{
-		mSpeed = 50;
-		mGravity = 100.f;
-	}
-
-
-
 	if (mIsChange)
 	{
 		if (mPlayerState == PlayerState::BoomState)

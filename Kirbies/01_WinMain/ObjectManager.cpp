@@ -48,44 +48,34 @@ void ObjectManager::Release()
 
 void ObjectManager::Update()
 {
+	
 	//bottom
 	Bottom* bottom = (Bottom*)FindObject(ObjectLayer::Bottom, "Bottom");
 	//player
-	Player* player = (Player*)FindObject(ObjectLayer::Player, "1");
+	vector<GameObject*> playerList = GetObjectList(ObjectLayer::Player);
 	//enemy-여러게 불러와야한다.
 
-	//player-bottom 판정
-	if (player != nullptr)
+	if (Input::GetInstance()->GetKeyDown('Z'))
 	{
-		int x = player->GetX();
-		for (int y = player->GetY() - 10; y < player->GetY() + 20; y++)
+		for (int i = 0; i < playerList.size(); ++i)
 		{
-			//int y = mY + mSizeY / 2;
-			COLORREF pixelColor1 = GetPixel(bottom->GetImage()->GetHDC(),
-				x, y);
-			if (pixelColor1 != RGB(255, 0, 255))
-			{
-				player->SetY(player->GetY() - player->GetSizeY() / 2);
-				//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-				break;
-			}
-		}
-		int xleft = player->GetX() - player->GetSizeX() / 2;
-		for (int y = player->GetY() - 50; y < player->GetY(); y++)
-		{
-			COLORREF pixelColor = GetPixel(bottom->GetImage()->GetHDC(),
-				xleft, y);
+			Player* tempPlayer = (Player*)playerList[i];
 
-			if (pixelColor != RGB(255, 0, 255))
-			{
-				player->SetX(xleft + player->GetSizeX() / 2);
-				//mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-				break;
-			}
+			tempPlayer->SetSpeed(50 * 3);
+			tempPlayer->SetGravity(100.f * 3);
 
 		}
 	}
+	if (Input::GetInstance()->GetKeyUp('Z'))
+	{
+		for (int i = 0; i < playerList.size(); ++i)
+		{
+			Player* tempPlayer = (Player*)playerList[i];
 
+			tempPlayer->SetSpeed(50);
+			tempPlayer->SetGravity(100.f);
+		}
+	}
 	////player distroy
 	//if (player->GetHp()<=0)
 	//{
