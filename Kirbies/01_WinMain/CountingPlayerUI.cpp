@@ -81,4 +81,7 @@ void CountingPlayerUI::Render(HDC hdc)
 	TextOut(hdc, mX + 190, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
 	TextOut(hdc, mX + 347, mY + 10, timer.c_str(), timer.length());
 
+	SelectObject(hdc, oldFont);
+	DeleteObject(hFont);
+
 }
