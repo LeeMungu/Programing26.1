@@ -7,6 +7,8 @@
 #include "Scene2.h"
 #include "LoadingScene.h"
 #include "MainScene.h"
+#include "GameObject.h"
+
 /*
 Scene : 스테이지 단위를 씬이라고 함
 */
@@ -21,7 +23,7 @@ void MainGame::Init()
 	mBackBuffer = new Image();
 	mBackBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
 	mMapBuffer = new Image();
-	mMapBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
+	mMapBuffer->CreateEmpty(2560, 1440);
 
 	//이미지 로드
 	//IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
@@ -86,9 +88,7 @@ void MainGame::Render(HDC hdc)
 	// ==================================================
 	{
 		SceneManager::GetInstance()->Render(backDC);
-
 		RenderTime(backDC);
-
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
@@ -110,7 +110,7 @@ void MainGame::mapRender(HDC map)
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
-	mMapBuffer->ScaleRender(map, WINSIZEX - 100, WINSIZEY - 100, WINSIZEX / 4, WINSIZEY / 4);
+	mMapBuffer->ScaleRender(map, WINSIZEX-WINSIZEX/5, 0, WINSIZEX / 5, WINSIZEY / 5);
 }
 
 void MainGame::RenderTime(HDC hdc)
