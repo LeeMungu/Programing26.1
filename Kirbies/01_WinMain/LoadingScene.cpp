@@ -30,7 +30,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"CloseDoorSound", Resources(L"CloseDoorSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BunEffectSound", Resources(L"BunEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"DigEffectSound", Resources(L"DigEffectSound.mp3"), false); });
-	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"UmbrellaEffectSound", Resources(L"UmbrellaEffectSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"UmbrellaEffectSound", Resources(L"Parasol.wav"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"RunEffectSound", Resources(L"RunEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene1BGM", Resources(L"GourmetRaceKirbySuperStar.mp3"), true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppear", Resources(L"/sp/appear.bmp"), 1328, 540, 8, 3, true); });
