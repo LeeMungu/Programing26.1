@@ -106,13 +106,13 @@ void Run::Update()
 			(mCurrentAnimation->GetNowFrameX()==2||
 				mCurrentAnimation->GetNowFrameX() == 6))
 		{
-			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.8);
+			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3);
 		}
 		else if (mCurrentAnimation == mLeftAnimation &&
 			(mCurrentAnimation->GetNowFrameX()==9-2 ||
 				mCurrentAnimation->GetNowFrameX()==9-6))
 		{
-			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.8);
+			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3);
 		}
 	}
 

@@ -6,11 +6,12 @@
 #include "Player.h"
 #include "Effect.h"
 #include "Camera.h"
+#include "KirbyEffect.h"
 void Boom::Init() {
 	
 	mImage = IMAGEMANAGER->FindImage(L"Boom");
 
-	IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 288, 48, 8, 1, true);
+	IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 576, 96, 9, 1, true);
 
 	mAnimation = new Animation();
 	mAnimation->InitFrameByStartEnd(0, 0, 7, 0, false);
@@ -24,13 +25,13 @@ void Boom::Init() {
 	mY = mPlayer->GetY();
 	mPlayerRect = mPlayer->GetRect();
 
-	mEffect = new Effect("BoomEffect", mX, mY, L"BoomEffect");
-
-
 	mPlayer->SetSizeX(mImage->GetFrameWidth());
 	mPlayer->SetSizeY(mImage->GetFrameHeight());
 
 	mTimer = 0;
+
+	
+	//mEffect = new Effect("BoomEffect", mX, mY, L"BoomEffect");
 }
 // 커비 핵폭발 -> 카운트다운(5초) -> (여기서는 카운트다운 다음 행동 프로그래밍)
 // 커비 죽으면서 사라진다 -> 이펙트와 함께 커비 있던 자리에 땅도 파인다
@@ -53,7 +54,8 @@ void Boom::Update() {
 				HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
 				HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
-				RenderEllipse(mBottom->GetImage()->GetHDC(), mX, mPlayer->GetRect().bottom, 40);
+				RenderEllipse(mBottom->GetImage()->GetHDC(), mX - 10, mPlayer->GetRect().bottom, 30);
+				RenderEllipse(mBottom->GetImage()->GetHDC(), mX + 10, mPlayer->GetRect().bottom + 20, 50);
 
 				SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 				SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
@@ -61,11 +63,12 @@ void Boom::Update() {
 				DeleteObject(brush);
 
 				mTimer = 0;
+
+				mEffect = new KirbyEffect("BoomEffect", mX - 15, mY - 40, L"BoomEffect", 9, 1);
+				ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, mEffect);
 				//애니메이션 플레이 후 플레이어 제거
 				mPlayer->SetIsDestroy(true);
 			}
-
-			
 
 		}
 		else {
