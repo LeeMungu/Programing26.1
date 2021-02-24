@@ -20,7 +20,6 @@ void Umbrella::Init()
 	mRightStartAnimation->SetFrameUpdateTime(0.1f);	
 
 
-
 	mRightAnimation = new Animation();
 	mRightAnimation->InitFrameByStartEnd(4, 0, 22, 0, false);
 	mRightAnimation->SetIsLoop(true);
@@ -32,7 +31,6 @@ void Umbrella::Init()
 	mLeftStartAnimation->SetCallbackFunc([]() {SoundPlayer::GetInstance()->Play(L"UmbrellaEffectSound", 0.8); });
 	mLeftStartAnimation->SetIsLoop(false);
 	mLeftStartAnimation->SetFrameUpdateTime(0.1f);
-
 	
 
 	mLeftAnimation = new Animation();
@@ -81,7 +79,7 @@ void Umbrella::Update()
 			mCurrentAnimation->Play();
 		}
 	}
-	else if (mCurrentAnimation == mLeftAnimation)
+	else if (mCurrentAnimation == mLeftStartAnimation)
 	{
 		if (mCurrentAnimation->GetIsPlay() == false)
 		{
