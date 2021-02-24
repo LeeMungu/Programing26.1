@@ -106,14 +106,13 @@ void Run::Update()
 			(mCurrentAnimation->GetNowFrameX()==2||
 				mCurrentAnimation->GetNowFrameX() == 6))
 		{
-			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.8);
-
+			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3);
 		}
 		else if (mCurrentAnimation == mLeftAnimation &&
 			(mCurrentAnimation->GetNowFrameX()==9-2 ||
 				mCurrentAnimation->GetNowFrameX()==9-6))
 		{
-			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.8);
+			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3);
 		}
 	}
 
@@ -126,14 +125,7 @@ void Run::Update()
 	{
 		mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
 	}
-	//스토퍼커비와 충돌한 런커비
-	//RECT Temp;
-	//mRunKirbyRect = mPlayer->GetRect();
-	//RECT mStopKirby = mStopperObject->GetRect();
-	//if (IntersectRect(&Temp, &mRunKirbyRect, &mStopKirby))
-	//{
-	//	IsCrash = true;
-	//}
+	
 
 	//if (IsCrash == true)
 	//{

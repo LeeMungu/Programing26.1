@@ -59,6 +59,7 @@ public:
 	void GetXPosition(int X) { mX += X; }
 	
 	int GetIntMotionRL()const { return mIsMotionRL; }
+	void SetIntMotionRL(int intMotionRL) { mIsMotionRL = intMotionRL; }
 	void SetState(int intMotionRL) { mIsMotionRL = intMotionRL; }
 
 	State* GetState()const { return mCurrentState; }
