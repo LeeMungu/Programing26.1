@@ -291,14 +291,8 @@
     <ClInclude Include="CountingPlayerUI.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="Scene3.h">
-      <Filter>MainGame\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene4.h">
-      <Filter>MainGame\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="Scene5.h">
-      <Filter>MainGame\Scene</Filter>
+    <ClInclude Include="KirbyEffect.h">
+      <Filter>MainGame\Object\Effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -458,14 +452,8 @@
     <ClCompile Include="CountingPlayerUI.cpp">
       <Filter>MainGame\Ui</Filter>
     </ClCompile>
-    <ClCompile Include="Scene3.cpp">
-      <Filter>MainGame\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene5.cpp">
-      <Filter>MainGame\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Scene4.cpp">
-      <Filter>MainGame\Scene</Filter>
+    <ClCompile Include="KirbyEffect.cpp">
+      <Filter>MainGame\Object\Effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
