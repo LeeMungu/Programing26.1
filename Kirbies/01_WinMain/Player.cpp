@@ -232,10 +232,30 @@ void Player::Update()
 			}
 		}	
 
+		//스토퍼 전환
 		if (mIsStopper == true)
 		{
 			mIsChange = true;
 			mPlayerState = PlayerState::StopperState;
+		}
+
+		//스토퍼커비와 충돌한 런커비
+		RECT Temp;
+		vector<GameObject*> stopperObjectList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::StopperObject);
+		for (int i = 0; i < stopperObjectList.size(); ++i)
+		{
+			RECT mStopKirby = stopperObjectList[i]->GetRect();
+			if (IntersectRect(&Temp, &mRect, &mStopKirby))
+			{
+				if (mIsMotionRL == 0)
+				{
+					mIsMotionRL = 1;
+				}
+				else if (mIsMotionRL == 1)
+				{
+					mIsMotionRL = 0;
+				}
+			}
 		}
 	}
 
