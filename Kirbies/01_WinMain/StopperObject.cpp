@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "StopperObject.h"
-
+#include "Player.h"
 
 StopperObject::StopperObject(float x, float y,float sizeX,float sizeY)
 	
@@ -21,6 +21,22 @@ void StopperObject::Release()
 
 void StopperObject::Update()
 {
+	mIsDestroy = true;
+	vector<GameObject*> playerList = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
+	for (int i = 0; i < playerList.size(); ++i)
+	{
+		Player* player = (Player*)playerList[i];
+		if (player->GetPlayerState() == PlayerState::StopperState)
+		{
+			RECT temp;
+			RECT playerRect = player->GetRect();
+			if (IntersectRect(&temp, &mRect, &playerRect))
+			{
+				mIsDestroy = false;
+				break;
+			}
+		}
+	}
 }
 
 void StopperObject::Render(HDC hdc)
