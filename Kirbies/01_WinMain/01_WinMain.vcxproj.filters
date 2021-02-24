@@ -118,6 +118,9 @@
     <Filter Include="MainGame\Object\Goal">
       <UniqueIdentifier>{0b89790a-24d4-4084-bb97-421a8e37dc66}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Map">
+      <UniqueIdentifier>{34df207b-72d0-4558-9d28-6373070a3ba2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -288,6 +291,9 @@
     <ClInclude Include="CountingPlayerUI.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>MainGame\Object\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -445,6 +451,9 @@
     </ClCompile>
     <ClCompile Include="CountingPlayerUI.cpp">
       <Filter>MainGame\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>MainGame\Object\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
