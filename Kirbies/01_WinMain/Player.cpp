@@ -250,10 +250,14 @@ void Player::Update()
 				if (mIsMotionRL == 0)
 				{
 					mIsMotionRL = 1;
+					mIsCrash = true;
+					mX = mStopKirby.left - mSizeX / 2;
 				}
 				else if (mIsMotionRL == 1)
 				{
 					mIsMotionRL = 0;
+					mIsCrash = true;
+					mX = mStopKirby.right + mSizeX / 2;
 				}
 			}
 		}
