@@ -38,13 +38,13 @@ void Fall::Init()
 	mPlayer->SetSizeX(mFallKirby->GetFrameWidth());
 	mPlayer->SetSizeY(mFallKirby->GetFrameHeight());
 
-	if (mCurrentAnimation == mLeftAnimation && mPlayer->GetIntMotionRL() == 0)
+	if (mCurrentAnimation == mLeftAnimation && mPlayer->GetIntMotionRL() == 1)
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mRightAnimation;
 		mCurrentAnimation->Play();
 	}
-	else if (mCurrentAnimation == mRightAnimation && mPlayer->GetIntMotionRL() == 1)
+	else if (mCurrentAnimation == mRightAnimation && mPlayer->GetIntMotionRL() == 0)
 	{
 		mCurrentAnimation->Stop();
 		mCurrentAnimation = mLeftAnimation;
