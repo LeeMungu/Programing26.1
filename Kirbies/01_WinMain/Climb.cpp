@@ -56,13 +56,13 @@ void Climb::Update()
 				mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
 				ClimbAnim();
 			}
-			COLORREF pixelColor1 = GetPixel(mBottom->GetImage()->GetHDC(),
-				mPlayer->GetRect().right, mPlayer->GetRect().bottom);
-			if (pixelColor1 != RGB(255, 0, 255))
-			{
-				mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-				ClimbAnim();
-			}
+			//COLORREF pixelColor1 = GetPixel(mBottom->GetImage()->GetHDC(),
+			//	mPlayer->GetRect().right, mPlayer->GetRect().bottom);
+			//if (pixelColor1 != RGB(255, 0, 255))
+			//{
+			//	mPlayer->SetX(mPlayer->GetX() + mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
+			//	ClimbAnim();
+			//}
 		}
 		else if (mPlayer->GetIntMotionRL() == 1)//¿ÞÂÊ
 		{
@@ -73,13 +73,13 @@ void Climb::Update()
 				mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSpeed()* Time::GetInstance()->DeltaTime());
 				ClimbAnim();
 			}
-			COLORREF pixelColor1 = GetPixel(mBottom->GetImage()->GetHDC(),
-				mPlayer->GetRect().left, mPlayer->GetY());
-			if (pixelColor1 != RGB(255, 0, 255))
-			{
-				mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
-				ClimbAnim();
-			}
+			//COLORREF pixelColor1 = GetPixel(mBottom->GetImage()->GetHDC(),
+			//	mPlayer->GetRect().left, mPlayer->GetY());
+			//if (pixelColor1 != RGB(255, 0, 255))
+			//{
+			//	mPlayer->SetX(mPlayer->GetX() - mPlayer->GetSpeed() * Time::GetInstance()->DeltaTime());
+			//	ClimbAnim();
+			//}
 		}
 	}
 
