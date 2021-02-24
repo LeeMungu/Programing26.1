@@ -202,3 +202,25 @@ void Run::Render(HDC hdc)
 				);
 	}
 }
+
+void Run::mapRender(HDC map)
+{
+	Image* nowImage;
+	if (mCurrentAnimation == mLeftAnimation ||
+		mCurrentAnimation == mRightAnimation)
+	{
+		nowImage = mRunKirby;
+	}
+	else
+	{
+		nowImage = mGoalKirby;
+	}
+	if (nowImage == mRunKirby)
+	{
+		mRunKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
+	}
+	else if (nowImage == mGoalKirby)
+	{
+		mGoalKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
+	}
+}

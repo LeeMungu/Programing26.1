@@ -324,3 +324,9 @@ void Player::Render(HDC hdc)
 
 	mCurrentState->Render(hdc);
 }
+
+void Player::mapRender(HDC map)
+{
+	if(mCurrentState!=NULL)
+	mCurrentState->mapRender(map);
+}

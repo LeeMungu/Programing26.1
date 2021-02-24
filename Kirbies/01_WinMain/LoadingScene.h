@@ -4,6 +4,7 @@
 class LoadingScene : public Scene
 {
 	Image* mLoadingImage;
+	Image* mLoadingImage2;
 	Image* mLoadingBarImage1;
 	Image* mLoadingBarImage2;
 

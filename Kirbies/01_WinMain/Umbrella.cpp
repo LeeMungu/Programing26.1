@@ -104,3 +104,8 @@ void Umbrella::Render(HDC hdc)
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
 }
+
+void Umbrella::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
+}

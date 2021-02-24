@@ -7,6 +7,8 @@
 #include "Scene2.h"
 #include "LoadingScene.h"
 #include "MainScene.h"
+#include "GameObject.h"
+
 /*
 Scene : 스테이지 단위를 씬이라고 함
 */
@@ -21,13 +23,14 @@ void MainGame::Init()
 	mBackBuffer = new Image();
 	mBackBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
 	mMapBuffer = new Image();
-	mMapBuffer->CreateEmpty(WINSIZEX, WINSIZEY);
+	mMapBuffer->CreateEmpty(2560, 1440);
 
 	//이미지 로드
 	//IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar1", Resources(L"LoadingBar1.bmp"), 1116, 66, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar2", Resources(L"LoadingBar2.bmp"), 1100, 50, false);
-	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround1", Resources(L"loading_background1.bmp"), 1280, 720, false);
+	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround1", Resources(L"KirbyPrologue.bmp"), 1280, 720, false); //스토리창
+	IMAGEMANAGER->LoadFromFile(L"LoadingBackGroundText", Resources(L"KirbyPrologueText.bmp"), 725, 256, false);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround2", Resources(L"loading_background2.bmp"), 1280, 720, false);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround3", Resources(L"loading_background3.bmp"), 1280, 720, false);
 	IMAGEMANAGER->LoadFromFile(L"MainBackGround", Resources(L"MainBackGround.bmp"), 1280, 720,true);
@@ -86,13 +89,15 @@ void MainGame::Render(HDC hdc)
 	// ==================================================
 	{
 		SceneManager::GetInstance()->Render(backDC);
+		if (ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom") != nullptr)
+		{
+			mapRender(backDC);
+		}
 
 		RenderTime(backDC);
-
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
-
 	mBackBuffer->Render(hdc, 0, 0);
 
 }
@@ -103,14 +108,14 @@ void MainGame::mapRender(HDC map)
 	HDC mapDC = mMapBuffer->GetHDC();
 
 	//HDC 영역을 특정 색으로 밀어버리는 녀석
-	PatBlt(mapDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
+	PatBlt(mapDC, 0, 0, 2560, 1440, WHITENESS);
 	// ==================================================
 	{
 		SceneManager::GetInstance()->mapRender(mapDC);
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
-	mMapBuffer->ScaleRender(map, WINSIZEX - 100, WINSIZEY - 100, WINSIZEX / 4, WINSIZEY / 4);
+	mMapBuffer->ScaleRender(map, WINSIZEX-WINSIZEX/5, 0, WINSIZEX / 5, WINSIZEY / 5);
 }
 
 void MainGame::RenderTime(HDC hdc)

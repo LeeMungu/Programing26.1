@@ -39,7 +39,7 @@ void MainScene::Update()
 
 	if (Input::GetInstance()->GetKeyDown(VK_SPACE) && mIsLoadEnd ==true)
 	{
-		SoundPlayer::GetInstance()->Stop(L"TitleBGM");
+	
 		SceneManager::GetInstance()->LoadScene(L"LoadingScene");
 		mIsLoadEnd = false;
 	}

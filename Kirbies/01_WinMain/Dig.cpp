@@ -6,13 +6,16 @@
 #include "Player.h"
 #include "Image.h"
 #include "DigPoint.h"
-
+#include "Effect.h"
+#include "KirbyEffect.h"
 void Dig::Init()
 {
 	//이미지 불러오기
 	
 	mImage = IMAGEMANAGER->FindImage(L"Dig");
 	Image* temp = IMAGEMANAGER->FindImage(L"Fall");
+	IMAGEMANAGER->LoadFromFile(L"DigEffect", Resources(L"DigEffect.bmp"), 144, 46, 4, 1, true);
+
 	//애니메이션 설정
 	mAnimation = new Animation();
 	if (mPlayer->GetIntMotionRL() == 0)
@@ -24,7 +27,7 @@ void Dig::Init()
 		mAnimation->InitFrameByEndStart(13, 1, 0, 1, false);
 	}
 	mAnimation->SetIsLoop(true);
-	SoundPlayer::GetInstance()->Play(L"DigEffectSound", 0.8);
+	SoundPlayer::GetInstance()->Play(L"DigEffectSound", 5.f);
 	mAnimation->SetFrameUpdateTime(0.1f);
 	mAnimation->Play();
 
@@ -81,6 +84,8 @@ void Dig::Update()
 					//digpoint->Render(mBottom->GetImage()->GetHDC());
 					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, mRadius);
+					mEffect = new KirbyEffect("DigEffect", x, y, L"DigEffect", 4, 1);
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, mEffect);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
@@ -134,6 +139,11 @@ void Dig::Render(HDC hdc)
 		->FrameRender(hdc, mImage, mPlayer->GetX() - mImage->GetFrameWidth() / 2,
 			mPlayer->GetY() - mImage->GetFrameWidth() + mSizeY / 2 +10, mAnimation->GetNowFrameX(),
 			mAnimation->GetNowFrameY());
+}
+
+void Dig::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mX, mY, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
 }
 
 void Dig::FallAnimation()

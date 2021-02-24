@@ -29,6 +29,8 @@ void Stopper::Init()
 	mX = mPlayer->GetX();
 	mY = mPlayer->GetY();
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
+
+	mIsObject = false;
 }
 
 void Stopper::Release()
@@ -60,18 +62,28 @@ void Stopper::Update()
 	//}
 	//mCurrentAnimation->Update();
 
+	
 	if (mPlayer->GetSpeed() != 0)
 	{
 		mPlayer->SetSpeed(0);
+	}
+
+	if(mIsObject ==false)
+	{
+		mIsObject = true;
 		StopperObject* stopperObject = new StopperObject(mPlayer->GetX(),mPlayer->GetY(), mPlayer->GetSizeX(), mPlayer->GetSizeY());
 		stopperObject->Init();
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::StopperObject, stopperObject);
 		mCurrentAnimation = mStopperAnimation;
 	}
+
 	mCurrentAnimation->Update();
-
 }
-
+
+void Stopper::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mX, mY, mCurrentAnimation->GetNowFrameX(),	mCurrentAnimation->GetNowFrameY());
+}
 
 void Stopper::Render(HDC hdc)
 {	

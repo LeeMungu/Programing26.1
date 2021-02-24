@@ -84,3 +84,8 @@ void Fall::Render(HDC hdc)
 			mCurrentAnimation->GetNowFrameY());
 
 }
+
+void Fall::mapRender(HDC map)
+{
+	mFallKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
+}

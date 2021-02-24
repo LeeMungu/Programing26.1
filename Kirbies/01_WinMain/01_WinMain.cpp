@@ -128,7 +128,6 @@ int APIENTRY WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmd
 			SoundPlayer::GetInstance()->Update();
 			_mainGame->Update();
 			_mainGame->Render(hdc);
-			_mainGame->mapRender(hdc);
 		}
 	}
 
