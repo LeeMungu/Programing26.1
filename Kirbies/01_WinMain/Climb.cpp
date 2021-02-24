@@ -105,6 +105,7 @@ void Climb::Update()
 		{
 			mPlayer->SetPlayerState(PlayerState::FallState);
 			mPlayer->SetIsChange(true);
+			mPlayer->SetIsClimb(false);
 		}
 	}
 

@@ -239,6 +239,12 @@ void Player::Update()
 				}
 			}
 		}	
+
+		if (mIsStopper == true)
+		{
+			mIsChange = true;
+			mPlayerState = PlayerState::StopperState;
+		}
 	}
 
 	//땅팠을때 보정
