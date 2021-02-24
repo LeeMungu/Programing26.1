@@ -18,6 +18,8 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64*PlayerSize, 48 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47 * PlayerSize, 40 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround2.bmp"), 768, 336, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Prologue", Resources(L"KirbyPrologue.bmp"), 1280, 720, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"PrologueText", Resources(L"KirbyPrologueText.bmp"), 725, 256, true); });
 	//AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background1", Resources(L"backGround3.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene01.bmp"), 2560, 1440, true); });
 	//AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene2.bmp"), 2560, 1440, true); });
