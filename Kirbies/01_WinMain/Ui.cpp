@@ -49,7 +49,7 @@ void Ui::Update()
 	if (PtInRect(&mRect, _mousePosition)) {
 		mFrameY = 0;
 		if (Input::GetInstance()->GetKeyDown(MK_LBUTTON)) {
-			if (mCountNum != 0) {
+			if (mCountNum > 0) {
 				mMouse->SetPlayerState(mState);
 			}
 		}
