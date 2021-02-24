@@ -90,3 +90,8 @@ void Boom::Render(HDC hdc) {
 	CameraManager::GetInstance()->GetMainCamera()
 		->FrameRender(hdc, mImage, mPlayer->GetRect().left, mPlayer->GetRect().top, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
 }
+
+void Boom::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mX, mY, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+}

@@ -172,6 +172,11 @@ void Climb::Render(HDC hdc)
 
 }
 
+void Climb::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mX, mY, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+}
+
 void Climb::ClimbAnim()
 {
 	if (mIsWallCheck)

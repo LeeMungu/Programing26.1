@@ -56,3 +56,8 @@ void Door::Render(HDC hdc)
 	CameraManager::GetInstance()->GetMainCamera()
 		->FrameRender(hdc, mImage, mRect.left, mRect.top, mFrameX, mFrameY);
 }
+
+void Door::mapRender(HDC map)
+{
+	mImage->Render(map, mX, mY);
+}

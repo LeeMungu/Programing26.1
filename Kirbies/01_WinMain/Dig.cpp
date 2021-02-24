@@ -141,6 +141,11 @@ void Dig::Render(HDC hdc)
 			mAnimation->GetNowFrameY());
 }
 
+void Dig::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mX, mY, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+}
+
 void Dig::FallAnimation()
 {
 	if (mIsFallCheck == false)

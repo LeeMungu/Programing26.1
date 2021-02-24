@@ -34,6 +34,7 @@ public:
 	void Play();
 	void Stop();
 	void Render(HDC hdc);
+	void mapRender(HDC map)override;
 
 };
 

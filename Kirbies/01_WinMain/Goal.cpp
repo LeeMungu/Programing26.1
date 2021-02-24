@@ -58,3 +58,8 @@ void Goal::Render(HDC hdc)
 	CameraManager::GetInstance()->GetMainCamera()
 		->FrameRender(hdc, mImage, mRect.left-mSizeX, mRect.top, mFrameX, mFrameY);
 }
+
+void Goal::mapRender(HDC map)
+{
+	mImage->Render(map, mX, mY);
+}

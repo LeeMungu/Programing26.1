@@ -17,3 +17,7 @@ void State::Update()
 void State::Render(HDC hdc)
 {
 }
+
+void State::mapRender(HDC map)
+{
+}

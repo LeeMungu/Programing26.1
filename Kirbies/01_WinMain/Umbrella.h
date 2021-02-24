@@ -21,5 +21,6 @@ public:
 	void Release();
 	void Update();
 	void Render(HDC hdc);
+	void mapRender(HDC map)override;
 };
 

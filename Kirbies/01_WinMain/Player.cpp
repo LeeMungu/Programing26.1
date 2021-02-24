@@ -250,14 +250,10 @@ void Player::Update()
 				if (mIsMotionRL == 0)
 				{
 					mIsMotionRL = 1;
-					mIsCrash = true;
-					mX = mStopKirby.left - mSizeX / 2;
 				}
 				else if (mIsMotionRL == 1)
 				{
 					mIsMotionRL = 0;
-					mIsCrash = true;
-					mX = mStopKirby.right + mSizeX / 2;
 				}
 			}
 		}
@@ -327,4 +323,10 @@ void Player::Render(HDC hdc)
 	TextOut(hdc, playerPoint.x, playerPoint.y-mSizeY, str.c_str(), str.length());
 
 	mCurrentState->Render(hdc);
+}
+
+void Player::mapRender(HDC map)
+{
+	if(mCurrentState!=NULL)
+	mCurrentState->mapRender(map);
 }
