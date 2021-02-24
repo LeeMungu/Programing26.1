@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Player.h"
 #include "Ui.h"
+#include "CountNumEffect.h"
 Mouse::Mouse(const string& name)
 	:GameObject(name)
 {
@@ -66,6 +67,14 @@ void Mouse::Update()
 						tempPlayer->SetIsChange(true);
 					}
 				}
+				else if (mPlayerState == PlayerState::BoomState)
+				{
+					/*
+					CountNumEffect* countEffect = new CountNumEffect();
+					countEffect->SetPlayerptr(tempPlayer);
+					countEffect->Init();
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, countEffect);*/
+				}
 				else if (mPlayerState != PlayerState::ClimbState 
 					&& mPlayerState != PlayerState::StopperState
 					&& mPlayerState != PlayerState::UmbrellaState)
@@ -73,6 +82,7 @@ void Mouse::Update()
 					tempPlayer->SetPlayerState(mPlayerState);
 					tempPlayer->SetIsChange(true);
 				}
+
 
 				Ui* ui;
 				if (mPlayerState == PlayerState::BoomState) {
