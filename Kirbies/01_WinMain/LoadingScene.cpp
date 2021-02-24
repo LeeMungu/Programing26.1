@@ -58,6 +58,7 @@ void LoadingScene::Init()
 
 
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround1");
+	mLoadingImage2 = IMAGEMANAGER->FindImage(L"LoadingBackGroundText");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");
 }
@@ -91,12 +92,13 @@ void LoadingScene::Update()
 void LoadingScene::Render(HDC hdc)
 {
 	mLoadingImage->Render(hdc, 0, 0);
-	mLoadingBarImage1->Render(hdc, WINSIZEX / 2 - mLoadingBarImage1->GetWidth() / 2, WINSIZEY / 10 * 7.5f);
-	mLoadingBarImage2->Render(hdc, WINSIZEX / 2 - mLoadingBarImage2->GetWidth() / 2, WINSIZEY / 10 * 7.5f + 8,
+	mLoadingImage2->Render(hdc, 250, 130);
+	mLoadingBarImage1->Render(hdc, WINSIZEX / 2 - mLoadingBarImage1->GetWidth() / 2, WINSIZEY / 12.5 * 7.5f);
+	mLoadingBarImage2->Render(hdc, WINSIZEX / 2 - mLoadingBarImage2->GetWidth() / 2, WINSIZEY / 12.5 * 7.5f + 8,
 		0, 0, mLoadingBarImage2->GetWidth() * mLoadIndex / mLoadList.size(), mLoadingBarImage2->GetHeight());
 
 	wstring loadingFer = L"LOADING : " + to_wstring(mLoadIndex * 100 / mLoadList.size()) + L"%";
-	TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 10 * 8, loadingFer.c_str(), loadingFer.length());
+	TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 12.5 * 8, loadingFer.c_str(), loadingFer.length());
 
 	if (mIsEndLoading == true)
 	{

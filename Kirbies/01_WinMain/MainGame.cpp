@@ -29,7 +29,8 @@ void MainGame::Init()
 	//IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar1", Resources(L"LoadingBar1.bmp"), 1116, 66, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar2", Resources(L"LoadingBar2.bmp"), 1100, 50, false);
-	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround1", Resources(L"loading_background1.bmp"), 1280, 720, false);
+	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround1", Resources(L"KirbyPrologue.bmp"), 1280, 720, false); //스토리창
+	IMAGEMANAGER->LoadFromFile(L"LoadingBackGroundText", Resources(L"KirbyPrologueText.bmp"), 725, 256, false);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround2", Resources(L"loading_background2.bmp"), 1280, 720, false);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBackGround3", Resources(L"loading_background3.bmp"), 1280, 720, false);
 	IMAGEMANAGER->LoadFromFile(L"MainBackGround", Resources(L"MainBackGround.bmp"), 1280, 720,true);
