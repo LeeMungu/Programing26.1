@@ -18,7 +18,7 @@ void Boom::Init() {
 	mAnimation->SetIsLoop(true);
 	mAnimation->SetFrameUpdateTime(0.15f);
 	mAnimation->SetCallbackFunc([this]() {
-		
+		SoundPlayer::GetInstance()->Stop(L"FuseEffectSound");
 		SoundPlayer::GetInstance()->Play(L"BunEffectSound", 0.8);
 		mPlayer->SetIsDestroy(true);
 	});
