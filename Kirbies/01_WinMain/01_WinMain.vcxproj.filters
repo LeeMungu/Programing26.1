@@ -291,9 +291,6 @@
     <ClInclude Include="CountingPlayerUI.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>MainGame\Object\Map</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -451,9 +448,6 @@
     </ClCompile>
     <ClCompile Include="CountingPlayerUI.cpp">
       <Filter>MainGame\Ui</Filter>
-    </ClCompile>
-    <ClCompile Include="Map.cpp">
-      <Filter>MainGame\Object\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
