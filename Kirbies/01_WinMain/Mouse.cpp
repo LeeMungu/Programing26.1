@@ -75,9 +75,19 @@ void Mouse::Update()
 					countEffect->Init();
 					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, countEffect);
 				}
+				else if (mPlayerState == PlayerState::DigState)
+				{
+					if (tempPlayer->GetPlayerState() != PlayerState::StopperState)
+					{
+						tempPlayer->SetPlayerState(mPlayerState);
+						tempPlayer->SetIsChange(true);
+					}
+				}
 				else if (mPlayerState != PlayerState::ClimbState 
 					&& mPlayerState != PlayerState::StopperState
-					&& mPlayerState != PlayerState::UmbrellaState)
+					&& mPlayerState != PlayerState::UmbrellaState
+					&& mPlayerState != PlayerState::BoomState
+					&& mPlayerState != PlayerState::DigState)
 				{
 					tempPlayer->SetPlayerState(mPlayerState);
 					tempPlayer->SetIsChange(true);

@@ -23,7 +23,7 @@
     <ProjectGuid>{ADD52605-596E-43E8-879D-E81A28A8BB13}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>My01WinMain</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -204,6 +204,7 @@
     <ClInclude Include="TitleStyle3.h" />
     <ClInclude Include="TitleStyle4.h" />
     <ClInclude Include="Ui.h" />
+    <ClInclude Include="UiManager.h" />
     <ClInclude Include="Umbrella.h" />
   </ItemGroup>
   <ItemGroup>
@@ -265,6 +266,7 @@
     <ClCompile Include="TitleStyle3.cpp" />
     <ClCompile Include="TitleStyle4.cpp" />
     <ClCompile Include="Ui.cpp" />
+    <ClCompile Include="UiManager.cpp" />
     <ClCompile Include="Umbrella.cpp" />
   </ItemGroup>
   <ItemGroup>

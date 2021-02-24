@@ -121,6 +121,9 @@
     <Filter Include="MainGame\Object\Map">
       <UniqueIdentifier>{34df207b-72d0-4558-9d28-6373070a3ba2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FrameWork\UiManager">
+      <UniqueIdentifier>{3bb12048-bf19-41f3-80cb-70d82b6a7952}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -297,6 +300,9 @@
     <ClInclude Include="CountNumEffect.h">
       <Filter>MainGame\Object\Effect</Filter>
     </ClInclude>
+    <ClInclude Include="UiManager.h">
+      <Filter>FrameWork\UiManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -460,6 +466,9 @@
     </ClCompile>
     <ClCompile Include="CountNumEffect.cpp">
       <Filter>MainGame\Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="UiManager.cpp">
+      <Filter>FrameWork\UiManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
