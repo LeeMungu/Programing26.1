@@ -49,6 +49,11 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Dig", Resources(L"dig.bmp"), 574 * PlayerSize, 82 * PlayerSize, 14, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Climb", Resources(L"climb.bmp"), 240 * PlayerSize, 52 * PlayerSize, 8, 2, true);});
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Boom", Resources(L"boom.bmp"), 280 * PlayerSize, 32 * PlayerSize, 8, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"out_ui.bmp"), 120, 48, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"InUI", Resources(L"in_ui.bmp"), 120, 48, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"TimeUI", Resources(L"time_ui.bmp"), 144, 48, true); });
+
+
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround1");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");

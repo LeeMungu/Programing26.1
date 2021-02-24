@@ -37,9 +37,9 @@ void Boom::Init() {
 void Boom::Update() {
 	
 	//땅에 붙어있을 때만 폭파
-	for (int i = mY; i < mY + 100; i++)
+	for (int i = mPlayer->GetRect().bottom; i < mPlayer->GetRect().bottom + 100; i++)
 	{
-		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(), mX, mY);
+		COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(), mX, mPlayer->GetRect().bottom - 5);
 
 
 		if (pixelColor != RGB(255, 0, 255))
@@ -53,7 +53,7 @@ void Boom::Update() {
 				HBRUSH oldBrush = (HBRUSH)SelectObject(mBottom->GetImage()->GetHDC(), brush);
 				HPEN oldPen = (HPEN)SelectObject(mBottom->GetImage()->GetHDC(), pen);
 
-				RenderEllipse(mBottom->GetImage()->GetHDC(), mX, mY, 30);
+				RenderEllipse(mBottom->GetImage()->GetHDC(), mX, mPlayer->GetRect().bottom, 40);
 
 				SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 				SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
@@ -69,7 +69,8 @@ void Boom::Update() {
 
 		}
 		else {
-			mY+=1.5f;
+			mY += 1.5f;
+			mPlayer->SetY(mY);
 			break;
 		}
 	}
@@ -78,5 +79,5 @@ void Boom::Update() {
 
 void Boom::Render(HDC hdc) {
 	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mImage, mX-20, mY-20, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+		->FrameRender(hdc, mImage, mPlayer->GetRect().left, mPlayer->GetRect().top, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
 }
