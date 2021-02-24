@@ -40,11 +40,12 @@ void CountingPlayerUI::Update()
 	{
 		
 			Player* tempPlayer = (Player*)player[i];
-			if (tempPlayer->GetIsDestroy()==true)
-			{
-				mGoalPlayerCount++;
+			if (tempPlayer->GetIsGoal() == true) {
+				if (tempPlayer->GetIsDestroy() == true)
+				{
+					mGoalPlayerCount++;
+				}
 			}
-		
 	}
 
 

@@ -27,7 +27,7 @@ public:
 	void Render(HDC hdc)override;
 
 	int GetStateBtnCount() { return mCountNum; }
-	void SetStateBtnCount() { mCountNum -= 1;}
+	void SetStateBtnCount() { if(mCountNum>0)mCountNum -= 1;}
 
 	//void SetPlayerPtr(Player* player) { mPlayer = player; }
 };
