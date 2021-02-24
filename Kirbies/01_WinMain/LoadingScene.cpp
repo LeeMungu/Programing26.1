@@ -56,6 +56,10 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"InUI", Resources(L"in_ui.bmp"), 120, 48, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"TimeUI", Resources(L"time_ui.bmp"), 144, 48, true); });
 
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 576, 96, 9, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"CountEffect", Resources(L"countNumUI.bmp"), 140, 32, 5, 1, true); });
+
+
 
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround1");
 	mLoadingImage2 = IMAGEMANAGER->FindImage(L"LoadingBackGroundText");

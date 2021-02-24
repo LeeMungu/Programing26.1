@@ -11,7 +11,6 @@ void Boom::Init() {
 	
 	mImage = IMAGEMANAGER->FindImage(L"Boom");
 
-	IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 576, 96, 9, 1, true);
 
 	mAnimation = new Animation();
 	mAnimation->InitFrameByStartEnd(0, 0, 7, 0, false);
@@ -50,9 +49,7 @@ void Boom::Update() {
 
 		if (pixelColor != RGB(255, 0, 255))
 		{
-			mTimer += Time::GetInstance()->DeltaTime();
-
-			if (mTimer >= 70) {
+			if (mAnimation->GetNowFrameX() == 7){
 				//¸Ê ÆÄ±«
 				HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
 				HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 255));

@@ -69,11 +69,11 @@ void Mouse::Update()
 				}
 				else if (mPlayerState == PlayerState::BoomState)
 				{
-					/*
-					CountNumEffect* countEffect = new CountNumEffect();
+		
+					CountNumEffect* countEffect = new CountNumEffect("CountEffect", player[i]->GetX(), player[i]->GetRect().top - 10, L"CountEffect");
 					countEffect->SetPlayerptr(tempPlayer);
 					countEffect->Init();
-					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, countEffect);*/
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, countEffect);
 				}
 				else if (mPlayerState != PlayerState::ClimbState 
 					&& mPlayerState != PlayerState::StopperState
@@ -116,6 +116,7 @@ void Mouse::Update()
 	mY = _mousePosition.y;
 
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
 }
 
 void Mouse::Render(HDC hdc)
