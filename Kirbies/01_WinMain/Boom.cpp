@@ -17,6 +17,11 @@ void Boom::Init() {
 	mAnimation->InitFrameByStartEnd(0, 0, 7, 0, false);
 	mAnimation->SetIsLoop(true);
 	mAnimation->SetFrameUpdateTime(0.15f);
+	mAnimation->SetCallbackFunc([this]() {
+		
+		SoundPlayer::GetInstance()->Play(L"BunEffectSound", 0.8);
+		mPlayer->SetIsDestroy(true);
+	});
 	mAnimation->Play();
 
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
@@ -56,7 +61,8 @@ void Boom::Update() {
 
 				RenderEllipse(mBottom->GetImage()->GetHDC(), mX - 10, mPlayer->GetRect().bottom, 30);
 				RenderEllipse(mBottom->GetImage()->GetHDC(), mX + 10, mPlayer->GetRect().bottom + 20, 50);
-
+				SoundPlayer::GetInstance()->Play(L"FuseEffectSound", 0.8);
+			
 				SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 				SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
 				DeleteObject(pen);
@@ -67,7 +73,7 @@ void Boom::Update() {
 				mEffect = new KirbyEffect("BoomEffect", mX - 15, mY - 40, L"BoomEffect", 9, 1);
 				ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, mEffect);
 				//애니메이션 플레이 후 플레이어 제거
-				mPlayer->SetIsDestroy(true);
+				
 			}
 
 		}

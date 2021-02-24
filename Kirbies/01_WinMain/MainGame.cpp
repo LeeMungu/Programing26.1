@@ -88,11 +88,15 @@ void MainGame::Render(HDC hdc)
 	// ==================================================
 	{
 		SceneManager::GetInstance()->Render(backDC);
+		if (ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom") != nullptr)
+		{
+			mapRender(backDC);
+		}
+
 		RenderTime(backDC);
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
-
 	mBackBuffer->Render(hdc, 0, 0);
 
 }
@@ -103,7 +107,7 @@ void MainGame::mapRender(HDC map)
 	HDC mapDC = mMapBuffer->GetHDC();
 
 	//HDC 영역을 특정 색으로 밀어버리는 녀석
-	PatBlt(mapDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
+	PatBlt(mapDC, 0, 0, 2560, 1440, WHITENESS);
 	// ==================================================
 	{
 		SceneManager::GetInstance()->mapRender(mapDC);
