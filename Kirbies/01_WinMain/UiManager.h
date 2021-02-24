@@ -3,7 +3,7 @@
 /*
 씬이 넘어가도 데이터를 가지고 있는 친구
 Ui관리 및 ObjectManager 저장
-
+오브젝트메니저와는 다르게 씬이 넘어가도 값을 가지고 가게 하고 싶어서 만든 녀석
 */
 
 enum class UiLayer : int

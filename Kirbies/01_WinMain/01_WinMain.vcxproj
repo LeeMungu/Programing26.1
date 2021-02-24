@@ -156,6 +156,7 @@
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Climb.h" />
     <ClInclude Include="ColorLender.h" />
+    <ClInclude Include="ConfigUi.h" />
     <ClInclude Include="CountingPlayerUI.h" />
     <ClInclude Include="CountNumEffect.h" />
     <ClInclude Include="DefineHeader.h" />
@@ -175,6 +176,10 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="KirbyEffect.h" />
     <ClInclude Include="LoadingScene.h" />
+    <ClInclude Include="LoadingScene1to2.h" />
+    <ClInclude Include="LoadingScene2to3.h" />
+    <ClInclude Include="LoadingScene3to4.h" />
+    <ClInclude Include="LoadingScene4to5.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MainScene.h" />
     <ClInclude Include="Math.h" />
@@ -188,6 +193,9 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Scene1.h" />
     <ClInclude Include="Scene2.h" />
+    <ClInclude Include="Scene3.h" />
+    <ClInclude Include="Scene4.h" />
+    <ClInclude Include="Scene5.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SoundPlayer.h" />
     <ClInclude Include="Special.h" />
@@ -217,6 +225,7 @@
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Climb.cpp" />
     <ClCompile Include="ColorLender.cpp" />
+    <ClCompile Include="ConfigUi.cpp" />
     <ClCompile Include="CountingPlayerUI.cpp" />
     <ClCompile Include="CountNumEffect.cpp" />
     <ClCompile Include="Dig.cpp" />
@@ -233,6 +242,10 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="KirbyEffect.cpp" />
     <ClCompile Include="LoadingScene.cpp" />
+    <ClCompile Include="LoadingScene1to2.cpp" />
+    <ClCompile Include="LoadingScene2to3.cpp" />
+    <ClCompile Include="LoadingScene3to4.cpp" />
+    <ClCompile Include="LoadingScene4to5.cpp" />
     <ClCompile Include="MainGame + MainProc.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MainScene.cpp" />
@@ -251,6 +264,9 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Scene1.cpp" />
     <ClCompile Include="Scene2.cpp" />
+    <ClCompile Include="Scene3.cpp" />
+    <ClCompile Include="Scene4.cpp" />
+    <ClCompile Include="Scene5.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="SoundPlayer.cpp" />
     <ClCompile Include="Special.cpp" />

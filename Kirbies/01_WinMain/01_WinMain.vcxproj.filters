@@ -303,6 +303,30 @@
     <ClInclude Include="UiManager.h">
       <Filter>FrameWork\UiManager</Filter>
     </ClInclude>
+    <ClInclude Include="Scene3.h">
+      <Filter>MainGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene4.h">
+      <Filter>MainGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene5.h">
+      <Filter>MainGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScene1to2.h">
+      <Filter>FrameWork\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScene2to3.h">
+      <Filter>FrameWork\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScene3to4.h">
+      <Filter>FrameWork\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadingScene4to5.h">
+      <Filter>FrameWork\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="ConfigUi.h">
+      <Filter>MainGame\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -469,6 +493,30 @@
     </ClCompile>
     <ClCompile Include="UiManager.cpp">
       <Filter>FrameWork\UiManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene3.cpp">
+      <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene4.cpp">
+      <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene5.cpp">
+      <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScene1to2.cpp">
+      <Filter>FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScene2to3.cpp">
+      <Filter>FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScene3to4.cpp">
+      <Filter>FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadingScene4to5.cpp">
+      <Filter>FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="ConfigUi.cpp">
+      <Filter>MainGame\Ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

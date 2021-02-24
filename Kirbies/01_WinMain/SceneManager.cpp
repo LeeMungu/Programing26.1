@@ -6,7 +6,7 @@
 
 SceneManager::SceneManager()
 	:mCurrentScene(nullptr),mLoadingThread(nullptr),mTargetScene(nullptr),mLoadingScene(nullptr),
-mIsLoadingEnd(false){}
+mIsLoadingEnd(false), mIsConfig(false){}
 
 SceneManager::~SceneManager()
 {
@@ -20,8 +20,24 @@ SceneManager::~SceneManager()
 
 void SceneManager::Update()
 {
-	if (mCurrentScene != nullptr)
-		mCurrentScene->Update();
+	if (mIsConfig == false)
+	{
+		if (mCurrentScene != nullptr)
+			mCurrentScene->Update();
+
+		if (Input::GetInstance()->GetKeyDown(VK_ESCAPE))
+		{
+			mIsConfig = true;
+			//여기서 컨피그(매뉴) 열어주기
+		}
+	}
+	else if (mIsConfig == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_ESCAPE))
+		{
+			mIsConfig = false;
+		}
+	}
 }
 
 void SceneManager::Render(HDC hdc)
@@ -66,6 +82,9 @@ void SceneManager::LoadScene(const wstring & sceneName)
 	mCurrentScene = targetScene;
 }
 
+/*
+이 밑으로는 현제 우리는 안쓴다 - LMG
+*/
 //잘 개조해서 써봐. 잘 모르고 괜히 쓰면 면접때 털림
 void SceneManager::LoadScene(const wstring & targetSceneName, const wstring & loadingSceneName)
 {

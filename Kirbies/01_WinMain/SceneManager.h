@@ -13,6 +13,8 @@ private:
 	class Scene* mLoadingScene;
 	thread* mLoadingThread;
 	bool mIsLoadingEnd;
+	//true 일때 씬 일시정지, 매뉴 호출
+	bool mIsConfig;
 public:
 	SceneManager();
 	~SceneManager();
