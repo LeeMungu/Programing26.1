@@ -6,13 +6,16 @@
 #include "Player.h"
 #include "Image.h"
 #include "DigPoint.h"
-
+#include "Effect.h"
+#include "KirbyEffect.h"
 void Dig::Init()
 {
 	//이미지 불러오기
 	
 	mImage = IMAGEMANAGER->FindImage(L"Dig");
 	Image* temp = IMAGEMANAGER->FindImage(L"Fall");
+	IMAGEMANAGER->LoadFromFile(L"DigEffect", Resources(L"DigEffect.bmp"), 144, 46, 4, 1, true);
+
 	//애니메이션 설정
 	mAnimation = new Animation();
 	if (mPlayer->GetIntMotionRL() == 0)
@@ -81,6 +84,8 @@ void Dig::Update()
 					//digpoint->Render(mBottom->GetImage()->GetHDC());
 					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, mRadius);
+					mEffect = new KirbyEffect("DigEffect", x, y, L"DigEffect", 4, 1);
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, mEffect);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
