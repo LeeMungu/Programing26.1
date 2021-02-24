@@ -3,7 +3,10 @@
 
 class CountingPlayerUI : public GameObject 
 {
-	class Image* mImage;
+	class Image* mOutImage;
+	class Image* mInImage;
+	class Image* mTimeImage;
+
 	class Door* mDoor;
 	float mCountTimer;
 	float mTimer;
