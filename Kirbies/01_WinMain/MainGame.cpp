@@ -86,6 +86,7 @@ void MainGame::Release()
 	SafeDelete(mBackBuffer);
 	SafeDelete(mMapBuffer);
 
+
 }
 
 /*
