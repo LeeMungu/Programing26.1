@@ -3,7 +3,7 @@
 class BoomRect;
 class BoomRectManager
 {
-	float x, y;
+	int mX, mY;
 public:
 	BoomRectManager(float x, float y);
 	void Init();

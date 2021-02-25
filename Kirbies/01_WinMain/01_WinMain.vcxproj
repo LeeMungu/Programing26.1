@@ -23,7 +23,7 @@
     <ProjectGuid>{ADD52605-596E-43E8-879D-E81A28A8BB13}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>My01WinMain</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -151,7 +151,10 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="Boom.h" />
+    <ClInclude Include="BoomRect.h" />
+    <ClInclude Include="BoomRectManager.h" />
     <ClInclude Include="Bottom.h" />
+    <ClInclude Include="ButtonUi.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraEvent.h" />
     <ClInclude Include="CameraManager.h" />
@@ -222,7 +225,10 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="Boom.cpp" />
+    <ClCompile Include="BoomRect.cpp" />
+    <ClCompile Include="BoomRectManager.cpp" />
     <ClCompile Include="Bottom.cpp" />
+    <ClCompile Include="ButtonUi.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraEvent.cpp" />
     <ClCompile Include="CameraManager.cpp" />

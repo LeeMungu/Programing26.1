@@ -7,6 +7,8 @@
 #include "Effect.h"
 #include "Camera.h"
 #include "KirbyEffect.h"
+#include "BoomRectManager.h"
+
 void Boom::Init() {
 	
 	mImage = IMAGEMANAGER->FindImage(L"Boom");
@@ -19,6 +21,9 @@ void Boom::Init() {
 	mAnimation->SetCallbackFunc([this]() {
 		SoundPlayer::GetInstance()->Stop(L"FuseEffectSound");
 		SoundPlayer::GetInstance()->Play(L"BunEffectSound", 0.8 *SoundPlayer::GetInstance()->GetEffectVolum());
+		BoomRectManager* boomRcManager = new BoomRectManager(mPlayer->GetX(), mPlayer->GetY());
+		boomRcManager->Init();
+		
 		mPlayer->SetIsDestroy(true);
 	});
 	mAnimation->Play();
@@ -86,6 +91,7 @@ void Boom::Update() {
 void Boom::Render(HDC hdc) {
 	CameraManager::GetInstance()->GetMainCamera()
 		->FrameRender(hdc, mImage, mPlayer->GetRect().left, mPlayer->GetRect().top, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+
 }
 
 void Boom::mapRender(HDC map)
