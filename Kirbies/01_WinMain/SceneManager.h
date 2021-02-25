@@ -1,6 +1,7 @@
 #pragma once
 #include <thread>
 class Scene;
+class ConfigUi;
 class SceneManager
 {
 	Singleton(SceneManager)
@@ -15,6 +16,7 @@ private:
 	bool mIsLoadingEnd;
 	//true 일때 씬 일시정지, 매뉴 호출
 	bool mIsConfig;
+	ConfigUi* Menu;
 public:
 	SceneManager();
 	~SceneManager();
@@ -27,6 +29,9 @@ public:
 	//로딩없이 로드하는 함수
 	void LoadScene(const wstring& sceneName);
 	void LoadScene(const wstring& targetSceneName, const wstring& loadingSceneName);
+
+	void DeleteMenu();
+	void SetIsconfig(bool config) { mIsConfig = config; }
 private:
 	//스레드에 집어 넣을 함수 : 즉 실제로 스레드가 작업 처리 할 함수
 	void LoadingThread();

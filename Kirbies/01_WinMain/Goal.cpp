@@ -16,6 +16,7 @@ void Goal::Init()
 	mSizeX = mImage->GetWidth()/2;
 	mSizeY = mImage->GetHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	
 }
 
 void Goal::Release()
@@ -25,9 +26,10 @@ void Goal::Release()
 
 void Goal::Update()
 {
+
 	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-	
+
 	for (int i = 0; i < player.size(); i++)
 	{
 		RECT temp;
@@ -38,6 +40,7 @@ void Goal::Update()
 			Player* tempPlayer = (Player*)player[i];
 			if (tempPlayer->GetIsDoor() == false)
 			{
+				SoundPlayer::GetInstance()->Play(L"GoalEffectSound", 0.3 *SoundPlayer::GetInstance()->GetEffectVolum());
 				tempPlayer->SetIsGoal(true);
 				tempPlayer->SetIsDoor(true);
 			}

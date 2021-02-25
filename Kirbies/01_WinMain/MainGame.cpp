@@ -68,6 +68,10 @@ void MainGame::Init()
 
 	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 156, 122, true);
 	UiManager::GetInstance()->Init();
+
+	//¸Þ´º
+	IMAGEMANAGER->LoadFromFile(L"Menu", Resources(L"Menu.bmp"), 241, 240, false);
+	IMAGEMANAGER->LoadFromFile(L"MenuBtn", Resources(L"MenuBtn.bmp"), 128, 128, 1, 4, true);
 }
 
 /*

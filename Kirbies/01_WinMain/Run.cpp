@@ -75,7 +75,7 @@ void Run::Release()
 
 void Run::Update()
 {
-	mScaleValue -= 0.0005f;
+	mScaleValue -= 0.001f;
 	if (mPlayer->GetIntMotionRL() == 0 && mCurrentAnimation == mLeftAnimation)
 	{
 		mCurrentAnimation->Stop();
@@ -106,13 +106,13 @@ void Run::Update()
 			(mCurrentAnimation->GetNowFrameX()==2||
 				mCurrentAnimation->GetNowFrameX() == 6))
 		{
-			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3);
+			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3 *SoundPlayer::GetInstance()->GetEffectVolum());
 		}
 		else if (mCurrentAnimation == mLeftAnimation &&
 			(mCurrentAnimation->GetNowFrameX()==9-2 ||
 				mCurrentAnimation->GetNowFrameX()==9-6))
 		{
-			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3);
+			SoundPlayer::GetInstance()->Play(L"RunEffectSound", 0.3 *SoundPlayer::GetInstance()->GetEffectVolum());
 		}
 	}
 

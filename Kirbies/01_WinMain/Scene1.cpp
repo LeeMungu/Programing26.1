@@ -49,8 +49,7 @@ void Scene1::Init()
 	CountingPlayerUI* countUI = new CountingPlayerUI("Scene1count",100, WINSIZEY - 100, 300);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
 
-	Ui* dataUI = new DataUI("DataUI",1);
-	UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
+
 
 	//camera
 	Camera* camera = new Camera();
@@ -64,7 +63,8 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//사운드
-	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
+	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f
+		*SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	mIsSpecial = false;
@@ -87,12 +87,14 @@ void Scene1::Update()
 	}
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene1count");
-	if (tempUi != NULL)
+	if (tempUi != NULL && mIsGameClear != true)
 	{
 		if (tempUi->GetGoalPercent() > 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
+			Ui* dataUI = new DataUI("DataUI", 1);
+			UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
 		}
 	}
 

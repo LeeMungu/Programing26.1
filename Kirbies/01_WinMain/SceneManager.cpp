@@ -3,7 +3,7 @@
 
 #include "Scene.h"
 #include "LoadingScene.h"
-
+#include "ConfigUi.h"
 SceneManager::SceneManager()
 	:mCurrentScene(nullptr),mLoadingThread(nullptr),mTargetScene(nullptr),mLoadingScene(nullptr),
 mIsLoadingEnd(false), mIsConfig(false){}
@@ -15,6 +15,11 @@ SceneManager::~SceneManager()
 	{
 		//iter->second->Release();
 		SafeDelete(iter->second);
+	}
+
+	if (Menu != NULL)
+	{
+		SafeDelete(Menu);
 	}
 }
 
@@ -29,6 +34,8 @@ void SceneManager::Update()
 		{
 			mIsConfig = true;
 			//여기서 컨피그(매뉴) 열어주기
+			Menu = new ConfigUi("Menu");
+			Menu->Init();
 		}
 	}
 	else if (mIsConfig == true)
@@ -36,7 +43,15 @@ void SceneManager::Update()
 		if (Input::GetInstance()->GetKeyDown(VK_ESCAPE))
 		{
 			mIsConfig = false;
+			Menu->Release();
+			SafeDelete(Menu);
 		}
+	}
+
+
+	if (Menu != NULL)
+	{
+		Menu->Update();
 	}
 }
 
@@ -44,6 +59,11 @@ void SceneManager::Render(HDC hdc)
 {
 	if (mCurrentScene != nullptr)
 		mCurrentScene->Render(hdc);
+
+	if (Menu != NULL)
+	{
+		Menu->Render(hdc);
+	}
 }
 
 void SceneManager::mapRender(HDC map)
@@ -108,6 +128,18 @@ void SceneManager::LoadScene(const wstring & targetSceneName, const wstring & lo
 	//스레드는 메모리 할당해주는 순간부터 바로 돌기 시작한다.
 	mLoadingThread = new thread(threadFunc);
 }
+
+
+void SceneManager::DeleteMenu()
+{
+	mIsConfig = false;
+	if (Menu != NULL)
+	{
+		Menu->Release();
+		SafeDelete(Menu);
+	}
+}
+
 
 void SceneManager::LoadingThread()
 {
