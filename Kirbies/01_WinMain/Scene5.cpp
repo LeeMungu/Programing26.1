@@ -42,7 +42,7 @@ void Scene5::Init()
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
-	CountingPlayerUI* countUI = new CountingPlayerUI(100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("CountUI", 100, WINSIZEY - 100, 300);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
 
 
@@ -95,7 +95,7 @@ void Scene5::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
 
-	wstring str = L"스테이지4 풀풀동산.";
+	wstring str = L"스테이지5 풀풀동산.";
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 }
 

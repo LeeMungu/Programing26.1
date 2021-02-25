@@ -73,7 +73,21 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
-	//클리어되면 씬 넘어가게
+
+	//클리어 시 변경 로딩씬
+	if (mIsGameClear == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
+		}
+	}
+	//클리어조건 - 차후 추가예정
+	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	{
+		mIsGameClear = true;
+	}
+
 	//사운드 멈춰주기
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
