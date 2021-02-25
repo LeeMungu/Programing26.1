@@ -70,12 +70,18 @@ void Scene5::Release()
 
 void Scene5::Update()
 {
+	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene4to5");
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
 		}
+	}
+	//클리어조건 - 차후 추가예정
+	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	{
+		mIsGameClear = true;
 	}
 
 

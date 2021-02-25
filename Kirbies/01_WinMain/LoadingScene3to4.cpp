@@ -66,6 +66,15 @@ void LoadingScene3to4::Release()
 
 void LoadingScene3to4::Update()
 {
+	if (mIsEndLoading == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"Scene4");
+		}
+	}
+
+
 	if (mLoadIndex >= mLoadList.size())
 	{
 		mIsEndLoading = true;
