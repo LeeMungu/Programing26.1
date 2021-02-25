@@ -10,7 +10,7 @@ UiManager::UiManager()
     //Ui레이어 별로 벡터하나씩 맵에 집어넣는다.
     for (int i = 0; i < (int)UiLayer::End; ++i)
     {
-        vector<GameObject*> emptyVector;
+        vector<Ui*> emptyVector;
         mUiList.insert(make_pair((UiLayer)i, emptyVector));
     }
     for (int i = 0; i < (int)ObjectLayer::End; ++i)
