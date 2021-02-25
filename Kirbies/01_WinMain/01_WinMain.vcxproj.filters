@@ -333,6 +333,9 @@
     <ClInclude Include="CameraEvent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="ButtonUi.h">
+      <Filter>MainGame\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -529,6 +532,9 @@
     </ClCompile>
     <ClCompile Include="CameraEvent.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonUi.cpp">
+      <Filter>MainGame\Ui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
