@@ -45,7 +45,7 @@ void Scene1::Init()
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
-	CountingPlayerUI* countUI = new CountingPlayerUI(100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("CountUI",100, WINSIZEY - 100, 300);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
 
 
@@ -73,20 +73,7 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
-	//클리어 시 변경 로딩씬
-	if (mIsGameClear == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
-		}
-	}
-	//클리어조건 - 차후 추가예정
-	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-	{
-		mIsGameClear = true;
-	}
-
+	//클리어되면 씬 넘어가게
 	//사운드 멈춰주기
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
