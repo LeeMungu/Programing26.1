@@ -11,7 +11,7 @@
 #include "Goal.h"
 #include "Ui.h"
 #include "CountingPlayerUI.h"
-
+#include "DataUI.h"
 void Scene1::Init()
 {
 	//player
@@ -49,6 +49,8 @@ void Scene1::Init()
 	CountingPlayerUI* countUI = new CountingPlayerUI("Scene1count",100, WINSIZEY - 100, 300);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
 
+	Ui* dataUI = new DataUI("DataUI",1);
+	UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
 
 	//camera
 	Camera* camera = new Camera();
@@ -75,7 +77,6 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
-
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{

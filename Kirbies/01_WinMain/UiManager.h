@@ -16,13 +16,14 @@ enum class UiLayer : int
 
 class UiManager
 {
+	Singleton(UiManager);
 public:
-	//ui메니져==게임의 데이터를 가지고 있는 친구
-	static UiManager* GetInstance()
-	{
-		static UiManager instance;
-		return &instance;
-	}
+//	//ui메니져==게임의 데이터를 가지고 있는 친구
+//	static UiManager* GetInstance()
+//	{
+//		static UiManager instance;
+//		return &instance;
+//	}
 private:
 
 	typedef map<ObjectLayer, vector<class GameObject*>>::iterator ObjectIter;
