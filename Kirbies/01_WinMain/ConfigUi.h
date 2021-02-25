@@ -12,16 +12,24 @@ class ConfigUi : public Ui
 {
 	Image* mImage;
 	Image* mMenuImage;
+	Image* mSubImage;
+
 
 	ButtonUi* mMenuEnd;
 	ButtonUi* mMenuRestart;
 	ButtonUi* mMenuRecord;
 	ButtonUi* mMenuSound;
+
+	float msubsizeX;
 public:
 	ConfigUi(const string& name);
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+
+	void SetSubMenuOpen(float x) { msubsizeX = x; }
+	float GetSubMenu() { return msubsizeX; }
 };
 

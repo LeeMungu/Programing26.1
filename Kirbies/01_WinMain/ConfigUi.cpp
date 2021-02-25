@@ -8,6 +8,8 @@ ConfigUi::ConfigUi(const string& name)
 {
 	mImage = IMAGEMANAGER->FindImage(L"Menu");
 	mMenuImage = IMAGEMANAGER->FindImage(L"MenuBtn");
+	mSubImage = IMAGEMANAGER->FindImage(L"SubMenu");
+	msubsizeX = 0;
 }
 
 void ConfigUi::Init()
@@ -59,4 +61,5 @@ void ConfigUi::Render(HDC hdc)
 	mMenuRecord->Render(hdc);
 	mMenuRestart->Render(hdc);
 	mMenuSound->Render(hdc);
+	mSubImage->ScaleRender(hdc, mRect.right, mRect.top, msubsizeX, 240);
 }

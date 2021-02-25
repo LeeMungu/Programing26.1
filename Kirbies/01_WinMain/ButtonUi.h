@@ -16,6 +16,7 @@ class ButtonUi : public GameObject
 	BtnState mbtnState;
 	Image* mImage;
 	int mIndexX, mIndexY;
+	int mScaleX, mScaleY;
 
 public:
 	ButtonUi(BtnState state, float x, float y);
