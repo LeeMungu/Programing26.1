@@ -58,7 +58,8 @@ void Scene3::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//사운드
-	SoundPlayer::GetInstance()->Play(L"Scene2BGM", 0.5f);
+	SoundPlayer::GetInstance()->Play(L"Scene3BGM", 0.5f);
+	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
 
 	mIsSpecial = false;
 }
@@ -78,10 +79,15 @@ void Scene3::Update()
 			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
 		}
 	}
-	//클리어조건 - 차후 추가예정
-	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	//클리어조건
+	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene3count");
+	if (tempUi != NULL)
 	{
-		mIsGameClear = true;
+		if (tempUi->GetGoalPercent() > 50.f &&
+			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+		{
+			mIsGameClear = true;
+		}
 	}
 
 	

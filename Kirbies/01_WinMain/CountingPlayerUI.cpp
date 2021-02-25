@@ -40,7 +40,7 @@ void CountingPlayerUI::Update()
 	{
 		
 			Player* tempPlayer = (Player*)player[i];
-			if (tempPlayer->GetIsGoal() == true) {
+			if (tempPlayer->GetIsDoor() == true) {
 				if (tempPlayer->GetIsDestroy() == true)
 				{
 					mGoalPlayerCount++;
@@ -75,7 +75,7 @@ void CountingPlayerUI::Render(HDC hdc)
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
 	wstring createdPlayer = to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = to_wstring((int)mGoalPercent);
+	wstring GoalPlayer = to_wstring(mGoalPlayerCount);
 	wstring timer = to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 

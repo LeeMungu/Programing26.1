@@ -55,6 +55,20 @@ void LoadingScene3to4::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 576, 96, 9, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"CountEffect", Resources(L"countNumUI.bmp"), 140, 32, 5, 1, true); });
 
+	//사운드 (이펙트)
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BoomEffectSound", Resources(L"BoomEffectSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"OpenDoorSound", Resources(L"OpenDoorSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"CloseDoorSound", Resources(L"CloseDoorSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"FuseEffectSound", Resources(L"BoomFuse.wav"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"BunEffectSound", Resources(L"RealBoom.wav"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"DigEffectSound", Resources(L"shovel.wav"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"UmbrellaEffectSound", Resources(L"Parasol.wav"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"RunEffectSound", Resources(L"RunEffectSound.mp3"), false); });
+
+	//사운드 (BGM)
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene4BGM", Resources(L"KIrbyBGM4.mp3"), true); });
+
+
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround2");
 	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
 	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");
