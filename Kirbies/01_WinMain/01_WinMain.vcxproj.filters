@@ -327,6 +327,9 @@
     <ClInclude Include="ConfigUi.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="DataUI.h">
+      <Filter>MainGame\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -516,6 +519,9 @@
       <Filter>FrameWork\Scene</Filter>
     </ClCompile>
     <ClCompile Include="ConfigUi.cpp">
+      <Filter>MainGame\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="DataUI.cpp">
       <Filter>MainGame\Ui</Filter>
     </ClCompile>
   </ItemGroup>
