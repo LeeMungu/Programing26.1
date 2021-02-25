@@ -40,6 +40,7 @@ public:
 	virtual void Render(HDC hdc);
 
 	void AddUi(UiLayer layer, class Ui* object);
+	void AddUi(UiLayer layer, class GameObject* object);
 	class Ui* FindUi(const string& name);
 	class Ui* FindUi(UiLayer layer, const string& name);
 	vector<class Ui*> FindUis(const string& name);

@@ -159,6 +159,7 @@
     <ClInclude Include="ConfigUi.h" />
     <ClInclude Include="CountingPlayerUI.h" />
     <ClInclude Include="CountNumEffect.h" />
+    <ClInclude Include="DataUI.h" />
     <ClInclude Include="DefineHeader.h" />
     <ClInclude Include="Dig.h" />
     <ClInclude Include="DigPoint.h" />
@@ -228,6 +229,7 @@
     <ClCompile Include="ConfigUi.cpp" />
     <ClCompile Include="CountingPlayerUI.cpp" />
     <ClCompile Include="CountNumEffect.cpp" />
+    <ClCompile Include="DataUI.cpp" />
     <ClCompile Include="Dig.cpp" />
     <ClCompile Include="DigPoint.cpp" />
     <ClCompile Include="Door.cpp" />
