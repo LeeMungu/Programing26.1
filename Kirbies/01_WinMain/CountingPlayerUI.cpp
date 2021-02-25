@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Image.h"
 //생성된 플레이어 수 / 골 된 플레이어 수(퍼센트) / 시간 을 UI로 보여준다.
-CountingPlayerUI::CountingPlayerUI(float x, float y, float timer)
+CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) : GameObject(name)
 {
 	mX = x;
 	mY = y;
@@ -59,6 +59,7 @@ void CountingPlayerUI::Update()
 		mCreatedPlayerCount++;
 	}
 
+	mGoalPercent = mGoalPlayerCount * 100 / mPlayerCount;
 }
 
 void CountingPlayerUI::Render(HDC hdc)
@@ -74,7 +75,7 @@ void CountingPlayerUI::Render(HDC hdc)
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
 	wstring createdPlayer = to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = to_wstring((int)mGoalPlayerCount * 100 / mPlayerCount );
+	wstring GoalPlayer = to_wstring((int)mGoalPercent);
 	wstring timer = to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 
