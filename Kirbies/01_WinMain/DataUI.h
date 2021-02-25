@@ -6,6 +6,7 @@ class DataUI : public Ui
 	float mTime;
 	float mGoalPercent;
 
+
 public:
 	DataUI(const string& name, int stage);
 	virtual void Init() override;
