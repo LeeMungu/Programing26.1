@@ -11,6 +11,7 @@
 #include "Goal.h"
 #include "Ui.h"
 #include "CountingPlayerUI.h"
+
 void Scene1::Init()
 {
 	//player
@@ -30,7 +31,7 @@ void Scene1::Init()
 	Door* door = new Door("Door",WINSIZEX/2,0,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2+300,0);
+	Goal* goal = new Goal("goal", WINSIZEX / 2+300,200);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 
@@ -82,10 +83,15 @@ void Scene1::Update()
 			SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
 		}
 	}
-	//클리어조건 - 차후 추가예정
-	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	//클리어조건
+	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene1count");
+	if (tempUi != NULL)
 	{
-		mIsGameClear = true;
+		if (tempUi->GetGoalPercent() > 50.f &&
+			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+		{
+			mIsGameClear = true;
+		}
 	}
 
 	//사운드 멈춰주기

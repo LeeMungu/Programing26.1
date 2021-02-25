@@ -153,10 +153,11 @@ void Run::Update()
 		mCurrentAnimation->Play();
 		mPlayer->SetIsGoal(false);
 	}
-
+	//µé¾î°¬À»¶§
 	if (mCurrentAnimation == mGoalKirbyAnimation &&
 		mCurrentAnimation->GetIsPlay() == false)
 	{
+
 		mIsDestroyed = true;
 		mPlayer->SetIsDestroy(true);
 	}

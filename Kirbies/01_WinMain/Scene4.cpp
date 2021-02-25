@@ -78,8 +78,10 @@ void Scene4::Update()
 			SceneManager::GetInstance()->LoadScene(L"LoadingScene4to5");
 		}
 	}
-	//클리어조건 - 차후 추가예정
-	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	//클리어조건
+	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene4count");
+	if (tempUi->GetGoalPercent() > 0.9f &&
+		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 	{
 		mIsGameClear = true;
 	}
