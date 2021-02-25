@@ -1,28 +1,30 @@
 #include "pch.h"
 #include "ButtonUi.h"
 #include "Image.h"
+#include "ConfigUi.h"
 
-ButtonUi::ButtonUi(State state, float x, float y)
+
+ButtonUi::ButtonUi(BtnState state, float x, float y)
 {
-	mState = state;
+	mbtnState = state;
 	mImage = IMAGEMANAGER->FindImage(L"MenuBtn");
 	mX = x;
 	mY = y;
 	mIndexX = 0;
 	mIndexY = 0;
-	if (mState == State::End)
+	if (mbtnState == BtnState::End)
 	{
 		mIndexY = 3;
 	}
-	else if (mState == State::Record)
+	else if (mbtnState == BtnState::Record)
 	{
 		mIndexY = 0;
 	}
-	else if (mState == State::ReStart)
+	else if (mbtnState == BtnState::ReStart)
 	{
 		mIndexY = 1;
 	}
-	else if (mState == State::Sound)
+	else if (mbtnState == BtnState::Sound)
 	{
 		mIndexY = 2;
 	}
@@ -32,7 +34,7 @@ ButtonUi::ButtonUi(State state, float x, float y)
 }
 void ButtonUi::Init()
 {
-	
+
 }
 
 
@@ -41,22 +43,26 @@ void ButtonUi::Update()
 {
 	if (PtInRect(&mRect, _mousePosition) && Input::GetInstance()->GetKeyDown(VK_LBUTTON))
 	{
-		if (mState == State::End)
+		if (mbtnState == BtnState::End)
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
+			SceneManager::GetInstance()->SetIsconfig(false);
+			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
+			temp->SetIsDestroy(true);
+
+
+		}
+		else if (mbtnState == BtnState::Record)
 		{
 			SceneManager::GetInstance()->LoadScene(L"MainScene");
 			SceneManager::GetInstance()->SetIsconfig(false);
 		}
-		else if (mState == State::Record)
+		else if (mbtnState == BtnState::ReStart)
 		{
 			SceneManager::GetInstance()->LoadScene(L"MainScene");
 			SceneManager::GetInstance()->SetIsconfig(false);
 		}
-		else if (mState == State::ReStart)
-		{
-			SceneManager::GetInstance()->LoadScene(L"MainScene");
-			SceneManager::GetInstance()->SetIsconfig(false);
-		}
-		else if (mState == State::Sound)
+		else if (mbtnState == BtnState::Sound)
 		{
 			SceneManager::GetInstance()->LoadScene(L"MainScene");
 			SceneManager::GetInstance()->SetIsconfig(false);
@@ -71,8 +77,8 @@ void ButtonUi::Release()
 
 void ButtonUi::Render(HDC hdc)
 {
-	
-	mImage->FrameRender(hdc,mRect.left,mRect.top,mIndexX,mIndexY);
+
+	mImage->FrameRender(hdc, mRect.left, mRect.top, mIndexX, mIndexY);
 	//RenderRect(hdc, mRect);
 
 }

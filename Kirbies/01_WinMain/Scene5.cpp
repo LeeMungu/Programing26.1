@@ -68,6 +68,7 @@ void Scene5::Init()
 void Scene5::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop(L"Scene5BGM");
 }
 
 void Scene5::Update()

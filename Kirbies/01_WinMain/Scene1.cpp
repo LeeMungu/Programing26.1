@@ -73,6 +73,7 @@ void Scene1::Init()
 void Scene1::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop(L"Scene1BGM");
 }
 
 void Scene1::Update()

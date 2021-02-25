@@ -2,7 +2,7 @@
 #include "GameObject.h"
 class Image;
 
-enum class State
+enum class BtnState
 {
 	ReStart,
 	End,
@@ -12,16 +12,18 @@ enum class State
 
 class ButtonUi : public GameObject
 {
-	
-	State mState;
+
+	BtnState mbtnState;
 	Image* mImage;
 	int mIndexX, mIndexY;
 
 public:
-	ButtonUi(State state, float x, float y);
+	ButtonUi(BtnState state, float x, float y);
 	void Init()override;
 	void Update() override;
 	void Release() override;
 	void Render(HDC hdc) override;
+
+
 };
 

@@ -69,6 +69,7 @@ void Scene2::Init()
 void Scene2::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
 }
 
 void Scene2::Update()

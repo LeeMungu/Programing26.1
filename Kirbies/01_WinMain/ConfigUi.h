@@ -5,9 +5,10 @@
 버튼 및 클릭도 구현되어야 된다.
 */
 #include "GameObject.h"
+#include "Ui.h"
 class Image;
 class ButtonUi;
-class ConfigUi : public GameObject
+class ConfigUi : public Ui
 {
 	Image* mImage;
 	Image* mMenuImage;
