@@ -80,10 +80,13 @@ void Scene3::Update()
 	}
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene3count");
-	if (tempUi->GetGoalPercent() > 0.9f &&
-		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+	if (tempUi != NULL)
 	{
-		mIsGameClear = true;
+		if (tempUi->GetGoalPercent() > 50.f &&
+			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+		{
+			mIsGameClear = true;
+		}
 	}
 
 	

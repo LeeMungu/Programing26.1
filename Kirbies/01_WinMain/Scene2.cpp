@@ -59,6 +59,7 @@ void Scene2::Init()
 
 	//사운드
 	SoundPlayer::GetInstance()->Play(L"Scene2BGM", 0.5f);
+	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	mIsSpecial = false;
 
@@ -81,15 +82,18 @@ void Scene2::Update()
 	}
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene2count");
-	if (tempUi->GetGoalPercent() > 0.9f &&
-		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+	if (tempUi != NULL)
 	{
-		mIsGameClear = true;
+		if (tempUi->GetGoalPercent() > 50.f &&
+			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+		{
+			mIsGameClear = true;
+		}
 	}
 
 	
 
-	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
+	
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 	SpecialFunc();

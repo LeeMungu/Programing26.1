@@ -63,6 +63,7 @@ void Scene1::Init()
 
 	//»ç¿îµå
 	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
+	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	mIsSpecial = false;
 }
@@ -95,7 +96,7 @@ void Scene1::Update()
 	}
 
 	//»ç¿îµå ¸ØÃçÁÖ±â
-	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
+	
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
