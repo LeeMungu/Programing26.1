@@ -7,6 +7,10 @@
 #include "Mouse.h"
 //평소에는 흑백이미지 -> 마우스 올리면 색깔이미지
 //정해진 개수가 있음 -> 0이 아닐 때만 이용 가능 -> 선택하면 state 바꿔준다(마우스에서 하는거?)
+
+Ui::Ui(const string& name):GameObject(name){}
+
+
 Ui::Ui(const string& name, PlayerState state, float x, float y, int count) 
 	: GameObject (name) {
 	mState = state;
@@ -15,7 +19,6 @@ Ui::Ui(const string& name, PlayerState state, float x, float y, int count)
 	mCountNum = count;
 
 	mImage = IMAGEMANAGER->FindImage(L"Button");
-
 	mCountUI = IMAGEMANAGER->FindImage(L"UICount");
 	mCountTens = IMAGEMANAGER->FindImage(L"Numbers");
 	mCountUnits = IMAGEMANAGER->FindImage(L"Numbers");

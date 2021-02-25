@@ -20,6 +20,7 @@ class Ui : public GameObject
 
 public:
 	Ui(const string& name, PlayerState state, float x, float y, int count);
+	Ui(const string& name);
 
 	void Init()override;
 	void Release()override;

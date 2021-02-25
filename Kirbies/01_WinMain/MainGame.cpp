@@ -17,7 +17,6 @@
 
 #include "MainScene.h"
 #include "GameObject.h"
-
 /*
 Scene : 스테이지 단위를 씬이라고 함
 */
@@ -68,6 +67,7 @@ void MainGame::Init()
 	SceneManager::GetInstance()->LoadScene(L"MainScene");
 
 	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 156, 122, true);
+	UiManager::GetInstance()->Init();
 }
 
 /*
@@ -90,6 +90,7 @@ Update : 매 프레임 실행되는 함수, 여기서 연산 처리 한다.
 void MainGame::Update()
 {
 	SceneManager::GetInstance()->Update();
+	UiManager::GetInstance()->Update();
 }
 
 /*
@@ -111,11 +112,13 @@ void MainGame::Render(HDC hdc)
 		//IMAGEMANAGER->FindImage(L"dedede")->AlphaScaleRender(backDC, 0, 0, WINSIZEX, WINSIZEY, 0.5f);
 
 		SceneManager::GetInstance()->Render(backDC);
+		UiManager::GetInstance()->Render(backDC);
 		if (ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom") != nullptr)
 		{
 			mapRender(backDC);
 		}
 		
+
 		RenderTime(backDC);
 	}
 	//====================================================
@@ -154,5 +157,6 @@ void MainGame::RenderTime(HDC hdc)
 	TextOut(hdc, 10, 10, strWorldTime.c_str(), strWorldTime.length());
 	TextOut(hdc, 10, 25, strDeltaTime.c_str(), strDeltaTime.length());
 	TextOut(hdc, 10, 40, strFPS.c_str(), strFPS.length());
+
 }
 

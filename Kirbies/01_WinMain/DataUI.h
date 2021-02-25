@@ -7,10 +7,8 @@ class DataUI : public Ui
 	float mGoalPercent;
 
 public:
-	DataUI(string name, float x, float y, int stage);
-	virtual void Init()override;
-	virtual void Release()override;
-	virtual void Update()override;
+	DataUI(const string& name, int stage);
+	virtual void Init() override;
 	virtual void Render(HDC hdc)override;
 
 

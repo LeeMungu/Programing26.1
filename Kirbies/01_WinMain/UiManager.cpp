@@ -119,11 +119,6 @@ void UiManager::AddUi(UiLayer layer, Ui* object)
     mUiList[layer].push_back(object);
 }
 
-void UiManager::AddUi(UiLayer layer, GameObject* object)
-{
-	mUiList[layer].push_back(object);
-}
-
 Ui* UiManager::FindUi(const string& name)
 {
     UiIter iter = mUiList.begin();
