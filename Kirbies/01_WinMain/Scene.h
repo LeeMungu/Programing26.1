@@ -2,6 +2,9 @@
 class Scene
 {
 protected:
+	bool mIsGameOver;
+	bool mIsGameClear;
+	
 	bool mIsSpecial;
 
 public:
