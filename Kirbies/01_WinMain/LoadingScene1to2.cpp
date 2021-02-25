@@ -66,7 +66,7 @@ void LoadingScene1to2::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"RunEffectSound", Resources(L"RunEffectSound.mp3"), false); });
 
 	//»ç¿îµå (BGM)
-	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene1BGM", Resources(L"GourmetRaceKirbySuperStar.mp3"), true); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene2BGM", Resources(L"KIrbyBGM2.mp3"), true); });
 
 
 	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround2");

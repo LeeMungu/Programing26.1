@@ -59,7 +59,7 @@ void Scene2::Init()
 
 	//»ç¿îµå
 	SoundPlayer::GetInstance()->Play(L"Scene2BGM", 0.5f);
-	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
+	SoundPlayer::GetInstance()->Stop(L"Scene1BGM");
 
 	mIsSpecial = false;
 
