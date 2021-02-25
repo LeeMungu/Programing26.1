@@ -68,15 +68,6 @@ void LoadingScene2to3::Release()
 
 void LoadingScene2to3::Update()
 {
-	//씬2에서 씬3로 넘어오는 조건 걸기
-
-	if (mIsGameClear == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"Scene3");
-		}
-	}
 
 	if (mLoadIndex >= mLoadList.size())
 	{

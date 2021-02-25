@@ -66,15 +66,6 @@ void LoadingScene4to5::Release()
 
 void LoadingScene4to5::Update()
 {
-	//씬4에서 씬5로 넘어오는 조건 걸기
-
-	if (mIsGameClear == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"Scene5");
-		}
-	}
 
 	if (mLoadIndex >= mLoadList.size())
 	{

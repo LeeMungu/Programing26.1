@@ -71,6 +71,21 @@ void Scene2::Release()
 
 void Scene2::Update()
 {
+	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	{
+		mIsGameClear = true;
+	}
+	
+	if (mIsGameClear == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene2to3");
+		}
+	}
+
+	
+
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();

@@ -73,6 +73,20 @@ void Scene1::Release()
 
 void Scene1::Update()
 {
+	if (mIsGameClear == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
+		}
+	}
+	
+	if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+	{
+		mIsGameClear = true;
+	}
+
+
 	//클리어되면 씬 넘어가게
 	//사운드 멈춰주기
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");

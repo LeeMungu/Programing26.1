@@ -66,16 +66,6 @@ void LoadingScene3to4::Release()
 
 void LoadingScene3to4::Update()
 {
-	//씬3에서 씬4로 넘어오는 조건 걸기
-
-	if (mIsGameClear == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"Scene4");
-		}
-	}
-
 	if (mLoadIndex >= mLoadList.size())
 	{
 		mIsEndLoading = true;
