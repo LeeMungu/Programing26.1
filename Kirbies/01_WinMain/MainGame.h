@@ -10,6 +10,7 @@ class Image;
 class MainGame
 {
 	Image* mBackBuffer;	//후면버퍼(건들지마라)
+	Image* mScaleBuffer;
 	Image* mMapBuffer;
 public:
 	void Init();

@@ -25,6 +25,7 @@ void MainGame::Init()
 	mMapBuffer = new Image();
 	mMapBuffer->CreateEmpty(2560, 1440);
 
+
 	//이미지 로드
 	//IMAGEMANAGER->LoadFromFile(L"LoadingImage", Resources(L"LoadingImage.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"LoadingBar1", Resources(L"LoadingBar1.bmp"), 1116, 66, true);
@@ -48,6 +49,8 @@ void MainGame::Init()
 	
 	//처음은 메인화면
 	SceneManager::GetInstance()->LoadScene(L"MainScene");
+
+	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 156, 122, true);
 }
 
 /*
@@ -88,12 +91,14 @@ void MainGame::Render(HDC hdc)
 	PatBlt(backDC, 0, 0, WINSIZEX, WINSIZEY, WHITENESS);
 	// ==================================================
 	{
+		//IMAGEMANAGER->FindImage(L"dedede")->AlphaScaleRender(backDC, 0, 0, WINSIZEX, WINSIZEY, 0.5f);
+
 		SceneManager::GetInstance()->Render(backDC);
 		if (ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom") != nullptr)
 		{
 			mapRender(backDC);
 		}
-
+		
 		RenderTime(backDC);
 	}
 	//====================================================
@@ -108,14 +113,16 @@ void MainGame::mapRender(HDC map)
 	HDC mapDC = mMapBuffer->GetHDC();
 
 	//HDC 영역을 특정 색으로 밀어버리는 녀석
-	PatBlt(mapDC, 0, 0, 2560, 1440, WHITENESS);
+	PatBlt(mapDC, 0, 0, 2560, 1440, BLACKNESS);
 	// ==================================================
 	{
 		SceneManager::GetInstance()->mapRender(mapDC);
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
-	mMapBuffer->ScaleRender(map, WINSIZEX-WINSIZEX/5, 0, WINSIZEX / 5, WINSIZEY / 5);
+	//mMapBuffer->AlphaScaleRender(map, WINSIZEX-WINSIZEX/5, 0, WINSIZEX / 5, WINSIZEY / 5, 0.5f);
+	mMapBuffer->AlphaScaleRender(map, WINSIZEX- WINSIZEX / 5, 0, WINSIZEX/5, WINSIZEY / 5, 0.7f);
+
 }
 
 void MainGame::RenderTime(HDC hdc)

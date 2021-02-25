@@ -41,7 +41,7 @@ public:
 
 	void ReleaseBuffer();
 public:// 생성관련 ~
-	bool CreateEmpty(int width, int height);
+	bool CreateEmpty(int width, int height, bool bUseAlpha = false);
 	bool LoadFromFile(wstring fileName, int width, int height, bool isTrans, COLORREF transColor = RGB(255,0,255));
 	bool LoadFromFile(wstring fileName, int width, int height, int frameX, int frameY, bool isTrans, COLORREF transColor = RGB(255,0,255));
 public://렌더링 관련 ~
