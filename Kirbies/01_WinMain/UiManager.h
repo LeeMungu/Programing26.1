@@ -8,10 +8,8 @@ Ui관리 및 ObjectManager 저장
 
 enum class UiLayer : int
 {
-	Score = 0,
-	Stage = 1,
-	Time = 2,
-	Object =3,
+	DataUI = 0,
+	Object = 1,
 	End
 };
 
@@ -36,10 +34,10 @@ private:
 public:
 	UiManager();
 
-	void Init();
-	void Release();
-	void Update();
-	void Render(HDC hdc);
+	virtual void Init();
+	virtual void Release();
+	virtual void Update();
+	virtual void Render(HDC hdc);
 
 	void AddUi(UiLayer layer, class Ui* object);
 	class Ui* FindUi(const string& name);

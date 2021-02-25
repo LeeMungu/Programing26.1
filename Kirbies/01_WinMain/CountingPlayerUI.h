@@ -14,12 +14,18 @@ class CountingPlayerUI : public GameObject
 	int mCreatedPlayerCount;
 	int mGoalPlayerCount;
 
+	float mGoalPercent;
+
 public:
-	CountingPlayerUI(float x, float y, float timer);
+	CountingPlayerUI(string name, float x, float y, float timer);
 
 	void Init()override;
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
+
+	float GetTimer() { return mTimer; }
+	float GetGoalPercent() { return mGoalPercent; }
+
 };
 
