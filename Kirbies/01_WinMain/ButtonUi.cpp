@@ -1,7 +1,8 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "ButtonUi.h"
 #include "Image.h"
 #include "ConfigUi.h"
+#include "DataUI.h"
 
 
 ButtonUi::ButtonUi(BtnState state, float x, float y)
@@ -87,6 +88,9 @@ void ButtonUi::Update()
 			if (temp->GetSubMenu() != 200)
 			{
 				temp->SetSubMenuOpen(200);
+				DataUI* tmp = (DataUI*)UiManager::GetInstance()->FindUi("DataUI"); // 데이터 받아오기
+				tmp->GetTime();
+				tmp->GetGoalPercent();
 			}
 			else if (temp->GetSubMenu() == 200)
 			{
