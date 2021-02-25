@@ -22,7 +22,8 @@ void MainScene::Init()
 	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText3);
 
 	//»ç¿îµå
-	SoundPlayer::GetInstance()->Play(L"TitleBGM", 0.5f);
+	SoundPlayer::GetInstance()->Play(L"TitleBGM", 0.5f
+		*SoundPlayer::GetInstance()->GetBgmvolum());
 
 	mIsLoadEnd = true;
 }

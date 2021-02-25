@@ -18,7 +18,7 @@ void Boom::Init() {
 	mAnimation->SetFrameUpdateTime(0.15f);
 	mAnimation->SetCallbackFunc([this]() {
 		SoundPlayer::GetInstance()->Stop(L"FuseEffectSound");
-		SoundPlayer::GetInstance()->Play(L"BunEffectSound", 0.8);
+		SoundPlayer::GetInstance()->Play(L"BunEffectSound", 0.8 *SoundPlayer::GetInstance()->GetEffectVolum());
 		mPlayer->SetIsDestroy(true);
 	});
 	mAnimation->Play();
@@ -58,7 +58,7 @@ void Boom::Update() {
 
 				RenderEllipse(mBottom->GetImage()->GetHDC(), mX - 10, mPlayer->GetRect().bottom, 30);
 				RenderEllipse(mBottom->GetImage()->GetHDC(), mX + 10, mPlayer->GetRect().bottom + 20, 50);
-				SoundPlayer::GetInstance()->Play(L"FuseEffectSound", 0.8);
+				SoundPlayer::GetInstance()->Play(L"FuseEffectSound", 0.8 *SoundPlayer::GetInstance()->GetEffectVolum());
 			
 				SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 				SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);

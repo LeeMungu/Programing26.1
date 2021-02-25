@@ -330,6 +330,9 @@
     <ClInclude Include="DataUI.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="CameraEvent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -523,6 +526,9 @@
     </ClCompile>
     <ClCompile Include="DataUI.cpp">
       <Filter>MainGame\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraEvent.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
