@@ -5,21 +5,19 @@
 DataUI::DataUI(const string& name, int stage) 
 	: Ui(name)
 {
-	if (stage == 1)
-	{
-		mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene1count");
-		int a = 0;
-	}
+	if (stage == 1)	mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene1count");
 	else if (stage == 2) mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene2count");
 	else if (stage == 3) mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene3count");
 	else if (stage == 4) mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene4count");
 	else if (stage == 5) mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene5count");	
+
+	mTime = mCountingPlayerUI->GetTimer();
+	mGoalPercent = mCountingPlayerUI->GetGoalPercent();
 }
 
 void DataUI::Init()
 {
-	mTime = mCountingPlayerUI->GetTimer();
-	mGoalPercent = mCountingPlayerUI->GetGoalPercent();
+	
 }
 
 void DataUI::Render(HDC hdc)
