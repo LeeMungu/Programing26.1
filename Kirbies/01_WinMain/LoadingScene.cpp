@@ -78,7 +78,7 @@ void LoadingScene::Update()
 	{
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
-			SceneManager::GetInstance()->LoadScene(L"Scene1");
+			SceneManager::GetInstance()->LoadScene(L"Scene2");
 		}
 	}
 

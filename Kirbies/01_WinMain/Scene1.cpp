@@ -85,6 +85,9 @@ void Scene1::Update()
 void Scene1::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
+
+	wstring str = L"스테이지1 구름구름동산.";
+	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 }
 
 void Scene1::mapRender(HDC map)

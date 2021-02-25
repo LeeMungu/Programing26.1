@@ -13,16 +13,13 @@ void LoadingScene1to2::Init()
 {
 	mLoadIndex = 0;
 	mIsEndLoading = false;
-}
 
-void LoadingScene1to2::Release()
-{
 	//이미지 (오브젝트)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64 * PlayerSize, 48 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47 * PlayerSize, 40 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background", Resources(L"backGround3.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene2.bmp"), 2560, 1440, true); });
-	
+
 
 	//이미지 (UI)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"out_ui.bmp"), 120, 48, true); });
@@ -58,15 +55,53 @@ void LoadingScene1to2::Release()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 576, 96, 9, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"CountEffect", Resources(L"countNumUI.bmp"), 140, 32, 5, 1, true); });
 
+	mLoadingImage = IMAGEMANAGER->FindImage(L"LoadingBackGround2");
+	mLoadingBarImage1 = IMAGEMANAGER->FindImage(L"LoadingBar1");
+	mLoadingBarImage2 = IMAGEMANAGER->FindImage(L"LoadingBar2");
 
+}
 
-
+void LoadingScene1to2::Release()
+{
 }
 
 void LoadingScene1to2::Update()
 {
+
+	//씬1에서 씬2로 넘어오는 조건 걸기
+
+	if (mIsEndLoading == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"Scene2");
+		}
+	}
+
+	if (mLoadIndex >= mLoadList.size())
+	{
+		mIsEndLoading = true;
+		return;
+	}
+
+	function<void(void)> func = mLoadList[mLoadIndex];
+	func();
+	mLoadIndex++;
 }
 
 void LoadingScene1to2::Render(HDC hdc)
 {
+	mLoadingImage->Render(hdc, 0, 0);
+	mLoadingBarImage1->Render(hdc, WINSIZEX / 2 - mLoadingBarImage1->GetWidth() / 2, WINSIZEY / 7 * 7.5f);
+	mLoadingBarImage2->Render(hdc, WINSIZEX / 2 - mLoadingBarImage2->GetWidth() / 2, WINSIZEY / 7 * 7.5f + 8,
+		0, 0, mLoadingBarImage2->GetWidth() * mLoadIndex / mLoadList.size(), mLoadingBarImage2->GetHeight());
+
+	wstring loadingFer = L"LOADING : " + to_wstring(mLoadIndex * 100 / mLoadList.size()) + L"%";
+	TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 12.5 * 8, loadingFer.c_str(), loadingFer.length());
+
+	if (mIsEndLoading == true)
+	{
+		wstring strNext = L"PUSH THE SPACE";
+		TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 10 * 8, strNext.c_str(), loadingFer.length());
+	}
 }

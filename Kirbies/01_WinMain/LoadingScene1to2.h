@@ -8,8 +8,8 @@ class LoadingScene1to2 :public Scene2
 {
 	Image* mLoadingImage;
 	Image* mLoadingImage2;
-	Image* mLoadingBarImage;
-	Image* mLoadingBarImage;
+	Image* mLoadingBarImage1;
+	Image* mLoadingBarImage2;
 
 	vector<function<void(void)>> mLoadList;
 	int mLoadIndex;
@@ -22,13 +22,6 @@ public:
 	void Release()override;
 	void Update()override;
 	void Render(HDC hdc)override;
-
-
-
-
-
-
-
 
 };
 

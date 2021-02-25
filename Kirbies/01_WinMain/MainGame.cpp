@@ -5,7 +5,16 @@
 
 #include "Scene1.h"
 #include "Scene2.h"
+#include "Scene3.h"
+#include "Scene4.h"
+#include "Scene5.h"
+
 #include "LoadingScene.h"
+#include "LoadingScene1to2.h"
+#include "LoadingScene2to3.h"
+#include "LoadingScene3to4.h"
+#include "LoadingScene4to5.h"
+
 #include "MainScene.h"
 #include "GameObject.h"
 
@@ -44,7 +53,15 @@ void MainGame::Init()
 	//씬로드
 	SceneManager::GetInstance()->AddScene(L"MainScene", new MainScene);
 	SceneManager::GetInstance()->AddScene(L"Scene1", new Scene1);
+	SceneManager::GetInstance()->AddScene(L"Scene2", new Scene2);
+	SceneManager::GetInstance()->AddScene(L"Scene3", new Scene3);
+	SceneManager::GetInstance()->AddScene(L"Scene4", new Scene4);
+	SceneManager::GetInstance()->AddScene(L"Scene5", new Scene5);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene", new LoadingScene);
+	SceneManager::GetInstance()->AddScene(L"LoadingScene1to2", new LoadingScene1to2);
+	SceneManager::GetInstance()->AddScene(L"LoadingScene2to3", new LoadingScene2to3);
+	SceneManager::GetInstance()->AddScene(L"LoadingScene3to4", new LoadingScene3to4);
+	SceneManager::GetInstance()->AddScene(L"LoadingScene4to5", new LoadingScene4to5);
 	
 	//처음은 메인화면
 	SceneManager::GetInstance()->LoadScene(L"MainScene");

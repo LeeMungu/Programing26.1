@@ -10,25 +10,26 @@
 #include "Door.h"
 #include "Goal.h"
 #include "Ui.h"
+#include "CountingPlayerUI.h"
 
 void Scene2::Init()
 {
-	//마우스 조작 받아오기
 	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
-	//백그라운드 받아오기
-	BackGround* backGround = new BackGround("BackGround1", WINSIZEX / 2, WINSIZEY / 2, L"Background1");
+
+	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
-	//바닥 받아오기
+
+
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
-	//시작문 받아오기
+
 	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
-	//골문 받아오기
-	Goal* goal = new Goal("goal", 100, 430);
+
+	Goal* goal = new Goal("goal", WINSIZEX / 2 + 300, 0);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
-	//UI
+
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
@@ -41,6 +42,10 @@ void Scene2::Init()
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
+	CountingPlayerUI* countUI = new CountingPlayerUI(100, WINSIZEY - 100, 300);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
+
+
 	//camera
 	Camera* camera = new Camera();
 	camera->SetX(100);
@@ -51,6 +56,9 @@ void Scene2::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
 	ObjectManager::GetInstance()->Init();
+
+	//사운드
+	SoundPlayer::GetInstance()->Play(L"Scene2BGM", 0.5f);
 
 	mIsSpecial = false;
 
@@ -63,13 +71,22 @@ void Scene2::Release()
 
 void Scene2::Update()
 {
+	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
-
 	SpecialFunc();
 }
 
 void Scene2::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
+
+	wstring str = L"스테이지2 나무나무동산.";
+	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 }
+
+void Scene2::mapRender(HDC map)
+{
+	ObjectManager::GetInstance()->mapRender(map);
+}
+
