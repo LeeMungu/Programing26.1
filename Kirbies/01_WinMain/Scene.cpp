@@ -4,6 +4,13 @@
 #include "SpecialApearEffect.h"
 #include "Camera.h"
 
+
+Scene::Scene()
+{
+	mIsGameClear = false;
+	mIsGameOver = false;
+}
+
 void Scene::SpecialFunc()
 {
 	if (mIsSpecial == false &&
