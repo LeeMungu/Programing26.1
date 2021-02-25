@@ -11,6 +11,8 @@ public:
 	DataUI(const string& name, int stage);
 	virtual void Init() override;
 	virtual void Render(HDC hdc)override;
+	float GetTime() { return mTime; }
+	float GetGoalPercent() { return mGoalPercent; }
 
 
 };
