@@ -11,6 +11,7 @@
 #include "Goal.h"
 #include "Ui.h"
 #include "CountingPlayerUI.h"
+#include "DataUI.h"
 
 void Scene5::Init()
 {
@@ -68,6 +69,7 @@ void Scene5::Init()
 void Scene5::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop(L"Scene5BGM");
 }
 
 void Scene5::Update()
@@ -88,6 +90,8 @@ void Scene5::Update()
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
+			Ui* dataUI = new DataUI("DataUI", 5);
+			UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
 		}
 	}
 

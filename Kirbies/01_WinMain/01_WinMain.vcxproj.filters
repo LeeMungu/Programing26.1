@@ -333,6 +333,12 @@
     <ClInclude Include="CameraEvent.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="BoomRect.h">
+      <Filter>MainGame\Object\Player\State\StateKind</Filter>
+    </ClInclude>
+    <ClInclude Include="BoomRectManager.h">
+      <Filter>MainGame\Object\Player\State\StateKind</Filter>
+    </ClInclude>
     <ClInclude Include="ButtonUi.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
@@ -532,6 +538,12 @@
     </ClCompile>
     <ClCompile Include="CameraEvent.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomRect.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind</Filter>
+    </ClCompile>
+    <ClCompile Include="BoomRectManager.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind</Filter>
     </ClCompile>
     <ClCompile Include="ButtonUi.cpp">
       <Filter>MainGame\Ui</Filter>

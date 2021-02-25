@@ -4,10 +4,12 @@
 #include "ButtonUi.h"
 
 ConfigUi::ConfigUi(const string& name)
-	: GameObject(name)
+	: Ui(name)
 {
 	mImage = IMAGEMANAGER->FindImage(L"Menu");
 	mMenuImage = IMAGEMANAGER->FindImage(L"MenuBtn");
+	mSubImage = IMAGEMANAGER->FindImage(L"SubMenu");
+	msubsizeX = 0;
 }
 
 void ConfigUi::Init()
@@ -18,18 +20,18 @@ void ConfigUi::Init()
 	mSizeY = mImage->GetHeight();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
-	mMenuEnd = new ButtonUi(State::End, WINSIZEX / 2, WINSIZEY / 2 - 100 + 180);
+	mMenuEnd = new ButtonUi(BtnState::End, WINSIZEX / 2, WINSIZEY / 2 - 100 + 180);
 	mMenuEnd->Init();
 
-	mMenuRecord = new ButtonUi(State::Record, WINSIZEX / 2, WINSIZEY / 2 - 150 + 180);
+	mMenuRecord = new ButtonUi(BtnState::Record, WINSIZEX / 2, WINSIZEY / 2 - 150 + 180);
 	mMenuRecord->Init();
 
 
-	mMenuRestart = new ButtonUi(State::ReStart, WINSIZEX / 2, WINSIZEY / 2 - 200 + 180);
+	mMenuRestart = new ButtonUi(BtnState::ReStart, WINSIZEX / 2, WINSIZEY / 2 - 200 + 180);
 	mMenuRestart->Init();
 
 
-	mMenuSound = new ButtonUi(State::Sound, WINSIZEX / 2, WINSIZEY / 2 - 250 + 180);
+	mMenuSound = new ButtonUi(BtnState::Sound, WINSIZEX / 2, WINSIZEY / 2 - 250 + 180);
 	mMenuSound->Init();
 
 
@@ -59,4 +61,5 @@ void ConfigUi::Render(HDC hdc)
 	mMenuRecord->Render(hdc);
 	mMenuRestart->Render(hdc);
 	mMenuSound->Render(hdc);
+	mSubImage->ScaleRender(hdc, mRect.right, mRect.top, msubsizeX, 240);
 }

@@ -49,7 +49,6 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttackEffect3", Resources(L"/sp/attackeffect3.bmp"), 2560, 249, 10, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialEnd", Resources(L"/sp/end.bmp"), 1660, 900, 10, 5, true); });
 
-
 	//이미지 (이펙트)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"BoomEffect", Resources(L"boom_Effect.bmp"), 576, 96, 9, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"CountEffect", Resources(L"countNumUI.bmp"), 140, 32, 5, 1, true); });
@@ -64,6 +63,8 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"UmbrellaEffectSound", Resources(L"Parasol.wav"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"RunEffectSound", Resources(L"RunEffectSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"GoalEffectSound", Resources(L"GoalInSound.mp3"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"SpecialSound", Resources(L"/sp/effectSound.wav"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"SpecialSound2", Resources(L"/sp/effectSound2.wav"), false); });
 
 	//사운드 (BGM)
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene1BGM", Resources(L"GourmetRaceKirbySuperStar.mp3"), true); });

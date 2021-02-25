@@ -16,11 +16,6 @@ SceneManager::~SceneManager()
 		//iter->second->Release();
 		SafeDelete(iter->second);
 	}
-
-	if (Menu != NULL)
-	{
-		SafeDelete(Menu);
-	}
 }
 
 void SceneManager::Update()
@@ -34,8 +29,9 @@ void SceneManager::Update()
 		{
 			mIsConfig = true;
 			//여기서 컨피그(매뉴) 열어주기
-			Menu = new ConfigUi("Menu");
+			ConfigUi* Menu = new ConfigUi("Menu");
 			Menu->Init();
+			UiManager::GetInstance()->AddUi(UiLayer::Object, Menu);
 		}
 	}
 	else if (mIsConfig == true)
@@ -43,15 +39,9 @@ void SceneManager::Update()
 		if (Input::GetInstance()->GetKeyDown(VK_ESCAPE))
 		{
 			mIsConfig = false;
-			Menu->Release();
-			SafeDelete(Menu);
+			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi(UiLayer::Object, "Menu");
+			temp->SetIsDestroy(true);
 		}
-	}
-
-
-	if (Menu != NULL)
-	{
-		Menu->Update();
 	}
 }
 
@@ -59,11 +49,6 @@ void SceneManager::Render(HDC hdc)
 {
 	if (mCurrentScene != nullptr)
 		mCurrentScene->Render(hdc);
-
-	if (Menu != NULL)
-	{
-		Menu->Render(hdc);
-	}
 }
 
 void SceneManager::mapRender(HDC map)
@@ -133,11 +118,6 @@ void SceneManager::LoadScene(const wstring & targetSceneName, const wstring & lo
 void SceneManager::DeleteMenu()
 {
 	mIsConfig = false;
-	if (Menu != NULL)
-	{
-		Menu->Release();
-		SafeDelete(Menu);
-	}
 }
 
 

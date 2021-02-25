@@ -17,19 +17,23 @@ void SpecialAttackEffect::Init()
 	mAttackEffect1->InitFrameByStartEnd(0, 0, 9, 1, false);
 	mAttackEffect1->SetIsLoop(true);
 	mAttackEffect1->SetFrameUpdateTime(0.2f);
+	//mAttackEffect1->SetCallbackFunc([]() {
+	//	SoundPlayer::GetInstance()->Play(L"SpecialSound", 0.8 * SoundPlayer::GetInstance()->GetEffectVolum()); });
 	mAttackEffect1->Play();
+	
 	mCurrentAnimation = mAttackEffect1;
 
 	mAttackEffect2 = new Animation();
 	mAttackEffect2->InitFrameByStartEnd(0, 0, 4, 4, false);
 	mAttackEffect2->SetIsLoop(false);
 	mAttackEffect2->SetFrameUpdateTime(0.15f);
-
+	
 	mAttackEffect3 = new Animation();
 	mAttackEffect3->InitFrameByStartEnd(0, 0, 9, 0, false);
 	mAttackEffect3->SetIsLoop(false);
 	mAttackEffect3->SetFrameUpdateTime(0.3f);
-
+	//mAttackEffect3->SetCallbackFunc([]() {
+	//	SoundPlayer::GetInstance()->Play(L"SpecialSound2", 0.8 * SoundPlayer::GetInstance()->GetEffectVolum()); });
 }
 
 void SpecialAttackEffect::Release()
