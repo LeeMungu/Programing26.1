@@ -68,9 +68,7 @@ void LoadingScene1to2::Release()
 void LoadingScene1to2::Update()
 {
 
-	//씬1에서 씬2로 넘어오는 조건 걸기
-
-	if (mIsEndLoading == true)
+	if (mIsGameClear == true)
 	{
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{

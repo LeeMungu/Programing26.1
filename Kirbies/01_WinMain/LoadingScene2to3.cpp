@@ -70,7 +70,7 @@ void LoadingScene2to3::Update()
 {
 	//씬2에서 씬3로 넘어오는 조건 걸기
 
-	if (mIsEndLoading == true)
+	if (mIsGameClear == true)
 	{
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{

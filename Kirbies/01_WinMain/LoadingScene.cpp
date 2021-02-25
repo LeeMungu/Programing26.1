@@ -78,6 +78,13 @@ void LoadingScene::Update()
 	{
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
+			SceneManager::GetInstance()->LoadScene(L"Scene1");
+		}
+	}
+	if (mIsGameClear == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
 			SceneManager::GetInstance()->LoadScene(L"Scene2");
 		}
 	}
