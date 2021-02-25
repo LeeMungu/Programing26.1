@@ -12,6 +12,7 @@
 #include "Ui.h"
 #include "CountingPlayerUI.h"
 #include "DataUI.h"
+
 void Scene1::Init()
 {
 	//player
