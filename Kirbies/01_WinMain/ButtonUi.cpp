@@ -88,9 +88,10 @@ void ButtonUi::Update()
 			if (temp->GetSubMenu() != 200)
 			{
 				temp->SetSubMenuOpen(200);
-				DataUI* tmp = (DataUI*)UiManager::GetInstance()->FindUi("DataUI"); // 데이터 받아오기
-				tmp->GetTime();
-				tmp->GetGoalPercent();
+				// 데이터 받기 확인
+				//DataUI* tmp = (DataUI*)UiManager::GetInstance()->FindUi(UiLayer::DataUI,"1"); 
+				//tmp->GetTime();
+				//tmp->GetGoalPercent();
 			}
 			else if (temp->GetSubMenu() == 200)
 			{
