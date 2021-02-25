@@ -75,7 +75,7 @@ void Run::Release()
 
 void Run::Update()
 {
-	mScaleValue -= 0.0005f;
+	mScaleValue -= 0.001f;
 	if (mPlayer->GetIntMotionRL() == 0 && mCurrentAnimation == mLeftAnimation)
 	{
 		mCurrentAnimation->Stop();
