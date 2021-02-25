@@ -31,7 +31,7 @@ void Image::ReleaseBuffer()
 	}
 }
 
-bool Image::CreateEmpty(int width, int height)
+bool Image::CreateEmpty(int width, int height, bool bUseAlpha)
 {
 	//이미 이미지 버퍼가 있다면 삭제
 	if (mImageBuffer != nullptr)
@@ -55,14 +55,28 @@ bool Image::CreateEmpty(int width, int height)
 	mBlendFunc->AlphaFormat = 0;
 	mBlendFunc->BlendOp = AC_SRC_OVER;
 
+	int maxWidth, maxHeight;
+	if (bUseAlpha)
+	{
+		maxWidth = width;
+		maxHeight = height;
+	}
+	else
+	{
+		maxWidth = WINSIZEX;
+		maxHeight = WINSIZEY;
+	}
+
 	mBlendImageBuffer = new ImageBuffer();
 	mBlendImageBuffer->loadType = LoadType::Empty;
 	mBlendImageBuffer->registerID = 0;
 	mBlendImageBuffer->hdc = CreateCompatibleDC(hdc);
-	mBlendImageBuffer->bitmap = (HBITMAP)CreateCompatibleBitmap(hdc, WINSIZEX, WINSIZEY);
+	mBlendImageBuffer->bitmap = (HBITMAP)CreateCompatibleBitmap(hdc, maxWidth, maxHeight);
 	mBlendImageBuffer->oldBitmap = (HBITMAP)SelectObject(mBlendImageBuffer->hdc, mBlendImageBuffer->bitmap);
-	mBlendImageBuffer->width = WINSIZEX;
-	mBlendImageBuffer->height = WINSIZEY;
+	mBlendImageBuffer->width = maxWidth;
+	mBlendImageBuffer->height = maxHeight;
+
+	mIsTrans = false;
 
 	if (mImageBuffer->bitmap == nullptr)
 	{
@@ -415,7 +429,7 @@ void Image::AlphaScaleRender(HDC hdc, int x, int y, int width, int height, float
 			hdc, x, y, width, height,
 			mImageBuffer->hdc,
 			0,0,
-			mImageBuffer->width, mImageBuffer->frameHeight,
+			mImageBuffer->width, mImageBuffer->height,
 			*mBlendFunc
 		);
 	}
