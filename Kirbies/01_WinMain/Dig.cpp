@@ -27,7 +27,7 @@ void Dig::Init()
 		mAnimation->InitFrameByEndStart(13, 1, 0, 1, false);
 	}
 	mAnimation->SetIsLoop(true);
-	SoundPlayer::GetInstance()->Play(L"DigEffectSound", 5.f);
+	SoundPlayer::GetInstance()->Play(L"DigEffectSound", 5.f *SoundPlayer::GetInstance()->GetEffectVolum());
 	mAnimation->SetFrameUpdateTime(0.1f);
 	mAnimation->Play();
 

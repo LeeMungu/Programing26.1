@@ -63,7 +63,8 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//»ç¿îµå
-	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
+	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f
+		*SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	mIsSpecial = false;

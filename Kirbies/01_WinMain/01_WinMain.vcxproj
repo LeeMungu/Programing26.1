@@ -153,6 +153,7 @@
     <ClInclude Include="Boom.h" />
     <ClInclude Include="Bottom.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CameraEvent.h" />
     <ClInclude Include="CameraManager.h" />
     <ClInclude Include="Climb.h" />
     <ClInclude Include="ColorLender.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="Boom.cpp" />
     <ClCompile Include="Bottom.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CameraEvent.cpp" />
     <ClCompile Include="CameraManager.cpp" />
     <ClCompile Include="Climb.cpp" />
     <ClCompile Include="ColorLender.cpp" />
