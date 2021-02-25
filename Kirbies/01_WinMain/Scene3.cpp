@@ -42,7 +42,7 @@ void Scene3::Init()
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
-	CountingPlayerUI* countUI = new CountingPlayerUI("CountUI", 100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("Scene3count", 100, WINSIZEY - 100, 300);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
 
 
