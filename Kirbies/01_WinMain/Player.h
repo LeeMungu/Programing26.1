@@ -44,6 +44,7 @@ class Player : public GameObject
 	bool mIsStopper;
 	bool mIsClimb;
 	bool mIsCrash;
+	bool mIsFallDead;
 
 public:
 	Player(const string& name,float x, float y);
@@ -89,5 +90,9 @@ public:
 
 	bool GetIsStopper()const { return mIsStopper; }
 	void SetIsStopper(bool isStopper) { mIsStopper = isStopper; }
+
+	bool GetIsFallDead()const { return mIsFallDead; }
+	void SetIsFallDead(bool isFallDead) { mIsFallDead = isFallDead; }
+
 };
 

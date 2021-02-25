@@ -64,14 +64,12 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//»ç¿îµå
-<<<<<<< Updated upstream
 	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f
 		*SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
-=======
+
 	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
 	
->>>>>>> Stashed changes
 
 	mIsSpecial = false;
 }

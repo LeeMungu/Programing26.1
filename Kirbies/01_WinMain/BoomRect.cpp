@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "BoomRect.h"
 #include "Camera.h"
+#include "Image.h"
 
 BoomRect::BoomRect(float x, float y)
 {
@@ -14,6 +15,7 @@ BoomRect::BoomRect(float x, float y)
 	mSpeed = (Random::GetInstance()->RandomInt(1, 100)) / 100;
 	mGravity = (Random::GetInstance()->RandomInt(20, 100))/20.f;
 
+	mImage = IMAGEMANAGER->FindImage(L"Run");
 }
 
 void BoomRect::Init()
@@ -41,5 +43,10 @@ void BoomRect::Release()
 
 void BoomRect::Render(HDC hdc)
 {
-	CameraManager::GetInstance()->GetMainCamera()->RenderRect(hdc, mRect);
+	//CameraManager::GetInstance()->GetMainCamera()->RenderRect(hdc, mRect);
+
+	int tempX = Random::GetInstance()->RandomInt(0, 41);
+	int tempY = Random::GetInstance()->RandomInt(0, 41);
+	CameraManager::GetInstance()->GetMainCamera()->Render(hdc, mImage,mRect.left,mRect.top,tempX,tempY,mSizeX,mSizeY);
+
 }

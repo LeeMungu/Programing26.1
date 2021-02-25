@@ -74,6 +74,17 @@ void Fall::Update()
 {
 	mPlayer->SetY(mPlayer->GetY() + mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
 	mCurrentAnimation->Update();
+
+
+	//// ³«»çÆÇÁ¤
+	//if (mPlayer->GetmIsFallDead) == true)
+	//{
+	//	mCurrentAnimation->Stop();
+	//	mCurrentAnimation = mGoalKirbyAnimation;
+	//	mCurrentAnimation->Play();
+	//	mPlayer->SetIsGoal(false);
+	//}
+
 }
 
 void Fall::Render(HDC hdc)
