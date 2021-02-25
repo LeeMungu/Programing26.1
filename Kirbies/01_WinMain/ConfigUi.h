@@ -21,6 +21,8 @@ class ConfigUi : public Ui
 	ButtonUi* mMenuSound;
 
 	float msubsizeX;
+	bool mIsSoundMenuOpen;
+
 public:
 	ConfigUi(const string& name);
 	void Init()override;
@@ -31,5 +33,8 @@ public:
 
 	void SetSubMenuOpen(float x) { msubsizeX = x; }
 	float GetSubMenu() { return msubsizeX; }
+
+	void SetIsSoundMenu(bool open) { mIsSoundMenuOpen = open; }
+	bool GetIsSoundMenu() { return mIsSoundMenuOpen; }
 };
 

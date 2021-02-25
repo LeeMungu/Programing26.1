@@ -106,10 +106,12 @@ void ButtonUi::Update()
 			if (temp->GetSubMenu() != 200)
 			{
 				temp->SetSubMenuOpen(200);
+				temp->SetIsSoundMenu(true);
 			}
 			else if (temp->GetSubMenu() == 200)
 			{
 				temp->SetSubMenuOpen(0);
+				temp->SetIsSoundMenu(false);
 			}
 		}
 	}
