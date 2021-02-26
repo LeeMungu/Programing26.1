@@ -58,8 +58,10 @@ void Player::Init()
 
 	mIsCrash = false;
 	mIsClimb = false;
+	mIsBoom = false;
 	mIsStopper = false;
 	mIsFallDead = false;
+	mIsDig = false;
 }
 
 void Player::Release()
@@ -73,6 +75,7 @@ void Player::Update()
 	{
 		if (mPlayerState == PlayerState::BoomState)
 		{
+			mIsBoom = false;
 			SafeDelete(mCurrentState);
 			mCurrentState = new Boom;
 			mCurrentState->SetPlayerPtr(this);
@@ -98,6 +101,7 @@ void Player::Update()
 			mIsChange = false;
 			mCurrentState->Init();
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
 		}
 		else if (mPlayerState == PlayerState::FallState)
 		{
@@ -294,6 +298,7 @@ void Player::Update()
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
 			if (pixelColor == RGB(255, 0, 255))
 			{
+				mIsDig = false;
 				mIsChange = true;
 				mPlayerState = PlayerState::FallState;
 			}
