@@ -42,7 +42,7 @@ void Scene1::Init()
 	Door* door = new Door("Door",WINSIZEX/2,0,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2+300,200);
+	Goal* goal = new Goal("goal", WINSIZEX / 2 +450, 700);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 
@@ -88,6 +88,7 @@ void Scene1::Init()
 
 void Scene1::Update()
 {
+
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
@@ -138,6 +139,7 @@ void Scene1::Update()
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
+	CameraWalk();
 	SpecialFunc();
 }
 
