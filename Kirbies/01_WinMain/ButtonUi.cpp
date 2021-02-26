@@ -85,17 +85,18 @@ void ButtonUi::Update()
 		{
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
 
-			if (temp->GetSubMenu() != 200)
+			if (temp->GetSubMenu() != 210)
 			{
-				temp->SetSubMenuOpen(200);
+				temp->SetSubMenuOpen(210);
 				// 데이터 받기 확인
 				//DataUI* tmp = (DataUI*)UiManager::GetInstance()->FindUi(UiLayer::DataUI,"1"); 
 				//tmp->GetTime();
 				//tmp->GetGoalPercent();
 			}
-			else if (temp->GetSubMenu() == 200)
+			else if (temp->GetSubMenu() == 210)
 			{
 				temp->SetSubMenuOpen(0);
+				temp->SetIsSoundMenu(false);
 			}
 		}
 		else if (mbtnState == BtnState::ReStart)
@@ -108,12 +109,12 @@ void ButtonUi::Update()
 		else if (mbtnState == BtnState::Sound)
 		{
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
-			if (temp->GetSubMenu() != 200)
+			if (temp->GetSubMenu() != 210)
 			{
-				temp->SetSubMenuOpen(200);
+				temp->SetSubMenuOpen(210);
 				temp->SetIsSoundMenu(true);
 			}
-			else if (temp->GetSubMenu() == 200)
+			else if (temp->GetSubMenu() == 210)
 			{
 				temp->SetSubMenuOpen(0);
 				temp->SetIsSoundMenu(false);
