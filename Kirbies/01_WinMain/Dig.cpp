@@ -109,6 +109,8 @@ void Dig::Update()
 					//digpoint->Render(mBottom->GetImage()->GetHDC());
 					//ObjectManager::GetInstance()->AddObject(ObjectLayer::DigObject, digpoint);
 					RenderEllipse(mBottom->GetImage()->GetHDC(), x, y, mRadius);
+					mEffect = new KirbyEffect("DigEffect", x, y, L"DigEffect", 4, 1);
+					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, mEffect);
 
 					SelectObject(mBottom->GetImage()->GetHDC(), oldPen);
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
