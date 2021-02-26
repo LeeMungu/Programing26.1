@@ -16,6 +16,12 @@
 
 void Scene4::Init()
 {
+	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
+	mAnimationGameClear = new Animation();
+	mAnimationGameClear->InitFrameByReverseLoop(0, 0, 16, 0);
+	mAnimationGameClear->SetIsLoop(true);
+	mAnimationGameClear->SetFrameUpdateTime(0.1f);
+
 	mImageGameOver = IMAGEMANAGER->FindImage(L"GameOver");
 	mAnimationGameOver = new Animation();
 	mAnimationGameOver->InitFrameByStartEnd(0, 0, 8, 0, false);
@@ -72,38 +78,50 @@ void Scene4::Init()
 	SoundPlayer::GetInstance()->Play(L"Scene4BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene3BGM");
 
+	mIsGameClear = false;
+	mIsGameOver = false;
+	mGameOverTimer = 0.f;
+
 	mIsSpecial = false;
 }
 
 
 void Scene4::Update()
 {
+	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
+
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
+
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene4to5");
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
+		}
+	}
+	if (mIsGameOver == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
 		}
 	}
 	//클리어조건
-	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene4count");
-	if (tempUi != NULL)
+	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene3count");
+	if (tempUi != NULL && mIsGameClear == false)
 	{
 		if (tempUi->GetGoalPercent() > 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
-			Ui* dataUI = new DataUI("DataUI", 4);
-			UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
+			mAnimationGameClear->Play();
 		}
 	}
-
 	//게임오버 조건
 	mGameOverTimer += Time::GetInstance()->DeltaTime();
 	if (mGameOverTimer > 5)
 	{
-		if (tempUi != NULL && mIsGameOver == false)
+		if (tempUi != NULL && mIsGameOver == false && door->GetIsCreatedEnd())
 		{
 			if (tempUi->GetGoalPercent() < 50.f &&
 				ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
@@ -115,6 +133,7 @@ void Scene4::Update()
 	}
 
 	mAnimationGameOver->Update();
+	mAnimationGameClear->Update();
 
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
@@ -129,17 +148,17 @@ void Scene4::Render(HDC hdc)
 	wstring str = L"스테이지4 물물동산.";
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 
-	if (mIsGameClear)
+	if (mIsGameClear == true)
 	{
-		wstring str1 = L"스테이지 클리어";
-		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str1.c_str(), str1.length());
+		mImageGameClear->FrameRender(hdc, (WINSIZEX - mImageGameClear->GetFrameWidth()) / 2,
+			(WINSIZEY - mImageGameClear->GetFrameHeight()) / 2,
+			mAnimationGameClear->GetNowFrameX(),
+			mAnimationGameClear->GetNowFrameY());
 	}
 
 
 	if (mIsGameOver == true)
 	{
-		wstring str2 = L"뿌우웅";
-		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str2.c_str(), str2.length());
 		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
 			mAnimationGameOver->GetNowFrameX(),
 			mAnimationGameOver->GetNowFrameY());

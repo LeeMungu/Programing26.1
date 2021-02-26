@@ -46,7 +46,7 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 
-	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 2);
+	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
@@ -88,6 +88,7 @@ void Scene1::Init()
 
 void Scene1::Update()
 {
+	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
@@ -119,7 +120,7 @@ void Scene1::Update()
 	mGameOverTimer += Time::GetInstance()->DeltaTime();
 	if (mGameOverTimer > 5)
 	{
-		if (tempUi != NULL && mIsGameOver == false)
+		if (tempUi != NULL && mIsGameOver == false && door->GetIsCreatedEnd())
 		{
 			if (tempUi->GetGoalPercent() < 50.f &&
 				ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
@@ -148,7 +149,8 @@ void Scene1::Render(HDC hdc)
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 	if (mIsGameClear == true)
 	{
-		mImageGameClear->FrameRender(hdc, 550, WINSIZEY / 2,
+		mImageGameClear->FrameRender(hdc, (WINSIZEX -mImageGameClear->GetFrameWidth())/2, 
+			(WINSIZEY-mImageGameClear->GetFrameHeight())/2,
 			mAnimationGameClear->GetNowFrameX(),
 			mAnimationGameClear->GetNowFrameY());
 	}

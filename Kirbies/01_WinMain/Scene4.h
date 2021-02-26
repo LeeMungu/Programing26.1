@@ -6,8 +6,10 @@ class Animation;
 class Scene4 : public Scene
 {
 
+	Image* mImageGameClear;
 	Image* mImageGameOver;
 	Animation* mAnimationGameOver;
+	Animation* mAnimationGameClear;
 	float mGameOverTimer;
 
 public:
