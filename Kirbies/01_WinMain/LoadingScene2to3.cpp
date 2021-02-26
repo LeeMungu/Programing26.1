@@ -19,7 +19,8 @@ void LoadingScene2to3::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47 * PlayerSize, 40 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background3", Resources(L"backGround3.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene2.bmp"), 2560, 1440, true); });
-
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameOver", Resources(L"GameOver.bmp"), 1872, 48, 9, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameClear", Resources(L"GameClearImage.bmp"), 4399, 59, 17, 1, true); });
 
 	//ÀÌ¹ÌÁö (UI)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"out_ui.bmp"), 120, 48, true); });

@@ -16,13 +16,11 @@
 
 void Scene1::Init()
 {	
-	mImageGameClear = IMAGEMANAGER->FindImage(L"GameOver");
-	mAnimationGameOver = new Animation();
-	mAnimationGameOver->InitFrameByStartEnd(0, 0, 8, 0, false);
-	mAnimationGameOver->SetIsLoop(true);
-	mAnimationGameOver->SetFrameUpdateTime(0.1f);
-
-
+	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
+	mAnimationGameClear = new Animation();
+	mAnimationGameClear->InitFrameByReverseLoop(0, 0, 16, 0);
+	mAnimationGameClear->SetIsLoop(true);
+	mAnimationGameClear->SetFrameUpdateTime(0.1f);
 
 	mImageGameOver = IMAGEMANAGER->FindImage(L"GameOver");
 	mAnimationGameOver = new Animation();
@@ -99,6 +97,7 @@ void Scene1::Update()
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
+
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
 			SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
@@ -119,7 +118,7 @@ void Scene1::Update()
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
-
+			mAnimationGameClear->Play();
 		}
 	}
 	//게임오버 조건
@@ -138,7 +137,7 @@ void Scene1::Update()
 	}
 
 	mAnimationGameOver->Update();
-	
+	mAnimationGameClear->Update();
 
 	//사운드 멈춰주기
 	ObjectManager::GetInstance()->Update();
@@ -153,17 +152,16 @@ void Scene1::Render(HDC hdc)
 
 	wstring str = L"스테이지1 구름구름동산.";
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
-	if (mIsGameClear)
+	if (mIsGameClear == true)
 	{
-		wstring str1 = L"스테이지 클리어";
-		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str1.c_str(), str1.length());
+		mImageGameClear->FrameRender(hdc, 550, WINSIZEY / 2,
+			mAnimationGameClear->GetNowFrameX(),
+			mAnimationGameClear->GetNowFrameY());
 	}
 
 
 	if (mIsGameOver == true)
 	{
-		wstring str2 = L"뿌우웅";
-		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str2.c_str(), str2.length());
 		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
 			mAnimationGameOver->GetNowFrameX(),
 				mAnimationGameOver->GetNowFrameY());
