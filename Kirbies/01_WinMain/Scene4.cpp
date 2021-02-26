@@ -18,7 +18,7 @@ void Scene4::Init()
 	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
 
-	BackGround* backGround = new BackGround("BackGround", WINSIZEX / 2, WINSIZEY / 2);
+	BackGround* backGround = new BackGround("Background4", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
 
 

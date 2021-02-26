@@ -9,7 +9,9 @@ BackGround::BackGround(const string& name, float x, float y)
 {
 	mX = x;
 	mY = y;
-	mImage = IMAGEMANAGER->FindImage(L"Background");
+	wstring temp;
+	temp.assign(name.begin(), name.end());
+	mImage = IMAGEMANAGER->FindImage(temp);
 }
 
 BackGround::BackGround(const string& name, float x, float y, wstring key)

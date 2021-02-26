@@ -17,7 +17,8 @@ void ImageManager::LoadFromFile(wstring key, wstring filePath, int width, int he
 	ImageIter iter = mImageList.find(key);
 	if (iter != mImageList.end())
 	{
-		return;
+		mImageList.erase(mImageList.find(key));
+		//return;
 	}
 
 	Image* newImage = new Image();
