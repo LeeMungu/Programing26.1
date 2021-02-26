@@ -36,8 +36,6 @@ void CountingPlayerUI::Update()
 {
 	vector<GameObject*> player = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
 
-
-
 	for (int i = 0; i < player.size(); i++)
 	{
 		

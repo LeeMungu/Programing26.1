@@ -9,7 +9,7 @@ Door::Door(const string& name, float x, float y, int count)
 {
 	mX = x;
 	mY = y;
-	mStage1Count = count;
+	mStageCount = count;
 }
 
 void Door::Init()
@@ -21,6 +21,7 @@ void Door::Init()
 	mTimer = 0;
 	mCount = 0;
 	mTimeLimit = 3.f;
+	mIsCreatedEnd = false;
 }
 
 void Door::Release()
@@ -47,17 +48,22 @@ void Door::Update()
 	}
 
 
-	if (mTimer >= mTimeLimit && mCount<mStage1Count)
+	if (mTimer >= mTimeLimit && mCount<mStageCount)
 	{
 		mTimer = 0;
 		//플레이어 생성
-		for (int i = 0; i < 1; i++)
-		{
+		//for (int i = 0; i < 1; i++)
+		//{
 			Player* player = new Player("player" + to_string(mCount), mX, mY);
 			player->Init();
 			ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player);
-		}
+		//}
 		mCount++;
+	}
+
+	//플레이어가 모두 생성되었으면
+	if (mCount == mStageCount) {
+		mIsCreatedEnd = true;
 	}
 }
 

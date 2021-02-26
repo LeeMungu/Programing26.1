@@ -63,7 +63,6 @@ void Ui::Update()
 			mFrameY = 1;
 	}
 
-	//mGetState = mMouse->GetPlayerState();
 }
 
 void Ui::Render(HDC hdc)

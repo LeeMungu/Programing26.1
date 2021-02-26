@@ -9,8 +9,11 @@ class Door : public GameObject
 	int mFrameY;
 	float mTimer;
 	int mCount;
-	int mStage1Count;
+	int mStageCount;
 	float mTimeLimit;
+
+	bool mIsCreatedEnd;
+
 public:
 	Door(const string& name, float x, float y, int count);
 	void Init()override;
@@ -20,7 +23,9 @@ public:
 	void mapRender(HDC map)override;
 
 
-	int GetStageCount() { return mStage1Count; }
+	int GetStageCount() { return mStageCount; }
 	int GetPlayerCount() { return mCount; }
+
+	bool GetIsCreatedEnd() { return mIsCreatedEnd; }
 };
 
