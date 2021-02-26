@@ -75,12 +75,6 @@ void Scene4::Init()
 	mIsSpecial = false;
 }
 
-void Scene4::Release()
-{
-	ObjectManager::GetInstance()->Release();
-	SoundPlayer::GetInstance()->Stop(L"Scene4BGM");
-	UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene4count")->SetIsActive(false);
-}
 
 void Scene4::Update()
 {

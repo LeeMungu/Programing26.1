@@ -35,6 +35,7 @@ public:
 	void Play(const wstring& keyName, float volume);
 	void Pause(const wstring& keyName);
 	void Stop(const wstring& keyName);
+	void Stop();
 
 	void SetBgmVolum(float vol) { mBGMVolum += vol; }
 	float GetBgmvolum() { return mBGMVolum; }

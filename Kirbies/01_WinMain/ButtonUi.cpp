@@ -77,8 +77,12 @@ void ButtonUi::Update()
 		{
 			SceneManager::GetInstance()->LoadScene(L"MainScene");
 			SceneManager::GetInstance()->SetIsconfig(false);
+			//메뉴다이
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
 			temp->SetIsDestroy(true);
+
+
+
 		}
 
 		else if (mbtnState == BtnState::Record)

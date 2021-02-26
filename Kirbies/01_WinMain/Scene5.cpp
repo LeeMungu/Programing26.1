@@ -75,13 +75,6 @@ void Scene5::Init()
 	mIsSpecial = false;
 }
 
-void Scene5::Release()
-{
-	ObjectManager::GetInstance()->Release();
-	SoundPlayer::GetInstance()->Stop(L"Scene5BGM");
-	UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene5count")->SetIsActive(false);
-}
-
 void Scene5::Update()
 {
 	//클리어 시 변경 로딩씬
