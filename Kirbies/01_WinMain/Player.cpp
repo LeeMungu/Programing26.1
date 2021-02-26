@@ -149,10 +149,10 @@ void Player::Update()
 			{
 				mY = y - mSizeY / 2;
 				//낙사 높이
-				if (mY - ((Fall*)mCurrentState)->GetStartY()>70)
+				if (mY - ((Fall*)mCurrentState)->GetStartY()>WINSIZEY / 3)
 				{
 					mIsFallDead = true;
-					mY += 10; // 바닥과 캐릭터
+					mY += 15; // 바닥과 캐릭터
 				}
 				else
 				{
