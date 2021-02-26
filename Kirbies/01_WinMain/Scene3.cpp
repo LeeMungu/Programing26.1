@@ -86,6 +86,8 @@ void Scene3::Init()
 
 void Scene3::Update()
 {
+	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
+
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
@@ -117,7 +119,7 @@ void Scene3::Update()
 	mGameOverTimer += Time::GetInstance()->DeltaTime();
 	if (mGameOverTimer > 5)
 	{
-		if (tempUi != NULL && mIsGameOver == false)
+		if (tempUi != NULL && mIsGameOver == false && door->GetIsCreatedEnd())
 		{
 			if (tempUi->GetGoalPercent() < 50.f &&
 				ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
