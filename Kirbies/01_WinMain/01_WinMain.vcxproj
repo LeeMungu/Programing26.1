@@ -212,6 +212,7 @@
     <ClInclude Include="Stopper.h" />
     <ClInclude Include="StopperObject.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TextBox.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Title.h" />
     <ClInclude Include="TitleStyle1.h" />
@@ -289,6 +290,7 @@
     <ClCompile Include="State.cpp" />
     <ClCompile Include="Stopper.cpp" />
     <ClCompile Include="StopperObject.cpp" />
+    <ClCompile Include="TextBox.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Title.cpp" />
     <ClCompile Include="TitleStyle1.cpp" />

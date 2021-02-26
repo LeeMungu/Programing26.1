@@ -66,7 +66,8 @@ void MainGame::Init()
 	//처음은 메인화면
 	SceneManager::GetInstance()->LoadScene(L"LoadingScene2to3");
 
-	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 256, 122, 4, 2, true);
+	//디디디
+	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 256, 244, 4, 4, true);
 	UiManager::GetInstance()->Init();
 
 	//메뉴

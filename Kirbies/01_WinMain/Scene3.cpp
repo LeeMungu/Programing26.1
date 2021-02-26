@@ -46,7 +46,7 @@ void Scene3::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	//NPC
-	NPC* npc = new NPC("dedede", goal->GetRect().left-100, goal->GetRect().top);
+	NPC* npc = new NPC("dedede", WINSIZEX / 2 * 3 + 300 - 100, WINSIZEY * 2 - 150);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 	
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
@@ -86,8 +86,8 @@ void Scene3::Init()
 	//이벤트 초기화
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
-	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
-	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));

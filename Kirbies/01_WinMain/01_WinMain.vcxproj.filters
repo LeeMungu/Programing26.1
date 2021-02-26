@@ -127,6 +127,9 @@
     <Filter Include="MainGame\Object\NPC">
       <UniqueIdentifier>{4b80c417-fcf3-42a0-a819-04204843c67e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\TextBox">
+      <UniqueIdentifier>{9fb102dc-1c31-42e7-bffa-f0e690acbc50}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -351,6 +354,9 @@
     <ClInclude Include="NPC.h">
       <Filter>MainGame\Object\NPC</Filter>
     </ClInclude>
+    <ClInclude Include="TextBox.h">
+      <Filter>MainGame\Object\TextBox</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -562,6 +568,9 @@
     </ClCompile>
     <ClCompile Include="NPC.cpp">
       <Filter>MainGame\Object\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="TextBox.cpp">
+      <Filter>MainGame\Object\TextBox</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

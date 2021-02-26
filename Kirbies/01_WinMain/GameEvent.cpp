@@ -10,6 +10,8 @@ IChangeCameraTargetEvent::IChangeCameraTargetEvent(GameObject * target)
 void IChangeCameraTargetEvent::Start()
 {
 	CameraManager::GetInstance()->GetMainCamera()->SetTarget(mTarget);
+	CameraManager::GetInstance()->GetMainCamera()->ChangeMode(Camera::Mode::Follow);
+
 }
 //지속적으로 행동할것
 bool IChangeCameraTargetEvent::Update()
