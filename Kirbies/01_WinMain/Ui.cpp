@@ -56,10 +56,14 @@ void Ui::Update()
 				mMouse->SetPlayerState(mState);
 			}
 		}
+
 	}
 	else {
-		mFrameY = 1;
+		if(mState != mMouse->GetPlayerState())
+			mFrameY = 1;
 	}
+
+	//mGetState = mMouse->GetPlayerState();
 }
 
 void Ui::Render(HDC hdc)
