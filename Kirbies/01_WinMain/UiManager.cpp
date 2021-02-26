@@ -119,6 +119,15 @@ void UiManager::AddUi(UiLayer layer, Ui* object)
     mUiList[layer].push_back(object);
 }
 
+//void UiManager::Erase(UiLayer layer)
+//{
+//    if (mUiList.find(layer) == nullptr)
+//    {
+//        return;
+//    }
+//    mUiList.erase(mUiList.find(layer));
+//}
+
 Ui* UiManager::FindUi(const string& name)
 {
     UiIter iter = mUiList.begin();

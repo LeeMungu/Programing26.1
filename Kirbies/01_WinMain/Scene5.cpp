@@ -73,6 +73,7 @@ void Scene5::Release()
 {
 	ObjectManager::GetInstance()->Release();
 	SoundPlayer::GetInstance()->Stop(L"Scene5BGM");
+	UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene5count")->SetIsActive(false);
 }
 
 void Scene5::Update()
