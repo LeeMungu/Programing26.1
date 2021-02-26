@@ -1,9 +1,9 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CountingPlayerUI.h"
 #include "Door.h"
 #include "Player.h"
 #include "Image.h"
-//»ý¼ºµÈ ÇÃ·¹ÀÌ¾î ¼ö / °ñ µÈ ÇÃ·¹ÀÌ¾î ¼ö(ÆÛ¼¾Æ®) / ½Ã°£ À» UI·Î º¸¿©ÁØ´Ù.
+//ìƒì„±ëœ í”Œë ˆì´ì–´ ìˆ˜ / ê³¨ ëœ í”Œë ˆì´ì–´ ìˆ˜(í¼ì„¼íŠ¸) / ì‹œê°„ ì„ UIë¡œ ë³´ì—¬ì¤€ë‹¤.
 CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) : Ui(name)
 {
 	mX = x;
@@ -50,15 +50,15 @@ void CountingPlayerUI::Update()
 			}
 	}
 
-	//Å¸ÀÌ¸Ó
+	//íƒ€ì´ë¨¸
 	if (mTimer > 0) 
 		mTimer -= Time::GetInstance()->DeltaTime();
 	
-	//ÇÃ·¹ÀÌ¾î °¹¼ö ¼¼±â
+	//í”Œë ˆì´ì–´ ê°¯ìˆ˜ ì„¸ê¸°
 	Door* tempDoor = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
 	if(tempDoor != NULL)
 	{	
-	//µµ¾î¿¡¼­ °ÙÇØ¼­ ³Ö¾îÁÖ±â
+	//ë„ì–´ì—ì„œ ê²Ÿí•´ì„œ ë„£ì–´ì£¼ê¸°
 	mCreatedPlayerCount = tempDoor->GetPlayerCount();
 
 	mGoalPercent = mGoalPlayerCount * 100 / mPlayerCount;
