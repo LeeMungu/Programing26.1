@@ -147,7 +147,7 @@ void Scene3::Render(HDC hdc)
 	{
 		wstring str2 = L"»Ñ¿ì¿õ";
 		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str2.c_str(), str2.length());
-		mImageGameOver->FrameRender(hdc, WINSIZEX / 3, WINSIZEY / 2,
+		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
 			mAnimationGameOver->GetNowFrameX(),
 			mAnimationGameOver->GetNowFrameY());
 	}

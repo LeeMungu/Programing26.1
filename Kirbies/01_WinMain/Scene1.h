@@ -5,10 +5,12 @@ class Image;
 class Animation;
 class Scene1 : public Scene
 {
-	
+	Image* mImageGameClear;
 	Image* mImageGameOver;
 	Animation* mAnimationGameOver;
+	Animation* mAnimationGameOver;
 	float mGameOverTimer;
+	float mGameClearTimer;
 
 public:
 	void Init()override;
