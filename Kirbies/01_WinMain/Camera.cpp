@@ -5,7 +5,7 @@
 
 void Camera::Init()
 {
-	mMode = Mode::Free;
+	mMode = Mode::Follow;
 	mTarget = nullptr;
 	mX = WINSIZEX / 2;
 	mY = WINSIZEY / 2;
@@ -32,7 +32,7 @@ void Camera::Update()
 			//mY = mTarget->GetY();
 			//멀리있으면 빨리 쫓아가야하고 가까이 있으면 천천히 쫓아가야함
 			mX = Math::Lerp(mX, mTarget->GetX(), 2.f * Time::GetInstance()->DeltaTime());
-			mY = Math::Lerp(mY, mTarget->GetY()+300, 2.f * Time::GetInstance()->DeltaTime());
+			mY = Math::Lerp(mY, mTarget->GetY(), 2.f * Time::GetInstance()->DeltaTime());
 
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}

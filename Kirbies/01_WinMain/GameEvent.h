@@ -20,6 +20,16 @@ public:
 	bool Update()override;
 };
 
+//class IChangeCameraModeEvent : public IEvent
+//{
+//	Camera::Mode mMode;
+//public:
+//	IChangeCameraModeEvent(Camera::Mode mode);
+//
+//	void Start()override;
+//	bool Update()override;
+//};
+
 class IDelayEvent : public IEvent
 {
 	float mCurrentTime;

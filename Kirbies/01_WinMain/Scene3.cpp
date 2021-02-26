@@ -13,6 +13,7 @@
 #include "CountingPlayerUI.h"
 #include "DataUI.h"
 #include "Animation.h"
+#include "NPC.h"
 
 void Scene3::Init()
 {
@@ -44,7 +45,10 @@ void Scene3::Init()
 	Goal* goal = new Goal("goal", WINSIZEX/2 *3 + 300, WINSIZEY*2 - 150);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
-
+	//NPC
+	NPC* npc = new NPC("dedede", goal->GetRect().left-100, goal->GetRect().top);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
+	
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
 	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 20);
@@ -61,22 +65,35 @@ void Scene3::Init()
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
+	
 
 	//camera
 	Camera* camera = new Camera();
 	camera->SetX(0);
 	camera->SetY(0);
-	//camera->SetTarget(player1);
+	//camera->SetTarget(player1);//시작 타겟 설정
 	camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
+	//오브젝트 Init
 	ObjectManager::GetInstance()->Init();
 
 	//사운드
 	SoundPlayer::GetInstance()->Play(L"Scene3BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
 
+	//이벤트 초기화
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
+	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+
+
+	//셋 초기화
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
@@ -136,6 +153,7 @@ void Scene3::Update()
 
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
+	//이벤트 업데이트
 	GameEventManager::GetInstance()->Update();
 	SpecialFunc();
 }
@@ -167,6 +185,7 @@ void Scene3::mapRender(HDC map)
 {
 	ObjectManager::GetInstance()->mapRender(map);
 
+	//지도 위 렉트
 	HPEN newPen = CreatePen(PS_SOLID, 50, RGB(255, 255, 255));
 	HPEN prevPen = (HPEN)SelectObject(map, newPen);
 	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);

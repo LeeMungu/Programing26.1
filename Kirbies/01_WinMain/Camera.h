@@ -24,6 +24,7 @@ public:
 
 	void SetTarget(GameObject* target) { mTarget = target; }
 	void ChangeMode(Mode mode) { mMode = mode; }
+	Mode GetMode() const { return mMode; }
 public:
 	void Render(HDC hdc, class Image* image, int x, int y);
 	void Render(HDC hdc, class Image* image, int x, int y, int tempX, int tempY, int tempWidth, int tempHeight);

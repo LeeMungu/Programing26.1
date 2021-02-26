@@ -124,6 +124,9 @@
     <Filter Include="FrameWork\UiManager">
       <UniqueIdentifier>{3bb12048-bf19-41f3-80cb-70d82b6a7952}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\NPC">
+      <UniqueIdentifier>{4b80c417-fcf3-42a0-a819-04204843c67e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -345,6 +348,9 @@
     <ClInclude Include="SoundBtn.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>MainGame\Object\NPC</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -553,6 +559,9 @@
     </ClCompile>
     <ClCompile Include="SoundBtn.cpp">
       <Filter>MainGame\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>MainGame\Object\NPC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
