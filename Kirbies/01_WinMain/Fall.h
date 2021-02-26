@@ -17,7 +17,9 @@ class Fall : public State
 	Animation* mRightFallDeadAnimation;
 	Animation* mCurrentAnimation;
 
+	float mStartY;
 
+	bool mIsDeadCheck;
 
 public:
 	void Init();
@@ -26,7 +28,7 @@ public:
 	void Render(HDC hdc);
 	void mapRender(HDC map)override;
 
-
+	float GetStartY()const { return mStartY; }
 
 };
 

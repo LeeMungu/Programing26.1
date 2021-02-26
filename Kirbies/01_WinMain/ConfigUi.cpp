@@ -2,6 +2,8 @@
 #include "ConfigUi.h"
 #include "Image.h"
 #include "ButtonUi.h"
+#include "SoundBtn.h"
+#include "Animation.h"
 
 ConfigUi::ConfigUi(const string& name)
 	: Ui(name)
@@ -9,7 +11,12 @@ ConfigUi::ConfigUi(const string& name)
 	mImage = IMAGEMANAGER->FindImage(L"Menu");
 	mMenuImage = IMAGEMANAGER->FindImage(L"MenuBtn");
 	mSubImage = IMAGEMANAGER->FindImage(L"SubMenu");
+	mSoundImage = IMAGEMANAGER->FindImage(L"BgmImage");
+	mEffImage = IMAGEMANAGER->FindImage(L"EffsoundImage");
+	mIndexX = 0;
 	msubsizeX = 0;
+
+	
 }
 
 void ConfigUi::Init()
@@ -34,7 +41,27 @@ void ConfigUi::Init()
 	mMenuSound = new ButtonUi(BtnState::Sound, WINSIZEX / 2, WINSIZEY / 2 - 250 + 180);
 	mMenuSound->Init();
 
+	mBgmPlus = new SoundBtn(SoundbtnState::BgmPlus, WINSIZEX / 2+100+100, WINSIZEY / 2 -50);
+	mBgmPlus->Init();
+	
+	mBgmMinus = new SoundBtn(SoundbtnState::BgmMinus, WINSIZEX / 2+100+50, WINSIZEY / 2-50);
+	mBgmMinus->Init();
+	
+	mEffPlus = new SoundBtn(SoundbtnState::EffPlus, WINSIZEX / 2+200, WINSIZEY / 2+50);
+	mEffPlus->Init();
+	
+	mEffMinus = new SoundBtn(SoundbtnState::EffMinus, WINSIZEX / 2+150, WINSIZEY / 2+50);
+	mEffMinus->Init();
 
+	mBgmAnimation = new Animation;
+	mBgmAnimation->InitFrameByStartEnd(0, 0, 5, 0, false);
+	mBgmAnimation->SetIsLoop(false);
+	mBgmAnimation->SetFrameUpdateTime(0.1f);
+
+	mEffAnimaion = new Animation;
+	mEffAnimaion->InitFrameByStartEnd(0, 0, 5, 0, false);
+	mEffAnimaion->SetIsLoop(false);
+	mEffAnimaion->SetFrameUpdateTime(0.1f);
 }
 
 void ConfigUi::Release()
@@ -44,6 +71,10 @@ void ConfigUi::Release()
 	SafeDelete(mMenuRestart);
 	SafeDelete(mMenuSound);
 
+	SafeDelete(mBgmPlus);
+	SafeDelete(mBgmMinus);
+	SafeDelete(mEffPlus);
+	SafeDelete(mEffMinus);
 }
 
 void ConfigUi::Update()
@@ -52,6 +83,18 @@ void ConfigUi::Update()
 	mMenuRecord->Update();
 	mMenuRestart->Update();
 	mMenuSound->Update();
+
+	if (mIsSoundMenuOpen)
+	{
+		mBgmPlus->Update();
+		mBgmMinus->Update();
+		mEffPlus->Update();
+		mEffMinus->Update();
+	}
+
+
+	mBgmAnimation->Update();
+	mEffAnimaion->Update();
 }
 
 void ConfigUi::Render(HDC hdc)
@@ -62,4 +105,37 @@ void ConfigUi::Render(HDC hdc)
 	mMenuRestart->Render(hdc);
 	mMenuSound->Render(hdc);
 	mSubImage->ScaleRender(hdc, mRect.right, mRect.top, msubsizeX, 240);
+
+	if (mIsSoundMenuOpen)
+	{
+		mBgmPlus->Render(hdc);
+		mBgmMinus->Render(hdc);
+		mEffPlus->Render(hdc);
+		mEffMinus->Render(hdc);
+
+		mSoundImage->FrameRender(hdc, mRect.right+40, mRect.top+40, mBgmAnimation->GetNowFrameX(),0);
+		mEffImage->FrameRender(hdc, mRect.right+40, mRect.top+135, mEffAnimaion->GetNowFrameX(), 0);
+	}
+}
+
+void ConfigUi::SoundIndexX(wstring aniName)
+{
+	wstring str = aniName;
+	if (str == L"Bgm")
+	{
+		mBgmAnimation = new Animation;
+		mBgmAnimation->InitFrameByStartEnd(0, 0, 5, 0, false);
+		mBgmAnimation->SetIsLoop(false);
+		mBgmAnimation->SetFrameUpdateTime(0.05f);
+		mBgmAnimation->Play();
+	}
+	else if (str == L"EffSound")
+	{
+		mEffAnimaion = new Animation;
+		mEffAnimaion->InitFrameByStartEnd(0, 0, 5, 0, false);
+		mEffAnimaion->SetIsLoop(false);
+		mEffAnimaion->SetFrameUpdateTime(0.05f);
+		mEffAnimaion->Play();
+	}
+	
 }

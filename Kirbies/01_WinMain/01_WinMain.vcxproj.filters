@@ -342,6 +342,9 @@
     <ClInclude Include="ButtonUi.h">
       <Filter>MainGame\Ui</Filter>
     </ClInclude>
+    <ClInclude Include="SoundBtn.h">
+      <Filter>MainGame\Ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -546,6 +549,9 @@
       <Filter>MainGame\Object\Player\State\StateKind</Filter>
     </ClCompile>
     <ClCompile Include="ButtonUi.cpp">
+      <Filter>MainGame\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundBtn.cpp">
       <Filter>MainGame\Ui</Filter>
     </ClCompile>
   </ItemGroup>
