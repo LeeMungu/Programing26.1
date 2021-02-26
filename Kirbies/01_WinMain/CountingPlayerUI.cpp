@@ -1,10 +1,10 @@
-#include "pch.h"
+ï»¿#include "pch.h"
 #include "CountingPlayerUI.h"
 #include "Door.h"
 #include "Player.h"
 #include "Image.h"
-//»ý¼ºµÈ ÇÃ·¹ÀÌ¾î ¼ö / °ñ µÈ ÇÃ·¹ÀÌ¾î ¼ö(ÆÛ¼¾Æ®) / ½Ã°£ À» UI·Î º¸¿©ÁØ´Ù.
-CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) : GameObject(name)
+//ìƒì„±ëœ í”Œë ˆì´ì–´ ìˆ˜ / ê³¨ ëœ í”Œë ˆì´ì–´ ìˆ˜(í¼ì„¼íŠ¸) / ì‹œê°„ ì„ UIë¡œ ë³´ì—¬ì¤€ë‹¤.
+CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) : Ui(name)
 {
 	mX = x;
 	mY = y;
@@ -13,9 +13,11 @@ CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) :
 }
 void CountingPlayerUI::Init()
 {
-	mDoor =	(Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
-	mPlayerCount = mDoor->GetStageCount();
-
+	Door* tempDoor = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
+	if (tempDoor != NULL)
+	{
+		mPlayerCount = tempDoor->GetStageCount();
+	}
 	mCreatedPlayerCount = 0;
 	mGoalPlayerCount = 0;
 
@@ -48,18 +50,19 @@ void CountingPlayerUI::Update()
 			}
 	}
 
-
+	//íƒ€ì´ë¨¸
 	if (mTimer > 0) 
 		mTimer -= Time::GetInstance()->DeltaTime();
-
-	mCountTimer += Time::GetInstance()->DeltaTime();
-
-	if (mCountTimer >= 3 && mCreatedPlayerCount < mPlayerCount) {
-		mCountTimer = 0;
-		mCreatedPlayerCount++;
-	}
+	
+	//í”Œë ˆì´ì–´ ê°¯ìˆ˜ ì„¸ê¸°
+	Door* tempDoor = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
+	if(tempDoor != NULL)
+	{	
+	//ë„ì–´ì—ì„œ ê²Ÿí•´ì„œ ë„£ì–´ì£¼ê¸°
+	mCreatedPlayerCount = tempDoor->GetPlayerCount();
 
 	mGoalPercent = mGoalPlayerCount * 100 / mPlayerCount;
+	}
 }
 
 void CountingPlayerUI::Render(HDC hdc)

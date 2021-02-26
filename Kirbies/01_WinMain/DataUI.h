@@ -15,6 +15,10 @@ public:
 	float GetTime() { return mTime; }
 	float GetGoalPercent() { return mGoalPercent; }
 
-
+	void SetData() {
+		//mTime = mCountingPlayerUI->GetTimer();
+		//mGoalPercent = mCountingPlayerUI->GetGoalPercent();
+		//mScore = mCountingPlayerUI->GetGoalPlayer() * 100 + mTime;
+	}
 };
 

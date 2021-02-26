@@ -9,7 +9,8 @@ Ui관리 및 ObjectManager 저장
 enum class UiLayer : int
 {
 	DataUI = 0,
-	Object = 1,
+	CountPlayerUi =1,
+	Object = 2,
 	End
 };
 

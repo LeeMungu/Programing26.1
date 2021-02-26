@@ -1,13 +1,12 @@
 #pragma once
-#include "GameObject.h"
+#include "Ui.h"
 
-class CountingPlayerUI : public GameObject 
+class CountingPlayerUI : public Ui
 {
 	class Image* mOutImage;
 	class Image* mInImage;
 	class Image* mTimeImage;
 
-	class Door* mDoor;
 	float mCountTimer;
 	float mTimer;
 	int mPlayerCount;
