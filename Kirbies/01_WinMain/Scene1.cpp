@@ -14,11 +14,7 @@
 #include "DataUI.h"
 
 void Scene1::Init()
-{
-	//player
-	//Player* player1 = new Player("1", 200, 631);
-	//ObjectManager::GetInstance()->AddObject(ObjectLayer::Player, player1);
-	
+{	
 	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
 
