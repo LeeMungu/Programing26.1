@@ -4,6 +4,7 @@
 #include "SpecialApearEffect.h"
 #include "Camera.h"
 #include "Ui.h"
+#include "GameEvent.h"
 
 Scene::Scene()
 {
@@ -48,3 +49,18 @@ void Scene::SpecialFunc()
 		prevCamera->ChangeMode(Camera::Mode::Free);
 	}
 }
+
+void Scene::CameraWalk()
+{
+	Camera* DoorToGoal = (Camera*) ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
+	DoorToGoal->ChangeMode(Camera::Mode::Follow);
+	DoorToGoal->SetTarget(ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door"));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.1f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door")));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.3f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject(ObjectLayer::Goal, "Goal")));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.3f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door")));
+	DoorToGoal->ChangeMode(Camera::Mode::Free);
+}
+

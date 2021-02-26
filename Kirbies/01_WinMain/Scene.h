@@ -19,6 +19,7 @@ public:
 	virtual void mapRender(HDC map) {};
 
 	void SpecialFunc();
+	void CameraWalk();
 
 	bool GetIsGameOver() const { return mIsGameOver; }
 	void SetIsGameOver(bool isGameOver) { mIsGameOver = isGameOver; }

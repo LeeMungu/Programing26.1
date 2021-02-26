@@ -79,7 +79,8 @@ void Stopper::Update()
 
 	mCurrentAnimation->Update();
 }
-
+
+
 void Stopper::mapRender(HDC map)
 {
 	mImage->FrameRender(map, mX, mY, mCurrentAnimation->GetNowFrameX(),	mCurrentAnimation->GetNowFrameY());
