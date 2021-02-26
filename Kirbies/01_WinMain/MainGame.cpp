@@ -151,7 +151,7 @@ void MainGame::mapRender(HDC map)
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
 	//mMapBuffer->AlphaScaleRender(map, WINSIZEX-WINSIZEX/5, 0, WINSIZEX / 5, WINSIZEY / 5, 0.5f);
-	mMapBuffer->AlphaScaleRender(map, WINSIZEX- WINSIZEX / 5, 0, WINSIZEX/5, WINSIZEY / 5, 0.7f);
+	mMapBuffer->AlphaScaleRender(map, WINSIZEX- WINSIZEX / 3, 0, WINSIZEX/3, WINSIZEY / 3, 0.7f);
 
 }
 
