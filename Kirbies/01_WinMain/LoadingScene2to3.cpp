@@ -17,8 +17,8 @@ void LoadingScene2to3::Init()
 	//이미지 (오브젝트)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Goal", Resources(L"Goal.bmp"), 64 * PlayerSize, 48 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47 * PlayerSize, 40 * PlayerSize, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background3", Resources(L"backGround3.bmp"), 768, 336, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene2.bmp"), 2560, 1440, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background3", Resources(L"backGround6.bmp"), 2289, 1008, 3, 3, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene3.bmp"), 2560, 1440, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameOver", Resources(L"GameOver.bmp"), 1872, 48, 9, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameClear", Resources(L"GameClearImage1.bmp"), 4403 * PlayerSize, 52 * PlayerSize, 17, 1, true); });
 

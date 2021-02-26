@@ -7,6 +7,9 @@ protected:
 	
 	bool mIsSpecial;
 
+	//카메라 렉트
+	RECT mCameraRect;
+
 public:
 	Scene();
 	virtual void Init() = 0;

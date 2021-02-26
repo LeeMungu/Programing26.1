@@ -80,5 +80,5 @@ void Door::Render(HDC hdc)
 
 void Door::mapRender(HDC map)
 {
-	mImage->Render(map, mX, mY);
+	mImage->Render(map, mRect.left, mRect.top);
 }

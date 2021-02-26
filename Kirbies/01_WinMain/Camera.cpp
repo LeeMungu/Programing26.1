@@ -10,7 +10,7 @@ void Camera::Init()
 	mX = WINSIZEX / 2;
 	mY = WINSIZEY / 2;
 	mSizeX = WINSIZEX;
-	mSizeY = WINSIZEX;
+	mSizeY = WINSIZEY;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mMoveSpeed = 5.f;
 }
@@ -43,11 +43,24 @@ void Camera::Update()
 		//if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
 		//if (Input::GetInstance()->GetKey('S'))mY += mMoveSpeed;
 
-		if (_mousePosition.x <= 0 + 30)mX -= mMoveSpeed;
-		if (_mousePosition.x >= WINSIZEX - 30)mX += mMoveSpeed;
-		if (_mousePosition.y <= 0 + 30)mY -= mMoveSpeed;
-		if (_mousePosition.y >= WINSIZEY - 30)mY += mMoveSpeed;
-
+		//마우스 위치에 따른 이동
+		if (_mousePosition.x <= 0 + 30)
+		{
+			mX -= mMoveSpeed;
+		}
+		if (_mousePosition.x >= WINSIZEX - 30)
+		{
+			mX += mMoveSpeed;
+		}
+		if (_mousePosition.y <= 0 + 30)
+		{
+			mY -= mMoveSpeed;
+		}
+		if (_mousePosition.y >= WINSIZEY - 30)
+		{
+			mY += mMoveSpeed;
+		}
+		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
 		//if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
 		//{
@@ -62,11 +75,17 @@ void Camera::Update()
 		//	mouseY = _mousePosition.y;
 		//}
 
-		if (mX < bottomRC.left + WINSIZEX)	mX = bottomRC.left + WINSIZEX;
+		if (mX < bottomRC.left + WINSIZEX)
+			mX = bottomRC.left + WINSIZEX;
+		
 		if (mX > bottomRC.right )
-			mX  = bottomRC.right;
-		if (mY < bottomRC.top - WINSIZEY) mY = bottomRC.top - WINSIZEY;
-		if (mY > bottomRC.bottom + WINSIZEY) mY = bottomRC.bottom + WINSIZEY;
+			mX = bottomRC.right;
+		
+		if (mY < bottomRC.top + WINSIZEY) 
+			mY = bottomRC.top + WINSIZEY;
+		
+		if (mY > bottomRC.bottom ) 
+			mY = bottomRC.bottom;
 
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		break;

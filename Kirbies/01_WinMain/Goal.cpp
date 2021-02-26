@@ -64,5 +64,5 @@ void Goal::Render(HDC hdc)
 
 void Goal::mapRender(HDC map)
 {
-	mImage->Render(map, mX, mY);
+	mImage->Render(map, mRect.left - mSizeX, mRect.top);
 }
