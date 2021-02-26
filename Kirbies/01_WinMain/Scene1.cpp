@@ -98,8 +98,7 @@ void Scene1::Update()
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
-			Ui* dataUI = new DataUI("DataUI", 1);
-			UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
+
 		}
 	}
 

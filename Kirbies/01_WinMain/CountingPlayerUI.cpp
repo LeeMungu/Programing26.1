@@ -48,16 +48,14 @@ void CountingPlayerUI::Update()
 			}
 	}
 
-
+	//타이머
 	if (mTimer > 0) 
 		mTimer -= Time::GetInstance()->DeltaTime();
-
-	mCountTimer += Time::GetInstance()->DeltaTime();
-
-	if (mCountTimer >= 3 && mCreatedPlayerCount < mPlayerCount) {
-		mCountTimer = 0;
-		mCreatedPlayerCount++;
-	}
+	
+	//플레이어 갯수 세기
+	Door* temp = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
+	//도어에서 겟해서 넣어주기
+	mCreatedPlayerCount;
 
 	mGoalPercent = mGoalPlayerCount * 100 / mPlayerCount;
 }

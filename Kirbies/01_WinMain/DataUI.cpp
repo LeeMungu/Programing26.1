@@ -11,10 +11,9 @@ DataUI::DataUI(const string& name, int stage)
 	else if (stage == 4) mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene4count");
 	else if (stage == 5) mCountingPlayerUI = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene5count");	
 
-	mTime = mCountingPlayerUI->GetTimer();
-	mGoalPercent = mCountingPlayerUI->GetGoalPercent();
-	mScore = mCountingPlayerUI->GetGoalPlayer() * 100 + mTime;
-
+	mTime = 0;
+	mGoalPercent = 0;
+	mScore = 0;
 }
 
 void DataUI::Init()
