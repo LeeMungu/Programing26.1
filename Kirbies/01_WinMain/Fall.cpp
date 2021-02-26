@@ -11,6 +11,9 @@
 void Fall::Init()
 {
 	
+	mIsDeadCheck = false;
+
+
 	mFallKirby = IMAGEMANAGER->FindImage(L"Fall");
 	mLeftAnimation = new Animation();
 	mLeftAnimation->InitFrameByStartEnd(0, 0, 15, 0, false);
@@ -22,19 +25,19 @@ void Fall::Init()
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.1f);
 
+	//추락사 애니메이션 
 	mFallDeadKirby = IMAGEMANAGER->FindImage(L"KirbyFallDead");
 	mLeftFallDeadAnimation = new Animation();
-	mLeftFallDeadAnimation->InitFrameByStartEnd(0, 0, 6, 0, false);
-	mLeftFallDeadAnimation->SetIsLoop(true);
-	mLeftFallDeadAnimation->SetFrameUpdateTime(0.1f);
+	mLeftFallDeadAnimation->InitFrameByEndStart(2, 1, 0, 1, false);
+	mLeftFallDeadAnimation->SetIsLoop(false);
+	mLeftFallDeadAnimation->SetFrameUpdateTime(0.5f);
+	mLeftFallDeadAnimation->SetCallbackFunc([this]() {mPlayer->SetIsDestroy(true); });
 
 	mRightFallDeadAnimation = new Animation();
-	mRightFallDeadAnimation->InitFrameByEndStart(6, 1, 0, 1, false);
-	mRightFallDeadAnimation->SetIsLoop(true);
-	mRightFallDeadAnimation->SetFrameUpdateTime(0.1f);
-
-
-
+	mRightFallDeadAnimation->InitFrameByStartEnd(0, 0, 2, 0, false);
+	mRightFallDeadAnimation->SetIsLoop(false);
+	mRightFallDeadAnimation->SetFrameUpdateTime(0.5f);
+	mRightFallDeadAnimation->SetCallbackFunc([this]() {mPlayer->SetIsDestroy(true); });
 
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 
@@ -48,10 +51,7 @@ void Fall::Init()
 	}
 	mCurrentAnimation->Play();
 
-	mPlayer->SetGravity(100.f);
-	mPlayer->SetSizeX(mFallKirby->GetFrameWidth());
-	mPlayer->SetSizeY(mFallKirby->GetFrameHeight());
-
+	//방향전환
 	if (mCurrentAnimation == mLeftAnimation && mPlayer->GetIntMotionRL() == 1)
 	{
 		mCurrentAnimation->Stop();
@@ -65,6 +65,15 @@ void Fall::Init()
 		mCurrentAnimation->Play();
 	}
 
+
+	mPlayer->SetGravity(100.f);
+	mPlayer->SetSizeX(mFallKirby->GetFrameWidth());
+	mPlayer->SetSizeY(mFallKirby->GetFrameHeight());
+
+	
+
+	mStartY = mPlayer->GetY();
+
 	//COLORREF pixelColor = GetPixel(mBottom->GetImage()->GetHDC(),
 	//	mX, mY);
 	//if (pixelColor != RGB(255, 0, 255))
@@ -72,7 +81,7 @@ void Fall::Init()
 	//	mPlayer->SetY(mPlayer->GetY() - mPlayer->GetSizeY() / 2);
 	//}
 
-
+	mIsDeadCheck = false;
 
 }
 
@@ -88,27 +97,50 @@ void Fall::Release()
 
 void Fall::Update()
 {
-	mPlayer->SetY(mPlayer->GetY() + mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
+	
+
+
+	if (mPlayer->GetIsFallDead() == false)
+	{
+		mPlayer->SetY(mPlayer->GetY() + mPlayer->GetGravity()*Time::GetInstance()->DeltaTime());
+	}
+	else if (mPlayer->GetIsFallDead() == true && mIsDeadCheck==false)
+	{
+		mCurrentAnimation->Stop();
+		if (mPlayer->GetIntMotionRL() == 0)
+		{
+			mCurrentAnimation = mRightFallDeadAnimation;
+		}
+		else if (mPlayer->GetIntMotionRL() == 1)
+		{
+			mCurrentAnimation = mLeftFallDeadAnimation;
+		}
+		mCurrentAnimation->Play();
+
+		mIsDeadCheck = true;
+	}
+	
 	mCurrentAnimation->Update();
 
-
-	 // 낙사판정
-	
 
 }
 
 void Fall::Render(HDC hdc)
 {
-	CameraManager::GetInstance()->GetMainCamera()
-		->FrameRender(hdc, mFallKirby, mPlayer->GetX() - mFallKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
-			mCurrentAnimation->GetNowFrameX(),
-			mCurrentAnimation->GetNowFrameY());
-
-	//CameraManager::GetInstance()->GetMainCamera()
-	//	->FrameRender(hdc, mFallDeadKirby, mPlayer->GetX() - mFallDeadKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
-	//		mCurrentAnimation->GetNowFrameX(),
-	//		mCurrentAnimation->GetNowFrameY());
-
+	if (mPlayer->GetIsFallDead() == false)
+	{
+		CameraManager::GetInstance()->GetMainCamera()
+			->FrameRender(hdc, mFallKirby, mPlayer->GetX() - mFallKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+				mCurrentAnimation->GetNowFrameX(),
+				mCurrentAnimation->GetNowFrameY());
+	}
+	else if (mPlayer->GetIsFallDead() == true)
+	{
+		CameraManager::GetInstance()->GetMainCamera()
+			->FrameRender(hdc, mFallDeadKirby, mPlayer->GetX() - mFallDeadKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+				mCurrentAnimation->GetNowFrameX(),
+				mCurrentAnimation->GetNowFrameY());
+	}
 }
 
 void Fall::mapRender(HDC map)

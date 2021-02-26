@@ -59,6 +59,7 @@ void Player::Init()
 	mIsCrash = false;
 	mIsClimb = false;
 	mIsStopper = false;
+	mIsFallDead = false;
 }
 
 void Player::Release()
@@ -139,7 +140,30 @@ void Player::Update()
 	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
 	
 	//떨어졌을때 바닥보정
-	if (mPlayerState == PlayerState::FallState || mPlayerState == PlayerState::UmbrellaState)
+	if (mPlayerState == PlayerState::FallState)
+	{
+		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
+		{
+			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
+			if (pixelColor != RGB(255, 0, 255))
+			{
+				mY = y - mSizeY / 2;
+				//낙사 높이
+				if (mY - ((Fall*)mCurrentState)->GetStartY()>70)
+				{
+					mIsFallDead = true;
+					mY += 10; // 바닥과 캐릭터
+				}
+				else
+				{
+					mIsChange = true;
+					mPlayerState = PlayerState::RunState;
+				}
+				break;
+			}
+		}
+	}
+	if (mPlayerState == PlayerState::UmbrellaState)
 	{
 		for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
 		{
@@ -154,7 +178,6 @@ void Player::Update()
 			}
 		}
 	}
-
 	//if (mPlayerState == PlayerState::ClimbState)
 	//{
 	//	for (float y = mY; y < mY + mSizeY / 2 + 25; y++)
