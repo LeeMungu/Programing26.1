@@ -21,9 +21,8 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameOver", Resources(L"GameOver.bmp"), 1872, 48, 9, 1, true); });
 
 	//ÀÌ¹ÌÁö (UI)
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"out_ui.bmp"), 120, 48, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"InUI", Resources(L"in_ui.bmp"), 120, 48, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"TimeUI", Resources(L"time_ui.bmp"), 144, 48, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"cloudbox_ui.bmp"), 120, 48, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"TimeUI", Resources(L"cloudbox_long_ui.bmp"), 144, 48, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Speech", Resources(L"speech.bmp"), 172, 57, 2, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Mouse", Resources(L"cursor_image.bmp"), 110, 55, 2, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 500, 200, 5, 2, true); });
