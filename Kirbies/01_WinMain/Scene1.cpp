@@ -87,6 +87,10 @@ void Scene1::Update()
 			SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
 		}
 	}
+	if (mIsGameOver == true)
+	{
+
+	}
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene1count");
 	if (tempUi != NULL && mIsGameClear != true)
@@ -98,6 +102,17 @@ void Scene1::Update()
 
 		}
 	}
+	//게임오버 조건
+	if (tempUi != NULL && mIsGameOver != false)
+	{
+		if (tempUi->GetGoalPercent() < 50.f &&
+			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() != NULL)
+		{
+			mIsGameOver = true;
+
+		}
+	}
+
 
 	//사운드 멈춰주기
 	
@@ -113,6 +128,12 @@ void Scene1::Render(HDC hdc)
 
 	wstring str = L"스테이지1 구름구름동산.";
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
+
+	if (mIsGameOver == true)
+	{
+		SceneManager::GetInstance()->Render(hdc);
+	}
+
 }
 
 void Scene1::mapRender(HDC map)
