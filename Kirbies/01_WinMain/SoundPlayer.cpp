@@ -9,8 +9,8 @@ SoundPlayer::SoundPlayer()
 	//그래서 팩토리패턴이라는 디자인 패턴을 사용해서 생성하게 끔 유도함
 	FMOD::System_Create(&mSystem);
 	mSystem->init(MaxChannelBuffer, FMOD_INIT_NORMAL, NULL);
-	mBGMVolum = 1.f;
-	mEffectVolum = 1.f;
+	mBGMVolum = 0.5f;
+	mEffectVolum = 0.5f;
 }
 
 SoundPlayer::~SoundPlayer()
@@ -136,6 +136,33 @@ void SoundPlayer::Stop(const wstring & keyName)
 		{
 			mActiveChannels[i].Channel->stop();
 			mActiveChannels.erase(mActiveChannels.begin() + i);
+			break;
+		}
+	}
+}
+
+
+
+void SoundPlayer::SetBgmVolumeUpdate(const wstring& keyName, float volume)
+{
+	for (int i = 0; i < mActiveChannels.size(); ++i)
+	{
+		if (mActiveChannels[i].SoundName == keyName)
+		{
+			mActiveChannels[i].Channel->setVolume(volume);
+			break;
+		}
+	}
+}
+
+
+void SoundPlayer::SeteffVolumeUpdate(const wstring& keyName, float volume)
+{
+	for (int i = 0; i < mActiveChannels.size(); ++i)
+	{
+		if (mActiveChannels[i].SoundName == keyName)
+		{
+			mActiveChannels[i].Channel->setVolume(volume);
 			break;
 		}
 	}

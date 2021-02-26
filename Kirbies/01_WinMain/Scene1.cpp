@@ -16,13 +16,20 @@
 
 void Scene1::Init()
 {	
+	mImageGameClear = IMAGEMANAGER->FindImage(L"GameOver");
+	mAnimationGameOver = new Animation();
+	mAnimationGameOver->InitFrameByStartEnd(0, 0, 8, 0, false);
+	mAnimationGameOver->SetIsLoop(true);
+	mAnimationGameOver->SetFrameUpdateTime(0.1f);
+
+
 
 	mImageGameOver = IMAGEMANAGER->FindImage(L"GameOver");
 	mAnimationGameOver = new Animation();
 	mAnimationGameOver->InitFrameByStartEnd(0, 0, 8, 0, false);
 	mAnimationGameOver->SetIsLoop(true);
 	mAnimationGameOver->SetFrameUpdateTime(0.1f);
-	//mAnimationGameOver->SetCallbackFunc([this]() {mPlayer->SetIsDestroy(true); });
+	
 
 	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
@@ -69,8 +76,7 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//»ç¿îµå
-	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f
-		*SoundPlayer::GetInstance()->GetBgmvolum());
+	SoundPlayer::GetInstance()->Play(L"Scene1BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);
@@ -158,7 +164,7 @@ void Scene1::Render(HDC hdc)
 	{
 		wstring str2 = L"»Ñ¿ì¿õ";
 		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str2.c_str(), str2.length());
-		mImageGameOver->FrameRender(hdc, WINSIZEX / 3, WINSIZEY / 2,
+		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
 			mAnimationGameOver->GetNowFrameX(),
 				mAnimationGameOver->GetNowFrameY());
 	}
