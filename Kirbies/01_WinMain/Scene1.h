@@ -8,7 +8,6 @@ class Scene1 : public Scene
 	Image* mImageGameClear;
 	Image* mImageGameOver;
 	Animation* mAnimationGameOver;
-	Animation* mAnimationGameOver;
 	float mGameOverTimer;
 	float mGameClearTimer;
 

@@ -45,37 +45,42 @@ void Mouse::Update()
 		if (PtInRect(&mRect, playerPoint))
 		{
 			mIndexX = 1;
-			Ui* ui;
+			Ui* ClimbUI = ClimbUI = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "ClimbBtn");
+			Ui* StopperUI = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "StopperBtn");
+			Ui* UmbrellaUI = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "UmbrellaBtn");
+			Ui* BoomUI = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "BoomBtn");
+			Ui* DigUI = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "DigBtn");
+
+
 			if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
 			{
 				Player* tempPlayer = (Player*)player[i];
 				//등산 조건만 다르게 준다. + 스토퍼도
 				if (tempPlayer->GetIsClimb()!=true
-					&& mPlayerState == PlayerState::ClimbState)
+					&& mPlayerState == PlayerState::ClimbState && ClimbUI->GetStateBtnCount() > 0 )
 				{
-					tempPlayer->SetIsClimb(true);
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "ClimbBtn");
-					ui->SetStateBtnCount();
+					tempPlayer->SetIsClimb(true);;
+					ClimbUI->SetStateBtnCount();
 				}
-				else if (tempPlayer->GetIsStopper()!=true && mPlayerState == PlayerState::StopperState)
+				else if (tempPlayer->GetIsStopper()!=true 
+					&& mPlayerState == PlayerState::StopperState && StopperUI->GetStateBtnCount() > 0)
 				{
 					if(tempPlayer->GetPlayerState()!=PlayerState::UmbrellaState
 						&& tempPlayer->GetPlayerState() != PlayerState::FallState)
 					tempPlayer->SetIsStopper(true);
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "StopperBtn");
-					ui->SetStateBtnCount();
+					StopperUI->SetStateBtnCount();
 				}
-				else if (mPlayerState == PlayerState::UmbrellaState)
+				else if (mPlayerState == PlayerState::UmbrellaState && UmbrellaUI->GetStateBtnCount() > 0)
 				{
 					if (tempPlayer->GetPlayerState() == PlayerState::FallState)
 					{
 						tempPlayer->SetPlayerState(mPlayerState);
 						tempPlayer->SetIsChange(true);
-						ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "UmbrellaBtn");
-						ui->SetStateBtnCount();
+						UmbrellaUI->SetStateBtnCount();
 					}
 				}
-				else if (tempPlayer->GetIsBoom() != true && mPlayerState == PlayerState::BoomState)
+				else if (tempPlayer->GetIsBoom() != true
+					&& mPlayerState == PlayerState::BoomState && BoomUI->GetStateBtnCount() > 0)
 				{
 		
 					CountNumEffect* countEffect = new CountNumEffect("CountEffect", player[i]->GetX(), player[i]->GetRect().top - 10, L"CountEffect");
@@ -83,18 +88,17 @@ void Mouse::Update()
 					countEffect->Init();
 					tempPlayer->SetIsBoom(true);
 					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, countEffect);
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "BoomBtn");
-					ui->SetStateBtnCount();
+					BoomUI->SetStateBtnCount();
 				}
-				else if (tempPlayer->GetIsDig() != true && mPlayerState == PlayerState::DigState)
+				else if (tempPlayer->GetIsDig() != true
+					&& mPlayerState == PlayerState::DigState && DigUI->GetStateBtnCount() > 0)
 				{
 					if (tempPlayer->GetPlayerState() != PlayerState::StopperState)
 					{
 						tempPlayer->SetPlayerState(mPlayerState);
 						tempPlayer->SetIsChange(true);
 						tempPlayer->SetIsDig(true);
-						ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "DigBtn");
-						ui->SetStateBtnCount();
+						DigUI->SetStateBtnCount();
 					}
 				}
 				else if (mPlayerState == PlayerState::Empty)
