@@ -141,6 +141,15 @@ void SoundPlayer::Stop(const wstring & keyName)
 	}
 }
 
+void SoundPlayer::Stop()
+{
+	for (int i = 0; i < mActiveChannels.size(); ++i)
+	{
+		mActiveChannels[i].Channel->stop();
+		mActiveChannels.erase(mActiveChannels.begin() + i);
+	}
+}
+
 
 
 void SoundPlayer::SetBgmVolumeUpdate(const wstring& keyName, float volume)

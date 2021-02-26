@@ -76,12 +76,6 @@ void Scene2::Init()
 
 }
 
-void Scene2::Release()
-{
-	ObjectManager::GetInstance()->Release();
-	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
-	UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene2count")->SetIsActive(false);
-}
 
 void Scene2::Update()
 {

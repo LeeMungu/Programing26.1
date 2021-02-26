@@ -3,12 +3,26 @@
 #include "Special.h"
 #include "SpecialApearEffect.h"
 #include "Camera.h"
-
+#include "Ui.h"
 
 Scene::Scene()
 {
 	mIsGameClear = false;
 	mIsGameOver = false;
+}
+
+void Scene::Release()
+{
+	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop();
+	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
+	if (temps.size() != NULL)
+	{
+		for (int i = 0; i < temps.size(); i++)
+		{
+			temps[i]->SetIsActive(false);
+		}
+	}
 }
 
 void Scene::SpecialFunc()

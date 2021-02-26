@@ -87,12 +87,6 @@ void Scene1::Init()
 	mGameOverTimer = 0.f;
 }
 
-void Scene1::Release()
-{
-	ObjectManager::GetInstance()->Release();
-	SoundPlayer::GetInstance()->Stop(L"Scene1BGM");
-	UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene1count")->SetIsActive(false);
-}
 
 void Scene1::Update()
 {
