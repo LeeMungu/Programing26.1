@@ -22,6 +22,20 @@ void Fall::Init()
 	mRightAnimation->SetIsLoop(true);
 	mRightAnimation->SetFrameUpdateTime(0.1f);
 
+	mFallDeadKirby = IMAGEMANAGER->FindImage(L"KirbyFallDead");
+	mLeftFallDeadAnimation = new Animation();
+	mLeftFallDeadAnimation->InitFrameByStartEnd(0, 0, 6, 0, false);
+	mLeftFallDeadAnimation->SetIsLoop(true);
+	mLeftFallDeadAnimation->SetFrameUpdateTime(0.1f);
+
+	mRightFallDeadAnimation = new Animation();
+	mRightFallDeadAnimation->InitFrameByEndStart(6, 1, 0, 1, false);
+	mRightFallDeadAnimation->SetIsLoop(true);
+	mRightFallDeadAnimation->SetFrameUpdateTime(0.1f);
+
+
+
+
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 
 	if (mPlayer->GetIntMotionRL() == 0)
@@ -67,6 +81,8 @@ void Fall::Release()
 	SafeDelete(mFallKirby);
 	SafeDelete(mLeftAnimation);
 	SafeDelete(mRightAnimation);
+	SafeDelete(mLeftFallDeadAnimation);
+	SafeDelete(mRightFallDeadAnimation);
 	SafeDelete(mCurrentAnimation);
 }
 
@@ -76,14 +92,8 @@ void Fall::Update()
 	mCurrentAnimation->Update();
 
 
-	//// ³«»çÆÇÁ¤
-	//if (mPlayer->GetmIsFallDead) == true)
-	//{
-	//	mCurrentAnimation->Stop();
-	//	mCurrentAnimation = mGoalKirbyAnimation;
-	//	mCurrentAnimation->Play();
-	//	mPlayer->SetIsGoal(false);
-	//}
+	 // ³«»çÆÇÁ¤
+	
 
 }
 
@@ -94,9 +104,16 @@ void Fall::Render(HDC hdc)
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
 
+	//CameraManager::GetInstance()->GetMainCamera()
+	//	->FrameRender(hdc, mFallDeadKirby, mPlayer->GetX() - mFallDeadKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+	//		mCurrentAnimation->GetNowFrameX(),
+	//		mCurrentAnimation->GetNowFrameY());
+
 }
 
 void Fall::mapRender(HDC map)
 {
 	mFallKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
+	//mFallDeadKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
 }
+

@@ -20,6 +20,7 @@ void Door::Init()
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mTimer = 0;
 	mCount = 0;
+	mTimeLimit = 3.f;
 }
 
 void Door::Release()
@@ -30,9 +31,23 @@ void Door::Update()
 {
 	mTimer+=Time::GetInstance()->DeltaTime();
 
-	
+	if (Input::GetInstance()->GetKeyDown('A'))
+	{
+		if (mTimeLimit < 6)
+		{
+			mTimeLimit += 0.3f;
+		}
+	}
+	if (Input::GetInstance()->GetKeyDown('S'))
+	{
+		if (mTimeLimit > 0.9f)
+		{
+			mTimeLimit -= 0.3f;
+		}
+	}
 
-	if (mTimer >= 3 && mCount<mStage1Count)
+
+	if (mTimer >= mTimeLimit && mCount<mStage1Count)
 	{
 		mTimer = 0;
 		//플레이어 생성

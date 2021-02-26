@@ -10,6 +10,7 @@ class Door : public GameObject
 	float mTimer;
 	int mCount;
 	int mStage1Count;
+	float mTimeLimit;
 public:
 	Door(const string& name, float x, float y, int count);
 	void Init()override;
@@ -20,5 +21,6 @@ public:
 
 
 	int GetStageCount() { return mStage1Count; }
+	int GetPlayerCount() { return mCount; }
 };
 
