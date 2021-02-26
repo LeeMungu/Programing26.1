@@ -76,8 +76,7 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//»ç¿îµå
-	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f
-		*SoundPlayer::GetInstance()->GetBgmvolum());
+	SoundPlayer::GetInstance()->Play(L"Scene1BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	SoundPlayer::GetInstance()->Play(L"Scene1BGM", 0.5f);

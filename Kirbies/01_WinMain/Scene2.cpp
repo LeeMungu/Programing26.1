@@ -69,8 +69,7 @@ void Scene2::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//»ç¿îµå
-	SoundPlayer::GetInstance()->Play(L"Scene2BGM", 0.5f
-		*SoundPlayer::GetInstance()->GetBgmvolum());
+	SoundPlayer::GetInstance()->Play(L"Scene2BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene1BGM");
 
 	mIsSpecial = false;
