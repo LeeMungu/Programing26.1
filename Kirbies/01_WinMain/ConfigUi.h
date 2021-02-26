@@ -19,6 +19,10 @@ class ConfigUi : public Ui
 	Image* mEffImage;
 	int mIndexX;
 
+	Image* mBgmBar;
+	Image* mEffSoundBar;
+	float mBgmScaleX;
+	float mEffScaleX;
 
 	ButtonUi* mMenuEnd;
 	ButtonUi* mMenuRestart;
@@ -29,7 +33,6 @@ class ConfigUi : public Ui
 	SoundBtn* mBgmMinus;
 	SoundBtn* mEffPlus;
 	SoundBtn* mEffMinus;
-
 
 	float msubsizeX;
 	bool mIsSoundMenuOpen;
@@ -52,6 +55,13 @@ public:
 	bool GetIsSoundMenu() { return mIsSoundMenuOpen; }
 
 	void SoundIndexX(wstring aniName);
+
+
+	void SetSoundBarScale(float x) { mBgmScaleX += x; }
+	float GetSoundBarScale() { return mBgmScaleX; }
+	void SetEffSoundBarScale(float x) { mEffScaleX += x; }
+	float GetEffSoundBarScale() { return mEffScaleX; }
+
 };
 
 

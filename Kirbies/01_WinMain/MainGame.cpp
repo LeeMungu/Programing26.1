@@ -76,6 +76,7 @@ void MainGame::Init()
 	IMAGEMANAGER->LoadFromFile(L"PlusMinus", Resources(L"PlusMinus.bmp"), 17, 68, 1, 4, true);
 	IMAGEMANAGER->LoadFromFile(L"BgmImage", Resources(L"BgmImage.bmp"), 180, 32, 6, 1, true);
 	IMAGEMANAGER->LoadFromFile(L"EffsoundImage", Resources(L"EffectSoundImage.bmp"), 253, 35, 6, 1, true);
+	IMAGEMANAGER->LoadFromFile(L"SoundBar", Resources(L"Bar.bmp"), 20, 5, false);
 }
 
 /*
