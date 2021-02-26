@@ -4,7 +4,7 @@
 #include "Player.h"
 #include "Image.h"
 //생성된 플레이어 수 / 골 된 플레이어 수(퍼센트) / 시간 을 UI로 보여준다.
-CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) : GameObject(name)
+CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) : Ui(name)
 {
 	mX = x;
 	mY = y;
@@ -13,9 +13,11 @@ CountingPlayerUI::CountingPlayerUI(string name, float x, float y, float timer) :
 }
 void CountingPlayerUI::Init()
 {
-	mDoor =	(Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
-	mPlayerCount = mDoor->GetStageCount();
-
+	Door* tempDoor = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
+	if (tempDoor != NULL)
+	{
+		mPlayerCount = tempDoor->GetStageCount();
+	}
 	mCreatedPlayerCount = 0;
 	mGoalPlayerCount = 0;
 
@@ -53,11 +55,14 @@ void CountingPlayerUI::Update()
 		mTimer -= Time::GetInstance()->DeltaTime();
 	
 	//플레이어 갯수 세기
-	Door* temp = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
+	Door* tempDoor = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
+	if(tempDoor != NULL)
+	{	
 	//도어에서 겟해서 넣어주기
-	mCreatedPlayerCount;
+	mCreatedPlayerCount = tempDoor->GetPlayerCount();
 
 	mGoalPercent = mGoalPlayerCount * 100 / mPlayerCount;
+	}
 }
 
 void CountingPlayerUI::Render(HDC hdc)

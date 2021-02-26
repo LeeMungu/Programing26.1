@@ -47,10 +47,10 @@ void Scene1::Init()
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
+	//Ui
 	CountingPlayerUI* countUI = new CountingPlayerUI("Scene1count",100, WINSIZEY - 100, 300);
-	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, countUI);
-
-
+	countUI->Init();
+	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
 	//camera
 	Camera* camera = new Camera();
@@ -91,7 +91,7 @@ void Scene1::Update()
 		}
 	}
 	//클리어조건
-	CountingPlayerUI* tempUi = (CountingPlayerUI*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "Scene1count");
+	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene1count");
 	if (tempUi != NULL && mIsGameClear != true)
 	{
 		if (tempUi->GetGoalPercent() > 50.f &&
