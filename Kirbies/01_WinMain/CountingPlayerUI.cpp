@@ -81,13 +81,13 @@ void CountingPlayerUI::Render(HDC hdc)
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
 	wstring createdPlayer = L"OUT " + to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = L"IN " + to_wstring((int)mGoalPercent) + L" %";
+	wstring GoalPlayer = L"IN " + to_wstring((int)mGoalPercent) + L"%";
 	wstring timer = L"TIME " + to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 
-	TextOut(hdc, mX + 50, mY + 10, createdPlayer.c_str(), createdPlayer.length());
-	TextOut(hdc, mX + 130, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
-	TextOut(hdc, mX + 210, mY + 10, timer.c_str(), timer.length());
+	TextOut(hdc, mX + 10, mY + 10, createdPlayer.c_str(), createdPlayer.length());
+	TextOut(hdc, mX + 140, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
+	TextOut(hdc, mX + 265, mY + 10, timer.c_str(), timer.length());
 
 	SelectObject(hdc, oldFont);
 	DeleteObject(hFont);
