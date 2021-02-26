@@ -12,6 +12,7 @@ class Ui : public GameObject
 	class Mouse* mMouse;
 
 	PlayerState mState;
+	PlayerState mGetState;
 
 	int mCountNum;
 	int mTensNum; //10의 자리 저장
