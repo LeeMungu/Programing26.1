@@ -36,11 +36,13 @@ public:
 	void Pause(const wstring& keyName);
 	void Stop(const wstring& keyName);
 
-	void SetBgmVolum(float vol) { mBGMVolum = vol; }
+	void SetBgmVolum(float vol) { mBGMVolum += vol; }
 	float GetBgmvolum() { return mBGMVolum; }
+	void SetBgmVolumeUpdate(const wstring& keyName, float volume);
 
-	void SetEffectVolum(float vol) { mEffectVolum = vol; }
+	void SetEffectVolum(float vol) { mEffectVolum += vol; }
 	float GetEffectVolum() { return mEffectVolum; }
+	void SeteffVolumeUpdate(const wstring& keyName, float volume);
 
 	//과제~ MP3플레이어 만들어오기
 	//void SetVolume(const wstring& keyName, float volume);

@@ -80,8 +80,18 @@ void SoundBtn::Update()
 			{
 				temp->SetSoundBarScale(10.f);
 			}
+			if (SoundPlayer::GetInstance()->GetBgmvolum() < 1.f)
+			{
+				SoundPlayer::GetInstance()->SetBgmVolum(0.1f);
+			}
 			
-			SoundPlayer::GetInstance()->SetBgmVolum(0.1);
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"TitleBGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene1BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene2BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene3BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene4BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+
 		}
 		else if (mSoundbtnState == SoundbtnState::BgmMinus)
 		{
@@ -91,8 +101,16 @@ void SoundBtn::Update()
 			{
 				temp->SetSoundBarScale(-10.f);
 			}
-			
-			SoundPlayer::GetInstance()->SetBgmVolum(-0.1);
+			if (SoundPlayer::GetInstance()->GetBgmvolum() > 0.f)
+			{
+				SoundPlayer::GetInstance()->SetBgmVolum(-0.1f);
+			}
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"TitleBGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene1BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene2BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene3BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene4BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+			SoundPlayer::GetInstance()->SetBgmVolumeUpdate(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 		}
 		else if (mSoundbtnState == SoundbtnState::EffPlus)
 		{
@@ -103,7 +121,22 @@ void SoundBtn::Update()
 				temp->SetEffSoundBarScale(10.f);
 			}
 			
-			SoundPlayer::GetInstance()->SetEffectVolum(0.1);
+			if (SoundPlayer::GetInstance()->GetEffectVolum() < 1.f)
+			{
+				SoundPlayer::GetInstance()->SetEffectVolum(0.1f);
+				SoundPlayer::GetInstance()->Play(L"BunEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			}
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"BoomEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"OpenDoorSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"CloseDoorSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"FuseEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"BunEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"DigEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"UmbrellaEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"RunEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"GoalEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"SpecialSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"SpecialSound2", SoundPlayer::GetInstance()->GetEffectVolum());
 		}
 		else if (mSoundbtnState == SoundbtnState::EffMinus)
 		{
@@ -113,8 +146,22 @@ void SoundBtn::Update()
 			{
 				temp->SetEffSoundBarScale(-10.f);
 			}
-			
-			SoundPlayer::GetInstance()->SetEffectVolum(-0.1);
+			if (SoundPlayer::GetInstance()->GetEffectVolum() > 0.f)
+			{
+				SoundPlayer::GetInstance()->SetEffectVolum(-0.1f);
+				SoundPlayer::GetInstance()->Play(L"BunEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			}
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"BoomEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"OpenDoorSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"CloseDoorSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"FuseEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"BunEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"DigEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"UmbrellaEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"RunEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"GoalEffectSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"SpecialSound", SoundPlayer::GetInstance()->GetEffectVolum());
+			SoundPlayer::GetInstance()->SeteffVolumeUpdate(L"SpecialSound2", SoundPlayer::GetInstance()->GetEffectVolum());
 		}
 	}
 }
