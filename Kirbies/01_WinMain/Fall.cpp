@@ -30,13 +30,13 @@ void Fall::Init()
 	mLeftFallDeadAnimation = new Animation();
 	mLeftFallDeadAnimation->InitFrameByEndStart(2, 1, 0, 1, false);
 	mLeftFallDeadAnimation->SetIsLoop(false);
-	mLeftFallDeadAnimation->SetFrameUpdateTime(0.5f);
+	mLeftFallDeadAnimation->SetFrameUpdateTime(0.3f);
 	mLeftFallDeadAnimation->SetCallbackFunc([this]() {mPlayer->SetIsDestroy(true); });
 
 	mRightFallDeadAnimation = new Animation();
 	mRightFallDeadAnimation->InitFrameByStartEnd(0, 0, 2, 0, false);
 	mRightFallDeadAnimation->SetIsLoop(false);
-	mRightFallDeadAnimation->SetFrameUpdateTime(0.5f);
+	mRightFallDeadAnimation->SetFrameUpdateTime(0.3f);
 	mRightFallDeadAnimation->SetCallbackFunc([this]() {mPlayer->SetIsDestroy(true); });
 
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
