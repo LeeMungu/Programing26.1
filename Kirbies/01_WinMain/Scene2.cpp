@@ -12,9 +12,17 @@
 #include "Ui.h"
 #include "CountingPlayerUI.h"
 #include "DataUI.h"
+#include "Animation.h"
 
 void Scene2::Init()
 {
+	mImageGameOver = IMAGEMANAGER->FindImage(L"GameOver");
+	mAnimationGameOver = new Animation();
+	mAnimationGameOver->InitFrameByStartEnd(0, 0, 8, 0, false);
+	mAnimationGameOver->SetIsLoop(true);
+	mAnimationGameOver->SetFrameUpdateTime(0.1f);
+
+
 	Mouse* mouse = new Mouse("Mouse");
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Mouse, mouse);
 
@@ -98,7 +106,22 @@ void Scene2::Update()
 			UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
 		}
 	}
+	//게임오버 조건
+	mGameOverTimer += Time::GetInstance()->DeltaTime();
+	if (mGameOverTimer > 5)
+	{
+		if (tempUi != NULL && mIsGameOver == false)
+		{
+			if (tempUi->GetGoalPercent() < 50.f &&
+				ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
+			{
+				mIsGameOver = true;
+				mAnimationGameOver->Play();
+			}
+		}
+	}
 
+	mAnimationGameOver->Update();
 	
 
 	
@@ -113,6 +136,22 @@ void Scene2::Render(HDC hdc)
 
 	wstring str = L"스테이지2 나무나무동산.";
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
+	if (mIsGameClear)
+	{
+		wstring str1 = L"스테이지 클리어";
+		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str1.c_str(), str1.length());
+	}
+
+
+	if (mIsGameOver == true)
+	{
+		wstring str2 = L"뿌우웅";
+		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str2.c_str(), str2.length());
+		mImageGameOver->FrameRender(hdc, WINSIZEX / 3, WINSIZEY / 2,
+			mAnimationGameOver->GetNowFrameX(),
+			mAnimationGameOver->GetNowFrameY());
+	}
+
 }
 
 void Scene2::mapRender(HDC map)

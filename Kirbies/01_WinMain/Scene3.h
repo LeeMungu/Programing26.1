@@ -1,7 +1,16 @@
 #pragma once
 #include "Scene.h"
+
+class Image;
+class Animation;
+
 class Scene3 : public Scene
 {
+
+	Image* mImageGameOver;
+	Animation* mAnimationGameOver;
+	float mGameOverTimer;
+
 public:
 	void Init()override;
 	void Release()override;
