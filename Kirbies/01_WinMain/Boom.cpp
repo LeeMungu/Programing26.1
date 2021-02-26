@@ -75,7 +75,6 @@ void Boom::Update() {
 				mEffect = new KirbyEffect("BoomEffect", mX - 15, mY - 40, L"BoomEffect", 9, 1);
 				ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, mEffect);
 				//애니메이션 플레이 후 플레이어 제거
-				
 			}
 
 		}

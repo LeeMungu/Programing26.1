@@ -22,7 +22,7 @@ void CountingPlayerUI::Init()
 	mGoalPlayerCount = 0;
 
 	mOutImage = IMAGEMANAGER->FindImage(L"OutUI");
-	mInImage = IMAGEMANAGER->FindImage(L"InUI");
+	mInImage = IMAGEMANAGER->FindImage(L"OutUI");
 	mTimeImage = IMAGEMANAGER->FindImage(L"TimeUI");
 
 	AddFontResourceA("../02_Resources/editundo.ttf");
@@ -80,14 +80,14 @@ void CountingPlayerUI::Render(HDC hdc)
 	hFont = CreateFont(27, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("Edit Undo BRK"));
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
-	wstring createdPlayer = to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = to_wstring((int)mGoalPercent);
-	wstring timer = to_wstring((int)(mTimer / 60) % 60) + L":"
+	wstring createdPlayer = L"OUT " + to_wstring(mCreatedPlayerCount);
+	wstring GoalPlayer = L"IN " + to_wstring((int)mGoalPercent) + L"%";
+	wstring timer = L"TIME " + to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 
-	TextOut(hdc, mX + 80, mY + 10, createdPlayer.c_str(), createdPlayer.length());
-	TextOut(hdc, mX + 190, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
-	TextOut(hdc, mX + 347, mY + 10, timer.c_str(), timer.length());
+	TextOut(hdc, mX + 10, mY + 10, createdPlayer.c_str(), createdPlayer.length());
+	TextOut(hdc, mX + 140, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
+	TextOut(hdc, mX + 265, mY + 10, timer.c_str(), timer.length());
 
 	SelectObject(hdc, oldFont);
 	DeleteObject(hFont);
