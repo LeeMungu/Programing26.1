@@ -8,11 +8,16 @@
 #include "Ui.h"
 class Image;
 class ButtonUi;
+class SoundBtn;
+class Animation;
 class ConfigUi : public Ui
 {
 	Image* mImage;
 	Image* mMenuImage;
 	Image* mSubImage;
+	Image* mSoundImage;
+	Image* mEffImage;
+	int mIndexX;
 
 
 	ButtonUi* mMenuEnd;
@@ -20,8 +25,17 @@ class ConfigUi : public Ui
 	ButtonUi* mMenuRecord;
 	ButtonUi* mMenuSound;
 
+	SoundBtn* mBgmPlus;
+	SoundBtn* mBgmMinus;
+	SoundBtn* mEffPlus;
+	SoundBtn* mEffMinus;
+
+
 	float msubsizeX;
 	bool mIsSoundMenuOpen;
+
+	Animation* mBgmAnimation;
+	Animation* mEffAnimaion;
 
 public:
 	ConfigUi(const string& name);
@@ -36,5 +50,9 @@ public:
 
 	void SetIsSoundMenu(bool open) { mIsSoundMenuOpen = open; }
 	bool GetIsSoundMenu() { return mIsSoundMenuOpen; }
+
+	void SoundIndexX(wstring aniName);
 };
+
+
 
