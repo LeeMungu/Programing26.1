@@ -45,19 +45,25 @@ void Mouse::Update()
 		if (PtInRect(&mRect, playerPoint))
 		{
 			mIndexX = 1;
+			Ui* ui;
 			if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
 			{
 				Player* tempPlayer = (Player*)player[i];
 				//등산 조건만 다르게 준다. + 스토퍼도
-				if (mPlayerState == PlayerState::ClimbState)
+				if (tempPlayer->GetIsClimb()!=true
+					&& mPlayerState == PlayerState::ClimbState)
 				{
 					tempPlayer->SetIsClimb(true);
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "ClimbBtn");
+					ui->SetStateBtnCount();
 				}
-				else if (mPlayerState == PlayerState::StopperState)
+				else if (tempPlayer->GetIsStopper()!=true && mPlayerState == PlayerState::StopperState)
 				{
 					if(tempPlayer->GetPlayerState()!=PlayerState::UmbrellaState
 						&& tempPlayer->GetPlayerState() != PlayerState::FallState)
 					tempPlayer->SetIsStopper(true);
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "StopperBtn");
+					ui->SetStateBtnCount();
 				}
 				else if (mPlayerState == PlayerState::UmbrellaState)
 				{
@@ -65,55 +71,65 @@ void Mouse::Update()
 					{
 						tempPlayer->SetPlayerState(mPlayerState);
 						tempPlayer->SetIsChange(true);
+						ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "UmbrellaBtn");
+						ui->SetStateBtnCount();
 					}
 				}
-				else if (mPlayerState == PlayerState::BoomState)
+				else if (tempPlayer->GetIsBoom() != true && mPlayerState == PlayerState::BoomState)
 				{
 		
 					CountNumEffect* countEffect = new CountNumEffect("CountEffect", player[i]->GetX(), player[i]->GetRect().top - 10, L"CountEffect");
 					countEffect->SetPlayerptr(tempPlayer);
 					countEffect->Init();
+					tempPlayer->SetIsBoom(true);
 					ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, countEffect);
+					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "BoomBtn");
+					ui->SetStateBtnCount();
 				}
-				else if (mPlayerState == PlayerState::DigState)
+				else if (tempPlayer->GetIsDig() != true && mPlayerState == PlayerState::DigState)
 				{
 					if (tempPlayer->GetPlayerState() != PlayerState::StopperState)
 					{
 						tempPlayer->SetPlayerState(mPlayerState);
 						tempPlayer->SetIsChange(true);
+						tempPlayer->SetIsDig(true);
+						ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "DigBtn");
+						ui->SetStateBtnCount();
 					}
 				}
-				else if (mPlayerState != PlayerState::ClimbState 
+				else if (mPlayerState == PlayerState::Empty)
+				{
+				}
+				else if (
+					tempPlayer->GetPlayerState() != mPlayerState
+					&&
+					mPlayerState != PlayerState::ClimbState 
 					&& mPlayerState != PlayerState::StopperState
 					&& mPlayerState != PlayerState::UmbrellaState
 					&& mPlayerState != PlayerState::BoomState
-					&& mPlayerState != PlayerState::DigState)
+					&& mPlayerState != PlayerState::DigState
+					&& mPlayerState != PlayerState::Empty)
 				{
 					tempPlayer->SetPlayerState(mPlayerState);
 					tempPlayer->SetIsChange(true);
 				}
 
 
-				Ui* ui;
+
 				if (mPlayerState == PlayerState::BoomState) {
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "BoomBtn");
-					ui->SetStateBtnCount();
+
 				}
 				else if (mPlayerState == PlayerState::ClimbState) {
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "ClimbBtn");
-					ui->SetStateBtnCount();
+
 				}
 				else if (mPlayerState == PlayerState::DigState) {
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "DigBtn");
-					ui->SetStateBtnCount();
+
 				}
 				else if (mPlayerState == PlayerState::UmbrellaState) {
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "UmbrellaBtn");
-					ui->SetStateBtnCount();
+
 				}
 				else if (mPlayerState == PlayerState::StopperState) {
-					ui = (Ui*)ObjectManager::GetInstance()->FindObject(ObjectLayer::UI, "StopperBtn");
-					ui->SetStateBtnCount();
+
 				}
 
 			}

@@ -9,7 +9,8 @@ enum class PlayerState
 	UmbrellaState,
 	DigState,
 	FallState,
-	RunState
+	RunState,
+	Empty
 };
 
 class GameObject;
@@ -43,8 +44,10 @@ class Player : public GameObject
 
 	bool mIsStopper;
 	bool mIsClimb;
+	bool mIsBoom;
 	bool mIsCrash;
 	bool mIsFallDead;
+	bool mIsDig;
 
 public:
 	Player(const string& name,float x, float y);
@@ -91,8 +94,14 @@ public:
 	bool GetIsStopper()const { return mIsStopper; }
 	void SetIsStopper(bool isStopper) { mIsStopper = isStopper; }
 
+	bool GetIsBoom()const { return mIsBoom; }
+	void SetIsBoom(bool isBoom) { mIsBoom = isBoom; }
+
 	bool GetIsFallDead()const { return mIsFallDead; }
 	void SetIsFallDead(bool isFallDead) { mIsFallDead = isFallDead; }
+
+	bool GetIsDig()const { return mIsDig; }
+	void SetIsDig(bool isDig) { mIsDig = isDig; }
 
 };
 
