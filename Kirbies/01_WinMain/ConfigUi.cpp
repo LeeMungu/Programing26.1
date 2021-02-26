@@ -13,9 +13,12 @@ ConfigUi::ConfigUi(const string& name)
 	mSubImage = IMAGEMANAGER->FindImage(L"SubMenu");
 	mSoundImage = IMAGEMANAGER->FindImage(L"BgmImage");
 	mEffImage = IMAGEMANAGER->FindImage(L"EffsoundImage");
+	mBgmBar = IMAGEMANAGER->FindImage(L"SoundBar");
+	mEffSoundBar = IMAGEMANAGER->FindImage(L"SoundBar");
 	mIndexX = 0;
 	msubsizeX = 0;
-
+	mBgmScaleX = 50;
+	mEffScaleX = 50;
 	
 }
 
@@ -79,6 +82,25 @@ void ConfigUi::Release()
 
 void ConfigUi::Update()
 {
+	if (mBgmScaleX >= 100)
+	{
+		mBgmScaleX = 100;
+	}
+	else if (mBgmScaleX <= 0)
+	{
+		mBgmScaleX = 0;
+	}
+
+	if (mEffScaleX >= 100)
+	{
+		mEffScaleX = 100;
+	}
+	else if (mEffScaleX <= 0)
+	{
+		mEffScaleX = 0;
+	}
+
+
 	mMenuEnd->Update();
 	mMenuRecord->Update();
 	mMenuRestart->Update();
@@ -115,7 +137,15 @@ void ConfigUi::Render(HDC hdc)
 
 		mSoundImage->FrameRender(hdc, mRect.right+40, mRect.top+40, mBgmAnimation->GetNowFrameX(),0);
 		mEffImage->FrameRender(hdc, mRect.right+40, mRect.top+135, mEffAnimaion->GetNowFrameX(), 0);
+		mBgmBar->ScaleRender(hdc, mRect.right + 100, mRect.top+50, mBgmScaleX, 10);
+		mEffSoundBar->ScaleRender(hdc, mRect.right + 100, mRect.top + 150, mEffScaleX, 10);
 	}
+
+
+	
+
+
+
 }
 
 void ConfigUi::SoundIndexX(wstring aniName)
