@@ -10,8 +10,11 @@ class Fall : public State
 {
 	Bottom* mBottom;
 	Image* mFallKirby;
+	Image* mFallDeadKirby;
 	Animation* mLeftAnimation;
 	Animation* mRightAnimation;
+	Animation* mLeftFallDeadAnimation;
+	Animation* mRightFallDeadAnimation;
 	Animation* mCurrentAnimation;
 
 
