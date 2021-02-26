@@ -75,7 +75,7 @@ void CountingPlayerUI::Render(HDC hdc)
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
 	wstring createdPlayer = to_wstring(mCreatedPlayerCount);
-	wstring GoalPlayer = to_wstring(mGoalPlayerCount);
+	wstring GoalPlayer = to_wstring((int)mGoalPercent);
 	wstring timer = to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 

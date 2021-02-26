@@ -39,6 +39,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Dig", Resources(L"dig.bmp"), 574 * PlayerSize, 82 * PlayerSize, 14, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Climb", Resources(L"climb.bmp"), 240 * PlayerSize, 52 * PlayerSize, 8, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Boom", Resources(L"boom.bmp"), 280 * PlayerSize, 32 * PlayerSize, 8, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"KirbyFallDead", Resources(L"kirbyDie.bmp"), 72 * PlayerSize, 30 * PlayerSize, 3, 2, true); });
 
 	//이미지 (왜 필요한지 모르는 여자애)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppear", Resources(L"/sp/appear.bmp"), 1328, 540, 8, 3, true); });

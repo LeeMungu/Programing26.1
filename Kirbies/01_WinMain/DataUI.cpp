@@ -13,6 +13,8 @@ DataUI::DataUI(const string& name, int stage)
 
 	mTime = mCountingPlayerUI->GetTimer();
 	mGoalPercent = mCountingPlayerUI->GetGoalPercent();
+	mScore = mCountingPlayerUI->GetGoalPlayer() * 100 + mTime;
+
 }
 
 void DataUI::Init()

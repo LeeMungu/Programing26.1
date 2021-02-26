@@ -3,6 +3,7 @@
 class DataUI : public Ui
 {
 	class CountingPlayerUI* mCountingPlayerUI;
+	float mScore;
 	float mTime;
 	float mGoalPercent;
 
