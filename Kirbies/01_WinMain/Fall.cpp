@@ -104,9 +104,16 @@ void Fall::Render(HDC hdc)
 			mCurrentAnimation->GetNowFrameX(),
 			mCurrentAnimation->GetNowFrameY());
 
+	//CameraManager::GetInstance()->GetMainCamera()
+	//	->FrameRender(hdc, mFallDeadKirby, mPlayer->GetX() - mFallDeadKirby->GetFrameWidth() / 2, mPlayer->GetRect().top,
+	//		mCurrentAnimation->GetNowFrameX(),
+	//		mCurrentAnimation->GetNowFrameY());
+
 }
 
 void Fall::mapRender(HDC map)
 {
 	mFallKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
+	//mFallDeadKirby->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mCurrentAnimation->GetNowFrameX(), mCurrentAnimation->GetNowFrameY());
 }
+

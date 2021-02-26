@@ -18,6 +18,7 @@ class Fall : public State
 	Animation* mCurrentAnimation;
 
 
+
 public:
 	void Init();
 	void Release();
