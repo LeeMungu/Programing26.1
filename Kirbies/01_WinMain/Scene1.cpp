@@ -148,7 +148,8 @@ void Scene1::Render(HDC hdc)
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 	if (mIsGameClear == true)
 	{
-		mImageGameClear->FrameRender(hdc, 550, WINSIZEY / 2,
+		mImageGameClear->FrameRender(hdc, (WINSIZEX -mImageGameClear->GetFrameWidth())/2, 
+			(WINSIZEY-mImageGameClear->GetFrameHeight())/2,
 			mAnimationGameClear->GetNowFrameX(),
 			mAnimationGameClear->GetNowFrameY());
 	}

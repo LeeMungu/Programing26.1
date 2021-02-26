@@ -16,6 +16,12 @@
 
 void Scene2::Init()
 {
+	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
+	mAnimationGameClear = new Animation();
+	mAnimationGameClear->InitFrameByReverseLoop(0, 0, 16, 0);
+	mAnimationGameClear->SetIsLoop(true);
+	mAnimationGameClear->SetFrameUpdateTime(0.1f);
+
 	mImageGameOver = IMAGEMANAGER->FindImage(L"GameOver");
 	mAnimationGameOver = new Animation();
 	mAnimationGameOver->InitFrameByStartEnd(0, 0, 8, 0, false);
@@ -72,6 +78,10 @@ void Scene2::Init()
 	SoundPlayer::GetInstance()->Play(L"Scene2BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene1BGM");
 
+	mIsGameClear = false;
+	mIsGameOver = false;
+	mGameOverTimer = 0.f;
+
 	mIsSpecial = false;
 
 }
@@ -82,21 +92,28 @@ void Scene2::Update()
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
+
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
 			SceneManager::GetInstance()->LoadScene(L"LoadingScene2to3");
 		}
 	}
+	if (mIsGameOver == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
+		}
+	}
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene2count");
-	if (tempUi != NULL && mIsGameClear != true)
+	if (tempUi != NULL && mIsGameClear == false)
 	{
 		if (tempUi->GetGoalPercent() > 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
-			Ui* dataUI = new DataUI("DataUI", 2);
-			UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
+			mAnimationGameClear->Play();
 		}
 	}
 	//게임오버 조건
@@ -115,7 +132,7 @@ void Scene2::Update()
 	}
 
 	mAnimationGameOver->Update();
-	
+	mAnimationGameClear->Update();
 
 	
 	ObjectManager::GetInstance()->Update();
@@ -129,17 +146,17 @@ void Scene2::Render(HDC hdc)
 
 	wstring str = L"스테이지2 나무나무동산.";
 	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
-	if (mIsGameClear)
+	if (mIsGameClear == true)
 	{
-		wstring str1 = L"스테이지 클리어";
-		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str1.c_str(), str1.length());
+		mImageGameClear->FrameRender(hdc, (WINSIZEX - mImageGameClear->GetFrameWidth()) / 2,
+			(WINSIZEY - mImageGameClear->GetFrameHeight()) / 2,
+			mAnimationGameClear->GetNowFrameX(),
+			mAnimationGameClear->GetNowFrameY());
 	}
 
 
 	if (mIsGameOver == true)
 	{
-		wstring str2 = L"뿌우웅";
-		TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str2.c_str(), str2.length());
 		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
 			mAnimationGameOver->GetNowFrameX(),
 			mAnimationGameOver->GetNowFrameY());

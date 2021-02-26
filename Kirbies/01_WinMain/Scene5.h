@@ -5,8 +5,10 @@ class Image;
 class Animation;
 class Scene5 : public Scene
 {
+	Image* mImageGameClear;
 	Image* mImageGameOver;
 	Animation* mAnimationGameOver;
+	Animation* mAnimationGameClear;
 	float mGameOverTimer;
 
 public:
