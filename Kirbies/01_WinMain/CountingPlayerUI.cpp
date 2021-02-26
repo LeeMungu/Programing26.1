@@ -51,9 +51,12 @@ void CountingPlayerUI::Update()
 	}
 
 	//타이머
-	if (mTimer > 0) 
-		mTimer -= Time::GetInstance()->DeltaTime();
-	
+	if ((ConfigUi*)UiManager::GetInstance()->FindUi(UiLayer::Object, "Menu") == NULL)
+	{
+		if (mTimer > 0)
+			mTimer -= Time::GetInstance()->DeltaTime();
+	}
+
 	//플레이어 갯수 세기
 	Door* tempDoor = (Door*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door");
 	if(tempDoor != NULL)
