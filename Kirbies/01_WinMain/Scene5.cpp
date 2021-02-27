@@ -16,7 +16,10 @@
 #include "NPC.h"
 #include "TextBox.h"
 #include "PowerBtn.h"
+#include "ThrowBtn.h"
 #include "Plate.h"
+#include "Bugzzy.h"
+
 void Scene5::Init()
 {
 	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
@@ -41,14 +44,17 @@ void Scene5::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", 150, 700, 10);
+	Door* door = new Door("Door", 150, 700, 30);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal", 2300, 420);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
-	PowerBtn* powerbtn = new PowerBtn("powerbtn", 100, 780);
+	PowerBtn* powerbtn = new PowerBtn("powerbtn", 100, 1015);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, powerbtn);
+
+	ThrowBtn* throwbtn = new ThrowBtn("throwbtn", 280, 1160);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, throwbtn);
 
 	Plate* plate = new Plate("plate", WINSIZEX / 2 + 200, 760);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate);
@@ -62,15 +68,15 @@ void Scene5::Init()
 	NPC* npc = new NPC("dedede", 2100, 440);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
-	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
+	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 20);
+	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 40);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
-	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 20);
+	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
 	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
-	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
+	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 0);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 
@@ -202,12 +208,20 @@ void Scene5::Update()
 	{
 		Plate* platetemp = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate");
 		platetemp->Init();
-		Plate* platetemp2 = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate2");
+		
 		Plate* platetemp3 = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate3");
 		platetemp3->Init();
 
 		platetemp->SetX(740);
 		platetemp3->SetX(940);
+	}
+	ThrowBtn* thorwbtntemp = (ThrowBtn*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "throwbtn");
+	if (thorwbtntemp->GetIsBtnOn() == true && mIsTrigger == false)
+	{
+		Bugzzy* bugzzy = new Bugzzy("Bugzzy", 1400, 870);
+		bugzzy->Init();
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, bugzzy);
+		mIsTrigger = true;
 	}
 
 

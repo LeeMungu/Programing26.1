@@ -14,6 +14,7 @@
 #include "Umbrella.h"
 #include "Dig.h"
 #include "TrapDie.h"
+#include "Throw.h"
 
 Player::Player(const string& name, float x, float y)
 	:GameObject(name)
@@ -145,6 +146,15 @@ void Player::Update()
 		{
 			SafeDelete(mCurrentState);
 			mCurrentState = new TrapDie;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::ThrowState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Throw;
 			mCurrentState->SetPlayerPtr(this);
 			mIsChange = false;
 			mCurrentState->Init();
@@ -368,6 +378,10 @@ void Player::Render(HDC hdc)
 	else if (mPlayerState == PlayerState::TrapDieState)
 	{
 		str = L"die";
+	}
+	else if (mPlayerState == PlayerState::ThrowState)
+	{
+		str = L"throw";
 	}
 	POINT playerPoint = CameraManager::GetInstance()->GetMainCamera()->GetPoint(mX,mY);
 	TextOut(hdc, playerPoint.x, playerPoint.y-mSizeY, str.c_str(), str.length());

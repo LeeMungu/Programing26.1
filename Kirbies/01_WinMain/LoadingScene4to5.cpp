@@ -23,6 +23,7 @@ void LoadingScene4to5::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameClear", Resources(L"GameClearImage1.bmp"), 4403 * PlayerSize, 52 * PlayerSize, 17, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"PowerBtn", Resources(L"button.bmp"), 88, 16, 2, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"plate", Resources(L"plate.bmp"), 96, 32, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bugzzy", Resources(L"Bugzzy.bmp"), 660, 64, 11, 1, true); });
 
 	//ÀÌ¹ÌÁö (UI)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"cloudbox_ui.bmp"), 120, 48, true); });
