@@ -22,7 +22,7 @@ bool IChangeCameraTargetEvent::Update()
 	float x = CameraManager::GetInstance()->GetMainCamera()->GetX();
 	float y = CameraManager::GetInstance()->GetMainCamera()->GetY();
 
-	if (Math::GetDistance(x, y, mTarget->GetX(), mTarget->GetY()) <= 5.0f)
+	if (CameraManager::GetInstance()->GetMainCamera()->GetFollowEnd()==true)
 	{
 		//트루일때 안함
 		return true;

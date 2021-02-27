@@ -156,6 +156,7 @@ void Scene5::Init()
 	mGameOverTimer = 0.f;
 
 	mIsSpecial = false;
+	
 }
 
 void Scene5::Release()
@@ -270,6 +271,9 @@ void Scene5::Render(HDC hdc)
 			mAnimationGameOver->GetNowFrameX(),
 			mAnimationGameOver->GetNowFrameY());
 	}
+
+	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene5::mapRender(HDC map)

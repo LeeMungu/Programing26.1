@@ -13,6 +13,7 @@ void Camera::Init()
 	mSizeY = WINSIZEY;
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 	mMoveSpeed = 5.f;
+	mFollowEnd = false;
 }
 
 void Camera::Release()
@@ -23,6 +24,7 @@ void Camera::Release()
 void Camera::Update()
 {
 	RECT bottomRC = ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom")->GetRect();
+	mFollowEnd = false;
 	switch (mMode)
 	{
 	case Camera::Mode::Follow:
@@ -33,11 +35,38 @@ void Camera::Update()
 			//멀리있으면 빨리 쫓아가야하고 가까이 있으면 천천히 쫓아가야함
 			mX = Math::Lerp(mX, mTarget->GetX(), 2.f * Time::GetInstance()->DeltaTime());
 			mY = Math::Lerp(mY, mTarget->GetY(), 2.f * Time::GetInstance()->DeltaTime());
+			//카메라 보정
+			if (mX < bottomRC.left + WINSIZEX)
+			{
+				mX = bottomRC.left + WINSIZEX;
+				mFollowEnd = true;
+			}
+			if (mX > bottomRC.right)
+			{
+				mX = bottomRC.right;
+				mFollowEnd = true;
+			}
+			if (mY < bottomRC.top + WINSIZEY)
+			{
+				mY = bottomRC.top + WINSIZEY;
+				mFollowEnd = true;
+			}
+			if (mY > bottomRC.bottom)
+			{
+				mY = bottomRC.bottom;
+				mFollowEnd = true;
+			}
+			if (Math::GetDistance(mX, mY, mTarget->GetX(), mTarget->GetY()) <= 5.0f)
+			{
+				mFollowEnd = true;
+			}
+
 
 			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 		}
 		break;
 	case Camera::Mode::Free:
+		//키보드 카메라 이동
 		//if (Input::GetInstance()->GetKey('A'))mX -= mMoveSpeed;
 		//if (Input::GetInstance()->GetKey('D'))mX += mMoveSpeed;
 		//if (Input::GetInstance()->GetKey('W'))mY -= mMoveSpeed;
@@ -62,6 +91,7 @@ void Camera::Update()
 		}
 		mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 
+		//클릭으로 이동 (사장된 프로젝트입니다.----)
 		//if (Input::GetInstance()->GetKeyDown(VK_LBUTTON))
 		//{
 		//	mouseX = _mousePosition.x;
@@ -75,6 +105,7 @@ void Camera::Update()
 		//	mouseY = _mousePosition.y;
 		//}
 
+		//카메라 보정
 		if (mX < bottomRC.left + WINSIZEX)
 			mX = bottomRC.left + WINSIZEX;
 		

@@ -59,3 +59,25 @@ void Scene::CameraWalk()
 	}
 }
 
+void Scene::FollowPlayer()
+{
+	if (Input::GetInstance()->GetKeyDown('Q'))
+	{
+		if (ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() != NULL)
+		{
+
+			vector<GameObject*> tempPlayer = ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player);
+
+			CameraManager::GetInstance()->GetMainCamera()->ChangeMode(Camera::Mode::Follow);
+			CameraManager::GetInstance()->GetMainCamera()->SetTarget(tempPlayer[0]);
+		}
+		else
+		{
+		}
+	}
+	if (Input::GetInstance()->GetKeyUp('Q'))
+	{
+		CameraManager::GetInstance()->GetMainCamera()->ChangeMode(Camera::Mode::Free);
+	}
+}
+

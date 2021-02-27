@@ -20,6 +20,7 @@ public:
 
 	void SpecialFunc();
 	void CameraWalk();
+	void FollowPlayer();
 
 	bool GetIsGameOver() const { return mIsGameOver; }
 	void SetIsGameOver(bool isGameOver) { mIsGameOver = isGameOver; }

@@ -13,8 +13,10 @@ public:
 protected:
 	Mode mMode;
 	GameObject* mTarget;		//쫓아가야할 타겟
-
+	
 	float mMoveSpeed;
+	//팔로우 목적지 갔는지 여부 채크용
+	bool mFollowEnd;
 public:
 	Camera() :GameObject("Camera"){}
 	void Init()override; 
@@ -22,6 +24,7 @@ public:
 	void Update()override; 
 	void Render(HDC hdc)override;
 
+	bool GetFollowEnd()const { return mFollowEnd; }
 	void SetTarget(GameObject* target) { mTarget = target; }
 	void ChangeMode(Mode mode) { mMode = mode; }
 	Mode GetMode() const { return mMode; }

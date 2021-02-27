@@ -126,6 +126,8 @@ void Scene3::Init()
 	mGameOverTimer = 0.f;
 
 	mIsSpecial = false;
+	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene3::Release()

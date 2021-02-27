@@ -219,6 +219,7 @@ void Scene1::Update()
 	}
 	//CameraWalk();
 	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene1::Render(HDC hdc)

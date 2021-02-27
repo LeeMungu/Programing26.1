@@ -125,7 +125,8 @@ void Scene2::Init()
 	mGameOverTimer = 0.f;
 
 	mIsSpecial = false;
-
+	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene2::Release()

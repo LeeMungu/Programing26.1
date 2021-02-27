@@ -218,6 +218,7 @@ void Scene4::Update()
 		}
 	}
 	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene4::Render(HDC hdc)
