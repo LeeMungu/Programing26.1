@@ -44,6 +44,7 @@ void NPC::Init()
 	mNpcState = NPC::NPCState::LeftIdle;
 	mIsMotionRL = 1;
 	mIsGo = false;
+
 }
 
 void NPC::Update()
@@ -52,9 +53,9 @@ void NPC::Update()
 	{
 		RECT temp;
 		RECT gameRect = ObjectManager::GetInstance()->FindObject(ObjectLayer::Goal, "goal")->GetRect();
-		if (IntersectRect(&temp, &gameRect, &mRect) == true)
+		if (IntersectRect(&temp, &gameRect, &mRect) == true && mIsActive == true)
 		{
-			mIsDestroy = true;
+			mIsActive = false;
 		}
 	}
 
@@ -119,8 +120,8 @@ void NPC::Render(HDC hdc)
 	{
 		ColorLender::GetInstance()->ColorRectRender(hdc, mRect, 255, 255, 0);
 	}
-	CameraManager::GetInstance()->GetMainCamera()->
-		FrameRender(hdc, mImage, mRect.left, mRect.top,
-			mCurrentAnimation->GetNowFrameX(),
-			mCurrentAnimation->GetNowFrameY());
+		CameraManager::GetInstance()->GetMainCamera()->
+			FrameRender(hdc, mImage, mRect.left, mRect.top,
+				mCurrentAnimation->GetNowFrameX(),
+				mCurrentAnimation->GetNowFrameY());
 }
