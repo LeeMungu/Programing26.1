@@ -4,6 +4,7 @@
 #include "ButtonUi.h"
 #include "SoundBtn.h"
 #include "Animation.h"
+#include "DataUI.h"
 
 ConfigUi::ConfigUi(const string& name)
 	: Ui(name)
@@ -66,6 +67,7 @@ void ConfigUi::Init()
 	mEffAnimaion->InitFrameByStartEnd(0, 0, 5, 0, false);
 	mEffAnimaion->SetIsLoop(false);
 	mEffAnimaion->SetFrameUpdateTime(0.1f);
+	
 }
 
 void ConfigUi::Release()
@@ -116,7 +118,12 @@ void ConfigUi::Update()
 		mEffPlus->Update();
 		mEffMinus->Update();
 	}
-
+	//if (mIsRecordMenuOpen)
+	//{
+	//	DataUI* dataUI = new DataUI("dataUI");
+	//	dataUI->Init();
+	//	UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
+	//}
 
 	mBgmAnimation->Update();
 	mEffAnimaion->Update();

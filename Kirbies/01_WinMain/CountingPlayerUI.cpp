@@ -64,7 +64,13 @@ void CountingPlayerUI::Update()
 
 	mGoalPercent = mGoalPlayerCount * 100 / mPlayerCount;
 	}
-}
+
+	//Scene* scene 
+	//if (scene->GetIsGameClear() == true) {
+	//
+	//}
+	
+}	
 
 void CountingPlayerUI::Render(HDC hdc)
 {

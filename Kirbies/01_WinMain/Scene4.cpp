@@ -42,7 +42,9 @@ void Scene4::Init()
 	Door* door = new Door("Door", 2000, 50, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", 480, 1400);
+
+	Goal* goal = new Goal("goal", 2200, 50);
+	//Goal* goal = new Goal("goal", 480, 1400);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	Trap* trap1 = new Trap("trap1", 590, 680, 920, 50, PlayerState::TrapDieState);
@@ -63,12 +65,13 @@ void Scene4::Init()
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
-
 	//Ui
 	CountingPlayerUI* countUI = new CountingPlayerUI("Scene4count", 100, WINSIZEY - 100, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
+	//DataUI* dataUI = new DataUI("dataUI", "Scenecount");
+	//UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
 
 	//camera
 	Camera* camera = new Camera();
@@ -116,7 +119,7 @@ void Scene4::Update()
 		}
 	}
 	//클리어조건
-	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene3count");
+	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene4count");
 	if (tempUi != NULL && mIsGameClear == false)
 	{
 		if (tempUi->GetGoalPercent() > 50.f &&

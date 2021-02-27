@@ -26,5 +26,6 @@ public:
 	float GetTimer() { return mTimer; }
 	float GetGoalPercent() { return mGoalPercent; }
 	float GetGoalPlayer() { return mGoalPlayerCount; }
+
 };
 

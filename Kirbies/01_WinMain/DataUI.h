@@ -2,23 +2,23 @@
 #include "Ui.h"
 class DataUI : public Ui
 {
+	class Image* mImage;
 	class CountingPlayerUI* mCountingPlayerUI;
-	float mScore;
-	float mTime;
-	float mGoalPercent;
+
+	vector <Ui*> tempCountingUI;
+	vector<float>mScoreList;
+	vector<float> mTimeList;
+	vector<float> mGoalPercentList;
 
 
 public:
-	DataUI(const string& name, int stage);
-	virtual void Init() override;
-	virtual void Render(HDC hdc)override;
-	float GetTime() { return mTime; }
-	float GetGoalPercent() { return mGoalPercent; }
+	DataUI(const string& name);
+	
+	void Init() override;
+	void Release() override;
+	void Update() override;
+	void Render(HDC hdc)override;
 
-	void SetData() {
-		//mTime = mCountingPlayerUI->GetTimer();
-		//mGoalPercent = mCountingPlayerUI->GetGoalPercent();
-		//mScore = mCountingPlayerUI->GetGoalPlayer() * 100 + mTime;
-	}
+	void SetData();
 };
 

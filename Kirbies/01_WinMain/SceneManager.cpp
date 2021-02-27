@@ -4,6 +4,7 @@
 #include "Scene.h"
 #include "LoadingScene.h"
 #include "ConfigUi.h"
+#include "DataUI.h"
 SceneManager::SceneManager()
 	:mCurrentScene(nullptr),mLoadingThread(nullptr),mTargetScene(nullptr),mLoadingScene(nullptr),
 mIsLoadingEnd(false), mIsConfig(false) , mIsActive(false){}
@@ -41,6 +42,14 @@ void SceneManager::Update()
 			mIsConfig = false;
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi(UiLayer::Object, "Menu");
 			temp->SetIsDestroy(true);
+
+			DataUI* datatemp = (DataUI*)UiManager::GetInstance()->FindUi("dataUI");
+			if (datatemp != NULL)
+			{
+				datatemp->SetIsDestroy(true);
+			}
+			
+			
 		}
 	}
 }

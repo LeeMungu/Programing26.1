@@ -36,6 +36,7 @@ class ConfigUi : public Ui
 
 	float msubsizeX;
 	bool mIsSoundMenuOpen;
+	bool mIsRecordMenuOpen;
 
 	Animation* mBgmAnimation;
 	Animation* mEffAnimaion;
@@ -53,6 +54,9 @@ public:
 
 	void SetIsSoundMenu(bool open) { mIsSoundMenuOpen = open; }
 	bool GetIsSoundMenu() { return mIsSoundMenuOpen; }
+
+	void SetIsRecordMenu(bool open) { mIsRecordMenuOpen = open; }
+	bool GetIsRecordMenu() { return mIsRecordMenuOpen; }
 
 	void SoundIndexX(wstring aniName);
 

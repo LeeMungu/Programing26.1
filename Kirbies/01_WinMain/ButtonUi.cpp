@@ -92,7 +92,13 @@ void ButtonUi::Update()
 			if (temp->GetSubMenu() != 210)
 			{
 				temp->SetSubMenuOpen(210);
+				temp->SetIsRecordMenu(true);
+				temp->SetIsSoundMenu(false);
 				// 데이터 받기 확인
+				DataUI* dataUI = new DataUI("dataUI");
+				dataUI->Init();
+				UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
+
 				//DataUI* tmp = (DataUI*)UiManager::GetInstance()->FindUi(UiLayer::DataUI,"1"); 
 				//tmp->GetTime();
 				//tmp->GetGoalPercent();
@@ -101,6 +107,13 @@ void ButtonUi::Update()
 			{
 				temp->SetSubMenuOpen(0);
 				temp->SetIsSoundMenu(false);
+				temp->SetIsRecordMenu(false);
+				DataUI* datatemp = (DataUI*)UiManager::GetInstance()->FindUi("dataUI");
+				if (datatemp != NULL)
+				{
+					datatemp->SetIsDestroy(true);
+				}
+				
 			}
 		}
 		else if (mbtnState == BtnState::ReStart)
@@ -117,11 +130,24 @@ void ButtonUi::Update()
 			{
 				temp->SetSubMenuOpen(210);
 				temp->SetIsSoundMenu(true);
+				temp->SetIsRecordMenu(false);
+				DataUI* datatemp = (DataUI*)UiManager::GetInstance()->FindUi("dataUI");
+				if (datatemp != NULL)
+				{
+					datatemp->SetIsDestroy(true);
+				}
 			}
 			else if (temp->GetSubMenu() == 210)
 			{
 				temp->SetSubMenuOpen(0);
 				temp->SetIsSoundMenu(false);
+				temp->SetIsRecordMenu(false);
+				DataUI* datatemp = (DataUI*)UiManager::GetInstance()->FindUi("dataUI");
+				if (datatemp != NULL)
+				{
+					datatemp->SetIsDestroy(true);
+				}
+				
 			}
 		}
 	}
