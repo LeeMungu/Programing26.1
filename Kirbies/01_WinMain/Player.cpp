@@ -320,6 +320,11 @@ void Player::Update()
 
 	}
 
+	if (mY > WINSIZEY * 2)
+	{
+		mIsDestroy = true;
+	}
+
 	mCurrentState->Update();
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
 }

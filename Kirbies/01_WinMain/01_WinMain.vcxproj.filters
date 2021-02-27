@@ -369,14 +369,14 @@
     <ClInclude Include="TrapDie.h">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClInclude>
-    <ClInclude Include="SceneEnding.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Plate.h">
       <Filter>MainGame\Object\PowerBtn</Filter>
     </ClInclude>
     <ClInclude Include="PowerBtn.h">
       <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEnding.h">
+      <Filter>FrameWork\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -599,14 +599,14 @@
     <ClCompile Include="TrapDie.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClCompile>
-    <ClCompile Include="SceneEnding.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="Plate.cpp">
       <Filter>MainGame\Object\PowerBtn</Filter>
     </ClCompile>
     <ClCompile Include="PowerBtn.cpp">
       <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEnding.cpp">
+      <Filter>FrameWork\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
