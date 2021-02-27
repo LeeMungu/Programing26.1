@@ -11,6 +11,7 @@ class Scene1 : public Scene
 	Animation* mAnimationGameClear;
 
 	Image* mTextBoxDeDeDe;
+	Image* mTextBoxKirby;
 
 	float mGameOverTimer;
 	float mGameClearTimer;

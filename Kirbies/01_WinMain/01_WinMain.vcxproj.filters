@@ -130,6 +130,9 @@
     <Filter Include="MainGame\Object\TextBox">
       <UniqueIdentifier>{9fb102dc-1c31-42e7-bffa-f0e690acbc50}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\Trap">
+      <UniqueIdentifier>{3424bbeb-c29c-4e5c-9a1e-27308a6dcc7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -357,6 +360,9 @@
     <ClInclude Include="TextBox.h">
       <Filter>MainGame\Object\TextBox</Filter>
     </ClInclude>
+    <ClInclude Include="Trap.h">
+      <Filter>MainGame\Object\Trap</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -571,6 +577,9 @@
     </ClCompile>
     <ClCompile Include="TextBox.cpp">
       <Filter>MainGame\Object\TextBox</Filter>
+    </ClCompile>
+    <ClCompile Include="Trap.cpp">
+      <Filter>MainGame\Object\Trap</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

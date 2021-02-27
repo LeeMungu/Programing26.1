@@ -48,6 +48,14 @@ void MainGame::Init()
 	IMAGEMANAGER->LoadFromFile(L"MainTitle2", Resources(L"MainTitle2.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"MainTitle3", Resources(L"MainTitle3.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"MainTitle4", Resources(L"MainTitle4.bmp"), 1280, 720, true);
+	
+	//텍스트 이미지
+	IMAGEMANAGER->LoadFromFile(L"TextBoxDeDeDe", Resources(L"TextBoxDeDeDe.bmp"), 1280, 220, 1, 1, true);
+	IMAGEMANAGER->LoadFromFile(L"TextBoxKirby", Resources(L"TextBoxKirby.bmp"), 1280, 220, 1, 1, true);
+
+	//텍스트 불러오기
+	AddFontResourceA("../02_Resources/Maplestory Bold.ttf");
+
 	SoundPlayer::GetInstance()->LoadFromFile(L"TitleBGM", Resources(L"KirbysDreamland3SandCanyon1.mp3"), true);
 
 	//씬로드

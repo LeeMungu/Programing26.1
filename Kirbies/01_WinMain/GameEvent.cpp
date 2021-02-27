@@ -79,13 +79,22 @@ ITextEvent::ITextEvent(TextBox* textBox)
 void ITextEvent::Start()
 {
 	mTextBox->SetIsActive(true);
+	mLimitTime = 2.f;
+	mTimeCount = 0.f;
 }
 
 bool ITextEvent::Update()
 {
+	
+
 	if (mTextBox->GetIsTextEnd() == true)
 	{
-		return true;
+		mTimeCount += Time::GetInstance()->DeltaTime();
+		if (mTimeCount > mLimitTime)
+		{
+			mTextBox->SetIsDestroy(true);
+			return true;
+		}
 	}
 	return false;
 }

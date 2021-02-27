@@ -47,6 +47,7 @@ class ITextEvent : public IEvent
 {
 	class TextBox* mTextBox;
 	float mTimeCount;
+	float mLimitTime;
 public:
 	ITextEvent(class TextBox* textBox);
 
