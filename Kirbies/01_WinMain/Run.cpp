@@ -35,6 +35,7 @@ void Run::Init()
 	mGoalKirbyAnimation->InitFrameByReverseLoop(0, 0, 5, 0);
 	mGoalKirbyAnimation->SetIsLoop(false);
 	mGoalKirbyAnimation->SetFrameUpdateTime(0.1f);
+	mGoalKirbyAnimation->SetCallbackFunc([this]() {});//mPlayer->SetIsDestroy(true); });
 
 	//mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom");
 
@@ -157,8 +158,8 @@ void Run::Update()
 	if (mCurrentAnimation == mGoalKirbyAnimation &&
 		mCurrentAnimation->GetIsPlay() == false)
 	{
-
-		mIsDestroyed = true;
+	
+		//mIsDestroyed = true;
 		mPlayer->SetIsDestroy(true);
 	}
 

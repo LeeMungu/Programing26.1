@@ -7,6 +7,10 @@ class Scene5 : public Scene
 {
 	Image* mImageGameClear;
 	Image* mImageGameOver;
+
+	Image* mTextBoxDeDeDe;
+	Image* mTextBoxKirby;
+
 	Animation* mAnimationGameOver;
 	Animation* mAnimationGameClear;
 	float mGameOverTimer;
