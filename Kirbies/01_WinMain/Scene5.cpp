@@ -13,6 +13,8 @@
 #include "CountingPlayerUI.h"
 #include "DataUI.h"
 #include "Animation.h"
+#include "NPC.h"
+#include "TextBox.h"
 
 void Scene5::Init()
 {
@@ -44,6 +46,9 @@ void Scene5::Init()
 	Goal* goal = new Goal("goal", WINSIZEX / 2 + 300, 0);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
+	//NPC
+	NPC* npc = new NPC("dedede", 490, 1400);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
@@ -58,19 +63,43 @@ void Scene5::Init()
 
 
 	//Ui
-	CountingPlayerUI* countUI = new CountingPlayerUI("Scene5count", 100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("Scene5count", 200, 50, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
 
 	//camera
 	Camera* camera = new Camera();
-	camera->SetX(100);
-	camera->SetY(WINSIZEY / 2);
-	//camera->SetTarget(player1);
-	camera->ChangeMode(Camera::Mode::Free);
+	//camera->SetX(0);
+	//camera->SetY(0);
+	//camera->SetTarget(player1);//시작 타겟 설정
+	//camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
+
+	//textBox
+	TextBox* textBox = new TextBox("Text1", L"막다른 길인가...", 0.05f, TextType::Dedede);
+	textBox->SetIsActive(false);
+	TextBox* textBox1 = new TextBox("Text2", L"좋은 말로 할 때 해독약 내놔 디디디 대왕...", 0.05f, TextType::Kirby);
+	textBox1->SetIsActive(false);
+	TextBox* textBox2 = new TextBox("Text3", L"여기까지 올 수 있으면 주지!!!", 0.05f, TextType::Dedede);
+	textBox2->SetIsActive(false);
+	TextBox* textBox3 = new TextBox("Text4", L"혹시 50명한테 동시에 맞아본 적 있어?", 0.05f, TextType::Kirby);
+	textBox3->SetIsActive(false);
+	TextBox* textBox4 = new TextBox("Text5", L"아..아니...", 0.05f, TextType::Dedede);
+	textBox4->SetIsActive(false);
+	TextBox* textBox5 = new TextBox("Text6", L"그럼 오늘이 그 날이야!!! 딱 기다려!!!", 0.05f, TextType::Kirby);
+	textBox5->SetIsActive(false);
+	TextBox* textBox6 = new TextBox("Text7", L"그래도 해독약은 못 줘어어어어!!!!!", 0.05f, TextType::Dedede);
+	textBox6->SetIsActive(false);
+
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox3);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox4);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox5);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox6);
 
 	ObjectManager::GetInstance()->Init();
 

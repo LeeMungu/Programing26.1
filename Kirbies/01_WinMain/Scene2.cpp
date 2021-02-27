@@ -18,9 +18,6 @@
 
 void Scene2::Init()
 {
-	mTextBoxDeDeDe = IMAGEMANAGER->FindImage(L"TextBoxDeDeDe");
-	mTextBoxKirby = IMAGEMANAGER->FindImage(L"TextBoxKirby");
-
 	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
 	mAnimationGameClear = new Animation();
 	mAnimationGameClear->InitFrameByReverseLoop(0, 0, 16, 0);
@@ -47,10 +44,10 @@ void Scene2::Init()
 	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2 + 300, 0);
+	Goal* goal = new Goal("goal", 1480, 1205);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
-	NPC* npc = new NPC("dedede", 300, 300);
+	NPC* npc = new NPC("dedede", 1300, 1210);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
 
@@ -66,7 +63,7 @@ void Scene2::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
-	CountingPlayerUI* countUI = new CountingPlayerUI("Scene2count", 100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("Scene2count", 200, 50, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
@@ -81,13 +78,17 @@ void Scene2::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
 	//textBox
-	TextBox* textBox = new TextBox("Text1", L"경찰이다 손들어!!!", 0.3f, TextType::Dedede);
+	TextBox* textBox = new TextBox("Text1", L"벌써 20명으로 늘어났어!!!", 0.05f, TextType::Kirby);
 	textBox->SetIsActive(false);
-	TextBox* textBox1 = new TextBox("Text2", L"여기까지 온건가!!!", 0.3f, TextType::Kirby);
+	TextBox* textBox1 = new TextBox("Text2", L"흥! 이제 곧 머지 않았다!!!", 0.05f, TextType::Dedede);
 	textBox1->SetIsActive(false);
+	TextBox* textBox2 = new TextBox("Text2", L"열심히 쫓아와보시지!!!", 0.05f, TextType::Dedede);
+	textBox2->SetIsActive(false);
+	
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
 
 	ObjectManager::GetInstance()->Init();
 
@@ -102,7 +103,8 @@ void Scene2::Init()
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox2));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
