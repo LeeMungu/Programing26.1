@@ -100,6 +100,7 @@ void Scene1::Init()
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 
 	//이벤트 초기화
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
