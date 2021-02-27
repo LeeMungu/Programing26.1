@@ -136,8 +136,8 @@ void Scene2::Release()
 			temps[i]->SetIsActive(false);
 		}
 	}
-	SafeDelete(mAnimationGameOver);
-	SafeDelete(mAnimationGameClear);
+	//SafeDelete(mAnimationGameOver);
+	//SafeDelete(mAnimationGameClear);
 }
 
 void Scene2::Update()

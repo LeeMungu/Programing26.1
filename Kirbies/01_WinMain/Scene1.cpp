@@ -82,11 +82,11 @@ void Scene1::Init()
 	//textBox
 	TextBox* textBox = new TextBox("Text1", L"의심도 없이 멍청하게 쌍둥이 열매를 먹다니!", 0.05f, TextType::Dedede);
 	textBox->SetIsActive(false);
-	TextBox* textBox1 = new TextBox("Text2", L"너희는 이제 끝도 없이 분열되어 온 우주가!", 0.05f, TextType::Dedede);
+	TextBox* textBox1 = new TextBox("Text2", L"너희는 이제 끝도 없이 증식되어 온 우주가!", 0.05f, TextType::Dedede);
 	textBox1->SetIsActive(false);
-	TextBox* textBox2 = new TextBox("Text3", L"커비로 가득찰 것이다!!!", 0.05f, TextType::Dedede);
+	TextBox* textBox2 = new TextBox("Text3", L"너희 커비로 가득찰 것이다!!!", 0.05f, TextType::Dedede);
 	textBox2->SetIsActive(false);
-	TextBox* textBox3 = new TextBox("Text4", L"(10명으로 분열됐나...)", 0.05f, TextType::Kirby);
+	TextBox* textBox3 = new TextBox("Text4", L"(10명으로 증식됐나...)", 0.05f, TextType::Kirby);
 	textBox3->SetIsActive(false);
 	TextBox* textBox4 = new TextBox("Text5", L"거기서라! 디디디 대왕!!! 해독약을 내놔!", 0.05f, TextType::Kirby);
 	textBox4->SetIsActive(false);
