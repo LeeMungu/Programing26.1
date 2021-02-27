@@ -133,6 +133,9 @@
     <Filter Include="MainGame\Object\Trap">
       <UniqueIdentifier>{3424bbeb-c29c-4e5c-9a1e-27308a6dcc7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MainGame\Object\PowerBtn">
+      <UniqueIdentifier>{9606470e-e846-411e-a4ac-bd8350513b9d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -366,6 +369,15 @@
     <ClInclude Include="TrapDie.h">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClInclude>
+    <ClInclude Include="SceneEnding.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Plate.h">
+      <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="PowerBtn.h">
+      <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -586,6 +598,15 @@
     </ClCompile>
     <ClCompile Include="TrapDie.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEnding.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Plate.cpp">
+      <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="PowerBtn.cpp">
+      <Filter>MainGame\Object\PowerBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
