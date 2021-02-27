@@ -32,11 +32,11 @@ void Run::Init()
 
 	//°ñÀÎ ¾Ö´Ï¸ÞÀÌ¼Ç
 	mGoalKirbyAnimation = new Animation();
-	mGoalKirbyAnimation->InitFrameByReverseLoop(0, 0, 5, 0);
+	mGoalKirbyAnimation->InitFrameByStartEnd(0, 0, 5, 0, false);
 	mGoalKirbyAnimation->SetIsLoop(false);
 	mGoalKirbyAnimation->SetFrameUpdateTime(0.1f);
-	mGoalKirbyAnimation->SetCallbackFunc([this]() {});//mPlayer->SetIsDestroy(true); });
-
+	mGoalKirbyAnimation->SetCallbackFunc([this]() {mPlayer->SetIsDestroy(true); });
+	//mGoalKirbyAnimation->Stop();
 	//mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom,"Bottom");
 
 	//ÁÂ¿ì ÆÇÁ¤
@@ -155,13 +155,13 @@ void Run::Update()
 		mPlayer->SetIsGoal(false);
 	}
 	//µé¾î°¬À»¶§
-	if (mCurrentAnimation == mGoalKirbyAnimation &&
-		mCurrentAnimation->GetIsPlay() == false)
-	{
-	
-		//mIsDestroyed = true;
-		mPlayer->SetIsDestroy(true);
-	}
+	//if (mCurrentAnimation == mGoalKirbyAnimation &&
+	//	mCurrentAnimation->GetIsPlay() == false)
+	//{
+	//
+	//	//mIsDestroyed = true;
+	//	mPlayer->SetIsDestroy(true);
+	//}
 
 	//if (mCurrentAnimation == mGoalKirbyAnimation)
 	//{
