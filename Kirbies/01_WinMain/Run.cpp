@@ -76,7 +76,7 @@ void Run::Release()
 
 void Run::Update()
 {
-	mScaleValue -= 0.001f;
+	
 	if (mPlayer->GetIntMotionRL() == 0 && mCurrentAnimation == mLeftAnimation)
 	{
 		mCurrentAnimation->Stop();
@@ -153,6 +153,10 @@ void Run::Update()
 		mCurrentAnimation = mGoalKirbyAnimation;
 		mCurrentAnimation->Play();
 		mPlayer->SetIsGoal(false);
+	}
+	if (mCurrentAnimation == mGoalKirbyAnimation)
+	{
+		mScaleValue -= 0.005f;
 	}
 	//µé¾î°¬À»¶§
 	//if (mCurrentAnimation == mGoalKirbyAnimation &&
