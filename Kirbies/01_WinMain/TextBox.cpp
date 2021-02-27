@@ -62,7 +62,7 @@ void TextBox::Render(HDC hdc)
 	hFont = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
-	TextOut(hdc, mX-WINSIZEX/3, mRect.top+mSizeY/4, mText.c_str(), mTextLengs);
+	TextOut(hdc, mX-WINSIZEX/3, mY, mText.c_str(), mTextLengs);
 	
 	SelectObject(hdc, oldFont);
 	DeleteObject(hFont);

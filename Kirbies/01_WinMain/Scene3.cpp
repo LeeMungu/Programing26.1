@@ -62,7 +62,7 @@ void Scene3::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
-	CountingPlayerUI* countUI = new CountingPlayerUI("Scene3count", 100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("Scene3count", 200, 50, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
