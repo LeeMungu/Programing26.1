@@ -132,6 +132,21 @@ void Scene3::Init()
 	mIsSpecial = false;
 }
 
+void Scene3::Release()
+{
+	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop();
+	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
+	if (temps.size() != NULL)
+	{
+		for (int i = 0; i < temps.size(); i++)
+		{
+			temps[i]->SetIsActive(false);
+		}
+	}
+	SafeDelete(mAnimationGameOver);
+	SafeDelete(mAnimationGameClear);
+}
 void Scene3::Update()
 {
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
