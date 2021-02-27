@@ -30,6 +30,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 500, 200, 5, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"UICount", Resources(L"count_ui_image.bmp"), 40, 40, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Numbers", Resources(L"NumberDot.bmp"), 100, 14, 10, 1, true); });
+	
 
 	//이미지 (커비)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Stopper", Resources(L"stopper.bmp"), 110 * PlayerSize, 24 * PlayerSize, 5, 1, true); });
@@ -108,6 +109,7 @@ void LoadingScene::Update()
 
 void LoadingScene::Render(HDC hdc)
 {
+
 	mLoadingImage->Render(hdc, 0, 0);
 	mLoadingImage2->Render(hdc, 250, 130);
 	mLoadingBarImage1->Render(hdc, WINSIZEX / 2 - mLoadingBarImage1->GetWidth() / 2, WINSIZEY / 12.5 * 7.5f);

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "Camera.h"
 //interface class : 순수가상함수만을 가지고 있는 클래스
 class IEvent
 {
@@ -20,15 +20,15 @@ public:
 	bool Update()override;
 };
 
-//class IChangeCameraModeEvent : public IEvent
-//{
-//	Camera::Mode mMode;
-//public:
-//	IChangeCameraModeEvent(Camera::Mode mode);
-//
-//	void Start()override;
-//	bool Update()override;
-//};
+class IChangeCameraModeEvent : public IEvent
+{
+	Camera::Mode mMode;
+public:
+	IChangeCameraModeEvent(Camera::Mode mode);
+
+	void Start()override;
+	bool Update()override;
+};
 
 class IDelayEvent : public IEvent
 {
@@ -36,6 +36,18 @@ class IDelayEvent : public IEvent
 	float mDelayTime;
 public:
 	IDelayEvent(float delayTime);
+
+	void Start()override;
+	bool Update()override;
+};
+
+class ITextEvent : public IEvent
+{
+	class TextBox* mTextBox;
+	float mTimeCount;
+	float mLimitTime;
+public:
+	ITextEvent(class TextBox* textBox);
 
 	void Start()override;
 	bool Update()override;

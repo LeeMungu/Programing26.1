@@ -14,6 +14,7 @@
 #include "DataUI.h"
 #include "Animation.h"
 #include "NPC.h"
+#include "TextBox.h"
 
 void Scene3::Init()
 {
@@ -61,7 +62,7 @@ void Scene3::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
-	CountingPlayerUI* countUI = new CountingPlayerUI("Scene3count", 100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("Scene3count", 200, 50, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
@@ -69,12 +70,18 @@ void Scene3::Init()
 
 	//camera
 	Camera* camera = new Camera();
-	camera->SetX(0);
-	camera->SetY(0);
+	//camera->SetX(0);
+	//camera->SetY(0);
 	//camera->SetTarget(player1);//시작 타겟 설정
 	camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
+
+	//textBox
+	TextBox* textBox = new TextBox("Text1",L"빵꾸똥꾸야!!`~!!!",0.3f,TextType::Dedede);
+	textBox->SetIsActive(false);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
+
 
 	//오브젝트 Init
 	ObjectManager::GetInstance()->Init();
@@ -87,10 +94,11 @@ void Scene3::Init()
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
-	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
 
 
 	//셋 초기화

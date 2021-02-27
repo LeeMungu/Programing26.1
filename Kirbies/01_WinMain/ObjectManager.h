@@ -21,6 +21,7 @@ enum class ObjectLayer : int
 	DigObject = 10,
 	Mouse =11,
 	NPC =12,
+	TextBox =13,
 	End
 };
 

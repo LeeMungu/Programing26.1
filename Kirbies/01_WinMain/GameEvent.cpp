@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "GameEvent.h"
-#include "Camera.h"
+
+#include "TextBox.h"
 //생성자- 변환값을 넣어준다.
 IChangeCameraTargetEvent::IChangeCameraTargetEvent(GameObject * target)
 {
@@ -21,30 +22,31 @@ bool IChangeCameraTargetEvent::Update()
 
 	if (Math::GetDistance(x, y, mTarget->GetX(), mTarget->GetY()) <= 5.0f)
 	{
+		//트루일때 안함
+		return true;
+	}
+	//false 일때 함
+	return false;
+}
+
+IChangeCameraModeEvent::IChangeCameraModeEvent(Camera::Mode mode)
+{
+	mMode = mode;
+}
+void IChangeCameraModeEvent::Start()
+{
+	CameraManager::GetInstance()->GetMainCamera()->ChangeMode(mMode);
+}
+bool IChangeCameraModeEvent::Update()
+{
+	if (CameraManager::GetInstance()->GetMainCamera()->GetMode()
+		!=mMode)
+	{
 		return true;
 	}
 
 	return false;
 }
-
-//IChangeCameraModeEvent::IChangeCameraModeEvent(Camera::Mode mode)
-//{
-//	mMode = mode;
-//}
-//void IChangeCameraModeEvent::Start()
-//{
-//	CameraManager::GetInstance()->GetMainCamera()->ChangeMode(mMode);
-//}
-//bool IChangeCameraModeEvent::Update()
-//{
-//	if (CameraManager::GetInstance()->GetMainCamera()->GetMode()
-//		!=mMode)
-//	{
-//		return true;
-//	}
-//
-//	return false;
-//}
 
 IDelayEvent::IDelayEvent(float delayTime)
 {
@@ -65,5 +67,33 @@ bool IDelayEvent::Update()
 		return true;
 	}
 
+	return false;
+}
+
+ITextEvent::ITextEvent(TextBox* textBox)
+{
+	mTextBox = textBox;
+}
+
+void ITextEvent::Start()
+{
+	mTextBox->SetIsActive(true);
+	mLimitTime = 2.f;
+	mTimeCount = 0.f;
+}
+
+bool ITextEvent::Update()
+{
+	
+
+	if (mTextBox->GetIsTextEnd() == true)
+	{
+		mTimeCount += Time::GetInstance()->DeltaTime();
+		if (mTimeCount > mLimitTime)
+		{
+			mTextBox->SetIsDestroy(true);
+			return true;
+		}
+	}
 	return false;
 }
