@@ -10,6 +10,7 @@ enum class PlayerState
 	DigState,
 	FallState,
 	RunState,
+	TrapDieState,
 	Empty
 };
 

@@ -363,6 +363,9 @@
     <ClInclude Include="Trap.h">
       <Filter>MainGame\Object\Trap</Filter>
     </ClInclude>
+    <ClInclude Include="TrapDie.h">
+      <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -580,6 +583,9 @@
     </ClCompile>
     <ClCompile Include="Trap.cpp">
       <Filter>MainGame\Object\Trap</Filter>
+    </ClCompile>
+    <ClCompile Include="TrapDie.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
