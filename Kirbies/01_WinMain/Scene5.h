@@ -15,6 +15,7 @@ class Scene5 : public Scene
 	Animation* mAnimationGameClear;
 	float mGameOverTimer;
 
+	bool mIsTrigger;
 public:
 	void Init()override;
 	void Release()override;
