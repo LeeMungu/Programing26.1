@@ -59,10 +59,10 @@ void TextBox::Render(HDC hdc)
 	mImage->Render(hdc, mRect.left, mRect.top);
 
 	HFONT hFont, oldFont;
-	hFont = CreateFont(27, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("Edit Undo BRK"));
+	hFont = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
-	TextOut(hdc, mX-WINSIZEX, mY, mText.c_str(), mTextLengs);
+	TextOut(hdc, mX-WINSIZEX/3, mRect.top+mSizeY/4, mText.c_str(), mTextLengs);
 	
 	SelectObject(hdc, oldFont);
 	DeleteObject(hFont);
