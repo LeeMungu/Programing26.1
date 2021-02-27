@@ -4,7 +4,7 @@
 class Image;
 class TextBox : GameObject
 {
-	Image mImage;
+	Image* mImage;
 	wstring mText;
 public:
 	TextBox(const string& name,wstring text);
