@@ -3,6 +3,7 @@
 
 class Image;
 class Animation;
+class CountingPlayerUI;
 class Scene5 : public Scene
 {
 	Image* mImageGameClear;
@@ -14,7 +15,7 @@ class Scene5 : public Scene
 	Animation* mAnimationGameOver;
 	Animation* mAnimationGameClear;
 	float mGameOverTimer;
-
+	CountingPlayerUI* mCountUi;
 	bool mIsTrigger;
 public:
 	void Init()override;
