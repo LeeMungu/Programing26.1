@@ -6,7 +6,7 @@
 #include "ConfigUi.h"
 SceneManager::SceneManager()
 	:mCurrentScene(nullptr),mLoadingThread(nullptr),mTargetScene(nullptr),mLoadingScene(nullptr),
-mIsLoadingEnd(false), mIsConfig(false){}
+mIsLoadingEnd(false), mIsConfig(false) , mIsActive(false){}
 
 SceneManager::~SceneManager()
 {
@@ -20,7 +20,7 @@ SceneManager::~SceneManager()
 
 void SceneManager::Update()
 {
-	if (mIsConfig == false)
+	if (mIsConfig == false )
 	{
 		if (mCurrentScene != nullptr)
 			mCurrentScene->Update();

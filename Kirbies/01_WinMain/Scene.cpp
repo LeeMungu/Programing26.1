@@ -52,15 +52,10 @@ void Scene::SpecialFunc()
 
 void Scene::CameraWalk()
 {
-	Camera* DoorToGoal = (Camera*) ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
-	DoorToGoal->ChangeMode(Camera::Mode::Follow);
-	DoorToGoal->SetTarget(ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door"));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.1f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door")));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.3f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject(ObjectLayer::Goal, "Goal")));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.3f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(ObjectManager::GetInstance()->FindObject(ObjectLayer::Door, "Door")));
-	DoorToGoal->ChangeMode(Camera::Mode::Free);
+	if (ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Door).size() != NULL)
+	{
+
+
+	}
 }
 

@@ -16,6 +16,7 @@ private:
 	bool mIsLoadingEnd;
 	//true 일때 씬 일시정지, 매뉴 호출
 	bool mIsConfig;
+	bool mIsActive;
 	ConfigUi* Menu;
 public:
 	SceneManager();
@@ -32,6 +33,10 @@ public:
 
 	void DeleteMenu();
 	void SetIsconfig(bool config) { mIsConfig = config; }
+
+	void SetIsActive(bool active){ mIsActive = active; }
+	bool GetIsActive() { return mIsActive; }
+
 private:
 	//스레드에 집어 넣을 함수 : 즉 실제로 스레드가 작업 처리 할 함수
 	void LoadingThread();

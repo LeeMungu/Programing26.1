@@ -1,5 +1,7 @@
 #pragma once
 #include "Camera.h"
+#include "SceneManager.h"
+
 //interface class : 순수가상함수만을 가지고 있는 클래스
 class IEvent
 {
@@ -51,4 +53,17 @@ public:
 
 	void Start()override;
 	bool Update()override;
+};
+
+class IDoorController : public IEvent
+{
+	class Door* mDoor;
+	bool mIsGeneration;
+public:
+	IDoorController(class Door* door, bool isGeneraion);
+
+	void Start()override;
+	bool Update()override;
+
+
 };
