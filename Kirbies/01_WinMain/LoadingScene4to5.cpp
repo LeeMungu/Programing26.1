@@ -30,6 +30,8 @@ void LoadingScene4to5::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Button", Resources(L"Kirby_UI_BUTTON_Package.bmp"), 500, 200, 5, 2, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"UICount", Resources(L"count_ui_image.bmp"), 40, 40, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Numbers", Resources(L"NumberDot.bmp"), 100, 14, 10, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"TextBoxDeDeDe", Resources(L"TextBoxDeDeDe.bmp"), 1280, 220, 1, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"TextBoxDeDeDe", Resources(L"TextBoxKirby.bmp"), 1280, 220, 1, 1, true); });
 
 	//이미지 (커비)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Stopper", Resources(L"stopper.bmp"), 110 * PlayerSize, 24 * PlayerSize, 5, 1, true); });
