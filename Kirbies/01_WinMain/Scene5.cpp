@@ -15,7 +15,8 @@
 #include "Animation.h"
 #include "NPC.h"
 #include "TextBox.h"
-
+#include "PowerBtn.h"
+#include "Plate.h"
 void Scene5::Init()
 {
 	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
@@ -40,11 +41,22 @@ void Scene5::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", WINSIZEX / 2, 0, 50);
+	Door* door = new Door("Door", 150, 700, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2 + 300, 0);
+	Goal* goal = new Goal("goal", 2300, 420);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
+
+	PowerBtn* powerbtn = new PowerBtn("powerbtn", 100, 780);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, powerbtn);
+
+	Plate* plate = new Plate("plate", WINSIZEX / 2 + 200, 760);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate);
+	Plate* plate2 = new Plate("plate2", WINSIZEX / 2 + 200, 760);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate2);
+	Plate* plate3 = new Plate("plate3", WINSIZEX / 2 + 200, 760);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate3);
+
 
 	//NPC
 	NPC* npc = new NPC("dedede", 490, 1400);
@@ -177,6 +189,19 @@ void Scene5::Update()
 			}
 		}
 	}
+	PowerBtn* powerbtntemp = (PowerBtn*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "powerbtn");
+	if (powerbtntemp->GetIsBtnOn() == true)
+	{
+		Plate* platetemp = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate");
+		platetemp->Init();
+		Plate* platetemp2 = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate2");
+		Plate* platetemp3 = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate3");
+		platetemp3->Init();
+
+		platetemp->SetX(740);
+		platetemp3->SetX(940);
+	}
+
 
 	mAnimationGameOver->Update();
 	mAnimationGameClear->Update();
@@ -207,9 +232,6 @@ void Scene5::Update()
 void Scene5::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
-
-	wstring str = L"스테이지5 풀풀동산.";
-	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 
 	if (mIsGameClear == true)
 	{

@@ -87,7 +87,7 @@ void Scene3::Init()
 	textBox2->SetIsActive(false);
 	TextBox* textBox3 = new TextBox("Text3", L"...............", 0.05f, TextType::Kirby);
 	textBox3->SetIsActive(false);
-	TextBox* textBox4 = new TextBox("Text4", L"거기 안 서?!!!!!!!", 0.05f, TextType::Kirby);
+	TextBox* textBox4 = new TextBox("Text4", L"거기 안 서?!!!!!!", 0.05f, TextType::Kirby);
 	textBox4->SetIsActive(false);
 
 
@@ -224,9 +224,6 @@ void Scene3::Update()
 void Scene3::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
-
-	wstring str = L"스테이지3 불불동산.";
-	TextOut(hdc, WINSIZEX / 2, WINSIZEY / 3, str.c_str(), str.length());
 
 	if (mIsGameClear == true)
 	{

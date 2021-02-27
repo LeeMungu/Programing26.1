@@ -192,7 +192,9 @@
     <ClInclude Include="NPC.h" />
     <ClInclude Include="ObjectManager.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Plate.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PowerBtn.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Run.h" />
@@ -275,7 +277,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Plate.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PowerBtn.cpp" />
     <ClCompile Include="Random.cpp" />
     <ClCompile Include="Run.cpp" />
     <ClCompile Include="Scene.cpp" />
