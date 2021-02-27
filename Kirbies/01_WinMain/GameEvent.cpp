@@ -2,6 +2,7 @@
 #include "GameEvent.h"
 
 #include "TextBox.h"
+#include "Door.h"
 //생성자- 변환값을 넣어준다.
 IChangeCameraTargetEvent::IChangeCameraTargetEvent(GameObject * target)
 {
@@ -88,3 +89,29 @@ bool ITextEvent::Update()
 	}
 	return false;
 }
+
+
+IDoorController::IDoorController(class Door* door, bool isGeneration)
+{
+	mDoor = door;
+	mIsGeneration = isGeneration;
+}
+
+void IDoorController::Start()
+{
+	mDoor->SetGeneration(mIsGeneration);
+}
+
+bool IDoorController::Update()
+{
+	if (mDoor->GetIsGeneration() == mIsGeneration)
+	{
+		return true;
+	}
+	else if (mDoor->GetIsGeneration() != mIsGeneration)
+	{
+		mDoor->SetGeneration(mIsGeneration);
+	}
+	return false;
+}
+

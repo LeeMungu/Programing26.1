@@ -13,6 +13,7 @@ class Door : public GameObject
 	float mTimeLimit;
 
 	bool mIsCreatedEnd;
+	bool mIsGeneration;
 
 public:
 	Door(const string& name, float x, float y, int count);
@@ -27,5 +28,8 @@ public:
 	int GetPlayerCount() { return mCount; }
 
 	bool GetIsCreatedEnd() { return mIsCreatedEnd; }
+
+	bool GetIsGeneration() { return mIsGeneration; }
+	void SetGeneration(bool isGeneration) { mIsGeneration = isGeneration; }
 };
 
