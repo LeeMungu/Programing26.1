@@ -167,7 +167,7 @@ void Scene1::Render(HDC hdc)
 			mAnimationGameOver->GetNowFrameX(),
 				mAnimationGameOver->GetNowFrameY());
 
-		mTextBoxDeDeDe->Render(hdc, 0, WINSIZEY / 2 + 40);
+		//mTextBoxDeDeDe->Render(hdc, 0, WINSIZEY / 2 + 40);
 
 	}
 
