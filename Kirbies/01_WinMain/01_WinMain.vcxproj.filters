@@ -378,6 +378,15 @@
     <ClInclude Include="SceneEnding.h">
       <Filter>FrameWork\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Throw.h">
+      <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
+    </ClInclude>
+    <ClInclude Include="Bugzzy.h">
+      <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="ThrowBtn.h">
+      <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -607,6 +616,15 @@
     </ClCompile>
     <ClCompile Include="SceneEnding.cpp">
       <Filter>FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Throw.cpp">
+      <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
+    </ClCompile>
+    <ClCompile Include="Bugzzy.cpp">
+      <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="ThrowBtn.cpp">
+      <Filter>MainGame\Object\PowerBtn</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

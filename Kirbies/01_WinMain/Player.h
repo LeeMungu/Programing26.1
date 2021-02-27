@@ -11,6 +11,7 @@ enum class PlayerState
 	FallState,
 	RunState,
 	TrapDieState,
+	ThrowState,
 	Empty
 };
 
@@ -63,7 +64,8 @@ public:
 	float GetX() { return mX; }
 	float GetY() { return mY; }
 	
-	void GetXPosition(int X) { mX += X; }
+	void SetXPosition(int X) { mX += X; }
+	void SetYPosition(int Y) { mY += Y; }
 	
 	int GetIntMotionRL()const { return mIsMotionRL; }
 	void SetIntMotionRL(int intMotionRL) { mIsMotionRL = intMotionRL; }

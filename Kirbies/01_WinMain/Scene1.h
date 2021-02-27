@@ -3,6 +3,7 @@
 
 class Image;
 class Animation;
+class CountingPlayerUI;
 class Scene1 : public Scene
 {
 	Image* mImageGameClear;
@@ -12,6 +13,8 @@ class Scene1 : public Scene
 
 	Image* mTextBoxDeDeDe;
 	Image* mTextBoxKirby;
+
+	CountingPlayerUI* mCountUi;
 
 	float mGameOverTimer;
 	float mGameClearTimer;

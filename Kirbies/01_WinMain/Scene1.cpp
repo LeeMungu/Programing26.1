@@ -65,9 +65,9 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
-	CountingPlayerUI* countUI = new CountingPlayerUI("Scene1count",200, 50, 300);
-	countUI->Init();
-	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
+	mCountUi = new CountingPlayerUI("Scene1count",200, 50, 300);
+	mCountUi->Init();
+	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, mCountUi);
 
 
 	//camera
@@ -168,10 +168,10 @@ void Scene1::Update()
 
 	
 	//클리어조건
-	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene1count");
-	if (tempUi != NULL && mIsGameClear == false)
+	//CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene1count");
+	if (mCountUi != NULL && mIsGameClear == false)
 	{
-		if (tempUi->GetGoalPercent() > 50.f &&
+		if (mCountUi->GetGoalPercent() > 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
@@ -182,9 +182,9 @@ void Scene1::Update()
 	mGameOverTimer += Time::GetInstance()->DeltaTime();
 	if (mGameOverTimer > 5)
 	{
-		if (tempUi != NULL && mIsGameOver == false && door->GetIsCreatedEnd())
+		if (mCountUi != NULL && mIsGameOver == false && door->GetIsCreatedEnd())
 		{
-			if (tempUi->GetGoalPercent() < 50.f &&
+			if (mCountUi->GetGoalPercent() < 50.f &&
 				ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 			{
 				mIsGameOver = true;
