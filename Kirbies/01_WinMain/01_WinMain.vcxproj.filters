@@ -367,7 +367,7 @@
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClInclude>
     <ClInclude Include="SceneEnding.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>MainGame\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -591,7 +591,7 @@
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClCompile>
     <ClCompile Include="SceneEnding.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>MainGame\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

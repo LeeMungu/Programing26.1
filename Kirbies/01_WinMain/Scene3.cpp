@@ -115,6 +115,8 @@ void Scene3::Init()
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox3));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox4));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));

@@ -34,7 +34,7 @@ void NPC::Init()
 	mLeftRunAnimation->SetFrameUpdateTime(0.3f);
 	
 	mRightRunAnimation = new Animation;
-	mRightRunAnimation->InitFrameByEndStart(0, 3, 3, 3, false);
+	mRightRunAnimation->InitFrameByStartEnd(0, 3, 3, 3, false);
 	mRightRunAnimation->SetIsLoop(true);
 	mRightRunAnimation->SetFrameUpdateTime(0.3f);
 
@@ -48,6 +48,16 @@ void NPC::Init()
 
 void NPC::Update()
 {
+	if (ObjectManager::GetInstance()->FindObject(ObjectLayer::Goal, "goal") != NULL)
+	{
+		RECT temp;
+		RECT gameRect = ObjectManager::GetInstance()->FindObject(ObjectLayer::Goal, "goal")->GetRect();
+		if (IntersectRect(&temp, &gameRect, &mRect) == true)
+		{
+			mIsDestroy = true;
+		}
+	}
+
 	if (mIsGo == false)
 	{
 		if(mIsMotionRL==1 && mCurrentAnimation!=mLeftIdleAnimation)
@@ -65,6 +75,16 @@ void NPC::Update()
 	}
 	else if (mIsGo == true)
 	{
+		//ÀÌµ¿
+		if (mIsMotionRL == 1)
+		{
+			mX -= 2;
+		}
+		else if (mIsMotionRL == 0)
+		{
+			mX += 2;
+		}
+
 		//¿ÞÂÊ
 		if (mIsMotionRL == 1 && mCurrentAnimation != mLeftRunAnimation)
 		{
