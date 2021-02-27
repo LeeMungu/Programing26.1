@@ -41,7 +41,7 @@ void Scene4::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", 2000, 50, 10);
+	Door* door = new Door("Door", 2000, 50, 40);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 

@@ -15,6 +15,7 @@
 #include "Animation.h"
 #include "NPC.h"
 #include "TextBox.h"
+#include "Trap.h"
 
 void Scene2::Init()
 {
@@ -41,7 +42,7 @@ void Scene2::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
+	Door* door = new Door("Door", WINSIZEX / 2, 0, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal", 1480, 1205);
@@ -50,6 +51,9 @@ void Scene2::Init()
 	NPC* npc = new NPC("dedede", 1300, 1210);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
+
+	Trap* trap2 = new Trap("trap1", 1960, 1050, 600, 50, PlayerState::TrapDieState);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, trap2);
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);

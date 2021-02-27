@@ -41,7 +41,7 @@ void Scene3::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", WINSIZEX / 4, 300, 10);
+	Door* door = new Door("Door", WINSIZEX / 4, 300, 30);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 	
 	Goal* goal = new Goal("goal", WINSIZEX/2 *3 + 300, WINSIZEY*2 - 120);
