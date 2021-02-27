@@ -64,6 +64,17 @@ public:
 
 	void Start()override;
 	bool Update()override;
+};
 
+class INpcController : public IEvent
+{
+	class NPC* mNpc;
+	bool mIsGo;
+	int mMotionRL;
+public:
+	//npc, 이동여부, 오른쪽0-왼쪽1
+	INpcController(class NPC* npc, bool isGo, int motionRL);
 
+	void Start()override;
+	bool Update()override;
 };

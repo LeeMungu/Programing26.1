@@ -16,6 +16,7 @@
 #include "NPC.h"
 #include "TextBox.h"
 
+
 void Scene3::Init()
 {
 	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
@@ -43,11 +44,11 @@ void Scene3::Init()
 	Door* door = new Door("Door", WINSIZEX / 4, 300, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 	
-	Goal* goal = new Goal("goal", WINSIZEX/2 *3 + 300, WINSIZEY*2 - 150);
+	Goal* goal = new Goal("goal", WINSIZEX/2 *3 + 300, WINSIZEY*2 - 120);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	//NPC
-	NPC* npc = new NPC("dedede", WINSIZEX / 2 * 3 + 300 - 100, WINSIZEY * 2 - 150);
+	NPC* npc = new NPC("dedede", WINSIZEX / 2 * 3 + 300 - 150, WINSIZEY * 2 - 120);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 	
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
@@ -73,15 +74,27 @@ void Scene3::Init()
 	//camera->SetX(0);
 	//camera->SetY(0);
 	//camera->SetTarget(player1);//시작 타겟 설정
-	camera->ChangeMode(Camera::Mode::Free);
+	//camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
 	//textBox
-	TextBox* textBox = new TextBox("Text1",L"빵꾸똥꾸야!!`~!!!",0.3f,TextType::Dedede);
+	TextBox* textBox = new TextBox("Text1", L"설마 해독약이 내 손에 있을거라 생각하는거냐!!!", 0.05f, TextType::Dedede);
 	textBox->SetIsActive(false);
+	TextBox* textBox1 = new TextBox("Text2", L"앗....없어?", 0.05f, TextType::Kirby);
+	textBox1->SetIsActive(false);
+	TextBox* textBox2 = new TextBox("Text3", L"당연히 나한테 있지롱!!! 우하하하하하!!!!!", 0.05f, TextType::Dedede);
+	textBox2->SetIsActive(false);
+	TextBox* textBox3 = new TextBox("Text3", L"...............", 0.05f, TextType::Kirby);
+	textBox3->SetIsActive(false);
+	TextBox* textBox4 = new TextBox("Text4", L"거기 안 서?!!!!!!!", 0.05f, TextType::Kirby);
+	textBox4->SetIsActive(false);
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox3);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox4);
 
 
 	//오브젝트 Init
@@ -92,14 +105,23 @@ void Scene3::Init()
 	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
 
 	//이벤트 초기화
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f)); //3초동안의텀
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox2));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox3));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox4));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 
 	//셋 초기화

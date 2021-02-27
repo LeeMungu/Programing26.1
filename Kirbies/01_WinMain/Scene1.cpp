@@ -18,10 +18,6 @@
 
 void Scene1::Init()
 {	
-
-	mTextBoxDeDeDe = IMAGEMANAGER->FindImage(L"TextBoxDeDeDe");
-	mTextBoxKirby = IMAGEMANAGER->FindImage(L"TextBoxKirby");
-
 	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
 	mAnimationGameClear = new Animation();
 	mAnimationGameClear->InitFrameByReverseLoop(0, 0, 16, 0);
@@ -48,7 +44,8 @@ void Scene1::Init()
 	Door* door = new Door("Door",WINSIZEX/2,100,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", 1200, 1230);
+	Goal* goal = new Goal("goal", WINSIZEX / 2+150, 170);
+	//Goal* goal = new Goal("goal", 1200, 1230);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	//NPC
@@ -68,7 +65,7 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
-	CountingPlayerUI* countUI = new CountingPlayerUI("Scene1count",100, WINSIZEY - 100, 300);
+	CountingPlayerUI* countUI = new CountingPlayerUI("Scene1count",200, 50, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
 
@@ -83,14 +80,25 @@ void Scene1::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
 	//textBox
-	TextBox* textBox = new TextBox("Text1", L"경찰이다 손들어!!!", 0.3f, TextType::Dedede);
+	TextBox* textBox = new TextBox("Text1", L"의심도 없이 멍청하게 쌍둥이 열매를 먹다니!", 0.05f, TextType::Dedede);
 	textBox->SetIsActive(false);
-	TextBox* textBox1 = new TextBox("Text2", L"여기까지 온건가!!!", 0.3f, TextType::Kirby);
+	TextBox* textBox1 = new TextBox("Text2", L"너희는 이제 끝도 없이 분열되어", 0.05f, TextType::Dedede);
 	textBox1->SetIsActive(false);
+	TextBox* textBox2 = new TextBox("Text3", L"온 우주가 너로 인해 고통받을 것이다!!!", 0.05f, TextType::Dedede);
+	textBox2->SetIsActive(false);
+	TextBox* textBox3 = new TextBox("Text4", L"(10명으로 분열됐나...)", 0.05f, TextType::Kirby);
+	textBox3->SetIsActive(false);
+	TextBox* textBox4 = new TextBox("Text5", L"거기서라! 디디디 대왕!!! 해독약을 내놔!", 0.05f, TextType::Kirby);
+	textBox4->SetIsActive(false);
+	TextBox* textBox5 = new TextBox("Text6", L"흥!!! 어림도 없지!!!", 0.05f, TextType::Dedede);
+	textBox5->SetIsActive(false);
 
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
-
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox3);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox4);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox5);
 
 	//오브젝트 Init
 	ObjectManager::GetInstance()->Init();
@@ -106,11 +114,15 @@ void Scene1::Init()
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox2));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox3));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox4));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox5));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.1f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.0f));

@@ -3,6 +3,7 @@
 
 #include "TextBox.h"
 #include "Door.h"
+#include "NPC.h"
 //생성자- 변환값을 넣어준다.
 IChangeCameraTargetEvent::IChangeCameraTargetEvent(GameObject * target)
 {
@@ -124,3 +125,25 @@ bool IDoorController::Update()
 	return false;
 }
 
+INpcController::INpcController(NPC* npc, bool isGo, int motionRL)
+{
+	mNpc = npc;
+	mIsGo = isGo;
+	mMotionRL = motionRL;
+}
+
+void INpcController::Start()
+{
+	mNpc->SetIsGo(mIsGo);
+	mNpc->SetIsMotionRL(mMotionRL);
+}
+
+bool INpcController::Update()
+{
+	if(mNpc->GetIsGo()==mIsGo && mNpc->GetIsMotionRL()==mMotionRL)
+	{ 
+		return true;
+	}
+
+	return false;
+}
