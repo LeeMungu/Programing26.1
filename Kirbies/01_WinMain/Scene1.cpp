@@ -16,6 +16,9 @@
 
 void Scene1::Init()
 {	
+
+	mTextBoxDeDeDe = IMAGEMANAGER->FindImage(L"TextBoxDeDeDe");
+
 	mImageGameClear = IMAGEMANAGER->FindImage(L"GameClear");
 	mAnimationGameClear = new Animation();
 	mAnimationGameClear->InitFrameByReverseLoop(0, 0, 16, 0);
@@ -163,7 +166,12 @@ void Scene1::Render(HDC hdc)
 		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
 			mAnimationGameOver->GetNowFrameX(),
 				mAnimationGameOver->GetNowFrameY());
+
+		mTextBox->Render(hdc, 0, WINSIZEY / 2);
+
 	}
+
+	
 
 }
 
