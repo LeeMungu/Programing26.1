@@ -6,11 +6,11 @@ class DataUI : public Ui
 	class CountingPlayerUI* mCountingPlayerUI;
 
 	vector <Ui*> tempCountingUI;
-	vector<float>mScoreList;
 	vector<float> mTimeList;
 	vector<float> mGoalPercentList;
 
-
+	map<string, float> mTimeMap;
+	map<string, float> mGoalMap;
 public:
 	DataUI(const string& name);
 	

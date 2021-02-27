@@ -41,7 +41,7 @@ void Scene4::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", 2000, 50, 10);
+	Door* door = new Door("Door", 2000, 50, 40);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 
@@ -128,12 +128,20 @@ void Scene4::Init()
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox3));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox4));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox5));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
+
+	//이벤트 업데이트
+	GameEventManager::GetInstance()->Update();
 
 	mIsGameClear = false;
 	mIsGameOver = false;
@@ -142,27 +150,27 @@ void Scene4::Init()
 	mIsSpecial = false;
 }
 
+void Scene4::Release()
+{
+	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop();
+	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
+	if (temps.size() != NULL)
+	{
+		for (int i = 0; i < temps.size(); i++)
+		{
+			temps[i]->SetIsActive(false);
+		}
+	}
+	SafeDelete(mAnimationGameOver);
+	SafeDelete(mAnimationGameClear);
+}
 
 void Scene4::Update()
 {
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
 
-	//클리어 시 변경 로딩씬
-	if (mIsGameClear == true)
-	{
-
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
-		}
-	}
-	if (mIsGameOver == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"MainScene");
-		}
-	}
+	
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene4count");
 	if (tempUi != NULL && mIsGameClear == false)
@@ -195,6 +203,23 @@ void Scene4::Update()
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
+
+	//클리어 시 변경 로딩씬
+	if (mIsGameClear == true)
+	{
+
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
+		}
+	}
+	if (mIsGameOver == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
+		}
+	}
 	SpecialFunc();
 }
 

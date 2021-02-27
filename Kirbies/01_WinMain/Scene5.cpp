@@ -40,7 +40,7 @@ void Scene5::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
+	Door* door = new Door("Door", WINSIZEX / 2, 0, 50);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal", WINSIZEX / 2 + 300, 0);
@@ -93,6 +93,11 @@ void Scene5::Init()
 	TextBox* textBox6 = new TextBox("Text7", L"그래도 해독약은 못 줘어어어어!!!!!", 0.05f, TextType::Dedede);
 	textBox6->SetIsActive(false);
 
+
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
@@ -100,12 +105,25 @@ void Scene5::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox4);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox6);
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 	ObjectManager::GetInstance()->Init();
 
 	//사운드
 	SoundPlayer::GetInstance()->Play(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene4BGM");
+
+	//이벤트 업데이트
+	GameEventManager::GetInstance()->Update();
 
 	mIsGameClear = false;
 	mIsGameOver = false;
@@ -114,26 +132,26 @@ void Scene5::Init()
 	mIsSpecial = false;
 }
 
+void Scene5::Release()
+{
+	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop();
+	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
+	if (temps.size() != NULL)
+	{
+		for (int i = 0; i < temps.size(); i++)
+		{
+			temps[i]->SetIsActive(false);
+		}
+	}
+	SafeDelete(mAnimationGameOver);
+	SafeDelete(mAnimationGameClear);
+}
 void Scene5::Update()
 {
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
 
-	//클리어 시 변경 로딩씬
-	if (mIsGameClear == true)
-	{
-
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
-		}
-	}
-	if (mIsGameOver == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"MainScene");
-		}
-	}
+	
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene3count");
 	if (tempUi != NULL && mIsGameClear == false)
@@ -166,6 +184,23 @@ void Scene5::Update()
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
+
+	//클리어 시 변경 로딩씬
+	if (mIsGameClear == true)
+	{
+
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
+		}
+	}
+	if (mIsGameOver == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
+		}
+	}
 	SpecialFunc();
 }
 

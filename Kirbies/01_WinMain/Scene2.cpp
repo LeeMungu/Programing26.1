@@ -15,6 +15,7 @@
 #include "Animation.h"
 #include "NPC.h"
 #include "TextBox.h"
+#include "Trap.h"
 
 void Scene2::Init()
 {
@@ -41,7 +42,7 @@ void Scene2::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
+	Door* door = new Door("Door", WINSIZEX / 2, 0, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal", 1480, 1205);
@@ -50,6 +51,9 @@ void Scene2::Init()
 	NPC* npc = new NPC("dedede", 1300, 1210);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
+
+	Trap* trap2 = new Trap("trap1", 1960, 1050, 600, 50, PlayerState::TrapDieState);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, trap2);
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
@@ -105,11 +109,17 @@ void Scene2::Init()
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox2));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
+	//이벤트 업데이트
+
+	GameEventManager::GetInstance()->Update();
+	ObjectManager::GetInstance()->Update();
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
@@ -118,26 +128,26 @@ void Scene2::Init()
 
 }
 
+void Scene2::Release()
+{
+	ObjectManager::GetInstance()->Release();
+	SoundPlayer::GetInstance()->Stop();
+	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
+	if (temps.size() != NULL)
+	{
+		for (int i = 0; i < temps.size(); i++)
+		{
+			temps[i]->SetIsActive(false);
+		}
+	}
+	SafeDelete(mAnimationGameOver);
+	SafeDelete(mAnimationGameClear);
+}
 
 void Scene2::Update()
 {
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
-	//클리어 시 변경 로딩씬
-	if (mIsGameClear == true)
-	{
-
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene2to3");
-		}
-	}
-	if (mIsGameOver == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"MainScene");
-		}
-	}
+	
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene2count");
 	if (tempUi != NULL && mIsGameClear == false)
@@ -170,6 +180,23 @@ void Scene2::Update()
 
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
+
+	//클리어 시 변경 로딩씬
+	if (mIsGameClear == true)
+	{
+
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene2to3");
+		}
+	}
+	if (mIsGameOver == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
+		}
+	}
 	SpecialFunc();
 }
 
