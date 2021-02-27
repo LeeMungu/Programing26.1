@@ -59,7 +59,7 @@ void Scene5::Init()
 
 
 	//NPC
-	NPC* npc = new NPC("dedede", 490, 1400);
+	NPC* npc = new NPC("dedede", 2100, 440);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
@@ -92,9 +92,9 @@ void Scene5::Init()
 	//textBox
 	TextBox* textBox = new TextBox("Text1", L"막다른 길인가...", 0.05f, TextType::Dedede);
 	textBox->SetIsActive(false);
-	TextBox* textBox1 = new TextBox("Text2", L"좋은 말로 할 때 해독약 내놔 디디디 대왕...", 0.05f, TextType::Kirby);
+	TextBox* textBox1 = new TextBox("Text2", L"좋은 말로 할 때 해독약 내놔! 디디디 대왕!!!", 0.05f, TextType::Kirby);
 	textBox1->SetIsActive(false);
-	TextBox* textBox2 = new TextBox("Text3", L"여기까지 올 수 있으면 주지!!!", 0.05f, TextType::Dedede);
+	TextBox* textBox2 = new TextBox("Text3", L"내가 어떻게 이 계획을 만들었는데! 절대 안돼!", 0.05f, TextType::Dedede);
 	textBox2->SetIsActive(false);
 	TextBox* textBox3 = new TextBox("Text4", L"혹시 50명한테 동시에 맞아본 적 있어?", 0.05f, TextType::Kirby);
 	textBox3->SetIsActive(false);
@@ -105,11 +105,6 @@ void Scene5::Init()
 	TextBox* textBox6 = new TextBox("Text7", L"그래도 해독약은 못 줘어어어어!!!!!", 0.05f, TextType::Dedede);
 	textBox6->SetIsActive(false);
 
-
-	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
-	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
@@ -117,6 +112,19 @@ void Scene5::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox4);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox6);
+
+
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox2));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox3));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox4));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox5));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox6));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
 	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
