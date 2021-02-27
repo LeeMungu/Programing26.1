@@ -44,8 +44,8 @@ void Scene1::Init()
 	Door* door = new Door("Door",WINSIZEX/2,100,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2+150, 170);
-	//Goal* goal = new Goal("goal", 1200, 1230);
+	//Goal* goal = new Goal("goal", WINSIZEX / 2+150, 170);
+	Goal* goal = new Goal("goal", 1200, 1230);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	//NPC
@@ -55,13 +55,13 @@ void Scene1::Init()
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 2);
+	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
-	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 2);
+	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
-	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 2);
+	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
-	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 2);
+	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
@@ -82,9 +82,9 @@ void Scene1::Init()
 	//textBox
 	TextBox* textBox = new TextBox("Text1", L"의심도 없이 멍청하게 쌍둥이 열매를 먹다니!", 0.05f, TextType::Dedede);
 	textBox->SetIsActive(false);
-	TextBox* textBox1 = new TextBox("Text2", L"너희는 이제 끝도 없이 분열되어", 0.05f, TextType::Dedede);
+	TextBox* textBox1 = new TextBox("Text2", L"너희는 이제 끝도 없이 분열되어 온 우주가!", 0.05f, TextType::Dedede);
 	textBox1->SetIsActive(false);
-	TextBox* textBox2 = new TextBox("Text3", L"온 우주가 너로 인해 고통받을 것이다!!!", 0.05f, TextType::Dedede);
+	TextBox* textBox2 = new TextBox("Text3", L"커비로 가득찰 것이다!!!", 0.05f, TextType::Dedede);
 	textBox2->SetIsActive(false);
 	TextBox* textBox3 = new TextBox("Text4", L"(10명으로 분열됐나...)", 0.05f, TextType::Kirby);
 	textBox3->SetIsActive(false);
@@ -119,7 +119,12 @@ void Scene1::Init()
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox4));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox5));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.1f));
@@ -130,9 +135,14 @@ void Scene1::Init()
 
 
 	//셋 초기화
+
+	GameEventManager::GetInstance()->Update();
+	ObjectManager::GetInstance()->Update();
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
+
+	mIsSpecial = false;
 }
 
 void Scene1::Release()
@@ -147,8 +157,8 @@ void Scene1::Release()
 			temps[i]->SetIsActive(false);
 		}
 	}
-	SafeDelete(mAnimationGameOver);
-	SafeDelete(mAnimationGameClear);
+	//SafeDelete(mAnimationGameOver);
+	//SafeDelete(mAnimationGameClear);
 }
 
 void Scene1::Update()
