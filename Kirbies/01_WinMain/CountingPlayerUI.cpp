@@ -81,7 +81,7 @@ void CountingPlayerUI::Render(HDC hdc)
 
 	SetBkMode(hdc, 1);
 	HFONT hFont, oldFont;
-	hFont = CreateFont(27, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("Edit Undo BRK"));
+	hFont = CreateFont(25, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("Edit Undo BRK"));
 	oldFont = (HFONT)SelectObject(hdc, hFont);
 
 	wstring createdPlayer = L"OUT " + to_wstring(mCreatedPlayerCount);
@@ -89,9 +89,9 @@ void CountingPlayerUI::Render(HDC hdc)
 	wstring timer = L"TIME " + to_wstring((int)(mTimer / 60) % 60) + L":"
 		+ to_wstring((int)mTimer % 60);
 
-	TextOut(hdc, mX + 10, mY + 10, createdPlayer.c_str(), createdPlayer.length());
-	TextOut(hdc, mX + 140, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
-	TextOut(hdc, mX + 265, mY + 10, timer.c_str(), timer.length());
+	TextOut(hdc, mX + 15, mY + 10, createdPlayer.c_str(), createdPlayer.length());
+	TextOut(hdc, mX + 145, mY + 10, GoalPlayer.c_str(), GoalPlayer.length());
+	TextOut(hdc, mX + 270, mY + 10, timer.c_str(), timer.length());
 
 	SelectObject(hdc, oldFont);
 	DeleteObject(hFont);
