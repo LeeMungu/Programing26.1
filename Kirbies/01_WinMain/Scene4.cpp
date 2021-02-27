@@ -170,22 +170,7 @@ void Scene4::Update()
 {
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
 
-	//클리어 시 변경 로딩씬
-	if (mIsGameClear == true)
-	{
-
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
-		}
-	}
-	if (mIsGameOver == true)
-	{
-		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
-		{
-			SceneManager::GetInstance()->LoadScene(L"MainScene");
-		}
-	}
+	
 	//클리어조건
 	CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene4count");
 	if (tempUi != NULL && mIsGameClear == false)
@@ -218,6 +203,23 @@ void Scene4::Update()
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
+
+	//클리어 시 변경 로딩씬
+	if (mIsGameClear == true)
+	{
+
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
+		}
+	}
+	if (mIsGameOver == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			SceneManager::GetInstance()->LoadScene(L"MainScene");
+		}
+	}
 	SpecialFunc();
 }
 
