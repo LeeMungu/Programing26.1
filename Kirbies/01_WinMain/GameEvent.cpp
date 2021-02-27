@@ -89,7 +89,11 @@ bool ITextEvent::Update()
 	if (mTextBox->GetIsTextEnd() == true)
 	{
 		mTimeCount += Time::GetInstance()->DeltaTime();
-		return true;
+		if (mTimeCount > mLimitTime)
+		{
+			mTextBox->SetIsDestroy(true);
+			return true;
+		}
 	}
 	return false;
 }
