@@ -27,7 +27,7 @@ void TrapDie::Init()
 	mBottom = (Bottom*)ObjectManager::GetInstance()->FindObject("Bottom");
 
 	mAnimation->SetCallbackFunc([this]() {
-		BoomRectManager* boomRcManager = new BoomRectManager(mPlayer->GetX(), mPlayer->GetY());
+		BoomRectManager* boomRcManager = new BoomRectManager(mPlayer->GetX() + 10, mPlayer->GetY() + 15);
 		boomRcManager->Init();
 
 		mPlayer->SetIsDestroy(true);
