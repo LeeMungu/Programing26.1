@@ -38,10 +38,10 @@ void Scene4::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", WINSIZEX / 2, 0, 10);
+	Door* door = new Door("Door", 2000, 50, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
-	Goal* goal = new Goal("goal", WINSIZEX / 2 + 300, 0);
+	Goal* goal = new Goal("goal", 480, 1400);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 
@@ -168,4 +168,14 @@ void Scene4::Render(HDC hdc)
 void Scene4::mapRender(HDC map)
 {
 	ObjectManager::GetInstance()->mapRender(map);
+
+	HPEN newPen = CreatePen(PS_SOLID, 50, RGB(255, 255, 255));
+	HPEN prevPen = (HPEN)SelectObject(map, newPen);
+	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+	HBRUSH oldBrush = (HBRUSH)SelectObject(map, myBrush);
+	RenderRect(map, CameraManager::GetInstance()->GetMainCamera()->GetRect());
+	SelectObject(map, oldBrush);
+	DeleteObject(myBrush);
+	SelectObject(map, prevPen);
+	DeleteObject(newPen);
 }

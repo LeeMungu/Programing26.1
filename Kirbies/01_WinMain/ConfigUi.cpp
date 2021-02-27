@@ -17,8 +17,9 @@ ConfigUi::ConfigUi(const string& name)
 	mEffSoundBar = IMAGEMANAGER->FindImage(L"SoundBar");
 	mIndexX = 0;
 	msubsizeX = 0;
-	mBgmScaleX = 50;
-	mEffScaleX = 50;
+
+	mBgmScaleX = SoundPlayer::GetInstance()->GetBgmvolum() * 100;
+	mEffScaleX = SoundPlayer::GetInstance()->GetEffectVolum() * 100;
 	
 }
 
@@ -82,6 +83,8 @@ void ConfigUi::Release()
 
 void ConfigUi::Update()
 {
+	
+
 	if (mBgmScaleX >= 100)
 	{
 		mBgmScaleX = 100;
