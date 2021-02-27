@@ -59,15 +59,15 @@ void Scene4::Init()
 	NPC* npc = new NPC("dedede", 490, 1400);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
-	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
+	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 20);
+	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 50);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
-	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 20);
+	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
-	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 20);
+	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
-	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
+	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 99);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
