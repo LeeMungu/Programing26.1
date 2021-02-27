@@ -35,6 +35,22 @@ void DataUI::Update()
 				mGoalMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
 				mTimeMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
 			}
+			else if (name == "Scene3count") {
+				mGoalMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+				mTimeMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+			}
+			else if (name == "Scene3count") {
+				mGoalMap.insert(make_pair("3", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+				mTimeMap.insert(make_pair("3", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+			}
+			else if (name == "Scene4count") {
+				mGoalMap.insert(make_pair("4", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+				mTimeMap.insert(make_pair("4", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+			}
+			else if (name == "Scene5count") {
+				mGoalMap.insert(make_pair("5", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+				mTimeMap.insert(make_pair("5", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+			}
 		}
 	}
 
