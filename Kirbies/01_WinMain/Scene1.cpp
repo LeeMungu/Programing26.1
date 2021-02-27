@@ -109,6 +109,7 @@ void Scene1::Init()
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 
 	//셋 초기화
