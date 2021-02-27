@@ -14,6 +14,7 @@
 #include "DataUI.h"
 #include "Animation.h"
 #include "NPC.h"
+#include "TextBox.h"
 
 void Scene3::Init()
 {
@@ -69,12 +70,18 @@ void Scene3::Init()
 
 	//camera
 	Camera* camera = new Camera();
-	camera->SetX(0);
-	camera->SetY(0);
+	//camera->SetX(0);
+	//camera->SetY(0);
 	//camera->SetTarget(player1);//½ÃÀÛ Å¸°Ù ¼³Á¤
 	camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
+
+	//textBox
+	TextBox* textBox = new TextBox("Text1",L"»§²Ù¶Ë²Ù¾ß!!`~!!!",0.3f);
+	textBox->SetIsActive(false);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
+
 
 	//¿ÀºêÁ§Æ® Init
 	ObjectManager::GetInstance()->Init();
@@ -87,6 +94,7 @@ void Scene3::Init()
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
+	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
