@@ -13,6 +13,7 @@
 #include "CountingPlayerUI.h"
 #include "DataUI.h"
 #include "Animation.h"
+#include "Trap.h"
 
 void Scene4::Init()
 {
@@ -44,6 +45,9 @@ void Scene4::Init()
 	Goal* goal = new Goal("goal", 480, 1400);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
+	Trap* trap1 = new Trap("trap1", 590, 680, 920, 50, PlayerState::BoomState);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, trap1);
+
 
 	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
@@ -65,14 +69,16 @@ void Scene4::Init()
 
 	//camera
 	Camera* camera = new Camera();
-	camera->SetX(100);
-	camera->SetY(WINSIZEY / 2);
+	
 	//camera->SetTarget(player1);
 	camera->ChangeMode(Camera::Mode::Free);
 	CameraManager::GetInstance()->SetMainCamera(camera);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
 	ObjectManager::GetInstance()->Init();
+
+	camera->SetX(2500);
+	camera->SetY(WINSIZEY / 2);
 
 	//»ç¿îµå
 	SoundPlayer::GetInstance()->Play(L"Scene4BGM", SoundPlayer::GetInstance()->GetBgmvolum());

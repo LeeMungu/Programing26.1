@@ -48,6 +48,7 @@ class Player : public GameObject
 	bool mIsCrash;
 	bool mIsFallDead;
 	bool mIsDig;
+	bool mIsTrap;
 
 public:
 	Player(const string& name,float x, float y);
@@ -103,5 +104,7 @@ public:
 	bool GetIsDig()const { return mIsDig; }
 	void SetIsDig(bool isDig) { mIsDig = isDig; }
 
+	bool GetIsTrap()const { return mIsTrap; }
+	void SetIsTrap(bool istrap) { mIsTrap = istrap; }
 };
 

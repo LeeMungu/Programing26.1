@@ -62,6 +62,7 @@ void Player::Init()
 	mIsStopper = false;
 	mIsFallDead = false;
 	mIsDig = false;
+	mIsTrap = false;
 }
 
 void Player::Release()
