@@ -105,11 +105,17 @@ void Scene2::Init()
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox2));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
+	//이벤트 업데이트
+
+	GameEventManager::GetInstance()->Update();
+	ObjectManager::GetInstance()->Update();
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
@@ -130,8 +136,8 @@ void Scene2::Release()
 			temps[i]->SetIsActive(false);
 		}
 	}
-	SafeDelete(mAnimationGameOver);
-	SafeDelete(mAnimationGameClear);
+	//SafeDelete(mAnimationGameOver);
+	//SafeDelete(mAnimationGameClear);
 }
 
 void Scene2::Update()

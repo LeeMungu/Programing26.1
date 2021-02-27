@@ -93,6 +93,11 @@ void Scene5::Init()
 	TextBox* textBox6 = new TextBox("Text7", L"그래도 해독약은 못 줘어어어어!!!!!", 0.05f, TextType::Dedede);
 	textBox6->SetIsActive(false);
 
+
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
+	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox1);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox2);
@@ -100,12 +105,25 @@ void Scene5::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox4);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox6);
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
+	GameEventManager::GetInstance()->PushEvent(new INpcController(npc, true, 0));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 	ObjectManager::GetInstance()->Init();
 
 	//사운드
 	SoundPlayer::GetInstance()->Play(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene4BGM");
+
+	//이벤트 업데이트
+	GameEventManager::GetInstance()->Update();
 
 	mIsGameClear = false;
 	mIsGameOver = false;
