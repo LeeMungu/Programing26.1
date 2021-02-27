@@ -41,7 +41,7 @@ void IChangeCameraModeEvent::Start()
 bool IChangeCameraModeEvent::Update()
 {
 	if (CameraManager::GetInstance()->GetMainCamera()->GetMode()
-		!=mMode)
+		==mMode)
 	{
 		return true;
 	}

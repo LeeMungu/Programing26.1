@@ -1,7 +1,7 @@
 #pragma once
 #include "Camera.h"
 #include "SceneManager.h"
-
+#include "Door.h"
 //interface class : 순수가상함수만을 가지고 있는 클래스
 class IEvent
 {
