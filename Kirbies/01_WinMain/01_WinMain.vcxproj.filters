@@ -366,6 +366,9 @@
     <ClInclude Include="TrapDie.h">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
     </ClInclude>
+    <ClInclude Include="SceneEnding.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -586,6 +589,9 @@
     </ClCompile>
     <ClCompile Include="TrapDie.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\CJW</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEnding.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
