@@ -219,6 +219,7 @@
     <ClInclude Include="TitleStyle2.h" />
     <ClInclude Include="TitleStyle3.h" />
     <ClInclude Include="TitleStyle4.h" />
+    <ClInclude Include="Trap.h" />
     <ClInclude Include="Ui.h" />
     <ClInclude Include="UiManager.h" />
     <ClInclude Include="Umbrella.h" />
@@ -297,6 +298,7 @@
     <ClCompile Include="TitleStyle2.cpp" />
     <ClCompile Include="TitleStyle3.cpp" />
     <ClCompile Include="TitleStyle4.cpp" />
+    <ClCompile Include="Trap.cpp" />
     <ClCompile Include="Ui.cpp" />
     <ClCompile Include="UiManager.cpp" />
     <ClCompile Include="Umbrella.cpp" />
