@@ -78,7 +78,7 @@ void Scene3::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Camera, camera);
 
 	//textBox
-	TextBox* textBox = new TextBox("Text1",L"户操端操具!!`~!!!",0.3f);
+	TextBox* textBox = new TextBox("Text1",L"户操端操具!!`~!!!",0.3f,TextType::Dedede);
 	textBox->SetIsActive(false);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 
