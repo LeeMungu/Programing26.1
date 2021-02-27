@@ -45,8 +45,8 @@ void Scene4::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 
-	Goal* goal = new Goal("goal", 2200, 50);
-	//Goal* goal = new Goal("goal", 480, 1400);
+	//Goal* goal = new Goal("goal", 2200, 50);
+	Goal* goal = new Goal("goal", 480, 1400);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
 	Trap* trap1 = new Trap("trap1", 590, 680, 920, 50, PlayerState::TrapDieState);
@@ -74,9 +74,6 @@ void Scene4::Init()
 	CountingPlayerUI* countUI = new CountingPlayerUI("Scene4count", 200, 50, 300);
 	countUI->Init();
 	UiManager::GetInstance()->AddUi(UiLayer::CountPlayerUi, countUI);
-
-	//DataUI* dataUI = new DataUI("dataUI", "Scenecount");
-	//UiManager::GetInstance()->AddUi(UiLayer::DataUI, dataUI);
 
 	//camera
 	Camera* camera = new Camera();
