@@ -45,7 +45,7 @@ void Scene1::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX/2, WINSIZEY/2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door",WINSIZEX/2,0,10);
+	Door* door = new Door("Door",WINSIZEX/2,100,10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal", 1200, 1230);
@@ -106,11 +106,15 @@ void Scene1::Init()
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.f));
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
+
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
+
+	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(5.0f));
+	//GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 
 	//셋 초기화
