@@ -80,6 +80,7 @@ void Scene3::Init()
 	//textBox
 	TextBox* textBox = new TextBox("Text1",L"»§²Ù¶Ë²Ù¾ß!!`~!!!",0.3f,TextType::Dedede);
 	textBox->SetIsActive(false);
+
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox);
 
 
@@ -91,7 +92,7 @@ void Scene3::Init()
 	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
 
 	//ÀÌº¥Æ® ÃÊ±âÈ­
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(3.f)); //3ÃÊµ¿¾ÈÀÇÅÒ
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
