@@ -125,8 +125,7 @@ void Scene2::Init()
 	mGameOverTimer = 0.f;
 
 	mIsSpecial = false;
-	SpecialFunc();
-	FollowPlayer();
+	
 }
 
 void Scene2::Release()
@@ -199,6 +198,7 @@ void Scene2::Update()
 		}
 	}
 	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene2::Render(HDC hdc)
@@ -226,5 +226,15 @@ void Scene2::Render(HDC hdc)
 void Scene2::mapRender(HDC map)
 {
 	ObjectManager::GetInstance()->mapRender(map);
+	//지도 위 렉트
+	HPEN newPen = CreatePen(PS_SOLID, 50, RGB(255, 255, 255));
+	HPEN prevPen = (HPEN)SelectObject(map, newPen);
+	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+	HBRUSH oldBrush = (HBRUSH)SelectObject(map, myBrush);
+	RenderRect(map, CameraManager::GetInstance()->GetMainCamera()->GetRect());
+	SelectObject(map, oldBrush);
+	DeleteObject(myBrush);
+	SelectObject(map, prevPen);
+	DeleteObject(newPen);
 }
 

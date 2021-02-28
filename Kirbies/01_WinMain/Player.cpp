@@ -7,6 +7,7 @@
 
 #include "State.h"
 #include "Boom.h"
+#include "BunBottom.h"
 #include "Climb.h"
 #include "Fall.h"
 #include "Run.h"
@@ -74,96 +75,25 @@ void Player::Release()
 
 void Player::Update()
 {
-	if (mIsChange)
-	{
-		if (mPlayerState == PlayerState::BoomState)
-		{
-			mIsBoom = false;
-			SafeDelete(mCurrentState);
-			mCurrentState = new Boom;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::ClimbState)
-		{
-			mIsCrash = false;
-			SafeDelete(mCurrentState);
-			mCurrentState = new Climb;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::DigState)
-		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new Dig;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+	UpdateState();
 
-		}
-		else if (mPlayerState == PlayerState::FallState)
+	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
+	BunBottom* tempBunB = (BunBottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Effect, "BunBottom");
+	//으앙 타쥬금
+	if (tempBunB != NULL)
+	{
+		for (float y = mY; y < mY + mSizeY / 2; y++)
 		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new Fall;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::RunState)
-		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new Run;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::StopperState)
-		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new Stopper;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::UmbrellaState)
-		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new Umbrella;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::TrapDieState)
-		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new TrapDie;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
-		}
-		else if (mPlayerState == PlayerState::ThrowState)
-		{
-			SafeDelete(mCurrentState);
-			mCurrentState = new Throw;
-			mCurrentState->SetPlayerPtr(this);
-			mIsChange = false;
-			mCurrentState->Init();
-			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+			COLORREF pixelColor = GetPixel(tempBunB->GetImage()->GetHDC(), mX, y);
+			if (pixelColor != RGB(255, 0, 255) && mPlayerState != PlayerState::BoomState)
+			{
+				mIsChange = true;
+				mPlayerState = PlayerState::BoomState;
+				break;
+			}
 		}
 	}
 
-	Bottom* tempB = (Bottom*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "Bottom");
-	
 	//떨어졌을때 바닥보정
 	if (mPlayerState == PlayerState::FallState)
 	{
@@ -315,7 +245,7 @@ void Player::Update()
 		Dig* tempDig = (Dig*)mCurrentState;
 		if (tempDig->GetDigCheck() == true)
 		{
-			float y = mRect.bottom + mSizeY / 2;
+			float y = mRect.bottom;
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
 			if (pixelColor == RGB(255, 0, 255))
 			{
@@ -329,6 +259,7 @@ void Player::Update()
 	{
 
 	}
+
 
 	if (mY > WINSIZEY * 2)
 	{
@@ -393,4 +324,95 @@ void Player::mapRender(HDC map)
 {
 	if(mCurrentState!=NULL)
 	mCurrentState->mapRender(map);
+}
+
+void Player::UpdateState()
+{
+	if (mIsChange)
+	{
+		if (mPlayerState == PlayerState::BoomState)
+		{
+			mIsBoom = false;
+			SafeDelete(mCurrentState);
+			mCurrentState = new Boom;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::ClimbState)
+		{
+			mIsCrash = false;
+			SafeDelete(mCurrentState);
+			mCurrentState = new Climb;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::DigState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Dig;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+
+		}
+		else if (mPlayerState == PlayerState::FallState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Fall;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::RunState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Run;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::StopperState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Stopper;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::UmbrellaState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Umbrella;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::TrapDieState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new TrapDie;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+		else if (mPlayerState == PlayerState::ThrowState)
+		{
+			SafeDelete(mCurrentState);
+			mCurrentState = new Throw;
+			mCurrentState->SetPlayerPtr(this);
+			mIsChange = false;
+			mCurrentState->Init();
+			mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
+		}
+	}
 }

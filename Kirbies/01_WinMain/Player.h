@@ -61,6 +61,8 @@ public:
 	void Render(HDC hdc)override;
 	void mapRender(HDC map)override;
 	
+	void UpdateState();
+
 	float GetX() { return mX; }
 	float GetY() { return mY; }
 	

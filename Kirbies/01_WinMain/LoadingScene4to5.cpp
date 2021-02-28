@@ -47,7 +47,7 @@ void LoadingScene4to5::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Boom", Resources(L"boom.bmp"), 280 * PlayerSize, 32 * PlayerSize, 8, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"KirbyFallDead", Resources(L"kirbyDie.bmp"), 72 * PlayerSize, 30 * PlayerSize, 3, 2, true); });
 
-	//이미지 (왜 필요한지 모르는 여자애)
+	//이미지 (스페셜)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppear", Resources(L"/sp/appear.bmp"), 1328, 540, 8, 3, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppearEffect", Resources(L"/sp/appeareffect.bmp"), 2988, 1536, 9, 3, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttack", Resources(L"/sp/attack.bmp"), 1494, 720, 9, 4, true); });

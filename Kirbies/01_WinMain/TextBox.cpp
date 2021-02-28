@@ -56,7 +56,7 @@ void TextBox::Release()
 
 void TextBox::Render(HDC hdc)
 {
-	mImage->Render(hdc, mRect.left, mRect.top);
+	mImage->AlphaRender(hdc, mRect.left, mRect.top, 0.7f);
 
 	HFONT hFont, oldFont;
 	hFont = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));

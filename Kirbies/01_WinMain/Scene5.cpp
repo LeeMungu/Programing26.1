@@ -250,6 +250,7 @@ void Scene5::Update()
 		}
 	}
 	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene5::Render(HDC hdc)
@@ -271,12 +272,20 @@ void Scene5::Render(HDC hdc)
 			mAnimationGameOver->GetNowFrameX(),
 			mAnimationGameOver->GetNowFrameY());
 	}
-
-	SpecialFunc();
-	FollowPlayer();
 }
 
 void Scene5::mapRender(HDC map)
 {
 	ObjectManager::GetInstance()->mapRender(map);
+
+	//지도 위 렉트
+	HPEN newPen = CreatePen(PS_SOLID, 50, RGB(255, 255, 255));
+	HPEN prevPen = (HPEN)SelectObject(map, newPen);
+	HBRUSH myBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+	HBRUSH oldBrush = (HBRUSH)SelectObject(map, myBrush);
+	RenderRect(map, CameraManager::GetInstance()->GetMainCamera()->GetRect());
+	SelectObject(map, oldBrush);
+	DeleteObject(myBrush);
+	SelectObject(map, prevPen);
+	DeleteObject(newPen);
 }

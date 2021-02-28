@@ -387,6 +387,9 @@
     <ClInclude Include="ThrowBtn.h">
       <Filter>MainGame\Object\PowerBtn</Filter>
     </ClInclude>
+    <ClInclude Include="BunBottom.h">
+      <Filter>MainGame\Object\Bottom</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="01_WinMain.cpp">
@@ -625,6 +628,9 @@
     </ClCompile>
     <ClCompile Include="ThrowBtn.cpp">
       <Filter>MainGame\Object\PowerBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="BunBottom.cpp">
+      <Filter>MainGame\Object\Bottom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

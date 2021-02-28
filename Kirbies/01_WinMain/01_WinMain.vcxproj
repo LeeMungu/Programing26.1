@@ -155,6 +155,7 @@
     <ClInclude Include="BoomRectManager.h" />
     <ClInclude Include="Bottom.h" />
     <ClInclude Include="Bugzzy.h" />
+    <ClInclude Include="BunBottom.h" />
     <ClInclude Include="ButtonUi.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CameraEvent.h" />
@@ -240,6 +241,7 @@
     <ClCompile Include="BoomRectManager.cpp" />
     <ClCompile Include="Bottom.cpp" />
     <ClCompile Include="Bugzzy.cpp" />
+    <ClCompile Include="BunBottom.cpp" />
     <ClCompile Include="ButtonUi.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CameraEvent.cpp" />

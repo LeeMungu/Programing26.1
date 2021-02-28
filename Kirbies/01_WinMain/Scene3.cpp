@@ -15,7 +15,7 @@
 #include "Animation.h"
 #include "NPC.h"
 #include "TextBox.h"
-
+#include "BunBottom.h"
 
 void Scene3::Init()
 {
@@ -36,10 +36,16 @@ void Scene3::Init()
 
 	BackGround* backGround = new BackGround("Background3", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
-
+	
 
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
+
+	//¸¶±×¸¶ ¹Ù´Ú
+	BunBottom* bunBottom = new BunBottom("BunBottom", WINSIZEX / 2, WINSIZEY / 2);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, bunBottom);
+
+
 
 	Door* door = new Door("Door", WINSIZEX / 4, 300, 30);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
@@ -126,8 +132,6 @@ void Scene3::Init()
 	mGameOverTimer = 0.f;
 
 	mIsSpecial = false;
-	SpecialFunc();
-	FollowPlayer();
 }
 
 void Scene3::Release()
@@ -202,6 +206,7 @@ void Scene3::Update()
 		}
 	}
 	SpecialFunc();
+	FollowPlayer();
 }
 
 void Scene3::Render(HDC hdc)

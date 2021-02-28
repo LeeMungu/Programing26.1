@@ -21,6 +21,7 @@ void LoadingScene2to3::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene3.bmp"), 2560, 1440, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameOver", Resources(L"GameOver.bmp"), 1872, 48, 9, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameClear", Resources(L"GameClearImage1.bmp"), 4403 * PlayerSize, 52 * PlayerSize, 17, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"BunBottom", Resources(L"bunBottom.bmp"), 5120*2, 1440*2 , 4, 2, true); });
 
 	//이미지 (UI)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"OutUI", Resources(L"cloudbox_ui.bmp"), 120, 48, true); });
@@ -44,7 +45,7 @@ void LoadingScene2to3::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Boom", Resources(L"boom.bmp"), 280 * PlayerSize, 32 * PlayerSize, 8, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"KirbyFallDead", Resources(L"kirbyDie.bmp"), 72 * PlayerSize, 30 * PlayerSize, 3, 2, true); });
 
-	//이미지 (왜 필요한지 모르는 여자애)
+	//이미지 (스파샬)
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppear", Resources(L"/sp/appear.bmp"), 1328, 540, 8, 3, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAppearEffect", Resources(L"/sp/appeareffect.bmp"), 2988, 1536, 9, 3, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"SpecialAttack", Resources(L"/sp/attack.bmp"), 1494, 720, 9, 4, true); });
