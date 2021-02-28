@@ -49,11 +49,16 @@ void Scene4::Init()
 	Goal* goal = new Goal("goal", 480, 1400);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Goal, goal);
 
+	//Trap
 	Trap* trap1 = new Trap("trap1", 590, 680, 920, 50, PlayerState::TrapDieState);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, trap1);
 
 	Trap* trap2 = new Trap("trap2", 1820, 340, 600, 50, PlayerState::TrapDieState);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, trap2);
+
+	Trap* trap3 = new Trap("trap3", 0, 1430, WINSIZEX * 2, 100, PlayerState::TrapDieState);
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, trap3);
+	
 
 	//NPC
 	NPC* npc = new NPC("dedede", 490, 1400);
