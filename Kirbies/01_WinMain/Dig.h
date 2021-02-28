@@ -17,7 +17,7 @@ class Dig :public State
 
 	bool mIsFallCheck;
 	bool mIsDigCheck;
-
+	bool mIsDig;
 	float mRadius;
 	Effect* mEffect;
 

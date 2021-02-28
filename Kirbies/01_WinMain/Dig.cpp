@@ -27,7 +27,6 @@ void Dig::Init()
 		mAnimation->InitFrameByEndStart(13, 1, 0, 1, false);
 	}
 	mAnimation->SetIsLoop(true);
-	SoundPlayer::GetInstance()->Play(L"DigEffectSound", 5.f *SoundPlayer::GetInstance()->GetEffectVolum());
 	mAnimation->SetFrameUpdateTime(0.1f);
 	mAnimation->Play();
 
@@ -52,6 +51,7 @@ void Dig::Init()
 	mIsFallCheck = false;
 	mIsDigCheck = false;
 	mRadius = 30;
+	mIsDig = false;
 }
 
 void Dig::Update()
@@ -73,7 +73,7 @@ void Dig::Update()
 			if (mPlayer->GetIntMotionRL() == 0)
 			{
 
-				if (mAnimation->GetNowFrameX() == 5)
+				if (mAnimation->GetNowFrameX() == 5 && mIsDig==false)
 				{
 					HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
 					HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 255));
@@ -91,14 +91,19 @@ void Dig::Update()
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
 					DeleteObject(pen);
 					DeleteObject(brush);
-
-					mPlayer->SetY(mPlayer->GetY()+mRadius/2);
+					SoundPlayer::GetInstance()->Play(L"DigEffectSound", 5.f * SoundPlayer::GetInstance()->GetEffectVolum());
+					mPlayer->SetY(mPlayer->GetY()+mRadius);
+					mIsDig = true;
 					break;
+				}
+				if (mAnimation->GetNowFrameX() != 5)
+				{
+					mIsDig = false;
 				}
 			}
 			else if (mPlayer->GetIntMotionRL() == 1)
 			{
-				if (mAnimation->GetNowFrameX() == 8)
+				if (mAnimation->GetNowFrameX() == 8 && mIsDig == false)
 				{
 					HBRUSH brush = CreateSolidBrush(RGB(255, 0, 255));
 					HPEN pen = CreatePen(PS_SOLID, 1, RGB(255, 0, 255));
@@ -116,9 +121,14 @@ void Dig::Update()
 					SelectObject(mBottom->GetImage()->GetHDC(), oldBrush);
 					DeleteObject(pen);
 					DeleteObject(brush);
-
-					mPlayer->SetY(mPlayer->GetY() + mRadius/2);
+					SoundPlayer::GetInstance()->Play(L"DigEffectSound", 5.f * SoundPlayer::GetInstance()->GetEffectVolum());
+					mPlayer->SetY(mPlayer->GetY() + mRadius);
+					mIsDig = true;
 					break;
+				}
+				if (mAnimation->GetNowFrameX() != 8)
+				{
+					mIsDig = false;
 				}
 			}
 

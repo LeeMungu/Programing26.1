@@ -245,7 +245,7 @@ void Player::Update()
 		Dig* tempDig = (Dig*)mCurrentState;
 		if (tempDig->GetDigCheck() == true)
 		{
-			float y = mRect.bottom;
+			float y = mY + mSizeY/2;
 			COLORREF pixelColor = GetPixel(tempB->GetImage()->GetHDC(), mX, y);
 			if (pixelColor == RGB(255, 0, 255))
 			{
