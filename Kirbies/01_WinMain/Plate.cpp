@@ -46,7 +46,7 @@ void Plate::Update()
 		}
 	}
 
-	if (mTimer > 9)
+	if (mTimer > 10)
 	{
 		mTimer = 0;
 		for (int i = 0; i < player.size(); i++)
