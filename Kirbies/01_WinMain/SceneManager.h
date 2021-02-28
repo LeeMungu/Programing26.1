@@ -38,6 +38,7 @@ public:
 	void SetIsActive(bool active){ mIsActive = active; }
 	bool GetIsActive() { return mIsActive; }
 	wstring GetSceneName() { return SceneName; }
+	Scene* GetScene() { return mCurrentScene; }
 private:
 	//스레드에 집어 넣을 함수 : 즉 실제로 스레드가 작업 처리 할 함수
 	void LoadingThread();

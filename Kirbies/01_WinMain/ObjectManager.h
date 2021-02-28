@@ -14,14 +14,15 @@ enum class ObjectLayer : int
 	Door = 3,
 	Player = 4,
 	UI = 5,
-	Effect = 6,
-	Special =7,
-	Camera=8,
-	StopperObject = 9,
-	DigObject = 10,
-	Mouse =11,
-	NPC =12,
-	TextBox =13,
+	SpecialEffect = 6,
+	Special = 7,
+	Effect = 8,
+	Camera=9,
+	StopperObject = 10,
+	DigObject = 11,
+	Mouse =12,
+	NPC =13,
+	TextBox =14,
 	End
 };
 

@@ -137,6 +137,7 @@ void Scene3::Init()
 void Scene3::Release()
 {
 	ObjectManager::GetInstance()->Release();
+	GameEventManager::GetInstance()->~GameEventManager();
 	SoundPlayer::GetInstance()->Stop();
 	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
 	if (temps.size() != NULL)
@@ -162,7 +163,6 @@ void Scene3::Update()
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
-			mAnimationGameClear->Play();
 		}
 	}
 	//게임오버 조건
@@ -175,13 +175,10 @@ void Scene3::Update()
 				ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 			{
 				mIsGameOver = true;
-				mAnimationGameOver->Play();
 			}
 		}
 	}
 
-	mAnimationGameOver->Update();
-	mAnimationGameClear->Update();
 	
 
 	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
@@ -192,6 +189,8 @@ void Scene3::Update()
 	//클리어 시 변경 로딩씬
 	if (mIsGameClear == true)
 	{
+		mAnimationGameClear->Play();
+		mAnimationGameClear->Update();
 
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
@@ -200,6 +199,9 @@ void Scene3::Update()
 	}
 	if (mIsGameOver == true)
 	{
+		mAnimationGameOver->Play();
+		mAnimationGameOver->Update();
+
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
 			SceneManager::GetInstance()->LoadScene(L"MainScene");

@@ -17,9 +17,9 @@ SpecialApearEffect::SpecialApearEffect(string name, float x, float y, wstring im
 
 void SpecialApearEffect::Init()
 {
-	mCurrentAnimation->SetCallbackFunc([]()
+	mCurrentAnimation->SetCallbackFunc([this]()
 	{
-		Special* special = new Special("Special", 0, 0);
+		Special* special = new Special("Special", mX, mY+100);
 		special->Init();
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Special, special);
 

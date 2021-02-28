@@ -34,7 +34,7 @@ void Scene::SpecialFunc()
 		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
 		prevCamera->ChangeMode(Camera::Mode::Follow);
 
-		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect", 0, -100, L"SpecialAppearEffect", 9, 3);
+		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect", 100, 400, L"SpecialAppearEffect", 9, 3);
 		effect->Init();
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, effect);
 		prevCamera->SetTarget(effect);
@@ -42,11 +42,11 @@ void Scene::SpecialFunc()
 	}
 	if (mIsSpecial == true &&
 		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Special).size() == NULL &&
-		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Effect).size() == NULL)
+		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::SpecialEffect).size() == NULL &&
+		ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Effect).size()==NULL)
 	{
 		mIsSpecial = false;
-		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
-		prevCamera->ChangeMode(Camera::Mode::Free);
+		CameraManager::GetInstance()->GetMainCamera()->ChangeMode(Camera::Mode::Free);
 	}
 }
 

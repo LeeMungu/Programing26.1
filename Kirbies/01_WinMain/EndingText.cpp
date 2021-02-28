@@ -9,7 +9,6 @@ EndingText::EndingText(int indexY)
 
 void EndingText::Init()
 {
-	
 	mImage = IMAGEMANAGER->FindImage(L"EndingCredit");
 	mSizeX = mImage->GetFrameWidth();
 	mSizeY = mImage->GetFrameHeight();

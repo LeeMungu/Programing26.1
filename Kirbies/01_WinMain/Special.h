@@ -10,6 +10,10 @@ class Special : public GameObject
 	Animation* mApearAnimation;
 	Animation* mAttackAnimation;
 	Animation* mEndAnimation;
+	bool mIsAnimationChange;
+	bool mIsEffect;
+	bool mIsEnd;
+
 public:
 	Special(const string& name, float x, float y);
 

@@ -6,6 +6,8 @@ class SpecialAttackEffect : public Effect
 	Animation* mAttackEffect1;
 	Animation* mAttackEffect2;
 	Animation* mAttackEffect3;
+	float mPlayerX;
+	float mPlayerY;
 public:
 	SpecialAttackEffect(string name, float x, float y, wstring imagekey);
 
