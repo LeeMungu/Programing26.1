@@ -1,16 +1,21 @@
 #include "pch.h"
 #include "SceneEnding.h"
 #include "EndingText.h"
+#include "BackGround.h"
 
 void SceneEnding::Init()
 {
-	
+	BackGround* backGround = new BackGround("EndingBackGound", WINSIZEX/2,WINSIZEY/2);
+	backGround->Init();
+	ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, backGround);
+
 	mIndexY = 0;
 	EndingText* endingText = new EndingText(mIndexY);
 	endingText->Init();
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, endingText);
 	mEndText = endingText;
 	mIndexY++;
+	mStop = false;
 }
 void SceneEnding::Release()
 {
@@ -19,15 +24,29 @@ void SceneEnding::Release()
 
 void SceneEnding::Update()
 {
-	if (mEndText->GetRect().bottom < WINSIZEY-10 && mIndexY < 44)
+	if (mStop == false)
 	{
-		EndingText* endingText = new EndingText(mIndexY);
-		endingText->Init();
-		ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, endingText);
-		mEndText = endingText;
-		mIndexY++;
+		if (mEndText->GetRect().bottom < WINSIZEY - 10 && mIndexY < 44)
+		{
+			EndingText* endingText = new EndingText(mIndexY);
+			endingText->Init();
+			ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, endingText);
+			mEndText = endingText;
+			mIndexY++;
+		}
+		ObjectManager::GetInstance()->Update();
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			mStop = true;
+		}
 	}
-	ObjectManager::GetInstance()->Update();
+	else
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+			mStop = false;
+		}
+	}
 }
 
 void SceneEnding::Render(HDC hdc)

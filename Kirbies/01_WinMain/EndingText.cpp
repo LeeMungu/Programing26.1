@@ -45,11 +45,11 @@ void EndingText::Update()
 
 void EndingText::Render(HDC hdc)
 {
-	HPEN newPen = CreatePen(PS_SOLID, 5, RGB(100, 0, 100));
-	HPEN prevPen = (HPEN)SelectObject(hdc, newPen);
-	RenderRect(hdc, mRect);
-	SelectObject(hdc, prevPen);
-	DeleteObject(newPen);
+	//HPEN newPen = CreatePen(PS_SOLID, 5, RGB(100, 0, 100));
+	//HPEN prevPen = (HPEN)SelectObject(hdc, newPen);
+	//RenderRect(hdc, mRect);
+	//SelectObject(hdc, prevPen);
+	//DeleteObject(newPen);
 	
 	mImage->ScaleFrameRender(hdc, mRect.left, mRect.top, 0, mIndexY, mSizeX, mSizeY);
 }

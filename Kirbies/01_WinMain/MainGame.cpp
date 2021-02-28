@@ -49,7 +49,9 @@ void MainGame::Init()
 	IMAGEMANAGER->LoadFromFile(L"MainTitle2", Resources(L"MainTitle2.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"MainTitle3", Resources(L"MainTitle3.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"MainTitle4", Resources(L"MainTitle4.bmp"), 1280, 720, true);
+	
 	//엔딩이미지 로드
+	IMAGEMANAGER->LoadFromFile(L"EndingBackGound", Resources(L"STAFFBACKGROUND.bmp"), 917, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"EndingCredit", Resources(L"EndingCredit.bmp"), 1000, 9240, 1,44, true);
 
 	//텍스트 이미지

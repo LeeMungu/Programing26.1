@@ -9,6 +9,7 @@ class SceneEnding : public Scene
 	EndingText* mEndText;
 	//텍스트 프레임번호
 	int mIndexY;
+	bool mStop;
 public:
 	void Init() override;
 	void Release() override;
