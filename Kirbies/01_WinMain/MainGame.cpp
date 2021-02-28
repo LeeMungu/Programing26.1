@@ -72,7 +72,7 @@ void MainGame::Init()
 	SceneManager::GetInstance()->AddScene(L"LoadingScene4to5", new LoadingScene4to5);
 	
 	//처음은 메인화면
-	SceneManager::GetInstance()->LoadScene(L"LoadingScene4to5");
+	SceneManager::GetInstance()->LoadScene(L"MainScene");
 
 	//디디디
 	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 256, 244, 4, 4, true);
@@ -138,7 +138,7 @@ void MainGame::Render(HDC hdc)
 		}
 		
 
-		RenderTime(backDC);
+		//RenderTime(backDC);
 	}
 	//====================================================
 	//후면버퍼 내용을 윈도우 창에 고속 복사
