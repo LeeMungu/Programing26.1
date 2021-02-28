@@ -79,7 +79,7 @@ void MainGame::Init()
 	SceneManager::GetInstance()->AddScene(L"LoadingScene3to4", new LoadingScene3to4);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene4to5", new LoadingScene4to5);
 	//엔딩씬
-	SceneManager::GetInstance()->AddScene(L"MainScene", new SceneEnding);
+	SceneManager::GetInstance()->AddScene(L"EndingScene", new SceneEnding);
 	
 	//처음은 메인화면
 	SceneManager::GetInstance()->LoadScene(L"MainScene");
