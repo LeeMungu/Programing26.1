@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Scene2.h"
+#include "Scene.h"
 #include <functional>
 
 
-class LoadingScene1to2 :public Scene2
+class LoadingScene1to2 :public Scene
 {
 	Image* mLoadingImage;
 	Image* mLoadingImage2;

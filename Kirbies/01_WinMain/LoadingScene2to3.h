@@ -1,8 +1,8 @@
 #pragma once
-#include "Scene3.h"
+#include "Scene.h"
 #include <functional>
 
-class LoadingScene2to3 :public Scene3
+class LoadingScene2to3 :public Scene
 {
 	Image* mLoadingImage;
 	Image* mLoadingImage2;
