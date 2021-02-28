@@ -235,7 +235,7 @@ void Scene5::Update()
 
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
-			SceneManager::GetInstance()->LoadScene(L"SceneEnding");
+			SceneManager::GetInstance()->LoadScene(L"EndingScene");
 		}
 	}
 	if (mIsGameOver == true)
