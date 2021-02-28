@@ -28,7 +28,7 @@ void SceneEnding::Update()
 {
 	if (mStop == false)
 	{
-		if (mEndText->GetRect().bottom < WINSIZEY - 10 && mIndexY < 44)
+		if (mEndText->GetRect().bottom < WINSIZEY - 10 && mIndexY < 55)
 		{
 			EndingText* endingText = new EndingText(mIndexY);
 			endingText->Init();
