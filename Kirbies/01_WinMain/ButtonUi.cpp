@@ -80,7 +80,11 @@ void ButtonUi::Update()
 			//메뉴다이
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
 			temp->SetIsDestroy(true);
-
+			DataUI* datatemp = (DataUI*)UiManager::GetInstance()->FindUi("dataUI");
+			if (datatemp != NULL)
+			{
+				datatemp->SetIsDestroy(true);
+			}
 
 
 		}
@@ -122,6 +126,11 @@ void ButtonUi::Update()
 			SceneManager::GetInstance()->SetIsconfig(false);
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
 			temp->SetIsDestroy(true);
+			DataUI* datatemp = (DataUI*)UiManager::GetInstance()->FindUi("dataUI");
+			if (datatemp != NULL)
+			{
+				datatemp->SetIsDestroy(true);
+			}
 		}
 		else if (mbtnState == BtnState::Sound)
 		{

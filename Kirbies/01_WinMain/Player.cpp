@@ -276,46 +276,47 @@ void Player::Render(HDC hdc)
 	if (Input::GetInstance()->GetKey(VK_LCONTROL))
 	{
 		ColorLender::GetInstance()->ColorRectRender(hdc, mRect, 255, 0, 0);
+		wstring str;
+		if (mPlayerState == PlayerState::BoomState)
+		{
+			str = L"Boom";
+		}
+		else if (mPlayerState == PlayerState::ClimbState)
+		{
+			str = L"climb";
+		}
+		else if (mPlayerState == PlayerState::DigState)
+		{
+			str = L"dig";
+		}
+		else if (mPlayerState == PlayerState::FallState)
+		{
+			str = L"fall";
+		}
+		else if (mPlayerState == PlayerState::RunState)
+		{
+			str = L"run";
+		}
+		else if (mPlayerState == PlayerState::StopperState)
+		{
+			str = L"stop";
+		}
+		else if (mPlayerState == PlayerState::UmbrellaState)
+		{
+			str = L"umb";
+		}
+		else if (mPlayerState == PlayerState::TrapDieState)
+		{
+			str = L"die";
+		}
+		else if (mPlayerState == PlayerState::ThrowState)
+		{
+			str = L"throw";
+		}
+		POINT playerPoint = CameraManager::GetInstance()->GetMainCamera()->GetPoint(mX, mY);
+		TextOut(hdc, playerPoint.x, playerPoint.y - mSizeY, str.c_str(), str.length());
 	}
-	wstring str;
-	if (mPlayerState == PlayerState::BoomState)
-	{
-		str = L"Boom";
-	}
-	else if (mPlayerState == PlayerState::ClimbState)
-	{
-		str = L"climb";
-	}
-	else if(mPlayerState == PlayerState::DigState)
-	{
-		str = L"dig";
-	}
-	else if (mPlayerState == PlayerState::FallState)
-	{
-		str = L"fall";
-	}
-	else if (mPlayerState == PlayerState::RunState)
-	{
-		str = L"run";
-	}
-	else if (mPlayerState == PlayerState::StopperState)
-	{
-		str = L"stop";
-	}
-	else if (mPlayerState == PlayerState::UmbrellaState)
-	{
-		str = L"umb";
-	}
-	else if (mPlayerState == PlayerState::TrapDieState)
-	{
-		str = L"die";
-	}
-	else if (mPlayerState == PlayerState::ThrowState)
-	{
-		str = L"throw";
-	}
-	POINT playerPoint = CameraManager::GetInstance()->GetMainCamera()->GetPoint(mX,mY);
-	TextOut(hdc, playerPoint.x, playerPoint.y-mSizeY, str.c_str(), str.length());
+	
 
 	mCurrentState->Render(hdc);
 }
