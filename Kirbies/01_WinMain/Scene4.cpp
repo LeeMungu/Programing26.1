@@ -177,7 +177,7 @@ void Scene4::Update()
 	//CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene4count");
 	if (mCountUi != NULL && mIsGameClear == false)
 	{
-		if (mCountUi->GetGoalPercent() > 50.f &&
+		if (mCountUi->GetGoalPercent() >= 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;

@@ -183,7 +183,7 @@ void Scene5::Update()
 	//CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene3count");
 	if (mCountUi != NULL && mIsGameClear == false)
 	{
-		if (mCountUi->GetGoalPercent() > 50.f &&
+		if (mCountUi->GetGoalPercent() >= 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
@@ -239,7 +239,7 @@ void Scene5::Update()
 
 		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
 		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
+			SceneManager::GetInstance()->LoadScene(L"SceneEnding");
 		}
 	}
 	if (mIsGameOver == true)

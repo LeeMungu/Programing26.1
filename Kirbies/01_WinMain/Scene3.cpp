@@ -57,15 +57,15 @@ void Scene3::Init()
 	NPC* npc = new NPC("dedede", WINSIZEX / 2 * 3 + 300 - 150, WINSIZEY * 2 - 120);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 	
-	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 20);
+	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 10);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 20);
+	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 35);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
-	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 20);
+	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
-	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 20);
+	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
-	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 20);
+	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 45);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
 
 	//Ui
@@ -158,7 +158,7 @@ void Scene3::Update()
 	//CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene3count");
 	if (mCountUi != NULL && mIsGameClear == false)
 	{
-		if (mCountUi->GetGoalPercent() > 50.f &&
+		if (mCountUi->GetGoalPercent() >= 50.f &&
 			ObjectManager::GetInstance()->GetObjectList(ObjectLayer::Player).size() == NULL)
 		{
 			mIsGameClear = true;
