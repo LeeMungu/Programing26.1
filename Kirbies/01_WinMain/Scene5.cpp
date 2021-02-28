@@ -44,7 +44,7 @@ void Scene5::Init()
 	Bottom* bottom = new Bottom("Bottom", WINSIZEX / 2, WINSIZEY / 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, bottom);
 
-	Door* door = new Door("Door", 150, 700, 30);
+	Door* door = new Door("Door", 200, 700, 50);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Door, door);
 
 	Goal* goal = new Goal("goal", 2300, 420);
@@ -68,9 +68,9 @@ void Scene5::Init()
 	NPC* npc = new NPC("dedede", 2100, 440);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
-	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 2);
+	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 50);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 40);
+	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 50);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
 	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
