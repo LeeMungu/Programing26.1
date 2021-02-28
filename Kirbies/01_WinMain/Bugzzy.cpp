@@ -54,6 +54,10 @@ void Bugzzy::Update()
 		}
 
 	}
+	if (mAnimation->GetNowFrameX() == 8)
+	{
+		SoundPlayer::GetInstance()->Play(L"jump", 5.f * SoundPlayer::GetInstance()->GetEffectVolum());
+	}
 	if (mAnimation->GetNowFrameX() == 10)
 	{
 		mAnimation->SetCurrentFrameIndex(0);
