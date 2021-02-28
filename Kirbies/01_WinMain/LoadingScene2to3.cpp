@@ -114,12 +114,18 @@ void LoadingScene2to3::Render(HDC hdc)
 	mLoadingBarImage2->Render(hdc, WINSIZEX / 2 -mLoadingBarImage2->GetWidth() / 2, WINSIZEY / 12.5 * 7.5f +8,
 		0, 0, mLoadingBarImage2->GetWidth() * mLoadIndex / mLoadList.size(), mLoadingBarImage2->GetHeight());
 
+	//로딩 글씨 표시
+	HFONT hFont, oldFont;
+	hFont = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));
+	oldFont = (HFONT)SelectObject(hdc, hFont);
 	wstring loadingFer = L"LOADING : " + to_wstring(mLoadIndex * 100 / mLoadList.size()) + L"%";
-	TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 12.5 * 8, loadingFer.c_str(), loadingFer.length());
+	TextOut(hdc, WINSIZEX / 2 - 150, WINSIZEY / 12.5 * 7.8f, loadingFer.c_str(), loadingFer.length());
 
 	if (mIsEndLoading == true)
 	{
 		wstring strNext = L"PUSH THE SPACE";
-		TextOut(hdc, WINSIZEX / 2 - 50, WINSIZEY / 10 * 8, strNext.c_str(), loadingFer.length());
+		TextOut(hdc, WINSIZEX / 2 - 150, WINSIZEY / 10 * 8, strNext.c_str(), loadingFer.length());
 	}
+	SelectObject(hdc, oldFont);
+	DeleteObject(hFont);
 }
