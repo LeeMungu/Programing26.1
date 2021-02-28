@@ -117,7 +117,6 @@ void LoadingScene::Render(HDC hdc)
 		0, 0, mLoadingBarImage2->GetWidth() * mLoadIndex / mLoadList.size(), mLoadingBarImage2->GetHeight());
 	
 	//로딩 글씨 나타내는것
-	SetBkMode(hdc, 1);
 	HFONT hFont, oldFont;
 	hFont = CreateFont(40, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));
 	oldFont = (HFONT)SelectObject(hdc, hFont);

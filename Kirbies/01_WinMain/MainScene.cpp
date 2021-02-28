@@ -25,7 +25,8 @@ void MainScene::Init()
 	SoundPlayer::GetInstance()->Play(L"TitleBGM", 0.5f
 		*SoundPlayer::GetInstance()->GetBgmvolum());
 
-	mIsLoadEnd = true;
+	mIsLoadEnd = false;
+	mTimeSet = 0.f;
 }
 
 void MainScene::Release()
@@ -37,16 +38,43 @@ void MainScene::Update()
 {
 	ObjectManager::GetInstance()->Update();
 
-
-	if (Input::GetInstance()->GetKeyDown(VK_SPACE) && mIsLoadEnd ==true)
+	Title* tempTitle = (Title*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Background, "TitleFinal");
+	if (tempTitle != NULL)
 	{
-	
-		SceneManager::GetInstance()->LoadScene(L"LoadingScene");
-		mIsLoadEnd = false;
+		if (tempTitle->GetIsEndAnimation() == true)
+		{
+			mIsLoadEnd = true;
+		}
+	}
+	if (mIsLoadEnd == true)
+	{
+		if (Input::GetInstance()->GetKeyDown(VK_SPACE))
+		{
+
+			SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+			mIsLoadEnd = false;
+		}
+		mTimeSet += Time::GetInstance()->DeltaTime();
 	}
 }
 
 void MainScene::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
+
+	if(mIsLoadEnd == true && mTimeSet>0.5f)
+	{
+		SetBkMode(hdc, 1);
+		HFONT hFont, oldFont;
+		hFont = CreateFont(60, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));
+		oldFont = (HFONT)SelectObject(hdc, hFont);
+		wstring strNext = L"PUSH THE SPACE";
+		TextOut(hdc, WINSIZEX / 6, WINSIZEY / 2, strNext.c_str(), strNext.length());
+		SelectObject(hdc, oldFont);
+		DeleteObject(hFont);
+		if (mTimeSet > 1.f)
+		{
+			mTimeSet = 0.f;
+		}
+	}
 }

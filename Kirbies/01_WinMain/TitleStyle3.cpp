@@ -30,7 +30,6 @@ void TitleStyle3::Release()
 
 void TitleStyle3::Update()
 {
-
 	if (mState == State::RightToLeft)
 	{
 		mX -= 20;
@@ -64,6 +63,14 @@ void TitleStyle3::Update()
 	else if (mState == State::Stop && mIsEndAnimation == true)
 	{
 		//다음타자 생성
+		mIsEndAnimation = false;
+		TitleStyle4* mainText3 = new TitleStyle4(L"MainTitle3",TitleStyle4::State::RightToLeft);
+		mainText3->Init();
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText3);
+		TitleStyle4* mainText4 = new TitleStyle4(L"MainTitle4",TitleStyle4::State::LeftToRight);
+		mainText4->Init();
+		ObjectManager::GetInstance()->AddObject(ObjectLayer::Background, mainText4);
+
 		mIsEndAnimation = false;
 	}
 	mRect = RectMakeCenter(mX, mY, mSizeX, mSizeY);
