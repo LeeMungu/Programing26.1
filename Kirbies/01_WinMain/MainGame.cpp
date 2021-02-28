@@ -53,6 +53,8 @@ void MainGame::Init()
 	//엔딩이미지 로드
 	IMAGEMANAGER->LoadFromFile(L"EndingBackGound", Resources(L"STAFFBACKGROUND.bmp"), 917, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"EndingCredit", Resources(L"EndingCredit.bmp"), 1000, 9240, 1,44, true);
+	//엔딩 사운드
+	SoundPlayer::GetInstance()->LoadFromFile(L"EndingBGM", Resources(L"EndingCreditBGM.mp3"), true);
 
 	//텍스트 이미지
 	IMAGEMANAGER->LoadFromFile(L"TextBoxDeDeDe", Resources(L"TextBoxDeDeDe.bmp"), 1280, 220, 1, 1, true);

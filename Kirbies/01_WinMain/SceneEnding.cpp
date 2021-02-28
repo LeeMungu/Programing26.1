@@ -16,6 +16,8 @@ void SceneEnding::Init()
 	mEndText = endingText;
 	mIndexY++;
 	mStop = false;
+
+	SoundPlayer::GetInstance()->Play(L"EndingBGM", 0.5f);
 }
 void SceneEnding::Release()
 {
