@@ -1,5 +1,5 @@
 #pragma once
-#include "Scene4.h"
+#include "Scene.h"
 #include <functional>
 class LoadingScene3to4 : public Scene4
 {

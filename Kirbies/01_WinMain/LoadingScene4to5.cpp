@@ -19,7 +19,7 @@ void LoadingScene4to5::Init()
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Door", Resources(L"Door.bmp"), 47 * PlayerSize, 40 * PlayerSize, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Background5", Resources(L"backGround5.bmp"), 768, 336, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"Bottom", Resources(L"scene5.bmp"), 2560, 1440, true); });
-	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameOver", Resources(L"GameOver.bmp"), 1872, 48, 9, 1, true); });
+	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameOver", Resources(L"GameOver.bmp"), 1872 * PlayerSize, 48 * PlayerSize, 9, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"GameClear", Resources(L"GameClearImage1.bmp"), 4403 * PlayerSize, 52 * PlayerSize, 17, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"PowerBtn", Resources(L"button.bmp"), 88, 16, 2, 1, true); });
 	AddLoadFunc([]() {IMAGEMANAGER->LoadFromFile(L"plate", Resources(L"plate.bmp"), 96, 32, true); });
