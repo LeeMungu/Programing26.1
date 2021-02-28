@@ -52,7 +52,7 @@ void MainGame::Init()
 	
 	//엔딩이미지 로드
 	IMAGEMANAGER->LoadFromFile(L"EndingBackGound", Resources(L"STAFFBACKGROUND.bmp"), 917, 720, true);
-	IMAGEMANAGER->LoadFromFile(L"EndingCredit", Resources(L"EndingCredit.bmp"), 1000, 11550, 1,55, true);
+	IMAGEMANAGER->LoadFromFile(L"EndingCredit", Resources(L"EndingCredit.bmp"), 1000, 9240, 1,44, true);
 	//엔딩 사운드
 	SoundPlayer::GetInstance()->LoadFromFile(L"EndingBGM", Resources(L"EndingCreditBGM.mp3"), true);
 
@@ -82,7 +82,7 @@ void MainGame::Init()
 	SceneManager::GetInstance()->AddScene(L"MainScene", new SceneEnding);
 	
 	//처음은 메인화면
-	SceneManager::GetInstance()->LoadScene(L"EndingScene");
+	SceneManager::GetInstance()->LoadScene(L"MainScene");
 
 	//디디디
 	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 256, 244, 4, 4, true);

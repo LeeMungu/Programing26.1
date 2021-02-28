@@ -136,13 +136,9 @@ void Scene5::Init()
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
+	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
-	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
-	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
-	ObjectManager::GetInstance()->Init();
 
 	//»ç¿îµå
 	SoundPlayer::GetInstance()->Play(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
