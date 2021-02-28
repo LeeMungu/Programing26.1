@@ -99,7 +99,7 @@ void Special::Update()
 		//사라질때 이팩트
 		SpecialApearEffect* effect = new SpecialApearEffect("ApearEffect", mX, mY-100, L"SpecialAppearEffect", 9, 3);
 		ObjectManager::GetInstance()->AddObject(ObjectLayer::Effect, effect);
-		mIsEnd == true;
+		mIsEnd = true;
 		//Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
 		//prevCamera->SetTarget(effect);
 	}

@@ -68,6 +68,7 @@ void LoadingScene::Init()
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"GoalEffectSound", Resources(L"GoalInSound.mp3"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"SpecialSound", Resources(L"/sp/effectSound.wav"), false); });
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"SpecialSound2", Resources(L"/sp/effectSound2.wav"), false); });
+	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"SpecialStome", Resources(L"/sp/StomeSound.mp3"), false); });
 
 	//»ç¿îµå (BGM)
 	AddLoadFunc([]() {SoundPlayer::GetInstance()->LoadFromFile(L"Scene1BGM", Resources(L"GourmetRaceKirbySuperStar.mp3"), true); });

@@ -13,6 +13,7 @@ SpecialApearEffect::SpecialApearEffect(string name, float x, float y, wstring im
 	mCurrentAnimation->SetIsLoop(false);
 	mCurrentAnimation->SetFrameUpdateTime(0.1f);
 	mCurrentAnimation->Play();
+	SoundPlayer::GetInstance()->Play(L"SpecialStome", 1.0f * SoundPlayer::GetInstance()->GetEffectVolum());
 }
 
 void SpecialApearEffect::Init()
@@ -25,6 +26,8 @@ void SpecialApearEffect::Init()
 
 		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
 		prevCamera->SetTarget(special);
+
+		SoundPlayer::GetInstance()->Stop(L"SpecialStome");
 	});
 }
 
