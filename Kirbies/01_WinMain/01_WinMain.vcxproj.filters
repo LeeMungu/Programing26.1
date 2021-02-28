@@ -375,9 +375,6 @@
     <ClInclude Include="PowerBtn.h">
       <Filter>MainGame\Object\PowerBtn</Filter>
     </ClInclude>
-    <ClInclude Include="SceneEnding.h">
-      <Filter>FrameWork\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="Throw.h">
       <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
     </ClInclude>
@@ -389,6 +386,12 @@
     </ClInclude>
     <ClInclude Include="BunBottom.h">
       <Filter>MainGame\Object\Bottom</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneEnding.h">
+      <Filter>MainGame\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingText.h">
+      <Filter>MainGame\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -617,9 +620,6 @@
     <ClCompile Include="PowerBtn.cpp">
       <Filter>MainGame\Object\PowerBtn</Filter>
     </ClCompile>
-    <ClCompile Include="SceneEnding.cpp">
-      <Filter>FrameWork\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="Throw.cpp">
       <Filter>MainGame\Object\Player\State\StateKind\KMC</Filter>
     </ClCompile>
@@ -631,6 +631,12 @@
     </ClCompile>
     <ClCompile Include="BunBottom.cpp">
       <Filter>MainGame\Object\Bottom</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneEnding.cpp">
+      <Filter>MainGame\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingText.cpp">
+      <Filter>MainGame\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,7 @@
 #include "Scene3.h"
 #include "Scene4.h"
 #include "Scene5.h"
+#include "SceneEnding.h"
 
 #include "LoadingScene.h"
 #include "LoadingScene1to2.h"
@@ -49,6 +50,12 @@ void MainGame::Init()
 	IMAGEMANAGER->LoadFromFile(L"MainTitle3", Resources(L"MainTitle3.bmp"), 1280, 720, true);
 	IMAGEMANAGER->LoadFromFile(L"MainTitle4", Resources(L"MainTitle4.bmp"), 1280, 720, true);
 	
+	//엔딩이미지 로드
+	IMAGEMANAGER->LoadFromFile(L"EndingBackGound", Resources(L"STAFFBACKGROUND.bmp"), 917, 720, true);
+	IMAGEMANAGER->LoadFromFile(L"EndingCredit", Resources(L"EndingCredit.bmp"), 1000, 9240, 1,44, true);
+	//엔딩 사운드
+	SoundPlayer::GetInstance()->LoadFromFile(L"EndingBGM", Resources(L"EndingCreditBGM.mp3"), true);
+
 	//텍스트 이미지
 	IMAGEMANAGER->LoadFromFile(L"TextBoxDeDeDe", Resources(L"TextBoxDeDeDe.bmp"), 1280, 220, 1, 1, true);
 	IMAGEMANAGER->LoadFromFile(L"TextBoxKirby", Resources(L"TextBoxKirby.bmp"), 1280, 220, 1, 1, true);
@@ -56,6 +63,7 @@ void MainGame::Init()
 	//텍스트 불러오기
 	AddFontResourceA("../02_Resources/Maplestory Bold.ttf");
 
+	//사운드 업로드
 	SoundPlayer::GetInstance()->LoadFromFile(L"TitleBGM", Resources(L"KirbysDreamland3SandCanyon1.mp3"), true);
 
 	//씬로드
@@ -70,9 +78,11 @@ void MainGame::Init()
 	SceneManager::GetInstance()->AddScene(L"LoadingScene2to3", new LoadingScene2to3);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene3to4", new LoadingScene3to4);
 	SceneManager::GetInstance()->AddScene(L"LoadingScene4to5", new LoadingScene4to5);
+	//엔딩씬
+	SceneManager::GetInstance()->AddScene(L"MainScene", new SceneEnding);
 	
 	//처음은 메인화면
-	SceneManager::GetInstance()->LoadScene(L"MainScene");
+	SceneManager::GetInstance()->LoadScene(L"SceneEnding");
 
 	//디디디
 	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 256, 244, 4, 4, true);

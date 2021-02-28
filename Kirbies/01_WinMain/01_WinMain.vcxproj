@@ -171,6 +171,7 @@
     <ClInclude Include="DigPoint.h" />
     <ClInclude Include="Door.h" />
     <ClInclude Include="Effect.h" />
+    <ClInclude Include="EndingText.h" />
     <ClInclude Include="Fall.h" />
     <ClInclude Include="Figure.h" />
     <ClInclude Include="framework.h" />
@@ -256,6 +257,7 @@
     <ClCompile Include="DigPoint.cpp" />
     <ClCompile Include="Door.cpp" />
     <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EndingText.cpp" />
     <ClCompile Include="Fall.cpp" />
     <ClCompile Include="GameEvent.cpp" />
     <ClCompile Include="GameEventManager.cpp" />
