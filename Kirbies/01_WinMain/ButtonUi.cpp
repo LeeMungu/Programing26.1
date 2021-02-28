@@ -122,7 +122,30 @@ void ButtonUi::Update()
 		}
 		else if (mbtnState == BtnState::ReStart)
 		{
-			SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+			if (SceneManager::GetInstance()->GetSceneName() == L"Scene1")
+			{
+				SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+			}
+			else if (SceneManager::GetInstance()->GetSceneName() == L"Scene2")
+			{
+				SceneManager::GetInstance()->LoadScene(L"LoadingScene1to2");
+			}
+			else if (SceneManager::GetInstance()->GetSceneName() == L"Scene3")
+			{
+				SceneManager::GetInstance()->LoadScene(L"LoadingScene2to3");
+			}
+			else if (SceneManager::GetInstance()->GetSceneName() == L"Scene4")
+			{
+				SceneManager::GetInstance()->LoadScene(L"LoadingScene3to4");
+			}
+			else if (SceneManager::GetInstance()->GetSceneName() == L"Scene5")
+			{
+				SceneManager::GetInstance()->LoadScene(L"LoadingScene4to5");
+			}
+			else
+			{
+				SceneManager::GetInstance()->LoadScene(L"LoadingScene");
+			}
 			SceneManager::GetInstance()->SetIsconfig(false);
 			ConfigUi* temp = (ConfigUi*)UiManager::GetInstance()->FindUi("Menu");
 			temp->SetIsDestroy(true);

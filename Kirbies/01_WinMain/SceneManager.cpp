@@ -78,6 +78,7 @@ void SceneManager::AddScene(const wstring& sceneName,Scene * scene)
 
 void SceneManager::LoadScene(const wstring & sceneName)
 {
+	SceneName = sceneName;
 	SceneIter iter = mSceneList.find(sceneName);
 	//못찾았으면 return (돌아가라)
 	if (iter == mSceneList.end())
