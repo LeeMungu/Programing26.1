@@ -202,11 +202,7 @@ void Scene5::Update()
 	if (powerbtntemp->GetIsBtnOn() == true)
 	{
 		Plate* platetemp = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate");
-		platetemp->Init();
-		
 		Plate* platetemp3 = (Plate*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Bottom, "plate3");
-		platetemp3->Init();
-
 		platetemp->SetX(740);
 		platetemp3->SetX(940);
 	}
