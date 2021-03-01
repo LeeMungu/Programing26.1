@@ -130,10 +130,6 @@ void Scene1::Init()
 	//GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 
-	//셋 초기화
-
-	GameEventManager::GetInstance()->Update();
-	ObjectManager::GetInstance()->Update();
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
@@ -143,10 +139,10 @@ void Scene1::Init()
 
 void Scene1::Release()
 {
+	//이벤트 지우기
+	GameEventManager::GetInstance()->RemoveAllEvent();
 	//게임 오브젝트 지우기
 	ObjectManager::GetInstance()->Release();
-	//이벤트 지우기
-	GameEventManager::GetInstance()->~GameEventManager();
 	//사운드 멈춰주기
 	SoundPlayer::GetInstance()->Stop();
 	//Ui비활성화
@@ -194,10 +190,8 @@ void Scene1::Update()
 		}
 	}
 
-	
-	//사운드 멈춰주기
-	ObjectManager::GetInstance()->Update();
 
+	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 	
 	//클리어 시 변경 로딩씬
@@ -219,7 +213,6 @@ void Scene1::Update()
 			SceneManager::GetInstance()->LoadScene(L"MainScene");
 		}
 	}
-	//CameraWalk();
 	SpecialFunc();
 	FollowPlayer();
 }

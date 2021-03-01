@@ -123,8 +123,9 @@ void Scene3::Init()
 
 
 	//사운드
-	SoundPlayer::GetInstance()->Play(L"Scene3BGM", SoundPlayer::GetInstance()->GetBgmvolum());
+	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	SoundPlayer::GetInstance()->Stop(L"Scene2BGM");
+	SoundPlayer::GetInstance()->Play(L"Scene3BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 
 	//셋 초기화
 	mIsGameClear = false;
@@ -136,8 +137,8 @@ void Scene3::Init()
 
 void Scene3::Release()
 {
+	GameEventManager::GetInstance()->RemoveAllEvent();
 	ObjectManager::GetInstance()->Release();
-	GameEventManager::GetInstance()->~GameEventManager();
 	SoundPlayer::GetInstance()->Stop();
 	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
 	if (temps.size() != NULL)
@@ -179,9 +180,6 @@ void Scene3::Update()
 		}
 	}
 
-	
-
-	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	//이벤트 업데이트
 	GameEventManager::GetInstance()->Update();

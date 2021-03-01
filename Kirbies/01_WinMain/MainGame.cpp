@@ -82,7 +82,7 @@ void MainGame::Init()
 	SceneManager::GetInstance()->AddScene(L"EndingScene", new SceneEnding);
 	
 	//처음은 메인화면
-	SceneManager::GetInstance()->LoadScene(L"MainScene");
+	SceneManager::GetInstance()->LoadScene(L"LoadingScene4to5");
 
 	//디디디
 	IMAGEMANAGER->LoadFromFile(L"dedede", Resources(L"dedede.bmp"), 256, 244, 4, 4, true);

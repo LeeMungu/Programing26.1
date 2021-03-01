@@ -23,7 +23,7 @@ void Door::Init()
 	mCount = 0;
 	mTimeLimit = 3.f;
 	mIsCreatedEnd = false;
-	mIsGeneration = true;
+	mIsGeneration = false;
 }
 
 void Door::Release()

@@ -116,10 +116,11 @@ void Scene4::Init()
 	camera->SetY(WINSIZEY / 2);
 
 	//사운드
-	SoundPlayer::GetInstance()->Play(L"Scene4BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene3BGM");
+	SoundPlayer::GetInstance()->Play(L"Scene4BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 
 	//이벤트 초기화
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.5f)); //3초동안의텀
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
 	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
@@ -138,9 +139,6 @@ void Scene4::Init()
 	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
-	//이벤트 업데이트
-	GameEventManager::GetInstance()->Update();
-
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
@@ -150,8 +148,8 @@ void Scene4::Init()
 
 void Scene4::Release()
 {
+	GameEventManager::GetInstance()->RemoveAllEvent();
 	ObjectManager::GetInstance()->Release();
-	GameEventManager::GetInstance()->~GameEventManager();
 	SoundPlayer::GetInstance()->Stop();
 	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
 	if (temps.size() != NULL)
@@ -168,8 +166,6 @@ void Scene4::Release()
 void Scene4::Update()
 {
 	Door* door = (Door*)ObjectManager::GetInstance()->FindObject("Door");
-
-	
 	//클리어조건
 	//CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene4count");
 	if (mCountUi != NULL && mIsGameClear == false)
@@ -195,8 +191,6 @@ void Scene4::Update()
 		}
 	}
 
-
-	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 

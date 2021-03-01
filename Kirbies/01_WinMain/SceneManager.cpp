@@ -23,9 +23,6 @@ void SceneManager::Update()
 {
 	if (mIsConfig == false )
 	{
-		if (mCurrentScene != nullptr)
-			mCurrentScene->Update();
-
 		if (Input::GetInstance()->GetKeyDown(VK_ESCAPE))
 		{
 			mIsConfig = true;
@@ -34,6 +31,8 @@ void SceneManager::Update()
 			Menu->Init();
 			UiManager::GetInstance()->AddUi(UiLayer::Object, Menu);
 		}
+		if (mCurrentScene != nullptr)
+			mCurrentScene->Update();
 	}
 	else if (mIsConfig == true)
 	{

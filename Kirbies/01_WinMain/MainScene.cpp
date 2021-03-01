@@ -61,10 +61,9 @@ void MainScene::Update()
 void MainScene::Render(HDC hdc)
 {
 	ObjectManager::GetInstance()->Render(hdc);
-
+	SetBkMode(hdc, 1);
 	if(mIsLoadEnd == true && mTimeSet>0.5f)
 	{
-		SetBkMode(hdc, 1);
 		HFONT hFont, oldFont;
 		hFont = CreateFont(60, 0, 0, 0, 0, 0, 0, 0, HANGUL_CHARSET, 0, 0, 0, VARIABLE_PITCH || FF_ROMAN, TEXT("메이플스토리 Bold"));
 		oldFont = (HFONT)SelectObject(hdc, hFont);

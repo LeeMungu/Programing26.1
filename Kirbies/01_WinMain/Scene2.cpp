@@ -97,8 +97,8 @@ void Scene2::Init()
 	ObjectManager::GetInstance()->Init();
 
 	//사운드
-	SoundPlayer::GetInstance()->Play(L"Scene2BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene1BGM");
+	SoundPlayer::GetInstance()->Play(L"Scene2BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 
 	//이벤트 초기화
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
@@ -116,10 +116,6 @@ void Scene2::Init()
 	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
-	//이벤트 업데이트
-
-	GameEventManager::GetInstance()->Update();
-	ObjectManager::GetInstance()->Update();
 	mIsGameClear = false;
 	mIsGameOver = false;
 	mGameOverTimer = 0.f;
@@ -130,8 +126,8 @@ void Scene2::Init()
 
 void Scene2::Release()
 {
+	GameEventManager::GetInstance()->RemoveAllEvent();
 	ObjectManager::GetInstance()->Release();
-	GameEventManager::GetInstance()->~GameEventManager();
 	SoundPlayer::GetInstance()->Stop();
 	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
 	if (temps.size() != NULL)

@@ -14,10 +14,13 @@ GameEventManager::~GameEventManager()
 
 void GameEventManager::RemoveAllEvent()
 {
-	for (int i = 0; i < mEventQueue.size(); ++i)
+	if (mEventQueue.size() != 0)
 	{
-		SafeDelete(mEventQueue.front());
-		mEventQueue.pop();
+		for (int i = 0; i < mEventQueue.size(); ++i)
+		{
+			SafeDelete(mEventQueue.front());
+			mEventQueue.pop();
+		}
 	}
 }
 
@@ -31,7 +34,7 @@ void GameEventManager::Update()
 	{
 		SafeDelete(mEventQueue.front());
 		mEventQueue.pop();
-
+		
 		if (mEventQueue.size() != 0)
 		{
 			mEventQueue.front()->Start();

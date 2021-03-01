@@ -120,10 +120,11 @@ void Scene5::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox6);
 
 	ObjectManager::GetInstance()->Init();
-
+	
+	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
-	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
-	//GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
+	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(0.5f)); //3초동안의텀
+	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Follow));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(npc));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox));
 	GameEventManager::GetInstance()->PushEvent(new ITextEvent(textBox1));
@@ -137,16 +138,13 @@ void Scene5::Init()
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraTargetEvent(door));
 	GameEventManager::GetInstance()->PushEvent(new IChangeCameraModeEvent(Camera::Mode::Free));
-	//GameEventManager::GetInstance()->PushEvent(new IDelayEvent(2.f));
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, true));
 
 
 	//사운드
-	SoundPlayer::GetInstance()->Play(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 	SoundPlayer::GetInstance()->Stop(L"Scene4BGM");
-
-	//이벤트 업데이트
-	GameEventManager::GetInstance()->Update();
+	SoundPlayer::GetInstance()->Stop(L"TitleBGM");//필요한가?
+	SoundPlayer::GetInstance()->Play(L"Scene5BGM", SoundPlayer::GetInstance()->GetBgmvolum());
 
 	mIsGameClear = false;
 	mIsGameOver = false;
@@ -158,8 +156,8 @@ void Scene5::Init()
 
 void Scene5::Release()
 {
+	GameEventManager::GetInstance()->RemoveAllEvent();
 	ObjectManager::GetInstance()->Release();
-	GameEventManager::GetInstance()->~GameEventManager();
 	SoundPlayer::GetInstance()->Stop();
 	vector<Ui*> temps = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
 	if (temps.size() != NULL)
@@ -178,7 +176,6 @@ void Scene5::Update()
 
 	
 	//클리어조건
-	//CountingPlayerUI* tempUi = (CountingPlayerUI*)UiManager::GetInstance()->FindUi(UiLayer::CountPlayerUi, "Scene3count");
 	if (mCountUi != NULL && mIsGameClear == false)
 	{
 		if (mCountUi->GetGoalPercent() >= 50.f &&
@@ -223,7 +220,6 @@ void Scene5::Update()
 	}
 
 
-	SoundPlayer::GetInstance()->Stop(L"TitleBGM");
 	ObjectManager::GetInstance()->Update();
 	GameEventManager::GetInstance()->Update();
 
@@ -248,6 +244,7 @@ void Scene5::Update()
 			SceneManager::GetInstance()->LoadScene(L"MainScene");
 		}
 	}
+
 	SpecialFunc();
 	FollowPlayer();
 }
