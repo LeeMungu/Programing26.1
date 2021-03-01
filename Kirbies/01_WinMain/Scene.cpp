@@ -29,7 +29,7 @@ void Scene::Release()
 void Scene::SpecialFunc()
 {
 	if (mIsSpecial == false &&
-		Input::GetInstance()->GetKeyDown(VK_TAB))
+		Input::GetInstance()->GetKeyDown('E'))
 	{
 		Camera* prevCamera = (Camera*)ObjectManager::GetInstance()->FindObject(ObjectLayer::Camera, "Camera");
 		prevCamera->ChangeMode(Camera::Mode::Follow);
