@@ -264,7 +264,8 @@ void Scene5::Render(HDC hdc)
 
 	if (mIsGameOver == true)
 	{
-		mImageGameOver->FrameRender(hdc, 550, WINSIZEY / 2,
+		mImageGameOver->FrameRender(hdc, (WINSIZEX - mImageGameOver->GetFrameWidth()) / 2,
+			(WINSIZEY - mImageGameOver->GetFrameHeight()) / 2,
 			mAnimationGameOver->GetNowFrameX(),
 			mAnimationGameOver->GetNowFrameY());
 	}
