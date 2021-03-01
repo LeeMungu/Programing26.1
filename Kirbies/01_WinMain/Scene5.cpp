@@ -119,6 +119,7 @@ void Scene5::Init()
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::TextBox, textBox6);
 
+	ObjectManager::GetInstance()->Init();
 
 	GameEventManager::GetInstance()->PushEvent(new IDoorController(door, false));
 	GameEventManager::GetInstance()->PushEvent(new IDelayEvent(1.f)); //3초동안의텀
