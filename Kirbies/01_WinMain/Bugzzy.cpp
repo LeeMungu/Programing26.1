@@ -76,3 +76,8 @@ void Bugzzy::Render(HDC hdc)
 	CameraManager::GetInstance()->GetMainCamera()
 		->FrameRender(hdc, mImage, mRect.left, mRect.top, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
 }
+
+void Bugzzy::mapRender(HDC map)
+{
+	mImage->FrameRender(map, mX, mY-10, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+}

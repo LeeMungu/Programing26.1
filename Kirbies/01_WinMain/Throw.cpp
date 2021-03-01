@@ -61,5 +61,5 @@ void Throw::Render(HDC hdc)
 
 void Throw::mapRender(HDC map)
 {
-	mImage->FrameRender(map, mX, mY, mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
+	mImage->FrameRender(map, mPlayer->GetX(), mPlayer->GetY(), mAnimation->GetNowFrameX(), mAnimation->GetNowFrameY());
 }

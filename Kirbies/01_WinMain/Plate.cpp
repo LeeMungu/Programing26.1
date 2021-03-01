@@ -37,24 +37,25 @@ void Plate::Update()
 		{
 			Player* tempPlayer = (Player*)player[i];
 			tempPlayer->SetX(tempPlayer->GetX() + 1.5f);
-			tempPlayer->SetGravity(0);
+			tempPlayer->SetY(mRect.top-10);
+			//tempPlayer->SetGravity(0);
 		}
-		else
-		{
-			Player* tempPlayer = (Player*)player[i];
-			mTimer += Time::GetInstance()->DeltaTime();
-		}
+		//else
+		//{
+		//	Player* tempPlayer = (Player*)player[i];
+		//	mTimer += Time::GetInstance()->DeltaTime();
+		//}
 	}
 
-	if (mTimer > 10)
-	{
-		mTimer = 0;
-		for (int i = 0; i < player.size(); i++)
-		{
-			Player* tempPlayer = (Player*)player[i];
-			tempPlayer->SetGravity(100);
-		}
-	}
+	//if (mTimer > 10)
+	//{
+	//	mTimer = 0;
+	//	for (int i = 0; i < player.size(); i++)
+	//	{
+	//		Player* tempPlayer = (Player*)player[i];
+	//		//tempPlayer->SetGravity(100);
+	//	}
+	//}
 }
 
 void Plate::Render(HDC hdc)
@@ -67,4 +68,9 @@ void Plate::Render(HDC hdc)
 
 	CameraManager::GetInstance()->GetMainCamera()
 		->Render(hdc, mImage, mRect.left, mRect.top);
+}
+
+void Plate::mapRender(HDC map)
+{
+	mImage->Render(map, mX, mY);
 }

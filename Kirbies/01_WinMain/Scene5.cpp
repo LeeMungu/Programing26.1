@@ -56,11 +56,11 @@ void Scene5::Init()
 	ThrowBtn* throwbtn = new ThrowBtn("throwbtn", 280, 1160);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, throwbtn);
 
-	Plate* plate = new Plate("plate", WINSIZEX / 2 + 200, 760);
+	Plate* plate = new Plate("plate", WINSIZEX / 2 + 200, 730);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate);
 	Plate* plate2 = new Plate("plate2", WINSIZEX / 2 + 200, 760);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate2);
-	Plate* plate3 = new Plate("plate3", WINSIZEX / 2 + 200, 760);
+	Plate* plate3 = new Plate("plate3", WINSIZEX / 2 + 200, 790);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::Bottom, plate3);
 
 
@@ -68,13 +68,13 @@ void Scene5::Init()
 	NPC* npc = new NPC("dedede", 2100, 440);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::NPC, npc);
 
-	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 50);
+	Ui* ui = new Ui("BoomBtn", PlayerState::BoomState, 100, 100, 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui);
-	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 50);
+	Ui* ui2 = new Ui("ClimbBtn", PlayerState::ClimbState, 100, 200, 48);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui2);
-	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 5);
+	Ui* ui3 = new Ui("DigBtn", PlayerState::DigState, 100, 300, 2);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui3);
-	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 20);
+	Ui* ui4 = new Ui("StopperBtn", PlayerState::StopperState, 100, 400, 5);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui4);
 	Ui* ui5 = new Ui("UmbrellaBtn", PlayerState::UmbrellaState, 100, 500, 0);
 	ObjectManager::GetInstance()->AddObject(ObjectLayer::UI, ui5);
