@@ -21,35 +21,61 @@ void DataUI::Update()
 	tempCountingUI = UiManager::GetInstance()->GetUiList(UiLayer::CountPlayerUi);
 
 	if (tempCountingUI.size() != NULL) {
-		mGoalMap.clear(); 
-		mTimeMap.clear();
+		//mGoalMap.clear(); 
+		//mTimeMap.clear();
 
 		for (int i = 0; i < tempCountingUI.size(); i++) {
 			string name = ((CountingPlayerUI*)tempCountingUI[i])->GetName();
 
 			if (name == "Scene1count") {
-				mGoalMap.insert(make_pair("1", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
-				mTimeMap.insert(make_pair("1", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				if (mGoalMap.count("1") == 0) {
+					mGoalMap.insert(make_pair("1", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+					mTimeMap.insert(make_pair("1", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				}
+				else if (mGoalMap.count("1") == 1) {
+					mGoalMap["1"] = ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent();
+					mTimeMap["1"] = ((CountingPlayerUI*)tempCountingUI[i])->GetTimer();
+				}
 			} 
 			else if (name == "Scene2count") {
-				mGoalMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
-				mTimeMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				if (mGoalMap.count("2") == 0) {
+					mGoalMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+					mTimeMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				}
+				else if (mGoalMap.count("2") == 1) {
+					mGoalMap["2"] = ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent();
+					mTimeMap["2"] = ((CountingPlayerUI*)tempCountingUI[i])->GetTimer();
+				}
 			}
 			else if (name == "Scene3count") {
-				mGoalMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
-				mTimeMap.insert(make_pair("2", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
-			}
-			else if (name == "Scene3count") {
-				mGoalMap.insert(make_pair("3", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
-				mTimeMap.insert(make_pair("3", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				if (mGoalMap.count("3") == 0) {
+					mGoalMap.insert(make_pair("3", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+					mTimeMap.insert(make_pair("3", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				}
+				else if (mGoalMap.count("3") == 1) {
+					mGoalMap["3"] = ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent();
+					mTimeMap["3"] = ((CountingPlayerUI*)tempCountingUI[i])->GetTimer();
+				}
 			}
 			else if (name == "Scene4count") {
-				mGoalMap.insert(make_pair("4", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
-				mTimeMap.insert(make_pair("4", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				if (mGoalMap.count("4") == 0) {
+					mGoalMap.insert(make_pair("4", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+					mTimeMap.insert(make_pair("4", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				}
+				else if (mGoalMap.count("4") == 1) {
+					mGoalMap["4"] = ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent();
+					mTimeMap["4"] = ((CountingPlayerUI*)tempCountingUI[i])->GetTimer();
+				}
 			}
 			else if (name == "Scene5count") {
-				mGoalMap.insert(make_pair("5", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
-				mTimeMap.insert(make_pair("5", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				if (mGoalMap.count("5") == 0) {
+					mGoalMap.insert(make_pair("5", ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent()));
+					mTimeMap.insert(make_pair("5", ((CountingPlayerUI*)tempCountingUI[i])->GetTimer()));
+				}
+				else if (mGoalMap.count("5") == 1) {
+					mGoalMap["5"] = ((CountingPlayerUI*)tempCountingUI[i])->GetGoalPercent();
+					mTimeMap["5"] = ((CountingPlayerUI*)tempCountingUI[i])->GetTimer();
+				}
 			}
 		}
 	}
